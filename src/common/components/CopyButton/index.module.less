@@ -1,0 +1,35 @@
+.container {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: sub;
+
+  &.copied {
+    .iconCopy {
+      transform: translateY(-100%) !important;
+    }
+
+    .iconSuccess {
+      transform: translateY(-100%) !important;
+    }
+  }
+
+  svg {
+    path {
+      fill: var(--primary);
+    }
+  }
+
+  .iconCopy {
+    display: block;
+    cursor: pointer;
+    transition: all 0.3s;
+    transform: translateY(0) !important;
+    margin-bottom: 0;
+  }
+
+  .iconSuccess {
+    display: block;
+    transition: all 0.3s;
+    transform: translateY(100%) !important;
+  }
+}

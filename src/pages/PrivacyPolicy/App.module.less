@@ -1,0 +1,51 @@
+@import '@common/styles/common.less';
+
+.container {
+  color: #000000;
+  height: 100%;
+  overflow: auto;
+  padding: 0 24px 50px;
+
+  header {
+    padding: 50px 0;
+
+    .title {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 32px;
+      font-family: OpenSauceOne-Bold, sans-serif;
+    }
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 24px;
+
+    * {
+      font-size: 16px;
+    }
+
+    a {
+      color: @primary-color;
+    }
+
+    .title {
+      font-size: 30px;
+      margin: 50px 0 20px;
+      font-family: OpenSauceOne-ExtraBold, sans-serif;
+      line-height: 2;
+    }
+
+    ul {
+      li {
+        list-style: disc;
+        margin-left: 1em;
+
+        &:not(:last-child) {
+          margin-bottom: 1.5rem;
+        }
+      }
+    }
+  }
+}

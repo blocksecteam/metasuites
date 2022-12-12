@@ -1,0 +1,6 @@
+export { default as initAddressPageScript } from './address'
+export { default as initTxsPageScript } from './txs'
+export { default as initBlockPageScript } from './block'
+export { default as initTokenPageScript } from './token'
+export { default as initTxPageScript } from './tx'
+export { default as initAccountsPageScript } from './accounts'

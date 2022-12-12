@@ -1,4 +1,3 @@
-# Logs
 logs
 *.log
 npm-debug.log*
@@ -12,10 +11,7 @@ dist
 dist-ssr
 *.local
 
-# Editor directories and files
 .vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
 .idea
 .DS_Store
 *.suo
@@ -23,3 +19,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+yarn.lock
+package-json.lock
+.husky/*

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Popup</title>
+  </head>
+  <body>
+    <div id="root" class="__chrome-extension-internal-page__"></div>
+    <script type="module">
+      // fix: vite Module "buffer" has been externalized for browser compatibility. Cannot access "buffer.Buffer" in client code.
+      import { Buffer } from 'buffer/'
+      window.Buffer = Buffer
+    </script>
+    <script type="module" src="./index.tsx"></script>
+  </body>
+</html>

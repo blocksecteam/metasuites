@@ -1,0 +1,75 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "tsconfigRootDir": ".",
+    "project": ["./tsconfig.json"]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts", ".tsx"],
+        "paths": ["./src"]
+      }
+    }
+  },
+  "plugins": ["react", "@typescript-eslint"],
+  "ignorePatterns": [".eslintrc.js", "*.config.ts", "commitlint.config.js"],
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": "error",
+    "import/no-unresolved": "off",
+    "sort-imports": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "sibling",
+          "parent",
+          "index",
+          "unknown"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "@common",
+            "group": "external",
+            "position": "after"
+          }
+        ]
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "react/no-unknown-property": [
+      "error",
+      {
+        "ignore": [
+          "p-id",
+          "t"
+        ]
+      }
+    ]
+  }
+}

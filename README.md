@@ -1,13 +1,14 @@
 # MetaDock Chrome Extension
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/stars/fkhgpeojcbhimodmppkbbliepkpcgcoo?label=MetaDock&style=flat&logo=google)](https://chrome.google.com/webstore/detail/metadock/fkhgpeojcbhimodmppkbbliepkpcgcoo)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Chrome Web Store](https://img.shields.io/chrome-web-store/stars/fkhgpeojcbhimodmppkbbliepkpcgcoo?label=MetaDock&style=flat&logo=google)](https://chrome.google.com/webstore/detail/metadock/fkhgpeojcbhimodmppkbbliepkpcgcoo)
 
 <p align="center"><a href="https://chrome.google.com/webstore/detail/metadock/fkhgpeojcbhimodmppkbbliepkpcgcoo" target="_blank" rel="noreferrer noopener"><img width="500" alt="MetaDock" src="https://assets.blocksec.com/image/1670212325471-2.png"></a></p>
 
 MetaDock is a powerful browser extension designed for the crypto community. It aims to deliver an enhanced user experience by seamlessly integrating various innovative features into the blockchain explorers.
 
 MetaDock supports Google Chrome. We recommend using the latest available browser version.
+
+For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam) or [Medium](https://blocksecteam.medium.com/getting-started-with-metadock-5e3b3aeb64d4) pages.
 
 ## Building
 
@@ -55,7 +56,6 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 
 ## Features
 
-- [x] Supported Websites List
 - [x] Show the fund flow chart
 - [x] Show enhanced function signatures
 - [x] Show compliance scores for addresses
@@ -66,6 +66,20 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - [x] Show quick open in Dedaub for unverified contracts
 - [x] Convert UTC to Local Time Zone
 - [x] Show copy icon for addresses
+- [ ] Sandwich Attack Risk Detection
+
+## Supported Websites List
+
+- btc.com
+- etherscan.io
+- bscscan.com
+- polygonscan.com
+- ftmscan.com
+- arbiscan.io
+- cronoscan.com
+- moonscan.io
+- snowtrace.io
+- optimistic.etherscan.io
 
 ## Changelog
 

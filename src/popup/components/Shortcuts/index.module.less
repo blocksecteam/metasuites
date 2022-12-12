@@ -1,0 +1,73 @@
+@import '@common/styles/common.less';
+
+.container {
+  width: 100%;
+  padding: 0 24px;
+  .flex-column;
+  .align-center;
+
+  .logo {
+    width: 197px;
+    margin: 100px auto 0;
+  }
+
+  .input {
+    font-size: 16px;
+    height: 64px;
+    margin-top: 39px;
+
+    &.unmatch {
+      animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    }
+
+    &::placeholder {
+      font-size: 14px;
+    }
+  }
+
+  .searchBtn {
+    width: 100%;
+    height: 48px;
+    font-size: 14px;
+    margin-top: 20px;
+  }
+
+  .navbar {
+    margin: 107px 0 24px;
+    .center;
+
+    a {
+      &:not(:last-child) {
+        margin-right: 2px;
+      }
+    }
+
+    img {
+      width: 26px;
+      height: 26px;
+    }
+  }
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}

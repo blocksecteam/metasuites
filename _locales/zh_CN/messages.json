@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "MetaDock"
+  },
+  "extDescription": {
+    "message": "MetaDock提供给您更好的区块链数据查询体验。支持一键生成资金流向图，提供丰富的地址标签和强大的签名解析能力，并支持批量下载合约源码等多项扩展功能。适用于BTC.com 、Etherscan、BscScan 和大部分 EVM 兼容链的区块链浏览器。"
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "id": "3741688",
+  "name": "MetaDock",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "插件项目",
+  "glyphs": [
+    {
+      "icon_id": "1123",
+      "name": "复制文件",
+      "font_class": "fuzhiwenjian",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "32902317",
+      "name": "单向",
+      "font_class": "danxiang",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "32902318",
+      "name": "交易",
+      "font_class": "jiaoyi",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "32902319",
+      "name": "添加",
+      "font_class": "tianjia",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "145720",
+      "name": "设置_填充",
+      "font_class": "shezhitianchong",
+      "unicode": "e68d",
+      "unicode_decimal": 59021
+    },
+    {
+      "icon_id": "4734164",
+      "name": "服务",
+      "font_class": "ic_services",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "16372445",
+      "name": "太阳",
+      "font_class": "taiyang",
+      "unicode": "e6f6",
+      "unicode_decimal": 59126
+    },
+    {
+      "icon_id": "32336536",
+      "name": "黑夜模式",
+      "font_class": "heiyemoshi",
+      "unicode": "e68f",
+      "unicode_decimal": 59023
+    },
+    {
+      "icon_id": "386337",
+      "name": "叉",
+      "font_class": "cha1",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "5993150",
+      "name": "复制",
+      "font_class": "fuzhi",
+      "unicode": "ec7a",
+      "unicode_decimal": 60538
+    },
+    {
+      "icon_id": "6194670",
+      "name": "编辑色块",
+      "font_class": "bianjisekuai",
+      "unicode": "ec7c",
+      "unicode_decimal": 60540
+    },
+    {
+      "icon_id": "30957415",
+      "name": "向左",
+      "font_class": "xiangzuo",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "30957416",
+      "name": "向右",
+      "font_class": "xiangyou",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "31310356",
+      "name": "github",
+      "font_class": "github",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "10784890",
+      "name": "bxl-telegram",
+      "font_class": "bxl-telegram",
+      "unicode": "e6ea",
+      "unicode_decimal": 59114
+    },
+    {
+      "icon_id": "31310355",
+      "name": "推特",
+      "font_class": "tuite",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "31310357",
+      "name": "medium",
+      "font_class": "medium",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "452370",
+      "name": "警示提示",
+      "font_class": "instant-error",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "785058",
+      "name": "下载",
+      "font_class": "xiazai",
+      "unicode": "e675",
+      "unicode_decimal": 58997
+    },
+    {
+      "icon_id": "22894765",
+      "name": "minus",
+      "font_class": "minus",
+      "unicode": "e67e",
+      "unicode_decimal": 59006
+    },
+    {
+      "icon_id": "22894777",
+      "name": "plus",
+      "font_class": "plus",
+      "unicode": "e681",
+      "unicode_decimal": 59009
+    },
+    {
+      "icon_id": "4767031",
+      "name": "download",
+      "font_class": "download",
+      "unicode": "e7ef",
+      "unicode_decimal": 59375
+    },
+    {
+      "icon_id": "32611974",
+      "name": "叉",
+      "font_class": "cha",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    },
+    {
+      "icon_id": "32611975",
+      "name": "勾",
+      "font_class": "gou",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
+      "icon_id": "32611976",
+      "name": "进入",
+      "font_class": "jinru",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "11372772",
+      "name": "闪电",
+      "font_class": "shandian1",
+      "unicode": "e8c5",
+      "unicode_decimal": 59589
+    },
+    {
+      "icon_id": "32606432",
+      "name": "资金流",
+      "font_class": "zijinliu",
+      "unicode": "e638",
+      "unicode_decimal": 58936
+    },
+    {
+      "icon_id": "32606433",
+      "name": "logo",
+      "font_class": "logo",
+      "unicode": "e639",
+      "unicode_decimal": 58937
+    },
+    {
+      "icon_id": "32601539",
+      "name": "Fill 1",
+      "font_class": "a",
+      "unicode": "e637",
+      "unicode_decimal": 58935
+    }
+  ]
+}

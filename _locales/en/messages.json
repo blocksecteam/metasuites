@@ -1,0 +1,8 @@
+{
+  "extName": {
+    "message": "MetaDock"
+  },
+  "extDescription": {
+    "message": "Improve the usability of blockchain explorers, including BTC.com, Etherscan, BscScan, and *scans of most EVM-compatible chains."
+  }
+}
