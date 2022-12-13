@@ -36,17 +36,17 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
           Phalcon
         </a>
       )}
+      {phalconPathname && transactionViewerPathname && (
+        <span className={styles.divider}>|</span>
+      )}
       {transactionViewerPathname && (
-        <>
-          <span className={styles.divider}>|</span>
-          <a
-            href={`https://tx.eth.samczsun.com/${transactionViewerPathname}/${txHash}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Transaction Viewer
-          </a>
-        </>
+        <a
+          href={`https://tx.eth.samczsun.com/${transactionViewerPathname}/${txHash}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Transaction Viewer
+        </a>
       )}
       {tenderlyPathname && (
         <>

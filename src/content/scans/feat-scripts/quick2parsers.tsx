@@ -10,10 +10,17 @@ const genQuick2parsersBtn = (chain: string) => {
   const txHashEl = document.querySelector<HTMLElement>(
     '#ContentPlaceHolder1_maintable > div > div:nth-child(2)'
   )
-  const rootEl = document.createElement('div')
-  txHashEl?.classList.add('align-center')
-  txHashEl?.appendChild(rootEl)
-  createRoot(rootEl).render(<ParsersBtn chain={chain} />)
+  const jsClipboardEl = txHashEl?.querySelector<HTMLElement>('.js-clipboard')
+  if (jsClipboardEl) {
+    jsClipboardEl.style.marginRight = '20px'
+  }
+  if (txHashEl) {
+    txHashEl.classList.add('align-center')
+    txHashEl.style.flexWrap = 'wrap'
+    const rootEl = document.createElement('div')
+    txHashEl.appendChild(rootEl)
+    createRoot(rootEl).render(<ParsersBtn chain={chain} />)
+  }
 }
 
 export default genQuick2parsersBtn

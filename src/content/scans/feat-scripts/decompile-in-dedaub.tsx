@@ -37,7 +37,16 @@ const genDecompileInDedaubBtn = (chain: string) => {
 
   if (!mainAddress) return
 
+  const isReInit = !!document.querySelector<HTMLElement>(
+    "#ContentPlaceHolder1_li_contracts font[color='brown']"
+  )
+
   const referenceNode = document.querySelector<HTMLElement>('#dividcode')
+
+  if (isReInit) {
+    const pre = referenceNode?.querySelector('pre')
+    if (pre) pre.style.marginTop = '0'
+  }
 
   const parentNode = referenceNode?.parentNode
 

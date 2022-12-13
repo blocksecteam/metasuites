@@ -1,11 +1,11 @@
 import { createRoot } from 'react-dom/client'
 
+import { pickAddress } from '@common/utils'
+
 import { DownloadSourceCodeBtn } from '../components'
 
 const genDownloadSourceCodeBtn = async (chain: string) => {
-  const mainAddressEl = document.querySelector<HTMLElement>('#mainaddress')
-
-  const mainAddress = mainAddressEl?.innerText
+  const mainAddress = pickAddress(window.location.pathname)
 
   if (!mainAddress) return
 
@@ -20,13 +20,15 @@ const genDownloadSourceCodeBtn = async (chain: string) => {
     '#dividcode > div:first-child > div:first-child > div'
   )
 
-  const rootEl = document.createElement('div')
-  rootEl.style.display = 'inline-block'
-  parentEl?.prepend(rootEl)
+  if (parentEl) {
+    const rootEl = document.createElement('div')
+    parentEl.style.display = 'flex'
+    parentEl.prepend(rootEl)
 
-  createRoot(rootEl).render(
-    <DownloadSourceCodeBtn chain={chain} address={mainAddress} />
-  )
+    createRoot(rootEl).render(
+      <DownloadSourceCodeBtn chain={chain} address={mainAddress} />
+    )
+  }
 }
 
 export default genDownloadSourceCodeBtn

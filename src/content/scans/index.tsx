@@ -9,7 +9,9 @@ import {
   initAccountsPageScript,
   initTxPageScript,
   initBlockPageScript,
-  initTokenPageScript
+  initTokenPageScript,
+  initTokentxnsPageScript,
+  initBlocksPageScript
 } from './page-scripts'
 
 const init = async () => {
@@ -43,7 +45,13 @@ const init = async () => {
       initAccountsPageScript()
       break
     case SCAN_PAGES.TOKEN.name:
-      initTokenPageScript()
+      initTokenPageScript(chain)
+      break
+    case SCAN_PAGES.TOKENTXNS.name:
+      initTokentxnsPageScript(chain)
+      break
+    case SCAN_PAGES.BLOCKS.name:
+      initBlocksPageScript()
       break
   }
 }

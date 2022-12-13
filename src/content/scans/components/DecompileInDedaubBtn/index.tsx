@@ -25,6 +25,7 @@ const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
 
   return (
     <Button
+      style={{ width: 'fit-content' }}
       theme="#EFE6DA"
       fontColor="#000"
       icon={<img src={getImageUrl('dedaub')} alt="" />}
