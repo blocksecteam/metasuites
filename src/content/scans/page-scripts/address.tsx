@@ -7,6 +7,7 @@ import {
   genFundFlow,
   genEnhancedLabels,
   genDownloadSourceCodeBtn,
+  genQuickViewSourceCodeBtn,
   genMainAddressLabel,
   genEnhancedSignatures,
   genDeBankBtn,
@@ -42,7 +43,10 @@ const initAddressPageScript = async (chain: string) => {
   if (fundFlow) genFundFlow(chain)
 
   /** download contract source code as zip */
-  if (contractSourcecode) genDownloadSourceCodeBtn(chain)
+  if (contractSourcecode) {
+    genDownloadSourceCodeBtn(chain)
+    genQuickViewSourceCodeBtn(chain)
+  }
 
   /** open in debank.com */
   if (quick2debank) genDeBankBtn()

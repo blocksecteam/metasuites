@@ -51,7 +51,7 @@ export const SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['ftmscan.com'],
     chain: 'fantom',
     chainID: 250,
-    scanHrefPrefix: 'https://tmscan.com/address'
+    scanHrefPrefix: 'https://ftmscan.com/address'
   },
   {
     name: 'Arbitrum',
