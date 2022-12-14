@@ -11,7 +11,7 @@
     "build": "vite build",
     "fix:style": "stylelint --fix src/**/*.{css,sass,scss,less,vue}",
     "lint:style": "stylelint src/**/*.{css,sass,scss,less,vue}",
-    "prepare": "husky install",
+    "prepare": "husky install && husky set .husky/pre-commit \"npx lint-staged\" && husky set .husky/commit-msg 'npx --no -- commitlint --edit \"$1\"'",
     "lint": "eslint 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
