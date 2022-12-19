@@ -105,14 +105,14 @@ const convertUTC2locale = (pageName: typeof SCAN_PAGE_NAMES[number]) => {
       const isTxPage = pageName === SCAN_PAGES.TX.name
       let timestampEl: HTMLElement | null | undefined
       if (isTxPage) {
-        timestampEl = document.querySelector<HTMLElement>(
-          '#ContentPlaceHolder1_divTimeStamp > div > div:last-child'
-        )
+        timestampEl =
+          document.querySelector<HTMLElement>('#clock')?.parentElement
       } else {
         timestampEl = document.querySelector<HTMLElement>(
           '#ContentPlaceHolder1_maintable > div .fa-clock'
         )?.parentElement
       }
+      console.log('哈哈哈哈', timestampEl)
       if (!timestampEl) return
       const childIdx = isTxPage ? 3 : 2
       const date = convertFormativeUTCTimeToLocale(timestampEl.innerText)
@@ -154,10 +154,20 @@ const convertUTC2locale = (pageName: typeof SCAN_PAGE_NAMES[number]) => {
       }
       break
     }
+    case SCAN_PAGES.TOKENTXNS.name:
     case SCAN_PAGES.TXS.name:
     case SCAN_PAGES.BLOCKS.name: {
       const lnkAgeDateTimeEl =
         document.querySelector<HTMLElement>('#lnkAgeDateTime')
+      replaceInkTxAgeDateTime(lnkAgeDateTimeEl ? [lnkAgeDateTimeEl] : [])
+      replaceAgeElsTipContent()
+      replaceDateElsContent()
+      break
+    }
+    case SCAN_PAGES.TOKEN.name: {
+      const lnkAgeDateTimeEl = document.querySelector<HTMLElement>(
+        '#lnkTokenTxnsAgeDateTime'
+      )
       replaceInkTxAgeDateTime(lnkAgeDateTimeEl ? [lnkAgeDateTimeEl] : [])
       replaceAgeElsTipContent()
       replaceDateElsContent()

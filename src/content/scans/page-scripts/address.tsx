@@ -7,6 +7,7 @@ import {
   genFundFlow,
   genEnhancedLabels,
   genDownloadSourceCodeBtn,
+  genQuickViewSourceCodeBtn,
   genMainAddressLabel,
   genEnhancedSignatures,
   genDeBankBtn,
@@ -26,7 +27,8 @@ const initAddressPageScript = async (chain: string) => {
     quick2debank,
     decompileInDedaub,
     utc2locale,
-    copyAddress
+    copyAddress,
+    dethCode
   } = await store.get('options')
 
   if (enhancedSignatures) genEnhancedSignatures(chain)
@@ -43,6 +45,9 @@ const initAddressPageScript = async (chain: string) => {
 
   /** download contract source code as zip */
   if (contractSourcecode) genDownloadSourceCodeBtn(chain)
+
+  /** quick view source code in deth.net */
+  if (dethCode) genQuickViewSourceCodeBtn(chain)
 
   /** open in debank.com */
   if (quick2debank) genDeBankBtn()

@@ -16,7 +16,8 @@ const OPTIONS = [
   'quick2debank',
   'decompileInDedaub',
   'utc2locale',
-  'copyAddress'
+  'copyAddress',
+  'dethCode'
 ] as const
 
 export type OptKeys = typeof OPTIONS[number]
@@ -49,7 +50,8 @@ export const defaultValue: StorageInfo = {
     quick2debank: true,
     decompileInDedaub: true,
     utc2locale: false,
-    copyAddress: true
+    copyAddress: true,
+    dethCode: true
   }
 }
 

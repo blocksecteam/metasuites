@@ -18,6 +18,7 @@ const genCopyAddressBtn = async (pageName: typeof SCAN_PAGE_NAMES[number]) => {
       handleAddressNodeListCopy(addressTags)
       break
     }
+    case SCAN_PAGES.TOKEN.name:
     case SCAN_PAGES.ADDRESS.name: {
       const addressTags = document.querySelectorAll<HTMLElement>(
         TABLE_LIST_ADDRESS_SELECTORS
@@ -49,9 +50,9 @@ const genCopyAddressBtn = async (pageName: typeof SCAN_PAGE_NAMES[number]) => {
       }
       break
     }
-    case SCAN_PAGES.TOKEN.name: {
+    case SCAN_PAGES.TOKENTXNS.name: {
       const tokenTags = document.querySelectorAll<HTMLElement>(
-        ".card tbody a[href^='/token/0x' i]:not([data-original-title])"
+        ".card tbody a[href^='/token/0x' i]:not([class])"
       )
       const addressTags = document.querySelectorAll<HTMLElement>(
         TABLE_LIST_ADDRESS_SELECTORS

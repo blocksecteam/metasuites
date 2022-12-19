@@ -37,6 +37,10 @@ const handleReplace = async (
               item.remove()
             }
           })
+          el.setAttribute(
+            'data-original-title',
+            `${item.label}\n(${item.address})`
+          )
           const symbolRootEl = document.createElement('span')
           const copyRootEl = document.createElement('span')
           symbolRootEl.style.display = 'contents'

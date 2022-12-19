@@ -1,7 +1,10 @@
 import { isMethod } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { MethodLabel } from '@common/api/types'
-import { GET_ADDRESS_METHOD } from '@common/constants'
+import {
+  GET_ADDRESS_METHOD,
+  TABLE_LIST_METHOD_SELECTORS
+} from '@common/constants'
 
 const handleReplace = async (
   chain: string,
@@ -28,7 +31,7 @@ const handleReplace = async (
 
 const genEnhancedSignatures = async (
   chain: string,
-  selector = '.card tbody .u-label.u-label--info'
+  selector = TABLE_LIST_METHOD_SELECTORS
 ) => {
   const methodsTags = document.querySelectorAll<HTMLElement>(selector)
   const dropdownMethodBtnEl =

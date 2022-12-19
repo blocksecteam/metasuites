@@ -5,7 +5,8 @@ export const SCAN_PAGE_NAMES = [
   'TX',
   'BLOCKS',
   'ACCOUNTS',
-  'TOKEN'
+  'TOKEN',
+  'TOKENTXNS'
 ] as const
 
 interface ScanPage {
@@ -39,7 +40,11 @@ export const SCAN_PAGES: Record<typeof SCAN_PAGE_NAMES[number], ScanPage> = {
     name: 'ACCOUNTS'
   },
   TOKEN: {
-    pathname: '/tokentxns',
+    pathname: '/token/',
     name: 'TOKEN'
+  },
+  TOKENTXNS: {
+    pathname: '/tokentxns',
+    name: 'TOKENTXNS'
   }
 }

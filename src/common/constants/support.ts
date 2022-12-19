@@ -16,6 +16,11 @@ interface ToolsSupportWebsite {
   chain: string
 }
 
+interface EtherscanDethSupportWebsite {
+  chain: string
+  scanHrefPrefix: string
+}
+
 export const SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
   {
     name: 'BTC',
@@ -51,7 +56,7 @@ export const SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['ftmscan.com'],
     chain: 'fantom',
     chainID: 250,
-    scanHrefPrefix: 'https://tmscan.com/address'
+    scanHrefPrefix: 'https://ftmscan.com/address'
   },
   {
     name: 'Arbitrum',
@@ -187,5 +192,32 @@ export const DEDAUB_SUPPORT_DIRECT_LIST: ToolsSupportWebsite[] = [
   {
     chain: 'fantom',
     pathname: 'Fantom'
+  }
+]
+
+export const ETHERSCAN_DETH_SUPPORT_LIST: EtherscanDethSupportWebsite[] = [
+  {
+    chain: 'eth',
+    scanHrefPrefix: 'https://etherscan.deth.net/address'
+  },
+  {
+    chain: 'bsc',
+    scanHrefPrefix: 'https://bscscan.deth.net/address'
+  },
+  {
+    chain: 'polygon',
+    scanHrefPrefix: 'https://polygonscan.deth.net/address'
+  },
+  {
+    chain: 'fantom',
+    scanHrefPrefix: 'https://ftmscan.deth.net/address'
+  },
+  {
+    chain: 'optimism',
+    scanHrefPrefix: 'https://optimistic.etherscan.deth.net/address'
+  },
+  {
+    chain: 'arbitrum',
+    scanHrefPrefix: 'https://arbiscan.deth.net/address'
   }
 ]

@@ -14,6 +14,7 @@ export default {
       'オープンソースの契約はDedaub クイックエントリーとして表示されない',
     utc2locale: 'トランザクションの時刻をUTCからローカルタイムゾーンに変更する',
     copyAddress: 'アドレスを示すコピー アイコン',
+    dethCode: 'DethCodeで素早くオーペンされた検証済みの契約を表示されました',
     privacyPolicy: 'プライバシーポリシー',
     feedback: 'フィードバックエントリ'
   }

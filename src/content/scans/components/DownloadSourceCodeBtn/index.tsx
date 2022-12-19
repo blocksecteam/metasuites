@@ -9,13 +9,14 @@ import Button from '../Button'
 const DownloadSourceCodeBtn: FC<PostAddressParams> = ({ chain, address }) => {
   return (
     <Button
+      className="ml-1"
       href={
         `${BASE_URL}/api/v1/source-code/download/?` +
         new URLSearchParams({ chain, address })
       }
       type="secondary"
+      icon={<DownloadIcon mr={4} color="#fff" />}
     >
-      <DownloadIcon size={12} mr={4} color="#fff" />
       Download as Zip
     </Button>
   )
