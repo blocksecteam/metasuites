@@ -4,9 +4,9 @@ import { ConfigEnv } from 'vite'
 import { version } from './package.json'
 
 export default defineManifest((env: ConfigEnv) => ({
-  name: '__MSG_extName__',
-  description: '__MSG_extDescription__',
-  default_locale: 'en',
+  name: 'MetaDock',
+  description:
+    'Improve the usability of blockchain explorers, including BTC.com, Etherscan, BscScan, and *scans of most EVM-compatible chains.',
   version: version,
   manifest_version: 3,
   icons: {
@@ -72,7 +72,7 @@ export default defineManifest((env: ConfigEnv) => ({
     '*://ftmscan.com/*',
     '*://cronoscan.com/*',
     '*://*.moonscan.io/*',
-    'https://*.blocksec.com/*',
-    'https://explorer.api.btc.com/*'
+    '*://*.blocksec.com/*',
+    '*://explorer.api.btc.com/*'
   ]
 }))

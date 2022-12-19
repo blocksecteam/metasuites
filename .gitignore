@@ -22,3 +22,4 @@ dist-ssr
 yarn.lock
 package-json.lock
 .husky/*
+*.zip

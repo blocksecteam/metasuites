@@ -13,6 +13,7 @@ export default {
     decompileInDedaub: 'Dedaub 빠른 입력을 보여주는 오픈 소스 계약이 없습니다',
     utc2locale: '거래 시간을 UTC에서 현지 시간대로 전환',
     copyAddress: '주소가 표시된 복사 아이콘',
+    dethCode: 'Deth Code에서 빠르게 열려 인증된 계약이 보입니다',
     privacyPolicy: '개인 정보 보호 정책',
     feedback: '피드백 포털'
   }

@@ -27,5 +27,12 @@
     "at-rule-no-unknown": null,
     "color-hex-length": null
   },
-  "ignoreFiles": ["**/*.js", "**/*.jsx", "**/*.tsx", "**/*.ts"]
+  "ignoreFiles": [
+    "**/*.js",
+    "**/*.jsx",
+    "**/*.tsx",
+    "**/*.ts",
+    "dist/**/*",
+    "*/assets/**/*"
+  ]
 }

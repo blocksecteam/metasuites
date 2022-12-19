@@ -6,7 +6,8 @@ import {
   genEnhancedLabels,
   convertUTC2locale,
   genEnhancedSignatures,
-  genDownloadSourceCodeBtn
+  genDownloadSourceCodeBtn,
+  genQuickViewSourceCodeBtn
 } from '../feat-scripts'
 
 const initTokenPageScript = async (chain: string) => {
@@ -15,13 +16,16 @@ const initTokenPageScript = async (chain: string) => {
     enhancedLabels,
     utc2locale,
     enhancedSignatures,
-    contractSourcecode
+    contractSourcecode,
+    dethCode
   } = await store.get('options')
+
   if (copyAddress) genCopyAddressBtn(SCAN_PAGES.TOKEN.name)
   if (enhancedLabels) genEnhancedLabels(chain)
   if (utc2locale) convertUTC2locale(SCAN_PAGES.TOKEN.name)
   if (enhancedSignatures) genEnhancedSignatures(chain)
   if (contractSourcecode) genDownloadSourceCodeBtn(chain)
+  if (dethCode) genQuickViewSourceCodeBtn(chain)
 }
 
 export default initTokenPageScript

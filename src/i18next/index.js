@@ -2,7 +2,6 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 
 import en from './en'
-import cn from './zh-CN.js'
 import ja from './ja'
 import ko from './ko'
 import ru from './ru'
@@ -19,9 +18,6 @@ const resources = {
   },
   ru: {
     translation: ru
-  },
-  'zh-CN': {
-    translation: cn
   }
 }
 

@@ -16,7 +16,7 @@ const QuickViewSourceCodeBtn: FC<Props> = ({ href }) => {
       className="ml-1"
       icon={<img src={getImageUrl('code-snippet')} alt="" />}
     >
-      View in deth.net
+      View in DethCode
     </Button>
   )
 }

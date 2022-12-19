@@ -14,6 +14,7 @@ export default {
     decompileInDedaub: 'Show quick open in Dedaub for unverified contracts',
     utc2locale: 'Convert UTC to Local Time Zone',
     copyAddress: 'Show copy icon for addresses',
+    dethCode: 'Show quick open in DethCode for verified contracts',
     privacyPolicy: 'Privacy Policy',
     feedback: 'Feedback'
   },

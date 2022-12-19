@@ -137,12 +137,21 @@ const Settings: FC = () => {
             }
           />
           <Cell
-            border={false}
             title={t('settings.copyAddress')}
             action={
               <Switch
                 checked={options.copyAddress as boolean}
                 onChange={val => onChange('copyAddress', val)}
+              />
+            }
+          />
+          <Cell
+            border={false}
+            title={t('settings.dethCode')}
+            action={
+              <Switch
+                checked={options.dethCode as boolean}
+                onChange={val => onChange('dethCode', val)}
               />
             }
           />

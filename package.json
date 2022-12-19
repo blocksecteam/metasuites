@@ -9,8 +9,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "fix:style": "stylelint --fix src/**/*.{css,sass,scss,less,vue}",
-    "lint:style": "stylelint src/**/*.{css,sass,scss,less,vue}",
+    "stylelint": "stylelint \"**/*.{css,scss,less}\"",
+    "stylelint:fix": "stylelint \"**/*.{css,scss,less}\" --fix",
     "prepare": "husky install && husky set .husky/pre-commit \"npx lint-staged\" && husky set .husky/commit-msg 'npx --no -- commitlint --edit \"$1\"'",
     "lint": "eslint 'src/**/*.{ts,tsx}'"
   },
@@ -21,6 +21,7 @@
     "chrome-extension-core": "^0.1.4",
     "classnames": "^2.3.2",
     "copy-to-clipboard": "^3.3.3",
+    "d3": "^5.0.0",
     "d3-graphviz": "2.6.1",
     "dayjs": "^1.11.6",
     "ethers": "^5.7.2",
@@ -30,7 +31,8 @@
     "normalize.css": "^8.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-i18next": "^12.0.0"
+    "react-i18next": "^12.0.0",
+    "save-svg-as-png": "^1.4.17"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
@@ -38,6 +40,7 @@
     "@crxjs/vite-plugin": "2.0.0-beta.5",
     "@types/big.js": "^6.1.6",
     "@types/chrome": "^0.0.200",
+    "@types/d3": "5",
     "@types/d3-graphviz": "^2.6.7",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.11.8",

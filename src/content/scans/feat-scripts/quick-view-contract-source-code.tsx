@@ -1,13 +1,12 @@
 import { createRoot } from 'react-dom/client'
 
 import { ETHERSCAN_DETH_SUPPORT_LIST } from '@common/constants'
+import { pickAddress } from '@common/utils'
 
 import { QuickViewSourceCodeBtn } from '../components'
 
 const genQuickViewSourceCodeBtn = async (chain: string) => {
-  const mainAddressEl = document.querySelector<HTMLElement>('#mainaddress')
-
-  const mainAddress = mainAddressEl?.innerText
+  const mainAddress = pickAddress(window.location.pathname)
 
   if (!mainAddress) return
 

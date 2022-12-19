@@ -83,7 +83,13 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 
 ## Changelog
 
-v1.3.0
+### v1.3.1
+
+- [feat] Show quick open in DethCode
+- [feat] Alternative watermark on the fund flow chart
+- [feat] Support PNG format output of fund flow chart
+
+### v1.3.0
 
 - [feat] All in one dock for blockchain explorers
 - [feat] More Flexible Fund Flow Chart
