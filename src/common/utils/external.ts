@@ -12,7 +12,7 @@ export const getExternalAddressUrl = (address: string) => {
   if (PATTERN_BTC_ADDRESS_EXAC.test(address)) {
     return `https://explorer.btc.com/btc/search/${address}`
   }
-  return
+  return ''
 }
 
 export const getExternalTxUrl = (tx: string) => {
@@ -22,7 +22,7 @@ export const getExternalTxUrl = (tx: string) => {
   if (PATTERN_BTC_TX_HASH.test(tx)) {
     return `https://explorer.btc.com/btc/transaction/${tx}`
   }
-  return
+  return ''
 }
 
 export const getExternalSignatureUrl = (signature: string) => {

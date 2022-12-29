@@ -7,7 +7,15 @@ import type {
   PostAddressRiskScoreParams,
   AddressLabel,
   MethodLabel,
-  FundFlowResponse
+  FundFlowResponse,
+  NFTInfoResponse,
+  NFTPriceResponse,
+  NFTRarityRankReq,
+  NFTRarityRankResponse,
+  NFTRiskResponse,
+  NFTUserLabelsReq,
+  NFTUserLabelsResponse,
+  AddressFunderRiskResponse
 } from './types'
 
 export default {
@@ -25,8 +33,38 @@ export default {
       .json<BscResponse<MethodLabel[]>>(),
   getAddressFundFlow: (params: PostAddressParams) =>
     request
-      .post('api/v1/address-action', {
+      .post('api/v1/fund-flow', {
         json: params
       })
-      .json<BscResponse<FundFlowResponse>>()
+      .json<BscResponse<FundFlowResponse>>(),
+  getNFTInfo: (address: string) =>
+    request
+      .post('api/v1/nft-info', {
+        json: { address }
+      })
+      .json<BscResponse<NFTInfoResponse>>(),
+  getNFTPrice: (address: string) =>
+    request
+      .post('api/v1/nft-floor-price', {
+        json: { address }
+      })
+      .json<BscResponse<NFTPriceResponse>>(),
+  getNFTRarityRank: (params: NFTRarityRankReq) =>
+    request
+      .post('api/v1/nft-batch-rarity-rank', {
+        json: params
+      })
+      .json<BscResponse<NFTRarityRankResponse>>(),
+  getNFTRisk: (params: PostAddressParams) =>
+    request
+      .post('api/v1/nft-risk', { json: params })
+      .json<BscResponse<NFTRiskResponse>>(),
+  getNFTUserLabels: (params: NFTUserLabelsReq) =>
+    request
+      .post('api/v1/nft-user-label', { json: params })
+      .json<BscResponse<NFTUserLabelsResponse>>(),
+  getAddressFunderRisk: (params: PostAddressParams) =>
+    request
+      .post('api/v1/address-funder-risk', { json: params })
+      .json<BscResponse<AddressFunderRiskResponse>>()
 }

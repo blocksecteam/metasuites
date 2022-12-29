@@ -1,6 +1,6 @@
 import { ChromeStorage } from 'chrome-extension-core'
 
-import { SCOPE, SUPPORT_WEB_LIST } from '@common/constants'
+import { SCOPE, EXT_SUPPORT_WEB_LIST } from '@common/constants'
 
 /**
  * current support options
@@ -17,7 +17,14 @@ const OPTIONS = [
   'decompileInDedaub',
   'utc2locale',
   'copyAddress',
-  'dethCode'
+  'dethCode',
+  'nftCollectionRisk',
+  'nftOwnersLabel',
+  'nftRarity',
+  'nftFloorPrice',
+  'addressFunderLabel',
+  'quick2NFTGo',
+  'decompileInEthervm'
 ] as const
 
 export type OptKeys = typeof OPTIONS[number]
@@ -37,7 +44,7 @@ export type StorageInfo = {
 export const defaultValue: StorageInfo = {
   /** default settings */
   options: {
-    supportWebList: SUPPORT_WEB_LIST.map(item => ({
+    supportWebList: EXT_SUPPORT_WEB_LIST.map(item => ({
       ...item,
       enabled: true
     })),
@@ -51,7 +58,14 @@ export const defaultValue: StorageInfo = {
     decompileInDedaub: true,
     utc2locale: false,
     copyAddress: true,
-    dethCode: true
+    dethCode: true,
+    nftCollectionRisk: true,
+    nftOwnersLabel: true,
+    nftRarity: true,
+    nftFloorPrice: true,
+    addressFunderLabel: true,
+    quick2NFTGo: true,
+    decompileInEthervm: true
   }
 }
 

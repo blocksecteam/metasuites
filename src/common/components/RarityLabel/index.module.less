@@ -1,0 +1,69 @@
+@import '@common/styles/common.less';
+
+.container {
+  height: 28px;
+  border: 2px solid rgb(229, 232, 235);
+  padding: 0 8px;
+  overflow: hidden;
+  color: rgb(4, 17, 29);
+  border-radius: 8px;
+  font-weight: 600;
+  .align-center;
+
+  &:hover {
+    .symbol {
+      div {
+        transform: translateY(-14px);
+      }
+      img {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .symbol {
+    height: 14px;
+    width: 14px;
+    overflow: hidden;
+    position: relative;
+    margin-right: 3px;
+
+    div {
+      opacity: 1;
+      margin: 0;
+      width: 14px;
+      height: 14px;
+      transform: translateY(0);
+      transition: transform 0.2s ease-out 0s, opacity 0.2s ease-out 0s;
+      .center;
+    }
+    img {
+      height: 14px;
+      width: 14px;
+      position: absolute;
+      bottom: 0;
+      transform: translateY(14px);
+      transition: transform 0.2s ease-out 0s, opacity 0.2s ease-out 0s;
+    }
+  }
+}
+
+.titleContainer {
+  font-size: 12px;
+  .rankLabel {
+    margin-right: 4px;
+  }
+  div:first-of-type {
+    .justify-center;
+
+    border-bottom: 1px solid #e1e4e8;
+    padding: 8px 12px;
+    font-weight: 600;
+  }
+  .desc {
+    .center;
+
+    color: inherit;
+    padding: 8px 0;
+  }
+}

@@ -39,6 +39,10 @@ export default defineManifest((env: ConfigEnv) => ({
     {
       matches: ['*://*.blocksec.com/*'],
       js: ['src/content/blocksec/index.tsx']
+    },
+    {
+      matches: ['*://*.opensea.io/*'],
+      js: ['src/content/opensea/index.tsx']
     }
   ],
   background: {
@@ -47,7 +51,7 @@ export default defineManifest((env: ConfigEnv) => ({
   web_accessible_resources: [
     {
       matches: ['<all_urls>'],
-      resources: ['src/assets/images/*.png']
+      resources: ['src/assets/images/*.png', 'src/assets/js/*.js']
     }
   ],
   action: {

@@ -1,6 +1,6 @@
 import '@common/styles/inject.common'
 import { store, type OptWebsite } from '@src/store'
-import { isAllowed, getChainSimpleName, getScanPageName } from '@common/utils'
+import { isAllowed, getChainSimpleName, getPageName } from '@common/utils'
 import { SCAN_PAGES } from '@common/constants'
 
 import {
@@ -26,7 +26,7 @@ const init = async () => {
 
   if (!allowed || !chain) return
 
-  const pageName = getScanPageName()
+  const pageName = getPageName()
 
   switch (pageName) {
     case SCAN_PAGES.ADDRESS.name:

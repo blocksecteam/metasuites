@@ -3,12 +3,11 @@ export const SCOPE = 'metaDockChromeExt'
 interface ExtSupportWebsite {
   name: string
   domains: string[]
-  chain: string
+  chain?: string
   /** BTC only */
   href?: string
   chainID?: number
-  fullName?: string
-  scanHrefPrefix?: string
+  siteName: string
 }
 
 interface ToolsSupportWebsite {
@@ -21,77 +20,81 @@ interface EtherscanDethSupportWebsite {
   scanHrefPrefix: string
 }
 
-export const SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
+export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
   {
     name: 'BTC',
     domains: ['btc.com', 'explorer.btc.com'],
     href: 'https://explorer.btc.com/btc',
-    chain: 'btc'
+    chain: 'btc',
+    siteName: 'SCAN'
   },
   {
     name: 'ETH',
     domains: ['etherscan.io', 'cn.etherscan.com'],
     chainID: 1,
     chain: 'eth',
-    fullName: 'Ethereum',
-    scanHrefPrefix: 'https://etherscan.io/address'
+    siteName: 'SCAN'
   },
   {
     name: 'BSC',
     chainID: 56,
     domains: ['bscscan.com', 'www.bscscan.com'],
     chain: 'bsc',
-    fullName: 'Binance Smart Chain',
-    scanHrefPrefix: 'https://bscscan.com/address'
+    siteName: 'SCAN'
   },
   {
     name: 'Polygon',
     chainID: 137,
     chain: 'polygon',
     domains: ['polygonscan.com'],
-    scanHrefPrefix: 'https://polygonscan.com/address'
+    siteName: 'SCAN'
   },
   {
     name: 'Fantom',
     domains: ['ftmscan.com'],
     chain: 'fantom',
     chainID: 250,
-    scanHrefPrefix: 'https://ftmscan.com/address'
+    siteName: 'SCAN'
   },
   {
     name: 'Arbitrum',
     domains: ['arbiscan.io'],
     chain: 'arbitrum',
     chainID: 42161,
-    scanHrefPrefix: 'https://arbiscan.io/address'
+    siteName: 'SCAN'
   },
   {
     name: 'Cronos',
     chainID: 25,
     domains: ['cronoscan.com'],
     chain: 'cronos',
-    scanHrefPrefix: 'https://cronoscan.com/address'
+    siteName: 'SCAN'
   },
   {
     name: 'Moonbeam',
     chainID: 1284,
     chain: 'moonbeam',
     domains: ['moonscan.io', 'www.moonscan.io'],
-    scanHrefPrefix: 'https://moonscan.io/address'
+    siteName: 'SCAN'
   },
   {
     name: 'Avalanche',
     chainID: 43114,
     chain: 'avalanche',
     domains: ['snowtrace.io'],
-    scanHrefPrefix: 'https://snowtrace.io/address'
+    siteName: 'SCAN'
   },
   {
     name: 'Optimism',
     chainID: 10,
     chain: 'optimism',
     domains: ['optimistic.etherscan.io'],
-    scanHrefPrefix: 'https://optimistic.etherscan.io/address'
+    siteName: 'SCAN'
+  },
+  {
+    name: 'OpenSea',
+    domains: ['opensea.io'],
+    siteName: 'OPENSEA'
   }
 ]
 
@@ -221,3 +224,6 @@ export const ETHERSCAN_DETH_SUPPORT_LIST: EtherscanDethSupportWebsite[] = [
     scanHrefPrefix: 'https://arbiscan.deth.net/address'
   }
 ]
+
+/** https://ethervm.io */
+export const ETHERVM_SUPPORT_DIRECT_LIST: string[] = ['eth', 'bsc']

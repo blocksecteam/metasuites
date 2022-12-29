@@ -13,7 +13,10 @@ import {
   genDeBankBtn,
   genDecompileInDedaubBtn,
   convertUTC2locale,
-  genCopyAddressBtn
+  genCopyAddressBtn,
+  genNFTGoBtn,
+  displayContractFundFrom,
+  genDecompileInEthervmBtn
 } from '../feat-scripts'
 
 const initAddressPageScript = async (chain: string) => {
@@ -28,7 +31,9 @@ const initAddressPageScript = async (chain: string) => {
     decompileInDedaub,
     utc2locale,
     copyAddress,
-    dethCode
+    dethCode,
+    quick2NFTGo,
+    addressFunderLabel
   } = await store.get('options')
 
   if (enhancedSignatures) genEnhancedSignatures(chain)
@@ -60,6 +65,12 @@ const initAddressPageScript = async (chain: string) => {
 
   /** show copy icon for addresses */
   if (copyAddress) genCopyAddressBtn(SCAN_PAGES.ADDRESS.name)
+
+  if (quick2NFTGo) genNFTGoBtn()
+
+  if (addressFunderLabel) displayContractFundFrom(chain)
+
+  genDecompileInEthervmBtn(chain)
 }
 
 export default initAddressPageScript

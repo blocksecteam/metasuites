@@ -2,7 +2,7 @@ import { type FC } from 'react'
 
 import type { PostAddressParams } from '@common/api/types'
 import { BASE_URL } from '@common/config/uri'
-import { DownloadIcon } from '@common/components'
+import { IconDownload } from '@common/components'
 
 import Button from '../Button'
 
@@ -15,7 +15,7 @@ const DownloadSourceCodeBtn: FC<PostAddressParams> = ({ chain, address }) => {
         new URLSearchParams({ chain, address })
       }
       type="secondary"
-      icon={<DownloadIcon mr={4} color="#fff" />}
+      icon={<IconDownload mr={4} color="#fff" />}
     >
       Download as Zip
     </Button>

@@ -7,7 +7,8 @@ import {
   convertUTC2locale,
   genEnhancedSignatures,
   genDownloadSourceCodeBtn,
-  genQuickViewSourceCodeBtn
+  genQuickViewSourceCodeBtn,
+  displayTokenPrice
 } from '../feat-scripts'
 
 const initTokenPageScript = async (chain: string) => {
@@ -17,7 +18,8 @@ const initTokenPageScript = async (chain: string) => {
     utc2locale,
     enhancedSignatures,
     contractSourcecode,
-    dethCode
+    dethCode,
+    nftFloorPrice
   } = await store.get('options')
 
   if (copyAddress) genCopyAddressBtn(SCAN_PAGES.TOKEN.name)
@@ -26,6 +28,7 @@ const initTokenPageScript = async (chain: string) => {
   if (enhancedSignatures) genEnhancedSignatures(chain)
   if (contractSourcecode) genDownloadSourceCodeBtn(chain)
   if (dethCode) genQuickViewSourceCodeBtn(chain)
+  if (nftFloorPrice) displayTokenPrice()
 }
 
 export default initTokenPageScript

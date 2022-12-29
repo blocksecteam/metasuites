@@ -1,26 +1,26 @@
 import {
-  SUPPORT_WEB_LIST,
+  EXT_SUPPORT_WEB_LIST,
   SCAN_PAGES,
-  type SCAN_PAGE_NAMES
+  OPENSEA_PAGES
 } from '@common/constants'
 
 export const getChainSimpleName = (): string | undefined => {
   const host = window.location.host
-  return SUPPORT_WEB_LIST.find(item => item.domains.some(i => host === i))
+  return EXT_SUPPORT_WEB_LIST.find(item => item.domains.some(i => host === i))
     ?.chain
 }
 
-export const getScanAddressHref = (chain: string, address: string) => {
-  const hrefPrefix = SUPPORT_WEB_LIST.find(
-    item => item.chain === chain
-  )?.scanHrefPrefix
-  return hrefPrefix ? `${hrefPrefix}/${address}` : '/'
-}
-
-export const getScanPageName = (
+export const getPageName = (
   pathname: string = window.location.pathname
-): typeof SCAN_PAGE_NAMES[number] | undefined => {
-  return Object.values(SCAN_PAGES).find(item =>
+): string => {
+  const PAGES: Record<string, object> = {
+    OPENSEA_PAGES,
+    SCAN_PAGES
+  }
+  const siteName = EXT_SUPPORT_WEB_LIST.find(site =>
+    site.domains.some(item => window.location.host === item)
+  )?.siteName
+  return Object.values(PAGES[`${siteName}_PAGES`]).find(item =>
     pathname.startsWith(item.pathname)
   )?.name
 }

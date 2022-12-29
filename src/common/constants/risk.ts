@@ -5,10 +5,17 @@ export const RISK_LABELS = [
   'LOW',
   'NONE'
 ] as const
-export const RISK_LEVELS = [1, 2, 3, 4, 5] as const
+
+export enum AddressRiskLevel {
+  NONE = 1,
+  LOW,
+  MEDIUM,
+  HIGH,
+  CRITICAL
+}
 
 export interface RISK_ITEM_OPTION {
-  value: typeof RISK_LEVELS[number]
+  value: AddressRiskLevel
   icon: string
   label: string
 }
@@ -18,28 +25,50 @@ export const RISK_OPTIONS: Record<
   RISK_ITEM_OPTION
 > = {
   CRITICAL: {
-    value: 5,
+    value: AddressRiskLevel.CRITICAL,
     icon: 'critical-risk',
     label: 'Critical Risk'
   },
   HIGH: {
-    value: 4,
+    value: AddressRiskLevel.HIGH,
     icon: 'high-risk',
     label: 'High Risk'
   },
   MEDIUM: {
-    value: 3,
+    value: AddressRiskLevel.MEDIUM,
     icon: 'medium-risk',
     label: 'Medium Risk'
   },
   LOW: {
-    value: 2,
+    value: AddressRiskLevel.LOW,
     icon: 'low-risk',
     label: 'Low Risk'
   },
   NONE: {
-    value: 1,
+    value: AddressRiskLevel.NONE,
     icon: 'no-risk',
     label: 'No Risk'
   }
 }
+
+export enum NFTRiskLevel {
+  LOW,
+  MEDIUM,
+  HIGH
+}
+
+export const NFT_RISKS: Record<string, { name: string; value: NFTRiskLevel }> =
+  {
+    LOW: {
+      name: 'low risk',
+      value: NFTRiskLevel.LOW
+    },
+    MEDIUM: {
+      name: 'medium risk',
+      value: NFTRiskLevel.MEDIUM
+    },
+    HIGH: {
+      name: 'high risk',
+      value: NFTRiskLevel.HIGH
+    }
+  }

@@ -13,13 +13,18 @@ const setBtns = (
     'style',
     'display:inline-block; vertical-align: middle'
   )
-  decompileBtnRootEl.classList.add('mb-1')
+  decompileBtnRootEl.setAttribute('class', 'mb-1 mr-1')
   parentNode.insertBefore(decompileBtnRootEl, referenceNode)
   createRoot(decompileBtnRootEl).render(
     <DecompileInDedaubBtn chain={chain} mainAddress={mainAddress} />
   )
   /** copy source code */
+  const copyBtn = document.querySelector<HTMLElement>(
+    '#__metadock-copy-byte-code-btn__'
+  )
+  if (copyBtn) return
   const copyBtnRootEl = document.createElement('span')
+  copyBtnRootEl.id = '__metadock-copy-byte-code-btn__'
   parentNode.insertBefore(copyBtnRootEl, referenceNode)
   createRoot(copyBtnRootEl).render(<CopyByteCodeBtn />)
 }

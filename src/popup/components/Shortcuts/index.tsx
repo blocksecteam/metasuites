@@ -1,6 +1,5 @@
-import React, { type ChangeEvent, useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { Input, Button } from 'antd'
+import React, { type ChangeEvent, type FC, useState, useEffect } from 'react'
+import { Input } from 'antd'
 import { getDefaultProvider } from 'ethers'
 import { debounce } from 'lodash-es'
 import cls from 'classnames'
@@ -14,74 +13,126 @@ import {
   getExternalSignatureUrl,
   getExternalTxUrl,
   getExternalAddressUrl,
-  createTab
+  createTab,
+  getSubStr
 } from '@common/utils'
-import { SUPPORT_WEB_LIST } from '@common/constants'
+import { EXT_SUPPORT_WEB_LIST } from '@common/constants'
+import { Iconfont, LoadingOutlined } from '@common/components'
 
+import type { SearchResultItem } from './type'
 import styles from './index.module.less'
 
-const Shortcuts: React.FC = () => {
-  const { t } = useTranslation()
-
+const Shortcuts: FC = () => {
   const [value, setValue] = useState('')
-  const [unmatch, setUnmatch] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [searchResults, setSearchResults] = useState<SearchResultItem[]>([])
 
   const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const val = e.target.value.trim()
-    setValue(val)
-    setUnmatch(false)
+    setValue(e.target.value.trim())
   }
 
   const onSearch = debounce(async () => {
-    if (!value) return
+    if (!value) {
+      onClear()
+      return
+    }
+    setSearchResults([])
     if (isAddress(value)) {
-      const url = getExternalAddressUrl(value)
-      setUnmatch(!url)
-      return url && createTab(url)
+      const result: SearchResultItem = {
+        type: 'Address',
+        link: getExternalAddressUrl(value),
+        title: getSubStr(value, [27, 4])
+      }
+      setSearchResults([result])
     }
     if (isTransaction(value)) {
-      const url = getExternalTxUrl(value)
-      setUnmatch(!url)
-      return url && createTab(url)
+      const result: SearchResultItem = {
+        type: 'Transaction',
+        link: getExternalTxUrl(value),
+        title: value
+      }
+      setSearchResults([result])
     }
     if (isMethod(value, false)) {
-      setUnmatch(false)
-      return createTab(getExternalSignatureUrl(value))
+      const result: SearchResultItem = {
+        type: 'Selector',
+        link: getExternalSignatureUrl(value),
+        title: value
+      }
+      setSearchResults([result])
     }
     if (isENS(value)) {
       /** support eth only */
       setLoading(true)
       const provider = getDefaultProvider()
       const address = await provider.resolveName(value)
-      if (address) {
-        createTab(`https://etherscan.io/address/${address}`)
-      }
-      setUnmatch(!address)
       setLoading(false)
-      return
+      if (address) {
+        const result: SearchResultItem = {
+          type: 'Selector',
+          link: `https://etherscan.io/address/${address}`,
+          title: value
+        }
+        setSearchResults([result])
+      }
     }
-    setUnmatch(true)
   }, 300)
+
+  const onClear = () => {
+    setSearchResults([])
+    setValue('')
+  }
+
+  useEffect(() => {
+    onSearch()
+  }, [value])
 
   return (
     <div className={styles.container}>
       <img className={styles.logo} src={getImageUrl('logo')} alt="" />
-      <Input
-        className={cls(styles.input, { [styles.unmatch]: unmatch })}
-        placeholder={t('shortcuts.placeholder')}
-        status={unmatch ? 'error' : ''}
-        onChange={onValueChange}
-        onPressEnter={onSearch}
-      />
-      <Button
-        type="primary"
-        className={styles.searchBtn}
-        loading={loading}
-        onClick={onSearch}
-      >
-        Search
-      </Button>
+      <div className={styles.searchBarContainer}>
+        <Input
+          value={value}
+          className={styles.input}
+          placeholder="Search for address, transaction, ENS, selector"
+          onChange={onValueChange}
+          suffix={
+            loading ? (
+              <LoadingOutlined />
+            ) : (
+              <Iconfont
+                style={{ display: value ? 'inline' : 'none' }}
+                type="icon-cuowu"
+                cursor="pointer"
+                onClick={onClear}
+              />
+            )
+          }
+          onPressEnter={onSearch}
+        />
+        {/* TODO: by group */}
+        <ul
+          className={cls(styles.searchResultList, {
+            [styles.show]: !!searchResults.length
+          })}
+        >
+          {searchResults.map(item => (
+            <li
+              key={item.title}
+              className={styles.searchResultItem}
+              onClick={() => createTab(item.link)}
+            >
+              <div className={styles.type}>{item.type}</div>
+              <div className={styles.content}>
+                <div className={styles.title}>
+                  {getSubStr(item.title, [27, 4])}
+                </div>
+                <a className={styles.link}>{item.link}</a>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
       <div className={styles.navbar}>
         <a
           href="https://phalcon.blocksec.com/"
@@ -90,7 +141,7 @@ const Shortcuts: React.FC = () => {
         >
           <img src={getImageUrl('Phalcon')} alt="" />
         </a>
-        {SUPPORT_WEB_LIST.map(item => (
+        {EXT_SUPPORT_WEB_LIST.filter(item => !!item.chain).map(item => (
           <a
             key={item.name}
             href={`${item.href ? item.href : 'https://' + item.domains[0]}`}

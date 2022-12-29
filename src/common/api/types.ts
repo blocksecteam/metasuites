@@ -1,14 +1,14 @@
-import type { RISK_LEVELS } from '@common/constants'
+import type { AddressRiskLevel, NFTRiskLevel } from '@common/constants'
 
 export interface RiskScore {
   address: string
-  risk: typeof RISK_LEVELS[number]
+  risk: AddressRiskLevel
   transferAddresses: TransferAddress[]
 }
 
 export interface TransferAddress {
   address: string
-  risk: typeof RISK_LEVELS[number]
+  risk: AddressRiskLevel
 }
 
 export interface PostAddressListParams {
@@ -49,25 +49,73 @@ export interface FundFlowResponse {
   edges: FundFlowEdge[]
 }
 export interface FundFlowNode extends Record<string, unknown> {
-  id: number
+  id: string
   chain: string
   address: string
   label: string
   type: number
+  isContract: boolean
+  url: string
   /** used for filter */
   selected?: boolean
   index?: number
-  showIndex?: boolean
 }
 export interface FundFlowEdge extends Record<string, unknown> {
-  id: number
-  from: number
-  to: number
+  serial: number
+  from: string
+  to: string
   token: string
-  tokenLink: string
   tokenLabel: string
   amount: string
   description: string
+  isCreate: boolean
+  tokenLink: string
+  ts: string
   /** used for filter */
   selected?: boolean
+}
+
+export interface NFTInfoResponse {
+  chain: string
+  collectionName: string
+  nftGoUrl: string
+}
+
+export interface NFTPriceResponse {
+  priceUSD: string
+  price: string
+}
+
+export interface NFTRarityRankReq {
+  address: string
+  tokenIds: string[]
+}
+
+export interface NFTRarityRankResItem {
+  rank: number
+  total: number
+  score: number
+  tokenId: string
+}
+
+export type NFTRarityRankResponse = NFTRarityRankResItem[]
+
+export interface NFTRiskResponse {
+  onChain: NFTRiskLevel
+  offChain: NFTRiskLevel
+  market: NFTRiskLevel
+}
+
+export interface NFTUserLabelsReq {
+  addresses: string[]
+}
+
+export interface NFTUserLabelsResponse {
+  labels: Record<string, string>
+}
+
+export interface AddressFunderRiskResponse {
+  label: string
+  risky: boolean
+  address: string
 }
