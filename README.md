@@ -66,6 +66,12 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - [x] Show quick open in Dedaub for unverified contracts
 - [x] Convert UTC to Local Time Zone
 - [x] Show copy icon for addresses
+- [x] Show quick open in ethervm.io for unverified contracts
+- [x] Show NFT floor price in major markets
+- [x] Show the source of funding for contract deployers
+- [x] Show quick open in NFTGo for NFT contracts
+- [x] Show comprehensive risk graph of the collection
+- [x] Show owner's address label
 - [ ] Sandwich Attack Risk Detection
 
 ## Supported Websites List
@@ -80,6 +86,7 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - moonscan.io
 - snowtrace.io
 - optimistic.etherscan.io
+- opensea.io
 
 ## Changelog
 
