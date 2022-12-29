@@ -1,5 +1,4 @@
 import React, { type FC } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import { openInternalPage } from '@common/utils'
 
@@ -7,13 +6,11 @@ import styles from './index.module.less'
 import { version } from '../../../../package.json'
 
 const Footer: FC = () => {
-  const { t } = useTranslation()
-
   return (
     <div className={styles.container}>
       <div className={styles.policy}>
         <a href="#" onClick={() => openInternalPage('PrivacyPolicy')}>
-          {t('settings.privacyPolicy')}
+          Privacy Policy
         </a>
         <div className={styles.divider} />
         <a
@@ -21,7 +18,7 @@ const Footer: FC = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          {t('settings.feedback')}
+          Feedback
         </a>
       </div>
       <div className={styles.brand}>

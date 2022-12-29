@@ -15,6 +15,10 @@ export const getImageUrl = (name: string, suffix = 'png') => {
   return getURL(`/src/assets/images/${name}.${suffix}`)
 }
 
+export const getScriptUrl = (name: string) => {
+  return getURL(`/src/assets/js/${name}.js`)
+}
+
 export const sendMessage = async (message: string) => {
   return new Promise(resolve => {
     chrome.runtime.sendMessage(message, response => {

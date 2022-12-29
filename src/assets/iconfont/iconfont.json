@@ -6,11 +6,88 @@
   "description": "插件项目",
   "glyphs": [
     {
-      "icon_id": "1123",
-      "name": "复制文件",
-      "font_class": "fuzhiwenjian",
-      "unicode": "e600",
-      "unicode_decimal": 58880
+      "icon_id": "1526409",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e67b",
+      "unicode_decimal": 59003
+    },
+    {
+      "icon_id": "11641957",
+      "name": "代码片段",
+      "font_class": "daimapianduan",
+      "unicode": "e6d6",
+      "unicode_decimal": 59094
+    },
+    {
+      "icon_id": "30957414",
+      "name": "错误",
+      "font_class": "cuowu",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "33167046",
+      "name": "形状结合",
+      "font_class": "xingzhuangjiehe",
+      "unicode": "e647",
+      "unicode_decimal": 58951
+    },
+    {
+      "icon_id": "33167047",
+      "name": "形状结合备份",
+      "font_class": "xingzhuangjiehebeifen",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    },
+    {
+      "icon_id": "33167048",
+      "name": "编组",
+      "font_class": "bianzu",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "29392022",
+      "name": "search",
+      "font_class": "search",
+      "unicode": "e977",
+      "unicode_decimal": 59767
+    },
+    {
+      "icon_id": "33136612",
+      "name": "转到",
+      "font_class": "zhuandao",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "33136613",
+      "name": "交易",
+      "font_class": "jiaoyi1",
+      "unicode": "e645",
+      "unicode_decimal": 58949
+    },
+    {
+      "icon_id": "33136656",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    },
+    {
+      "icon_id": "32102204",
+      "name": "check-circle-filled",
+      "font_class": "check-circle-filled",
+      "unicode": "e641",
+      "unicode_decimal": 58945
+    },
+    {
+      "icon_id": "31917634",
+      "name": "复制",
+      "font_class": "fuzhi1",
+      "unicode": "e632",
+      "unicode_decimal": 58930
     },
     {
       "icon_id": "32902317",

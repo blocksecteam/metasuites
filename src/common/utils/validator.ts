@@ -16,6 +16,10 @@ export const isAddress = (str: string): boolean => {
   )
 }
 
+export const isEvmAddress = (str: string): boolean => {
+  return PATTERN_EVM_ADDRESS_EXAC.test(str)
+}
+
 export const isTransaction = (str: string): boolean => {
   return PATTERN_EVM_TX_HASH.test(str) || PATTERN_BTC_TX_HASH.test(str)
 }

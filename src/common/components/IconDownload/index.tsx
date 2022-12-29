@@ -9,7 +9,7 @@ interface Props extends BaseComponent {
   mr?: number
 }
 
-const DownloadIcon: FC<Props> = ({
+const IconDownload: FC<Props> = ({
   size = 16,
   color = '#000000',
   className,
@@ -49,4 +49,4 @@ const DownloadIcon: FC<Props> = ({
   )
 }
 
-export default DownloadIcon
+export default IconDownload

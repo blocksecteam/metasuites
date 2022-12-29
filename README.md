@@ -83,6 +83,20 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 
 ## Changelog
 
+### v1.4.0
+
+- [feat] NFTgo quick jump feature - Etherscan
+- [feat] display funding source of deployer's - Etherscan
+- [feat] NFT floor price feature - Etherscan
+- [feat] Ethervm integration for contract - Etherscan
+- [feat] Enhanced rarity feature - Opensea
+- [feat] Enhanced holder address label - Opensea
+- [feat] Risk assessment radar chart for collections - Opensea
+- [perf] Optimized custom settings function
+- [perf] Improved search functionality interaction
+- [fix] Fixed Certain display bugs
+- [fix] Fixed bug with fundflow jumping
+
 ### v1.3.1
 
 - [feat] Show quick open in DethCode

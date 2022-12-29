@@ -15,7 +15,7 @@ import { debounce, isNil } from 'lodash-es'
 import Big from 'big.js'
 import * as d3 from 'd3'
 
-import { SUPPORT_WEB_LIST, GET_ADDRESS_FUND_FLOW } from '@common/constants'
+import { EXT_SUPPORT_WEB_LIST, GET_ADDRESS_FUND_FLOW } from '@common/constants'
 import { chromeEvent } from '@common/event'
 import type {
   FundFlowResponse,
@@ -29,7 +29,7 @@ import {
   saveAsSvg,
   saveSvgAsPng
 } from '@common/utils'
-import { DownloadIcon, Switch } from '@common/components'
+import { IconDownload, Switch } from '@common/components'
 
 import styles from './index.module.less'
 import genDotStr from './dot'
@@ -150,7 +150,9 @@ const ModalFundFlow: FC<Props> = ({ visible, mainAddress, chain, onClose }) => {
   }
 
   const icon = useMemo(() => {
-    const network = SUPPORT_WEB_LIST.find(item => item.chain === chain)?.name
+    const network = EXT_SUPPORT_WEB_LIST.find(
+      item => item.chain === chain
+    )?.name
     return network ? getImageUrl(network) : ''
   }, [chain])
 
@@ -261,12 +263,10 @@ const ModalFundFlow: FC<Props> = ({ visible, mainAddress, chain, onClose }) => {
 
   useEffect(() => {
     if (isNil(addressSelectorVisible)) return
-    d3.selectAll('.node').each(function (d: unknown, i) {
+    d3.selectAll('.node').each(function (d: unknown) {
       const text = d3.select(this).select('text').text()
-      const nodeId = (d as any).key.split('-')[0]
-      const node = displayAddressOptions.find(
-        item => item.id === Number(nodeId)
-      )
+      const nodeId = (d as any).key
+      const node = displayAddressOptions.find(item => item.id === nodeId)
       if (node) {
         const idx = node.index
         const originText = node.label || node.address
@@ -437,7 +437,7 @@ const ModalFundFlow: FC<Props> = ({ visible, mainAddress, chain, onClose }) => {
                       />
                       <div className={styles.addressList}>
                         {displayTokenOptions.map(edge => (
-                          <p key={edge.id}>
+                          <p key={edge.token}>
                             <Checkbox
                               checked={edge.selected}
                               onChange={(e: CheckboxChangeEvent) =>
@@ -495,7 +495,7 @@ const ModalFundFlow: FC<Props> = ({ visible, mainAddress, chain, onClose }) => {
               }
             >
               <div className={cls(styles.btn, styles.download)}>
-                <DownloadIcon />
+                <IconDownload />
               </div>
             </Tooltip>
             <div className={styles.btn} onClick={onClose}>

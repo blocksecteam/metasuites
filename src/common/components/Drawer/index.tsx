@@ -7,13 +7,13 @@ import { Iconfont } from '@common/components'
 import styles from './index.module.less'
 
 interface Props extends BaseComponent {
-  title: string
+  title?: string
   visible: boolean
   onClose: () => void
 }
 
 const Drawer: FC<PropsWithChildren<Props>> = props => {
-  const { title, visible, children, className, style, onClose } = props
+  const { title = '', visible, children, className, style, onClose } = props
 
   return (
     <div

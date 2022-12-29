@@ -15,6 +15,7 @@ interface IconFontProps extends BaseComponent {
   ml?: number
   /** margin-right */
   mr?: number
+  cursor?: string
   onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void
 }
 
@@ -29,6 +30,7 @@ export default function Iconfont(props: IconFontProps) {
     scale,
     ml,
     mr,
+    cursor = 'default',
     ...rest
   } = props
   const styleSheet: CSSProperties = Object.assign(
@@ -39,7 +41,8 @@ export default function Iconfont(props: IconFontProps) {
       transform: `rotate(${rotate ?? 0}deg) scale(${scale ?? 1})`,
       marginLeft: `${ml}px`,
       marginRight: `${mr}px`,
-      transition: 'all 0.3s'
+      transition: 'all 0.3s',
+      cursor
     },
     style
   )

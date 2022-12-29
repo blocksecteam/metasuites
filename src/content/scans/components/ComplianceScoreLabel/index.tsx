@@ -2,12 +2,12 @@ import { type FC } from 'react'
 import cls from 'classnames'
 
 import { getImageUrl } from '@common/utils'
-import { type RISK_LEVELS, RISK_OPTIONS } from '@common/constants'
+import { type AddressRiskLevel, RISK_OPTIONS } from '@common/constants'
 
 import styles from './index.module.less'
 
 interface Props {
-  risk: typeof RISK_LEVELS[number]
+  risk: AddressRiskLevel
 }
 
 const ComplianceScoreLabel: FC<Props> = ({ risk }) => {

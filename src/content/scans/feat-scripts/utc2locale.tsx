@@ -1,11 +1,7 @@
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 
-import {
-  getLocalTz,
-  convertUTCDateToLocalDate,
-  validOrigin
-} from '@common/utils'
+import { convertUTCDateToLocalDate, validOrigin } from '@common/utils'
 import {
   SCAN_PAGES,
   DATE_STANDARD_FORMAT_REG,
@@ -15,16 +11,15 @@ import {
 dayjs.extend(utc)
 
 /** Parse the time formatted by scan as local time, keeping the original format
- * e.g. 6 hrs 48 mins ago (Nov-22-2022 04:48:11 AM +UTC) => 7 hours ago (2022-11-22 12:48:11 UTC+8) */
+ * e.g. 6 hrs 48 mins ago (Nov-22-2022 04:48:11 AM +UTC) => 7 hours ago (2022-11-22 12:48:11 local time) */
 const convertFormativeUTCTimeToLocale = (date: string) => {
   const reg = /\(([^)]*)\)/
   const dateUTC = date.match(reg)?.[1]?.replace('+UTC', 'UTC')?.trim()
   if (!dateUTC) return date
   try {
     const dt = new Date(dateUTC).toLocaleString()
-    const tz = getLocalTz()
     const ago = date.slice(0, date.indexOf('('))
-    return `${ago} (${dayjs(dt).format('YYYY-MM-DD HH:mm:ss')} ${tz})`
+    return `${ago} (${dayjs(dt).format('YYYY-MM-DD HH:mm:ss')} local time)`
   } catch (e) {
     return date
   }
@@ -48,7 +43,7 @@ const replaceInkTxAgeDateTime = (lnkAgeDateTimeEls: HTMLElement[]) => {
     referenceChild.setAttribute('href', 'javascript:;')
     referenceChild.innerText = lnkAgeDateTimeEl.innerText.replace(
       /(?<=\()(.+?)(?=\))/,
-      getLocalTz()
+      'local time'
     )
     lnkAgeDateTimeEl.onclick = () => {
       referenceChild.innerText =
@@ -56,7 +51,7 @@ const replaceInkTxAgeDateTime = (lnkAgeDateTimeEls: HTMLElement[]) => {
           ? lnkAgeDateTimeEl.innerText
           : lnkAgeDateTimeEl.innerText.replace(
               /(?<=\()(.+?)(?=\))/,
-              getLocalTz()
+              'local time'
             )
     }
     parent.appendChild(referenceChild)
@@ -112,7 +107,6 @@ const convertUTC2locale = (pageName: typeof SCAN_PAGE_NAMES[number]) => {
           '#ContentPlaceHolder1_maintable > div .fa-clock'
         )?.parentElement
       }
-      console.log('哈哈哈哈', timestampEl)
       if (!timestampEl) return
       const childIdx = isTxPage ? 3 : 2
       const date = convertFormativeUTCTimeToLocale(timestampEl.innerText)
@@ -139,12 +133,11 @@ const convertUTC2locale = (pageName: typeof SCAN_PAGE_NAMES[number]) => {
                 _document.querySelectorAll<HTMLElement>(
                   '#lnkErc20AgeDateTime, #lnkErc721AgeDateTime, #lnkErc1155AgeDateTime'
                 )
-              const ageEls = _document.querySelectorAll<HTMLElement>(
-                '.showAge > span[data-original-title]'
-              )
-              const dateEls = _document.querySelectorAll<HTMLElement>(
-                '.showDate > span[data-original-title]'
-              )
+              const ageEls =
+                _document.querySelectorAll<HTMLElement>('.showAge > span')
+              const dateEls =
+                _document.querySelectorAll<HTMLElement>('.showDate > span')
+
               replaceInkTxAgeDateTime([...iframeLnkAgeDateTimeEls])
               replaceAgeElsTipContent(ageEls)
               replaceDateElsContent(dateEls)

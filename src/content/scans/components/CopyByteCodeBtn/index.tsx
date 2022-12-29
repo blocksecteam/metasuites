@@ -27,8 +27,7 @@ const CopyByteCodeBtn: FC = () => {
         'btn-sm',
         'btn-icon',
         'btn-secondary',
-        'mb-1',
-        'ml-1'
+        'mb-1'
       )}
       onClick={onCopy}
     >
