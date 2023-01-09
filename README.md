@@ -90,6 +90,15 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 
 ## Changelog
 
+### v1.5.0
+
+- [feat] Optimized search shortcuts feature
+- [fix] Fixed issue with button style misalignment
+- [fix] Supports inputting spaces for search
+- [fix] Fixed address copying bug
+- [fix] Fixed Ethervm button issue
+- [fix] Fixed snowtrace dethcode button bug
+
 ### v1.4.0
 
 - [feat] NFTgo quick jump feature - Etherscan

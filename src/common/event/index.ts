@@ -7,7 +7,8 @@ import type {
   PostAddressParams,
   PostAddressRiskScoreParams,
   NFTRarityRankReq,
-  NFTUserLabelsReq
+  NFTUserLabelsReq,
+  PostComprehensiveSearchParams
 } from '@common/api/types'
 import type {
   REFRESH,
@@ -20,7 +21,8 @@ import type {
   GET_NFT_RISK,
   GET_NFT_RARITY_RANK,
   GET_NFT_USER_LABELS,
-  GET_ADDRESS_FUNDER_RISK
+  GET_ADDRESS_FUNDER_RISK,
+  GET_COMPREHENSIVE_SEARCH_RESULTS
 } from '@common/constants/event'
 
 export type EventInfo = {
@@ -35,6 +37,7 @@ export type EventInfo = {
   [GET_NFT_RISK]: PostAddressParams
   [GET_NFT_USER_LABELS]: NFTUserLabelsReq
   [GET_ADDRESS_FUNDER_RISK]: PostAddressParams
+  [GET_COMPREHENSIVE_SEARCH_RESULTS]: PostComprehensiveSearchParams
 }
 
 export const chromeEvent = new Event<EventInfo>(SCOPE)

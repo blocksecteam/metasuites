@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { type FC, useState } from 'react'
 import { ConfigProvider } from 'antd'
 
 import styles from './App.module.less'
 import { Tabs, Shortcuts, Brand, Settings } from './components'
 import { TabKeys } from './constants'
 
-const App: React.FC = () => {
+const App: FC = () => {
   const [activeTab, setActiveTab] = useState(TabKeys.Shortcuts)
 
   return (

@@ -222,6 +222,14 @@ export const ETHERSCAN_DETH_SUPPORT_LIST: EtherscanDethSupportWebsite[] = [
   {
     chain: 'arbitrum',
     scanHrefPrefix: 'https://arbiscan.deth.net/address'
+  },
+  {
+    chain: 'avalanche',
+    scanHrefPrefix: 'https://snowtrace.deth.net/address'
+  },
+  {
+    chain: 'cronos',
+    scanHrefPrefix: 'https://cronoscan.deth.net/address'
   }
 ]
 

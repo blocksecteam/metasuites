@@ -1,91 +1,162 @@
-import React, { type ChangeEvent, type FC, useState, useEffect } from 'react'
+import React, {
+  type ChangeEvent,
+  type FC,
+  useState,
+  type ReactNode,
+  type KeyboardEvent,
+  useEffect,
+  useCallback,
+  useRef
+} from 'react'
 import { Input } from 'antd'
-import { getDefaultProvider } from 'ethers'
+import * as blockies from 'blockies-ts'
 import { debounce } from 'lodash-es'
 import cls from 'classnames'
 
+import { chromeEvent } from '@common/event'
+import { getImageUrl, createTab } from '@common/utils'
 import {
-  getImageUrl,
-  isAddress,
-  isTransaction,
-  isMethod,
-  isENS,
-  getExternalSignatureUrl,
-  getExternalTxUrl,
-  getExternalAddressUrl,
-  createTab,
-  getSubStr
-} from '@common/utils'
-import { EXT_SUPPORT_WEB_LIST } from '@common/constants'
+  EXT_SUPPORT_WEB_LIST,
+  GET_COMPREHENSIVE_SEARCH_RESULTS
+} from '@common/constants'
 import { Iconfont, LoadingOutlined } from '@common/components'
+import type {
+  SearchResultType,
+  SearchResultItem,
+  SearchResultItemValue
+} from '@common/api/types'
 
-import type { SearchResultItem } from './type'
 import styles from './index.module.less'
 
 const Shortcuts: FC = () => {
   const [value, setValue] = useState('')
   const [loading, setLoading] = useState(false)
+  const [activeIdx, setActiveIdx] = useState(0)
   const [searchResults, setSearchResults] = useState<SearchResultItem[]>([])
+  const valueRef = useRef(value)
 
-  const onValueChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value.trim())
-  }
-
-  const onSearch = debounce(async () => {
+  const onValueChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setValue(value)
     if (!value) {
       onClear()
       return
     }
-    setSearchResults([])
-    if (isAddress(value)) {
-      const result: SearchResultItem = {
-        type: 'Address',
-        link: getExternalAddressUrl(value),
-        title: getSubStr(value, [27, 4])
-      }
-      setSearchResults([result])
+    if (value.trim()) {
+      onSearch()
     }
-    if (isTransaction(value)) {
-      const result: SearchResultItem = {
-        type: 'Transaction',
-        link: getExternalTxUrl(value),
-        title: value
-      }
-      setSearchResults([result])
-    }
-    if (isMethod(value, false)) {
-      const result: SearchResultItem = {
-        type: 'Selector',
-        link: getExternalSignatureUrl(value),
-        title: value
-      }
-      setSearchResults([result])
-    }
-    if (isENS(value)) {
-      /** support eth only */
+  }
+
+  const onSearch = useCallback(
+    debounce(async () => {
       setLoading(true)
-      const provider = getDefaultProvider()
-      const address = await provider.resolveName(value)
+      const res = await chromeEvent.emit<
+        typeof GET_COMPREHENSIVE_SEARCH_RESULTS,
+        SearchResultItem[]
+      >(GET_COMPREHENSIVE_SEARCH_RESULTS, {
+        type: -1,
+        keyword: valueRef.current
+      })
+      setActiveIdx(0)
       setLoading(false)
-      if (address) {
-        const result: SearchResultItem = {
-          type: 'Selector',
-          link: `https://etherscan.io/address/${address}`,
-          title: value
-        }
-        setSearchResults([result])
+      if (res?.success) {
+        setSearchResults(res.data ?? [])
+      } else {
+        setSearchResults([])
       }
-    }
-  }, 300)
+    }, 500),
+    []
+  )
 
   const onClear = () => {
     setSearchResults([])
     setValue('')
   }
 
+  const onNavigate = (url?: string) => {
+    url && createTab(url)
+  }
+
+  const renderSearchResultItem = (
+    type: SearchResultType,
+    item: SearchResultItemValue
+  ): ReactNode => {
+    switch (type) {
+      case 'Address':
+      case 'Transaction':
+      case 'ENS': {
+        const title = item.address || item.txn
+        return (
+          <div className={styles.content}>
+            <div className={styles.title}>{title}</div>
+            {item.url && <a className={styles.link}>{item.url}</a>}
+          </div>
+        )
+      }
+      case 'Selector': {
+        const key = item.selector
+        const value = item.function
+        return (
+          <div className={styles.content}>
+            <div className={styles.title}>{`${key} ${value}`}</div>
+          </div>
+        )
+      }
+      case 'NFT':
+      case 'Token': {
+        const image =
+          item.image || blockies.create({ seed: item.name }).toDataURL()
+        return (
+          <div className={cls(styles.content, 'align-center')}>
+            <img className={styles.iconImg} src={image} alt="" />
+            <div className={cls('flex1')} style={{ overflow: 'hidden' }}>
+              <div className={styles.title}>{item.name}</div>
+              {item.url && (
+                <a className={cls('text-ellipsis', styles.link)}>{item.url}</a>
+              )}
+            </div>
+          </div>
+        )
+      }
+      default:
+        return null
+    }
+  }
+
+  const onKeyUp = (event: KeyboardEvent) => {
+    if (event.code === 'ArrowDown') {
+      setActiveIdx(idx => idx + 1)
+    } else if (event.code === 'ArrowUp') {
+      setActiveIdx(idx => (idx > 0 ? idx - 1 : idx))
+    } else if (event.code === 'Enter') {
+      const item = document.querySelectorAll<HTMLElement>('.item')?.[activeIdx]
+      if (item) {
+        const dataId = item.getAttribute('data-id')
+        if (dataId) {
+          const [type, index] = dataId.split('-')
+          const origin = searchResults.find(item => item.type === type)
+            ?.value?.[Number(index)]
+          onNavigate(origin?.url)
+        }
+      }
+    }
+  }
+
   useEffect(() => {
-    onSearch()
-  }, [value])
+    if (activeIdx) {
+      const items = document.querySelectorAll<HTMLElement>('.item')
+      Array.from(items).forEach((item, index) => {
+        item.style.opacity = index === activeIdx - 1 ? '0.3' : '1'
+        if (index === activeIdx - 1) {
+          item.scrollIntoView()
+        }
+      })
+    }
+  }, [activeIdx])
+
+  useEffect(() => {
+    valueRef.current = value
+  })
 
   return (
     <div className={styles.container}>
@@ -94,7 +165,7 @@ const Shortcuts: FC = () => {
         <Input
           value={value}
           className={styles.input}
-          placeholder="Search for address, transaction, ENS, selector"
+          placeholder="Search in Web3"
           onChange={onValueChange}
           suffix={
             loading ? (
@@ -108,30 +179,29 @@ const Shortcuts: FC = () => {
               />
             )
           }
-          onPressEnter={onSearch}
+          onKeyUp={onKeyUp}
         />
-        {/* TODO: by group */}
-        <ul
+        <div
           className={cls(styles.searchResultList, {
             [styles.show]: !!searchResults.length
           })}
         >
-          {searchResults.map(item => (
-            <li
-              key={item.title}
-              className={styles.searchResultItem}
-              onClick={() => createTab(item.link)}
-            >
-              <div className={styles.type}>{item.type}</div>
-              <div className={styles.content}>
-                <div className={styles.title}>
-                  {getSubStr(item.title, [27, 4])}
+          {searchResults.map(group => (
+            <div key={group.type} className={styles.searchResultItem}>
+              <div className={styles.type}>{group.type}</div>
+              {group.value.map((item, key) => (
+                <div
+                  className="item"
+                  data-id={`${group.type}-${key}`}
+                  key={key}
+                  onClick={() => onNavigate(item.url)}
+                >
+                  {renderSearchResultItem(group.type, item)}
                 </div>
-                <a className={styles.link}>{item.link}</a>
-              </div>
-            </li>
+              ))}
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
       <div className={styles.navbar}>
         <a

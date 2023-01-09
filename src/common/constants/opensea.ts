@@ -1,7 +1,7 @@
 export const OPENSEA_PAGE_NAMES = ['COLLECTION', 'USER', 'ASSETS'] as const
 
 interface OpenseaPage {
-  pathname: string
+  pattern: RegExp
   name: typeof OPENSEA_PAGE_NAMES[number]
 }
 
@@ -10,17 +10,17 @@ export const OPENSEA_PAGES: Record<
   OpenseaPage
 > = {
   COLLECTION: {
-    pathname: '/collection/',
-    name: 'COLLECTION'
+    name: 'COLLECTION',
+    pattern: /^(\/.+)?\/collection\/.+/
   },
   ASSETS: {
-    pathname: '/assets/',
-    name: 'ASSETS'
+    name: 'ASSETS',
+    pattern: /^(\/.+)?\/assets\/.+/
   },
   /** index must be last */
   USER: {
-    pathname: '/',
-    name: 'USER'
+    name: 'USER',
+    pattern: /^(\/.+)?\/.+/
   }
 }
 

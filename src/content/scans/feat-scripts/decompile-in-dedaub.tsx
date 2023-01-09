@@ -46,9 +46,13 @@ const genDecompileInDedaubBtn = (chain: string) => {
     "#ContentPlaceHolder1_li_contracts font[color='brown']"
   )
 
+  const isSelfDestruct = !!document.querySelector<HTMLElement>(
+    "#ContentPlaceHolder1_li_contracts sup > span[class='text-warning']"
+  )
+
   const referenceNode = document.querySelector<HTMLElement>('#dividcode')
 
-  if (isReInit) {
+  if (isReInit || isSelfDestruct) {
     const pre = referenceNode?.querySelector('pre')
     if (pre) pre.style.marginTop = '0'
   }

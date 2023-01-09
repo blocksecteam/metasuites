@@ -1,14 +1,15 @@
 {
   "name": "metadock",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/blocksecteam/metadock.git"
   },
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "vite --mode development",
+    "build:prod": "vite build --mode production",
+    "build:test": "vite build --mode test",
     "stylelint": "stylelint \"**/*.{css,scss,less}\"",
     "stylelint:fix": "stylelint \"**/*.{css,scss,less}\" --fix",
     "prepare": "husky install && husky set .husky/pre-commit \"npx lint-staged\" && husky set .husky/commit-msg 'npx --no -- commitlint --edit \"$1\"'",
@@ -18,6 +19,7 @@
     "@ant-design/plots": "^1.2.2",
     "antd": "^5.0.2",
     "big.js": "^6.2.1",
+    "blockies-ts": "^1.0.0",
     "buffer": "^6.0.3",
     "chrome-extension-core": "^0.1.4",
     "classnames": "^2.3.2",

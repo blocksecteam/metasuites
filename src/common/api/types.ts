@@ -119,3 +119,34 @@ export interface AddressFunderRiskResponse {
   risky: boolean
   address: string
 }
+
+export interface PostComprehensiveSearchParams {
+  type?: number
+  keyword: string
+}
+
+export type SearchResultType =
+  | 'Address'
+  | 'ENS'
+  | 'Selector'
+  | 'Transaction'
+  | 'Token'
+  | 'NFT'
+  | 'GasPrice'
+
+export interface SearchResultItemValue {
+  address?: string
+  url?: string
+  chain?: string
+  function?: string
+  name?: string
+  symbol?: string
+  selector?: string
+  txn?: string
+  image?: string
+}
+
+export type SearchResultItem = {
+  type: SearchResultType
+  value: SearchResultItemValue[]
+}

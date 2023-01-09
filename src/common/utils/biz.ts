@@ -21,6 +21,6 @@ export const getPageName = (
     site.domains.some(item => window.location.host === item)
   )?.siteName
   return Object.values(PAGES[`${siteName}_PAGES`]).find(item =>
-    pathname.startsWith(item.pathname)
+    item.pattern.test(pathname)
   )?.name
 }

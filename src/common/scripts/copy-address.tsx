@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 
 import { CopyButton } from '@common/components'
-import { pickAddress } from '@common/utils'
+import { pickAddress, getHrefQueryVariable } from '@common/utils'
 
 const handleAddressOrTokenElCopy = (el: HTMLElement, address: string) => {
   el.onmouseover = () => {
@@ -34,7 +34,8 @@ export const handleAddressNodeListCopy = (
     const dataOriginalTitle = el.getAttribute('data-original-title')
     const title = el.getAttribute('title')
     if (href) {
-      address = pickAddress(href)
+      const tokenAddress = getHrefQueryVariable(href, 'a')
+      address = tokenAddress ?? pickAddress(href)
     } else if (dataOriginalTitle) {
       address = pickAddress(dataOriginalTitle)
     } else if (title) {

@@ -15,7 +15,9 @@ import type {
   NFTRiskResponse,
   NFTUserLabelsReq,
   NFTUserLabelsResponse,
-  AddressFunderRiskResponse
+  AddressFunderRiskResponse,
+  PostComprehensiveSearchParams,
+  SearchResultItem
 } from './types'
 
 export default {
@@ -66,5 +68,9 @@ export default {
   getAddressFunderRisk: (params: PostAddressParams) =>
     request
       .post('api/v1/address-funder-risk', { json: params })
-      .json<BscResponse<AddressFunderRiskResponse>>()
+      .json<BscResponse<AddressFunderRiskResponse>>(),
+  getComprehensiveSearchResults: (params: PostComprehensiveSearchParams) =>
+    request
+      .post('api/v1/comprehensive-search', { json: params })
+      .json<BscResponse<SearchResultItem[]>>()
 }

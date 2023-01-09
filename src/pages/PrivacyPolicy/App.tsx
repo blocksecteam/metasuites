@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { type FC } from 'react'
 
 import styles from './App.module.less'
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
     <div className={styles.container}>
       <header>

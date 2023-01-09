@@ -10,41 +10,41 @@ export const SCAN_PAGE_NAMES = [
 ] as const
 
 interface ScanPage {
-  pathname: string
+  pattern: RegExp
   name: typeof SCAN_PAGE_NAMES[number]
 }
 
 export const SCAN_PAGES: Record<typeof SCAN_PAGE_NAMES[number], ScanPage> = {
   TXS: {
-    pathname: '/txs',
-    name: 'TXS'
+    name: 'TXS',
+    pattern: /^\/txs.?/
   },
   BLOCK: {
-    pathname: '/block/',
-    name: 'BLOCK'
+    name: 'BLOCK',
+    pattern: /^\/block\/.+/
   },
   BLOCKS: {
-    pathname: '/blocks',
-    name: 'BLOCKS'
+    name: 'BLOCKS',
+    pattern: /^\/blocks.?/
   },
   ADDRESS: {
-    pathname: '/address/',
-    name: 'ADDRESS'
+    name: 'ADDRESS',
+    pattern: /^\/address\/.+/
   },
   TX: {
-    pathname: '/tx',
-    name: 'TX'
+    name: 'TX',
+    pattern: /^\/tx\/.+/
   },
   ACCOUNTS: {
-    pathname: '/accounts',
-    name: 'ACCOUNTS'
+    name: 'ACCOUNTS',
+    pattern: /^\/accounts.?/
   },
   TOKEN: {
-    pathname: '/token/',
-    name: 'TOKEN'
+    name: 'TOKEN',
+    pattern: /^\/token\/.+/
   },
   TOKENTXNS: {
-    pathname: '/tokentxns',
-    name: 'TOKENTXNS'
+    name: 'TOKENTXNS',
+    pattern: /^\/tokentxns.?/
   }
 }

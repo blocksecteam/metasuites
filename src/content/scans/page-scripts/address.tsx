@@ -33,7 +33,8 @@ const initAddressPageScript = async (chain: string) => {
     copyAddress,
     dethCode,
     quick2NFTGo,
-    addressFunderLabel
+    addressFunderLabel,
+    decompileInEthervm
   } = await store.get('options')
 
   if (enhancedSignatures) genEnhancedSignatures(chain)
@@ -70,7 +71,7 @@ const initAddressPageScript = async (chain: string) => {
 
   if (addressFunderLabel) displayContractFundFrom(chain)
 
-  genDecompileInEthervmBtn(chain)
+  if (decompileInEthervm) genDecompileInEthervmBtn(chain)
 }
 
 export default initAddressPageScript
