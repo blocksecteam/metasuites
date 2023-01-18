@@ -72,6 +72,8 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - [x] Show quick open in NFTGo for NFT contracts
 - [x] Show comprehensive risk graph of the collection
 - [x] Show owner's address label
+- [x] Show export data for a part of transactions
+- [x] Show alternative block explorers
 - [ ] Sandwich Attack Risk Detection
 
 ## Supported Websites List
@@ -89,6 +91,12 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - opensea.io
 
 ## Changelog
+
+### v1.6.0
+
+- [feat] Support export current page data
+- [feat] Integrate Eden Network and Flashbots Explorer
+- [feat] Update fund flow map, add button of MetaSleuth
 
 ### v1.5.0
 

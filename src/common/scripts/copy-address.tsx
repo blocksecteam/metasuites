@@ -50,7 +50,7 @@ export const handleTokenNodeListCopy = (tokenTags: NodeListOf<HTMLElement>) => {
     const el = tokenTags[i]
     const href = el.getAttribute('href')
     if (!href) continue
-    const address = pickAddress(href)
+    const address = getHrefQueryVariable(href, 'a') ?? pickAddress(href)
     if (address) handleAddressOrTokenElCopy(el, address)
   }
 }

@@ -24,7 +24,9 @@ const OPTIONS = [
   'nftFloorPrice',
   'addressFunderLabel',
   'quick2NFTGo',
-  'decompileInEthervm'
+  'decompileInEthervm',
+  'exportTableData',
+  'alternativeBlockExplorers'
 ] as const
 
 export type OptKeys = typeof OPTIONS[number]
@@ -65,7 +67,9 @@ export const defaultValue: StorageInfo = {
     nftFloorPrice: true,
     addressFunderLabel: true,
     quick2NFTGo: true,
-    decompileInEthervm: true
+    decompileInEthervm: true,
+    exportTableData: true,
+    alternativeBlockExplorers: true
   }
 }
 

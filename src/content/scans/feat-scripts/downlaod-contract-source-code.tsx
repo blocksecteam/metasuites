@@ -4,6 +4,7 @@ import { pickAddress } from '@common/utils'
 
 import { DownloadSourceCodeBtn } from '../components'
 
+/** download contract source code as zip */
 const genDownloadSourceCodeBtn = async (chain: string) => {
   const mainAddress = pickAddress(window.location.pathname)
 

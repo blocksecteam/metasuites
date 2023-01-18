@@ -59,6 +59,7 @@ const handleReplace = async (
   }
 }
 
+/** enhanced address label */
 const genEnhancedLabels = async (chain: string) => {
   const addressTags = document.querySelectorAll<HTMLElement>(
     TABLE_LIST_ADDRESS_SELECTORS

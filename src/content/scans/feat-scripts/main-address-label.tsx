@@ -7,6 +7,7 @@ import { createRoot } from 'react-dom/client'
 
 import { MainAddressLabel } from '../components'
 
+/** enhanced address label */
 const genMainAddressLabel = async (chain: string) => {
   const mainAddressEl = document.querySelector<HTMLElement>('#mainaddress')
 

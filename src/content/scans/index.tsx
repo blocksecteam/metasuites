@@ -39,10 +39,10 @@ const init = async () => {
       initTxsPageScript(chain)
       break
     case SCAN_PAGES.BLOCK.name:
-      initBlockPageScript()
+      initBlockPageScript(chain)
       break
     case SCAN_PAGES.ACCOUNTS.name:
-      initAccountsPageScript()
+      initAccountsPageScript(chain)
       break
     case SCAN_PAGES.TOKEN.name:
       initTokenPageScript(chain)
@@ -51,7 +51,7 @@ const init = async () => {
       initTokentxnsPageScript(chain)
       break
     case SCAN_PAGES.BLOCKS.name:
-      initBlocksPageScript()
+      initBlocksPageScript(chain)
       break
   }
 }

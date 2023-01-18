@@ -9,6 +9,7 @@ import {
 } from '@common/constants'
 import { validOrigin } from '@common/utils'
 
+/** show copy icon for addresses */
 const genCopyAddressBtn = async (pageName: typeof SCAN_PAGE_NAMES[number]) => {
   switch (pageName) {
     case SCAN_PAGES.TXS.name: {

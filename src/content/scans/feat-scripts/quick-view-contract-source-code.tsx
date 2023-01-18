@@ -5,6 +5,7 @@ import { pickAddress } from '@common/utils'
 
 import { QuickViewSourceCodeBtn } from '../components'
 
+/** quick view source code in deth.net */
 const genQuickViewSourceCodeBtn = async (chain: string) => {
   const mainAddress = pickAddress(window.location.pathname)
 

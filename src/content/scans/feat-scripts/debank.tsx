@@ -11,6 +11,7 @@ const setBtn = (txHashEl: HTMLElement, mainAddress: string) => {
   createRoot(btnRootEl).render(<DeBankBtn mainAddress={mainAddress} />)
 }
 
+/** open in debank.com */
 const genDeBankBtn = async () => {
   const mainAddress =
     document.querySelector<HTMLElement>('#mainaddress')?.innerText

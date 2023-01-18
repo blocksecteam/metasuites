@@ -4,32 +4,59 @@ import type {
   FundFlowEdge
 } from '@common/api/types'
 import { swapItem } from '@common/utils'
+import { EXT_SUPPORT_WEB_LIST, DEFAULT_CHAIN_ICON } from '@common/constants'
 
 import { NodeType } from './enum'
 
 type FlowType = 'input' | 'output'
 
 type AddressMap = Map<string, FundFlowNode>
-
 const genNode = (
   mainChain: string,
   mainAddress: string,
   node: FundFlowNode
 ) => {
-  const { address, label, id, type, selected, url } = node
+  const { address, label, id, type, selected, logo, chain, url } = node
   if (!selected) return ''
 
   return `"${id}" 
         [
-          shape="${type === NodeType.CROSS_CHAIN ? 'diamond' : 'rect'}"
-          style="filled"
-          color="#FFFFFF"
+          shape="${type === NodeType.CROSS_CHAIN ? 'doubleoctagon' : 'rect'}"
+          style="rounded"
+          color="#f8f8f8"
           fillcolor="#F9F9F9"
           fontcolor="#000"
-          label="${label}"
           tooltip="${address}"
-          href="${url}"
           target="_blank"
+          fixedsize="true"
+          width="2.9"
+          height="1"
+          image="${
+            logo ||
+            EXT_SUPPORT_WEB_LIST.find(v => v.chain === chain)?.logo ||
+            DEFAULT_CHAIN_ICON
+          }"
+          label=<<table border="0">${
+            label
+              ? `<tr><td ALIGN="left" balign="left" FIXEDSIZE="true" width="40" height="15"><FONT
+                COLOR="#000000"
+                POINT-SIZE="12px"
+              >${
+                label.length > 20 ? `${label.slice(0, 20)}...` : label
+              }</FONT></td></tr>`
+              : ``
+          }<tr><td ALIGN="left" balign="left" FIXEDSIZE="true" width="40" height="13"><FONT
+              COLOR="#939393"
+              FACE="Poppins-Regular"
+              POINT-SIZE="12px"
+              >${address.slice(
+                0,
+                22
+              )}</FONT></td></tr><tr><td ALIGN="left" balign="left" FIXEDSIZE="true" width="40" height="13"><FONT
+              COLOR="#939393"
+              FACE="Poppins-Regular"
+              POINT-SIZE="12px"
+              >${address.slice(22, address.length)}</FONT></td></tr></table>>
         ]`
 }
 
@@ -64,7 +91,7 @@ const genEdge = (
           labeltooltip="${fromNode.address} -> ${toNode.address}"
           edgetooltip="${fromNode.address} -> ${toNode.address}"
           label=<<table border="0">
-          <tr><td align="center" width="20" bgcolor="white" cellpadding="0"><font color="${themeColor}"><br/>[${serial}] </font></td><td align="center" cellpadding="0"><font color="#000"><br/>${description}</font></td></tr>
+          <tr><td align="center" width="20" bgcolor="white" cellpadding="0"><font color="${themeColor}" FACE="Poppins-Regular"><br/>[${serial}] </font></td><td align="center" cellpadding="0"><font color="#000"><br/>${description}</font></td></tr>
           </table>>
         ]
       `

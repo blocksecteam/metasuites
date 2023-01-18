@@ -28,6 +28,7 @@ const setBtns = (
   createRoot(copyBtnRootEl).render(<CopyByteCodeBtn />)
 }
 
+/** Show quick open in ethervm.io for unverified contracts */
 const genDecompileInEthervmBtn = (chain: string) => {
   const contractCodeEl = document.querySelector<HTMLElement>(
     '#ContentPlaceHolder1_contractCodeDiv'

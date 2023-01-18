@@ -156,6 +156,25 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
                 />
               }
             />
+            <Cell
+              title="Show export data for a part of transactions"
+              action={
+                <Switch
+                  checked={options.exportTableData as boolean}
+                  onChange={val => onChange('exportTableData', val)}
+                />
+              }
+            />
+            <Cell
+              border={false}
+              title="Show alternative block explorers"
+              action={
+                <Switch
+                  checked={options.alternativeBlockExplorers as boolean}
+                  onChange={val => onChange('alternativeBlockExplorers', val)}
+                />
+              }
+            />
           </Cell.Group>
         </div>
       </div>

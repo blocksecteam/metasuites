@@ -1,5 +1,5 @@
 export enum NodeType {
-  NORMAL,
+  NORMAL = 1,
   CROSS_CHAIN,
   OTHER_CHAIN
 }

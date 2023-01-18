@@ -1,0 +1,53 @@
+@import '@common/styles/common.less';
+
+.dropdown {
+  position: relative;
+
+  &.open {
+    .overlay {
+      max-height: 70px;
+      padding: 4px;
+    }
+  }
+
+  .btn {
+    color: #fff;
+    background-color: #1677ff;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    .center;
+  }
+
+  .overlay {
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    transform: translateY(4px);
+    transition: all 0.3s;
+    border-radius: 8px;
+    outline: none;
+    box-shadow: 0 6px 16px 0 rgb(0 0 0 / 8%), 0 3px 6px -4px rgb(0 0 0 / 12%),
+      0 9px 28px 8px rgb(0 0 0 / 5%);
+    padding: 0 4px;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    max-height: 0;
+    overflow: hidden;
+    z-index: 9;
+
+    .menuItem {
+      margin: 0;
+      padding: 5px 12px;
+      color: rgba(0, 0, 0, 0.88);
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 1.5;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &:hover {
+        background-color: rgb(0 0 0 / 0.04);
+      }
+    }
+  }
+}

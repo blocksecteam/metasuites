@@ -19,6 +19,7 @@ const getScanLabels = (): string[] => {
   return labels
 }
 
+/** address compliance score*/
 const genComplianceScoresBtn = async (chain: string) => {
   const mainAddressEl = document.querySelector<HTMLElement>('#mainaddress')
 

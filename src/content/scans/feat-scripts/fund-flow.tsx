@@ -13,6 +13,7 @@ const setBtn = (txHashEl: HTMLElement, chain: string, mainAddress: string) => {
   )
 }
 
+/** fund flow */
 const genFundFlow = async (chain: string) => {
   const mainAddress =
     document.querySelector<HTMLElement>('#mainaddress')?.innerText

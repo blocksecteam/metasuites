@@ -21,6 +21,7 @@
   .container {
     position: relative;
     width: 90%;
+    min-width: 880px;
     height: 90%;
     border-radius: 2px;
     box-shadow: 0 12px 48px 16px rgba(0, 0, 0, 0.03),
@@ -38,13 +39,19 @@
       border-bottom: 1px solid #f0f0f0;
       .align-center;
 
-      .tokenLogo {
-        width: 26px;
-        height: 26px;
-      }
+      .basicInfo {
+        min-width: 300px;
+        .align-center;
+        .tokenLogo {
+          width: 26px;
+          height: 26px;
+        }
 
-      .mainAddress {
-        margin: 0 10px 0 14px;
+        .mainAddress {
+          flex: 1;
+          margin: 0 10px 0 14px;
+          .text-ellipsis;
+        }
       }
 
       .downloadPopoverContainer {
@@ -84,6 +91,7 @@
 
       .tipContainer {
         position: relative;
+        margin-right: 10px;
         .align-center;
 
         &:hover {

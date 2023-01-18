@@ -21,6 +21,7 @@ const setBtn = async (containerEl: HTMLElement, mainAddress: string) => {
   }
 }
 
+/** Show quick open in NFTGo for NFT contracts */
 const genNFTGoBtn = async () => {
   const mainAddress =
     document.querySelector<HTMLElement>('#mainaddress')?.innerText

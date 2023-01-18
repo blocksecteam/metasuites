@@ -93,6 +93,7 @@ const replaceDateElsContent = (dateEls?: NodeListOf<HTMLElement>) => {
   }
 }
 
+/** UTC date to local date */
 const convertUTC2locale = (pageName: typeof SCAN_PAGE_NAMES[number]) => {
   switch (pageName) {
     case SCAN_PAGES.TX.name:
