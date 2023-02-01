@@ -5,6 +5,7 @@ import {
   TENDERLY_SUPPORT_LIST,
   TRANSACTION_VIEWER_SUPPORT_LIST
 } from '@common/constants'
+import { getNodeValue } from '@common/utils'
 
 import styles from './index.module.less'
 
@@ -13,7 +14,9 @@ interface Props {
 }
 
 const ParsersBtn: FC<Props> = ({ chain }) => {
-  const txHash = document.getElementById('spanTxHash')?.innerText
+  const txHash = getNodeValue(document.getElementById('spanTxHash'))
+
+  if (!txHash) return null
 
   const phalconPathname = PHALCON_SUPPORT_LIST.find(
     item => item.chain === chain

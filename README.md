@@ -92,6 +92,11 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 
 ## Changelog
 
+### v1.6.1
+
+- [fix] a bug related to the conflict with tenderly extension
+- [feat] support copy opcodes
+
 ### v1.6.0
 
 - [feat] Support export current page data
