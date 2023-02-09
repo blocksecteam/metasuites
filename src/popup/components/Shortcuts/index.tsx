@@ -108,7 +108,7 @@ const Shortcuts: FC = () => {
           item.image || blockies.create({ seed: item.name }).toDataURL()
         return (
           <div className={cls(styles.content, 'align-center')}>
-            <img className={styles.iconImg} src={image} alt="" />
+            <img className={styles.iconImg} src={image} alt="" loading="lazy" />
             <div className={cls('flex1')} style={{ overflow: 'hidden' }}>
               <div className={styles.title}>{item.name}</div>
               {item.url && (
@@ -191,7 +191,6 @@ const Shortcuts: FC = () => {
               <div className={styles.type}>{group.type}</div>
               {group.value.map((item, key) => (
                 <div
-                  className="item"
                   data-id={`${group.type}-${key}`}
                   key={key}
                   onClick={() => onNavigate(item.url)}

@@ -18,8 +18,6 @@ export default defineManifest((env: ConfigEnv) => ({
   content_scripts: [
     {
       matches: [
-        '*://etherscan.io/*',
-        '*://cn.etherscan.com/*',
         '*://polygonscan.com/*',
         '*://*.bscscan.com/*',
         '*://snowtrace.io/*',
@@ -30,6 +28,11 @@ export default defineManifest((env: ConfigEnv) => ({
         '*://*.moonscan.io/*'
       ],
       js: ['src/content/scans/index.tsx'],
+      all_frames: true
+    },
+    {
+      matches: ['*://etherscan.io/*', '*://cn.etherscan.com/*'],
+      js: ['src/content/etherscan/index.tsx'],
       all_frames: true
     },
     {

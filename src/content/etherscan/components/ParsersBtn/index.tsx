@@ -14,7 +14,7 @@ interface Props {
 }
 
 const ParsersBtn: FC<Props> = ({ chain }) => {
-  const txHash = getNodeValue(document.getElementById('spanTxHash'))
+  const txHash = getNodeValue(document.querySelector('#spanTxHash'))
 
   if (!txHash) return null
 

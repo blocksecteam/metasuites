@@ -92,10 +92,14 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 
 ## Changelog
 
+### v2.0.0
+
+- [feat] Adapted to the new version of etherscan
+
 ### v1.6.1
 
-- [fix] a bug related to the conflict with tenderly extension
-- [feat] support copy opcodes
+- [fix] A bug related to the conflict with tenderly extension
+- [feat] Support copy opcodes
 
 ### v1.6.0
 

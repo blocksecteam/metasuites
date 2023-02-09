@@ -1,0 +1,26 @@
+import { createRoot } from 'react-dom/client'
+
+import { isSupportParsers } from '@common/utils'
+
+import ParsersBtn from '../components/ParsersBtn'
+
+const genQuick2parsersBtn = (chain: string) => {
+  const isSupport = isSupportParsers(chain)
+  if (!isSupport) return
+  const txHashEl =
+    document.querySelector<HTMLElement>('#referralLink-1')?.parentElement
+
+  const jsClipboardEl = txHashEl?.querySelector<HTMLElement>('.js-clipboard')
+  if (jsClipboardEl) {
+    jsClipboardEl.style.marginRight = '20px'
+  }
+  if (txHashEl) {
+    txHashEl.classList.add('align-center')
+    txHashEl.style.flexWrap = 'wrap'
+    const rootEl = document.createElement('div')
+    txHashEl.appendChild(rootEl)
+    createRoot(rootEl).render(<ParsersBtn chain={chain} />)
+  }
+}
+
+export default genQuick2parsersBtn

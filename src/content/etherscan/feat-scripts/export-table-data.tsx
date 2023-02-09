@@ -7,15 +7,15 @@ const setBtn = async (
   chain: string,
   containerEl: HTMLElement,
   tableEl: HTMLElement,
-  position: 'head' | 'tail' = 'tail'
+  position: 'head' | 'tail' = 'head'
 ) => {
   const btnRootEl = document.createElement('div')
   btnRootEl.style.display = 'inline-block'
   if (position === 'head') {
-    btnRootEl.classList.add('mr-2')
+    btnRootEl.classList.add('me-2')
     containerEl?.prepend(btnRootEl)
   } else {
-    btnRootEl.classList.add('ml-2')
+    btnRootEl.classList.add('ms-2')
     containerEl?.append(btnRootEl)
   }
   createRoot(btnRootEl).render(
@@ -31,21 +31,23 @@ const genExportTableDataBtn = async (
   switch (pageName) {
     case SCAN_PAGES.ADDRESS.name:
       {
-        const txContainerEl =
-          document.querySelector<HTMLElement>('#ddlTxFilter')?.parentElement
-        const internalTxContainerEl = document.querySelector<HTMLElement>(
-          '#internaltx > div > nav'
+        const txContainerEl = document.querySelector<HTMLElement>(
+          '#ContentPlaceHolder1_divTxDataInfo > div > div'
         )
         const txTable = document.querySelector<HTMLElement>(
           '#transactions table'
         )
-        if (txContainerEl && txTable)
-          setBtn(chain, txContainerEl, txTable, 'head')
+        if (txContainerEl && txTable) setBtn(chain, txContainerEl, txTable)
+
+        const internalTxContainerEl = document.querySelector<HTMLElement>(
+          '#internaltx .card-body > div > div > div'
+        )
         const interTxTable = document.querySelector<HTMLElement>(
           '#ContentPlaceHolder1_divinternaltxtable table'
         )
         if (internalTxContainerEl && interTxTable)
           setBtn(chain, internalTxContainerEl, interTxTable)
+
         const iframes = document.querySelectorAll<HTMLIFrameElement>('iframe')
         for (let i = 0; i < iframes.length; ++i) {
           const iframe = iframes[i]
@@ -55,14 +57,16 @@ const genExportTableDataBtn = async (
               function () {
                 const _document = iframe?.contentWindow?.document
                 if (_document) {
-                  const containerEl =
-                    _document.querySelector<HTMLElement>(
-                      '#linkShowAllTokenTxns'
-                    )?.parentElement ||
-                    _document.querySelector<HTMLElement>('#divTokenStatus')
+                  const containerEl = _document.querySelector<HTMLElement>(
+                    '#divTokenStatus, #datatable_wrapper .datainfo'
+                  )
+                  containerEl?.setAttribute(
+                    'class',
+                    'justify-content-between w100'
+                  )
                   const tableEl = _document.querySelector<HTMLElement>('table')
                   if (containerEl && tableEl)
-                    setBtn(chain, containerEl, tableEl)
+                    setBtn(chain, containerEl, tableEl, 'tail')
                 }
               },
               true
@@ -103,11 +107,9 @@ const genExportTableDataBtn = async (
     case SCAN_PAGES.TXS.name:
       {
         const containerEl = document.querySelector<HTMLElement>(
-          '#ContentPlaceHolder1_topPageDiv > nav'
-        )
-        const tableEl = document.querySelector<HTMLElement>(
-          '#paywall_mask > table'
-        )
+          '#ContentPlaceHolder1_divDataInfo nav'
+        )?.parentElement
+        const tableEl = document.querySelector<HTMLElement>('.table-responsive')
         if (containerEl && tableEl) {
           containerEl.style.display = 'flex'
           setBtn(chain, containerEl, tableEl)
@@ -116,9 +118,7 @@ const genExportTableDataBtn = async (
       break
     case SCAN_PAGES.BLOCKS.name:
       {
-        const containerEl = document.querySelector<HTMLElement>(
-          '#ContentPlaceHolder1_topPageDiv > nav'
-        )
+        const containerEl = document.querySelector<HTMLElement>('ul.pagination')
         const tableEl = document.querySelector<HTMLElement>('table')
         if (containerEl && tableEl) {
           containerEl.style.display = 'flex'
@@ -129,18 +129,13 @@ const genExportTableDataBtn = async (
     case SCAN_PAGES.TOKENTXNS.name:
       {
         const containerEl = document.querySelector<HTMLElement>(
-          '#ContentPlaceHolder1_divTopPagination > nav'
+          "nav[aria-label='table navigation']"
         )
-        const tableEl = document
-          .querySelector<HTMLElement>('#tblResult')
-          ?.cloneNode(true) as HTMLElement | null
-        const theadEl = document
-          .querySelector<HTMLElement>('#divSTContainer table')
-          ?.cloneNode(true)
-        if (tableEl && theadEl && containerEl) {
-          tableEl.querySelector('thead')?.remove()
-          tableEl.appendChild(theadEl)
-          containerEl.style.display = 'flex'
+        const tableEl = document.querySelector<HTMLElement>(
+          '.table-responsive > table'
+        )
+        if (tableEl && containerEl) {
+          containerEl.setAttribute('style', 'display:flex;margin-left:0.5rem')
           setBtn(chain, containerEl, tableEl)
         }
       }
@@ -148,14 +143,14 @@ const genExportTableDataBtn = async (
     case SCAN_PAGES.ACCOUNTS.name:
       {
         const containerEl = document.querySelector<HTMLElement>(
-          '#ContentPlaceHolder1_topPageDiv > nav'
+          '#ContentPlaceHolder1_topPageDiv'
         )
         const tableEl = document.querySelector<HTMLElement>(
           '#ContentPlaceHolder1_divTable > table'
         )
         if (containerEl && tableEl) {
           containerEl.style.display = 'flex'
-          setBtn(chain, containerEl, tableEl)
+          setBtn(chain, containerEl, tableEl, 'tail')
         }
       }
       break

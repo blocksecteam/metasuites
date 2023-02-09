@@ -5,3 +5,11 @@ export const TABLE_LIST_ADDRESS_SELECTORS =
 /** *scans methods */
 export const TABLE_LIST_METHOD_SELECTORS =
   '.card tbody .u-label.u-label--info, maindiv tbody .u-label.u-label--info'
+
+/** *scans address v2 */
+export const TABLE_LIST_ADDRESS_SELECTORS_V2 =
+  ".card tbody a[href^='/address/']"
+
+/** *scans methods v2 */
+export const TABLE_LIST_METHOD_SELECTORS_V2 =
+  '.table-responsive table tbody span.d-block.badge.text-truncate'
