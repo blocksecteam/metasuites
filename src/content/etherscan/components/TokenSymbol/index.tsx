@@ -1,4 +1,4 @@
-import { type FC, CSSProperties } from 'react'
+import { type FC } from 'react'
 
 import { getImageUrl } from '@common/utils'
 import type { BaseComponent } from '@common/types'

@@ -2,7 +2,6 @@ import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { crx } from '@crxjs/vite-plugin'
-import { terser } from 'rollup-plugin-terser'
 
 import manifest from './manifest.config'
 
@@ -35,17 +34,19 @@ export default defineConfig(({ mode }) => {
     build: {
       sourcemap: false,
       assetsDir: 'bundle',
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true
+        },
+        keep_fnames: true,
+        keep_classnames: true,
+        mangle: false
+      },
       rollupOptions: {
         input: {
           policy: 'src/pages/PrivacyPolicy/index.html'
-        },
-        plugins: [
-          terser({
-            compress: {
-              drop_console: true
-            }
-          })
-        ]
+        }
       }
     },
     css: {

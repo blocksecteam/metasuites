@@ -95,6 +95,7 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 ### v2.0.0
 
 - [feat] Adapted to the new version of etherscan
+- [build] Turn off code obfuscation
 
 ### v1.6.1
 

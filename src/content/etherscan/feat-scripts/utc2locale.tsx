@@ -7,6 +7,7 @@ import {
   DATE_STANDARD_FORMAT_REG,
   type SCAN_PAGE_NAMES
 } from '@common/constants'
+import { widthScanV2Tooltip } from '@common/hoc'
 
 dayjs.extend(utc)
 
@@ -64,13 +65,12 @@ const replaceAgeElsTipContent = (ageEls?: NodeListOf<HTMLElement>) => {
     ageEls ??
     document.querySelectorAll<HTMLElement>('.showAge > span[data-bs-title]')
   for (let i = 0; i < _ageEls.length; i++) {
-    const el = _ageEls[i]
+    const el = widthScanV2Tooltip(_ageEls[i])
     const dateUTC = el.getAttribute('data-bs-title')
 
     if (dateUTC && DATE_STANDARD_FORMAT_REG.test(dateUTC)) {
       const localDate = dayjs.utc(dateUTC).local().format('YYYY-MM-DD HH:mm:ss')
       el.setAttribute('data-bs-title', localDate)
-      el.setAttribute('title', localDate)
     }
   }
 }

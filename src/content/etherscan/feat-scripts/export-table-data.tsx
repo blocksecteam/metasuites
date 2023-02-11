@@ -31,6 +31,7 @@ const genExportTableDataBtn = async (
   switch (pageName) {
     case SCAN_PAGES.ADDRESS.name:
       {
+        // Transactions
         const txContainerEl = document.querySelector<HTMLElement>(
           '#ContentPlaceHolder1_divTxDataInfo > div > div'
         )
@@ -39,6 +40,7 @@ const genExportTableDataBtn = async (
         )
         if (txContainerEl && txTable) setBtn(chain, txContainerEl, txTable)
 
+        // Internal Transactions
         const internalTxContainerEl = document.querySelector<HTMLElement>(
           '#internaltx .card-body > div > div > div'
         )
@@ -47,6 +49,14 @@ const genExportTableDataBtn = async (
         )
         if (internalTxContainerEl && interTxTable)
           setBtn(chain, internalTxContainerEl, interTxTable)
+
+        // Produced Blocks
+        const mineContainerEl = document.querySelector<HTMLElement>(
+          '#mine .card > .card-body > div'
+        )
+        const mineTable = document.querySelector<HTMLElement>('#mine table')
+        if (mineContainerEl && mineTable)
+          setBtn(chain, mineContainerEl, mineTable, 'tail')
 
         const iframes = document.querySelectorAll<HTMLIFrameElement>('iframe')
         for (let i = 0; i < iframes.length; ++i) {

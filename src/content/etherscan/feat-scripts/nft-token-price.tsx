@@ -18,23 +18,14 @@ const displayTokenPrice = async () => {
   )
 
   if (res?.success && res.data) {
-    const valuenftEl = document.querySelector<HTMLElement>(
-      '#ContentPlaceHolder1_tr_valuenft'
-    )
     const rootEl = document.createElement('div')
-    if (valuenftEl) {
-      valuenftEl.setAttribute('class', 'row align-items-center')
-      valuenftEl.parentNode?.insertBefore(rootEl, valuenftEl)
-    } else {
-      const overviewCardBodyEl = document.querySelector<HTMLElement>(
-        '#ContentPlaceHolder1_divSummary > div.row > div:first-of-type > .card > .card-body'
-      )
-      const hrEl = document.createElement('hr')
-      hrEl.classList.add('hr-space')
-      overviewCardBodyEl?.prepend(hrEl)
-      hrEl.parentNode?.insertBefore(rootEl, hrEl)
+    const marketEl = document.querySelector<HTMLElement>(
+      '#ContentPlaceHolder1_divSummary > div.row > div:nth-of-type(2) > .card > .card-body'
+    )
+    if (marketEl) {
+      marketEl.insertBefore(rootEl, marketEl.children[0].nextSibling)
+      createRoot(rootEl).render(<TokenPriceInfo data={res.data} />)
     }
-    createRoot(rootEl).render(<TokenPriceInfo data={res.data} />)
   }
 }
 

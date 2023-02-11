@@ -4,7 +4,6 @@ import type { PostAddressParams } from '@common/api/types'
 import { BASE_URL } from '@common/config/uri'
 import { IconDownload } from '@common/components'
 
-import styles from './index.module.less'
 import Button from '../Button'
 
 const DownloadSourceCodeBtn: FC<PostAddressParams> = ({ chain, address }) => {

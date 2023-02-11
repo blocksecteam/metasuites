@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@ant-design/plots": "^1.2.2",
-    "antd": "^5.0.2",
+    "antd": "^5.2.0",
     "big.js": "^6.2.1",
     "blockies-ts": "^1.0.0",
     "buffer": "^6.0.3",
@@ -60,12 +60,12 @@
     "less-loader": "^11.1.0",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "rollup-plugin-terser": "^7.0.2",
     "stylelint": "^13.0.0",
     "stylelint-config-css-modules": "^2.2.0",
     "stylelint-config-prettier": "^8.0.1",
     "stylelint-config-standard": "^20.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.1.0",
+    "terser": "^5.16.3",
     "tslib": "2.4.0",
     "typescript": "4.8.4",
     "vite": "3.1.4"
