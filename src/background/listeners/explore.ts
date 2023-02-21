@@ -6,7 +6,8 @@ import {
   GET_ADDRESS_FUND_FLOW,
   GET_NFT_INFO,
   GET_NFT_PRICE,
-  GET_ADDRESS_FUNDER_RISK
+  GET_ADDRESS_FUNDER_RISK,
+  GET_APPROVAL_RISK
 } from '@common/constants'
 import commonApi from '@common/api'
 import { isNil } from '@common/utils'
@@ -98,6 +99,19 @@ export default function initExploreRequest() {
   chromeEvent.on(GET_ADDRESS_FUNDER_RISK, async params => {
     try {
       const res = await commonApi.getAddressFunderRisk(params)
+      return {
+        success: isNil(res.code),
+        data: res,
+        message: res.message ?? 'success'
+      }
+    } catch (error) {
+      /** external exception */
+      return { success: false, data: error, message: 'error' }
+    }
+  })
+  chromeEvent.on(GET_APPROVAL_RISK, async params => {
+    try {
+      const res = await commonApi.getApprovalRisk(params)
       return {
         success: isNil(res.code),
         data: res,

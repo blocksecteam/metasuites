@@ -26,7 +26,7 @@ const setBtn = async (
 /** Show export data for a part of transactions */
 const genExportTableDataBtn = async (
   chain: string,
-  pageName: typeof SCAN_PAGE_NAMES[number]
+  pageName: (typeof SCAN_PAGE_NAMES)[number]
 ) => {
   switch (pageName) {
     case SCAN_PAGES.ADDRESS.name:

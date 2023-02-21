@@ -2,7 +2,7 @@ import { type FC } from 'react'
 import cls from 'classnames'
 
 import { getImageUrl } from '@common/utils'
-import { type AddressRiskLevel, RISK_OPTIONS } from '@common/constants'
+import { type AddressRiskLevel, ADDRESS_RISK_OPTIONS } from '@common/constants'
 
 import styles from './index.module.less'
 
@@ -11,7 +11,9 @@ interface Props {
 }
 
 const ComplianceScoreLabel: FC<Props> = ({ risk }) => {
-  const riskOpt = Object.values(RISK_OPTIONS).find(item => item.value === risk)
+  const riskOpt = Object.values(ADDRESS_RISK_OPTIONS).find(
+    item => item.value === risk
+  )
 
   return (
     <>
@@ -19,8 +21,8 @@ const ComplianceScoreLabel: FC<Props> = ({ risk }) => {
         <div
           className={cls(styles.complianceScoreLabel, {
             [styles.lowRisk]: [
-              RISK_OPTIONS.NONE.value,
-              RISK_OPTIONS.LOW.value
+              ADDRESS_RISK_OPTIONS.NONE.value,
+              ADDRESS_RISK_OPTIONS.LOW.value
             ].includes(riskOpt.value)
           })}
         >

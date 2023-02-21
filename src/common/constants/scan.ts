@@ -6,15 +6,16 @@ export const SCAN_PAGE_NAMES = [
   'BLOCKS',
   'ACCOUNTS',
   'TOKEN',
-  'TOKENTXNS'
+  'TOKENTXNS',
+  'TOKEN_APPROVAL_CHECKER'
 ] as const
 
 interface ScanPage {
   pattern: RegExp
-  name: typeof SCAN_PAGE_NAMES[number]
+  name: (typeof SCAN_PAGE_NAMES)[number]
 }
 
-export const SCAN_PAGES: Record<typeof SCAN_PAGE_NAMES[number], ScanPage> = {
+export const SCAN_PAGES: Record<(typeof SCAN_PAGE_NAMES)[number], ScanPage> = {
   TXS: {
     name: 'TXS',
     pattern: /^\/txs.?/
@@ -46,5 +47,9 @@ export const SCAN_PAGES: Record<typeof SCAN_PAGE_NAMES[number], ScanPage> = {
   TOKENTXNS: {
     name: 'TOKENTXNS',
     pattern: /^\/tokentxns.?/
+  },
+  TOKEN_APPROVAL_CHECKER: {
+    name: 'TOKEN_APPROVAL_CHECKER',
+    pattern: /^\/tokenapprovalchecker.?/
   }
 }

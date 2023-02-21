@@ -133,6 +133,7 @@ export type SearchResultType =
   | 'Token'
   | 'NFT'
   | 'GasPrice'
+  | 'ApprovalDiagnosis'
 
 export interface SearchResultItemValue {
   address?: string
@@ -149,4 +150,14 @@ export interface SearchResultItemValue {
 export type SearchResultItem = {
   type: SearchResultType
   value: SearchResultItemValue[]
+}
+
+export type ApprovalsRiskReq = {
+  chain: string
+  address: string
+}[]
+export interface ApprovalRisk {
+  risk: number
+  chain: string
+  address: string
 }

@@ -28,10 +28,10 @@ yarn install
 yarn
 ```
 
-- Build the project to the `/dist` folder with `yarn build`.
+- Build the project to the `/dist` folder with `yarn build:prod`.
 
 ```shell
-yarn build
+yarn build:prod
 ```
 
 - Optionally, you may run `yarn dev` to run dev mode.
@@ -74,6 +74,7 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - [x] Show owner's address label
 - [x] Show export data for a part of transactions
 - [x] Show alternative block explorers
+- [x] Show approval diagnosis
 - [ ] Sandwich Attack Risk Detection
 
 ## Supported Websites List
@@ -91,6 +92,13 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - opensea.io
 
 ## Changelog
+
+### v2.1.0
+
+- [feat]: Enhance the Token Approval of blockchain explorers
+- [fix]: Fix some issues when copying some items
+- [feat]: Adjust the style of labels
+- [feat]: Integrate approval diagnosis into search service
 
 ### v2.0.0
 

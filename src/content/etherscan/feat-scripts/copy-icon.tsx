@@ -1,0 +1,86 @@
+import { SCAN_PAGES, type SCAN_PAGE_NAMES } from '@common/constants'
+import { validOrigin } from '@common/utils'
+import {
+  handleBlockNodeListCopy,
+  handleTxnNodeListCopy
+} from '@common/scripts/copy-address'
+
+/** show copy icon */
+const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
+  switch (pageName) {
+    case SCAN_PAGES.TXS.name: {
+      const blockTags = document.querySelectorAll<HTMLElement>(
+        "#ContentPlaceHolder1_divTransactions table td a[href^='/block/']"
+      )
+      const txnTags = document.querySelectorAll<HTMLElement>(
+        '#ContentPlaceHolder1_divTransactions table tbody tr td:nth-of-type(2) .hash-tag'
+      )
+      handleBlockNodeListCopy(blockTags)
+      handleTxnNodeListCopy(txnTags)
+      break
+    }
+    case SCAN_PAGES.TOKEN.name:
+    case SCAN_PAGES.ADDRESS.name: {
+      const blockTags = document.querySelectorAll<HTMLElement>(
+        ".card tbody a[href^='/block/']"
+      )
+      handleBlockNodeListCopy(blockTags)
+      const txnTags = document.querySelectorAll<HTMLElement>(
+        '.card table tbody a.myFnExpandBox_searchVal'
+      )
+      handleTxnNodeListCopy(txnTags, 'self')
+      const pendingTxnTags = document.querySelectorAll<HTMLElement>(
+        ".card table tbody span.myFnExpandBox_searchVal > a[href^='/tx/']"
+      )
+      handleTxnNodeListCopy(pendingTxnTags)
+      const iframes = document.querySelectorAll('iframe')
+      for (let i = 0; i < iframes.length; ++i) {
+        const iframe = iframes[i]
+        if (validOrigin(iframe.src)) {
+          iframe.addEventListener(
+            'load',
+            function () {
+              const _document = iframe?.contentWindow?.document
+              if (_document) {
+                const iframeTxnTags = _document.querySelectorAll<HTMLElement>(
+                  ".table-responsive table tbody a.myFnExpandBox_searchVal, .table-responsive table tbody span.myFnExpandBox_searchVal > a[href*='tx/']"
+                )
+                handleTxnNodeListCopy(iframeTxnTags)
+                //TODO: token
+              }
+            },
+            true
+          )
+        }
+      }
+      break
+    }
+    case SCAN_PAGES.BLOCKS.name: {
+      const blockTags = document.querySelectorAll<HTMLElement>(
+        ".card tbody > tr > td > a[href^='/block/']"
+      )
+      handleBlockNodeListCopy(blockTags)
+      break
+    }
+    case SCAN_PAGES.TOKENTXNS.name: {
+      const txnTags = document.querySelectorAll<HTMLElement>(
+        ".table-responsive table tbody a.myFnExpandBox_searchVal, .table-responsive table tbody span.myFnExpandBox_searchVal > a[href*='tx/']"
+      )
+      handleTxnNodeListCopy(txnTags)
+      break
+    }
+    case SCAN_PAGES.TOKEN_APPROVAL_CHECKER.name: {
+      const txnTags = document.querySelectorAll<HTMLElement>(
+        'table.dataTable tbody tr td:nth-of-type(1) a.hash-tag'
+      )
+      const blockTags = document.querySelectorAll<HTMLElement>(
+        "table#mytable tbody a[href^='/block/']"
+      )
+      handleTxnNodeListCopy(txnTags)
+      handleBlockNodeListCopy(blockTags)
+      break
+    }
+  }
+}
+
+export default genCopyIconBtn

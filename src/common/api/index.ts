@@ -17,7 +17,9 @@ import type {
   NFTUserLabelsResponse,
   AddressFunderRiskResponse,
   PostComprehensiveSearchParams,
-  SearchResultItem
+  SearchResultItem,
+  ApprovalsRiskReq,
+  ApprovalRisk
 } from './types'
 
 export default {
@@ -72,5 +74,9 @@ export default {
   getComprehensiveSearchResults: (params: PostComprehensiveSearchParams) =>
     request
       .post('api/v1/comprehensive-search', { json: params })
-      .json<BscResponse<SearchResultItem[]>>()
+      .json<BscResponse<SearchResultItem[]>>(),
+  getApprovalRisk: (params: ApprovalsRiskReq) =>
+    request
+      .post('api/v1/approve-risk', { json: params })
+      .json<BscResponse<ApprovalRisk[]>>()
 }

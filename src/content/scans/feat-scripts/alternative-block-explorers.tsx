@@ -18,7 +18,7 @@ const setBtn = (containerEl: HTMLElement, block: string) => {
 
 /** Show alternative block explorers */
 const genAlternativeBlockExplorersBtn = async (
-  pageName: typeof SCAN_PAGE_NAMES[number],
+  pageName: (typeof SCAN_PAGE_NAMES)[number],
   chain: string
 ) => {
   if (!ALTERNATIVE_BLOCK_EXPLORES_SUPPORT_LIST.includes(chain)) return

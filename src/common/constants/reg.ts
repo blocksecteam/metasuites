@@ -7,9 +7,9 @@ export const PATTERN_EVM_ADDRESS_EXAC = /^0[x|X][A-Fa-f0-9]{40}$/
 
 export const PATTERN_EVM_ADDRESS_LOOSE = /0[x|X][A-Fa-f0-9]{40}/
 
-export const PATTERN_EVM_TX_HASH = /^0[x|X][A-Fa-f0-9]{64}$/
+export const PATTERN_EVM_TX_HASH = /0[x|X][A-Fa-f0-9]{64}/g
 
-export const PATTERN_BTC_TX_HASH = /^[A-Fa-f0-9]{64}$/
+export const PATTERN_BTC_TX_HASH = /[A-Fa-f0-9]{64}/g
 
 export const PATTERN_SELECTOR_EXACT = /^0[x|X][A-Fa-f0-9]{8}$/
 

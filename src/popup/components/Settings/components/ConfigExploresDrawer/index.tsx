@@ -66,11 +66,11 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               }
             />
             <Cell
-              title="Show copy icon for addresses"
+              title="Show enhanced copy icon"
               action={
                 <Switch
-                  checked={options.copyAddress as boolean}
-                  onChange={val => onChange('copyAddress', val)}
+                  checked={options.showCopyIcon as boolean}
+                  onChange={val => onChange('showCopyIcon', val)}
                 />
               }
             />
@@ -166,12 +166,21 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               }
             />
             <Cell
-              border={false}
               title="Show alternative block explorers"
               action={
                 <Switch
                   checked={options.alternativeBlockExplorers as boolean}
                   onChange={val => onChange('alternativeBlockExplorers', val)}
+                />
+              }
+            />
+            <Cell
+              border={false}
+              title="Show approval diagnosis"
+              action={
+                <Switch
+                  checked={options.approvalDiagnosis as boolean}
+                  onChange={val => onChange('approvalDiagnosis', val)}
                 />
               }
             />

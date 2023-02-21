@@ -11,7 +11,8 @@ import {
   initBlockPageScript,
   initTokenPageScript,
   initTokentxnsPageScript,
-  initBlocksPageScript
+  initBlocksPageScript,
+  initTokenApprovalCheckerPageScript
 } from './page-scripts'
 
 const init = async () => {
@@ -52,6 +53,9 @@ const init = async () => {
       break
     case SCAN_PAGES.BLOCKS.name:
       initBlocksPageScript(chain)
+      break
+    case SCAN_PAGES.TOKEN_APPROVAL_CHECKER.name:
+      initTokenApprovalCheckerPageScript(chain)
       break
   }
 }

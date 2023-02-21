@@ -12,7 +12,7 @@ import {
 
 const runScript = debounce(async () => {
   /** get user options */
-  const { enhancedLabels, supportWebList, copyAddress } = await store.get(
+  const { enhancedLabels, supportWebList, showCopyIcon } = await store.get(
     'options'
   )
 
@@ -31,7 +31,7 @@ const runScript = debounce(async () => {
   }
 
   /** Show copy icon for addresses */
-  if (copyAddress) genCopyAddressBtn()
+  if (showCopyIcon) genCopyAddressBtn()
 }, 300)
 
 export default runScript

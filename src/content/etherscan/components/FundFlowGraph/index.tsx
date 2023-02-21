@@ -284,7 +284,8 @@ const ModalFundFlow: FC<Props> = ({ visible, mainAddress, chain, onClose }) => {
                 <div className={styles.content}>
                   This chart provides the most valuable relevant transactions
                   and addresses for analysis (not all), and the results are for
-                  reference only.
+                  reference only. For a detailed fund flow map, click &ldquo;Try
+                  Enhanced Version&rdquo;, or go to MetaSleuth.
                 </div>
               </div>
               <Button

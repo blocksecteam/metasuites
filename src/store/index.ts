@@ -16,7 +16,7 @@ const OPTIONS = [
   'quick2debank',
   'decompileInDedaub',
   'utc2locale',
-  'copyAddress',
+  'showCopyIcon',
   'dethCode',
   'nftCollectionRisk',
   'nftOwnersLabel',
@@ -26,10 +26,11 @@ const OPTIONS = [
   'quick2NFTGo',
   'decompileInEthervm',
   'exportTableData',
-  'alternativeBlockExplorers'
+  'alternativeBlockExplorers',
+  'approvalDiagnosis'
 ] as const
 
-export type OptKeys = typeof OPTIONS[number]
+export type OptKeys = (typeof OPTIONS)[number]
 
 export interface OptWebsite extends Record<string, unknown> {
   name: string
@@ -59,7 +60,7 @@ export const defaultValue: StorageInfo = {
     quick2debank: true,
     decompileInDedaub: true,
     utc2locale: false,
-    copyAddress: true,
+    showCopyIcon: true,
     dethCode: true,
     nftCollectionRisk: true,
     nftOwnersLabel: true,
@@ -69,7 +70,8 @@ export const defaultValue: StorageInfo = {
     quick2NFTGo: true,
     decompileInEthervm: true,
     exportTableData: true,
-    alternativeBlockExplorers: true
+    alternativeBlockExplorers: true,
+    approvalDiagnosis: true
   }
 }
 

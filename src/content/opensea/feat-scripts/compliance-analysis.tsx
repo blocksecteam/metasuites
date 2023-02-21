@@ -13,7 +13,7 @@ const genComplianceRadarPlot = async () => {
   if (originGraphEl) return
 
   const containerEl = document.querySelector<HTMLElement>(
-    '#main > div > div > div > div:nth-of-type(5) > div > div:first-of-type > div, #main > div > div > div:nth-of-type(5) > div > div:first-of-type > div'
+    '#main > div > div > div > div:nth-of-type(5) > div > div:nth-of-type(2) > div, #main > div > div > div:nth-of-type(5) > div > div:nth-of-type(2) > div'
   )
 
   const linkEl = document.querySelector<HTMLElement>(

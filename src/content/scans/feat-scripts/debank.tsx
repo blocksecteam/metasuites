@@ -16,11 +16,11 @@ const genDeBankBtn = async () => {
   const mainAddress =
     document.querySelector<HTMLElement>('#mainaddress')?.innerText
   if (!mainAddress) return
-  const txHashEl = document.querySelector<HTMLElement>(
+  const containerEl = document.querySelector<HTMLElement>(
     '#content > div.container'
   )
-  if (txHashEl) {
-    setBtn(txHashEl, mainAddress)
+  if (containerEl) {
+    setBtn(containerEl, mainAddress)
   }
 }
 

@@ -103,14 +103,15 @@ const Shortcuts: FC = () => {
         )
       }
       case 'NFT':
-      case 'Token': {
+      case 'Token':
+      case 'ApprovalDiagnosis': {
         const image =
           item.image || blockies.create({ seed: item.name }).toDataURL()
         return (
           <div className={cls(styles.content, 'align-center')}>
             <img className={styles.iconImg} src={image} alt="" loading="lazy" />
             <div className={cls('flex1')} style={{ overflow: 'hidden' }}>
-              <div className={styles.title}>{item.name}</div>
+              <div className={styles.title}>{item.name ?? item.address}</div>
               {item.url && (
                 <a className={cls('text-ellipsis', styles.link)}>{item.url}</a>
               )}

@@ -1,9 +1,9 @@
 import type { CallbackResponse } from 'chrome-extension-core/lib/event'
+import { createRoot } from 'react-dom/client'
 
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import { GET_ADDRESS_LABEL } from '@common/constants'
-import { createRoot } from 'react-dom/client'
 
 import { MainAddressLabel } from '../components'
 
@@ -24,6 +24,9 @@ const genMainAddressLabel = async (chain: string) => {
         )
         const label = res.data[0].label
         if (label && containerEl) {
+          document
+            .querySelector('#ContentPlaceHolder1_divSummary > div')
+            ?.removeAttribute('style')
           const labelRootEl = document.createElement('div')
           labelRootEl.style.display = 'inline-block'
           containerEl?.appendChild(labelRootEl)

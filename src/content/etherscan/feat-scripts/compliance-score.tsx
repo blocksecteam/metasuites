@@ -9,11 +9,11 @@ import { ComplianceScoreLabel } from '../components'
 const getScanLabels = (): string[] => {
   const labels: string[] = []
 
-  const contractLabelEls = document.querySelectorAll<HTMLElement>(
-    '#ContentPlaceHolder1_divSummary > div:first-child > div:first-child > a, #ContentPlaceHolder1_divSummary > div:first-child > div:first-child .badge'
+  const addressLabelEls = document.querySelectorAll<HTMLElement>(
+    "#ContentPlaceHolder1_divSummary > div:first-child > div:first-child > a:not([data-bs-content-id='popover-ens-preview']), #ContentPlaceHolder1_divSummary > div:first-child > div:first-child span.badge:not([class*='bg-success'])"
   )
-  for (let i = 0; i < contractLabelEls.length; i++) {
-    labels.push(contractLabelEls[i].innerText)
+  for (let i = 0; i < addressLabelEls.length; i++) {
+    labels.push(addressLabelEls[i].innerText.trim())
   }
 
   return labels

@@ -2,8 +2,9 @@ import { createRoot } from 'react-dom/client'
 
 import { CopyButton } from '@common/components'
 import { pickAddress, getHrefQueryVariable } from '@common/utils'
+import { PATTERN_EVM_TX_HASH } from '@common/constants'
 
-const handleAddressOrTokenElCopy = (el: HTMLElement, address: string) => {
+const handleTargetElCopy = (el: HTMLElement, text: string) => {
   el.onmouseover = () => {
     const btnEl = el.querySelector<HTMLElement>(
       '.__metadock-copy-address-btn__'
@@ -21,7 +22,7 @@ const handleAddressOrTokenElCopy = (el: HTMLElement, address: string) => {
   rootEl.classList.add('__metadock-copy-address-btn__')
   rootEl.setAttribute('style', 'position:absolute;right:0;display:none')
   el?.appendChild(rootEl)
-  createRoot(rootEl).render(<CopyButton text={address} />)
+  createRoot(rootEl).render(<CopyButton text={text} />)
 }
 
 export const handleAddressNodeListCopy = (
@@ -41,7 +42,7 @@ export const handleAddressNodeListCopy = (
     } else if (title) {
       address = pickAddress(title)
     }
-    if (address) handleAddressOrTokenElCopy(el, address)
+    if (address) handleTargetElCopy(el, address)
   }
 }
 
@@ -51,6 +52,32 @@ export const handleTokenNodeListCopy = (tokenTags: NodeListOf<HTMLElement>) => {
     const href = el.getAttribute('href')
     if (!href) continue
     const address = getHrefQueryVariable(href, 'a') ?? pickAddress(href)
-    if (address) handleAddressOrTokenElCopy(el, address)
+    if (address) handleTargetElCopy(el, address)
+  }
+}
+
+export const handleTxnNodeListCopy = (
+  txnTags: NodeListOf<HTMLElement>,
+  targetPosition: 'self' | 'parent' = 'parent'
+) => {
+  for (let i = 0; i < txnTags.length; i++) {
+    const el = txnTags[i]
+    const href = el.getAttribute('href')
+    if (!href) continue
+    const txnHash = href.match(PATTERN_EVM_TX_HASH)?.[0]
+    const hashTagEl = targetPosition === 'parent' ? el.parentElement : el
+    if (hashTagEl && txnHash) {
+      handleTargetElCopy(hashTagEl, txnHash)
+    }
+  }
+}
+
+export const handleBlockNodeListCopy = (blockTags: NodeListOf<HTMLElement>) => {
+  for (let i = 0; i < blockTags.length; i++) {
+    const el = blockTags[i]
+    const href = el.getAttribute('href')
+    if (!href) continue
+    const block = el.innerText.trim()
+    handleTargetElCopy(el, block)
   }
 }

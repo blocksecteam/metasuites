@@ -6,6 +6,34 @@
   "description": "插件项目",
   "glyphs": [
     {
+      "icon_id": "28075377",
+      "name": "79-医院",
+      "font_class": "a-79-yiyuan",
+      "unicode": "e8d6",
+      "unicode_decimal": 59606
+    },
+    {
+      "icon_id": "30122728",
+      "name": "流向管理",
+      "font_class": "liuxiangguanli",
+      "unicode": "e660",
+      "unicode_decimal": 58976
+    },
+    {
+      "icon_id": "579920",
+      "name": "Android更多",
+      "font_class": "androidgengduo",
+      "unicode": "e78d",
+      "unicode_decimal": 59277
+    },
+    {
+      "icon_id": "29391835",
+      "name": "expand-alt",
+      "font_class": "expand-alt",
+      "unicode": "e95d",
+      "unicode_decimal": 59741
+    },
+    {
       "icon_id": "1526409",
       "name": "设置",
       "font_class": "shezhi",

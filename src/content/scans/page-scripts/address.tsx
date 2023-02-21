@@ -13,11 +13,12 @@ import {
   genDeBankBtn,
   genDecompileInDedaubBtn,
   convertUTC2locale,
-  genCopyAddressBtn,
+  genCopyIconBtn,
   genNFTGoBtn,
   displayContractFundFrom,
   genDecompileInEthervmBtn,
-  genExportTableDataBtn
+  genExportTableDataBtn,
+  genApprovalDiagnosisBtn
 } from '../feat-scripts'
 
 const initAddressPageScript = async (chain: string) => {
@@ -31,12 +32,13 @@ const initAddressPageScript = async (chain: string) => {
     quick2debank,
     decompileInDedaub,
     utc2locale,
-    copyAddress,
+    showCopyIcon,
     dethCode,
     quick2NFTGo,
     addressFunderLabel,
     decompileInEthervm,
-    exportTableData
+    exportTableData,
+    approvalDiagnosis
   } = await store.get('options')
 
   if (enhancedSignatures) genEnhancedSignatures(chain)
@@ -52,11 +54,12 @@ const initAddressPageScript = async (chain: string) => {
   if (quick2debank) genDeBankBtn()
   if (decompileInDedaub) genDecompileInDedaubBtn(chain)
   if (utc2locale) convertUTC2locale(SCAN_PAGES.ADDRESS.name)
-  if (copyAddress) genCopyAddressBtn(SCAN_PAGES.ADDRESS.name)
+  if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.ADDRESS.name)
   if (quick2NFTGo) genNFTGoBtn()
   if (addressFunderLabel) displayContractFundFrom(chain)
   if (decompileInEthervm) genDecompileInEthervmBtn(chain)
   if (exportTableData) genExportTableDataBtn(chain, SCAN_PAGES.ADDRESS.name)
+  if (approvalDiagnosis) genApprovalDiagnosisBtn()
 }
 
 export default initAddressPageScript
