@@ -2,12 +2,12 @@ import { createRoot } from 'react-dom/client'
 
 import { chromeEvent } from '@common/event'
 import { GET_NFT_INFO } from '@common/constants'
-import type { NFTInfoResponse } from '@common/api/types'
+import type { NFTInfoRes } from '@common/api/types'
 
 import { NFTGoBtn } from '../components'
 
 const setBtn = async (containerEl: HTMLElement, mainAddress: string) => {
-  const res = await chromeEvent.emit<typeof GET_NFT_INFO, NFTInfoResponse>(
+  const res = await chromeEvent.emit<typeof GET_NFT_INFO, NFTInfoRes>(
     GET_NFT_INFO,
     mainAddress
   )

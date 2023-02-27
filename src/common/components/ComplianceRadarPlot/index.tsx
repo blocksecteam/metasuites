@@ -3,7 +3,7 @@ import { Radar } from '@ant-design/plots'
 import cls from 'classnames'
 
 import type { BaseComponent } from '@common/types'
-import type { NFTRiskResponse } from '@common/api/types'
+import type { NFTRiskRes } from '@common/api/types'
 import { NFT_RISKS } from '@common/constants'
 
 import styles from './index.module.less'
@@ -11,7 +11,7 @@ import styles from './index.module.less'
 interface Props extends BaseComponent {
   width?: number
   height?: number
-  data: NFTRiskResponse
+  data: NFTRiskRes
 }
 
 const ComplianceRadarPlot: FC<Props> = ({
@@ -21,7 +21,7 @@ const ComplianceRadarPlot: FC<Props> = ({
   height = 182,
   data
 }) => {
-  const getConfig = (data: NFTRiskResponse) => {
+  const getConfig = (data: NFTRiskRes) => {
     return {
       data: [
         {

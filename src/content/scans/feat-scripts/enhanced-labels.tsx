@@ -4,7 +4,7 @@ import { isAddress, validOrigin } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import {
-  GET_ADDRESS_LABEL,
+  GET_ADDRESS_LABELS,
   TABLE_LIST_ADDRESS_SELECTORS
 } from '@common/constants'
 import { CopyButton } from '@common/components'
@@ -17,8 +17,8 @@ const handleReplace = async (
   queryList: string[]
 ) => {
   if (!queryList.length) return
-  const res = await chromeEvent.emit<typeof GET_ADDRESS_LABEL, AddressLabel[]>(
-    GET_ADDRESS_LABEL,
+  const res = await chromeEvent.emit<typeof GET_ADDRESS_LABELS, AddressLabel[]>(
+    GET_ADDRESS_LABELS,
     {
       chain: chain,
       addresses: queryList

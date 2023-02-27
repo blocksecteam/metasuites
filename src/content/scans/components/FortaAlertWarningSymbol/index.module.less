@@ -1,0 +1,64 @@
+@import '@common/styles/common.less';
+
+.tooltipTitle {
+  .align-center;
+
+  span {
+    white-space: nowrap;
+  }
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+  &:hover {
+    .overlay {
+      visibility: visible;
+    }
+  }
+  .reference {
+    cursor: pointer;
+  }
+  .overlay {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    padding-bottom: 10px;
+    .overlayInner {
+      position: relative;
+      border-radius: 0.5rem;
+      background: #111b36;
+      padding: 0.5rem;
+      color: #fff;
+      .align-center;
+      &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-top: 6px solid #111b36;
+        bottom: 0;
+        transform: translateY(10px);
+        left: var(--overlay-offset-x);
+      }
+      span {
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+[data-bs-theme='dark'] {
+  .tooltip {
+    .overlay {
+      .overlayInner {
+        background: #333;
+        opacity: 0.95;
+        &::after {
+          border-top: 6px solid #333;
+          opacity: 0.95;
+        }
+      }
+    }
+  }
+}

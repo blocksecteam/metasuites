@@ -10,7 +10,7 @@ const getScanLabels = (): string[] => {
   const labels: string[] = []
 
   const addressLabelEls = document.querySelectorAll<HTMLElement>(
-    "#ContentPlaceHolder1_divSummary > div:first-child > div:first-child > a:not([data-bs-content-id='popover-ens-preview']), #ContentPlaceHolder1_divSummary > div:first-child > div:first-child span.badge:not([class*='bg-success'])"
+    '#ContentPlaceHolder1_divLabels > .badge'
   )
   for (let i = 0; i < addressLabelEls.length; i++) {
     labels.push(addressLabelEls[i].innerText.trim())

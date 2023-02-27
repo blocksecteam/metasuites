@@ -175,12 +175,30 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               }
             />
             <Cell
-              border={false}
               title="Show approval diagnosis"
               action={
                 <Switch
                   checked={options.approvalDiagnosis as boolean}
                   onChange={val => onChange('approvalDiagnosis', val)}
+                />
+              }
+            />
+            <Cell
+              title="Show enhanced address labels by Forta"
+              action={
+                <Switch
+                  checked={options.enhancedFortaLabels as boolean}
+                  onChange={val => onChange('enhancedFortaLabels', val)}
+                />
+              }
+            />
+            <Cell
+              border={false}
+              title="Alert suspicious transactions by Forta"
+              action={
+                <Switch
+                  checked={options.txnFortaAlert as boolean}
+                  onChange={val => onChange('txnFortaAlert', val)}
                 />
               }
             />

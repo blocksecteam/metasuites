@@ -18,7 +18,9 @@ import {
   genDecompileInEthervmBtn,
   genExportTableDataBtn,
   genCopyIconBtn,
-  genApprovalDiagnosisBtn
+  genApprovalDiagnosisBtn,
+  genMainAddressFortaLabels,
+  scanTxnFortaAlert
 } from '../feat-scripts'
 
 const initAddressPageScript = async (chain: string) => {
@@ -38,7 +40,9 @@ const initAddressPageScript = async (chain: string) => {
     decompileInEthervm,
     exportTableData,
     showCopyIcon,
-    approvalDiagnosis
+    approvalDiagnosis,
+    enhancedFortaLabels,
+    txnFortaAlert
   } = await store.get('options')
 
   if (enhancedSignatures) genEnhancedSignatures(chain)
@@ -60,6 +64,8 @@ const initAddressPageScript = async (chain: string) => {
   if (exportTableData) genExportTableDataBtn(chain, SCAN_PAGES.ADDRESS.name)
   if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.ADDRESS.name)
   if (approvalDiagnosis) genApprovalDiagnosisBtn()
+  if (enhancedFortaLabels) genMainAddressFortaLabels(chain)
+  if (txnFortaAlert) scanTxnFortaAlert(chain, SCAN_PAGES.ADDRESS.name)
 }
 
 export default initAddressPageScript

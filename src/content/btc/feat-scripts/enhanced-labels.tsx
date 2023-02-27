@@ -1,15 +1,15 @@
 import { pickAddress } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
-import { GET_ADDRESS_LABEL } from '@common/constants'
+import { GET_ADDRESS_LABELS } from '@common/constants'
 
 const handleReplace = async (
   chain: string,
   elements: HTMLElement[],
   queryList: string[]
 ) => {
-  const res = await chromeEvent.emit<typeof GET_ADDRESS_LABEL, AddressLabel[]>(
-    GET_ADDRESS_LABEL,
+  const res = await chromeEvent.emit<typeof GET_ADDRESS_LABELS, AddressLabel[]>(
+    GET_ADDRESS_LABELS,
     {
       chain: chain,
       addresses: queryList

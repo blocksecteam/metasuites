@@ -7,7 +7,7 @@ import {
   OPENSEA_PAGES,
   type OPENSEA_PAGE_NAMES
 } from '@common/constants'
-import type { NFTUserLabelsResponse } from '@common/api/types'
+import type { NFTUserLabelsRes } from '@common/api/types'
 import { PhishAddressLabel } from '@common/components'
 
 const setLabels = async (
@@ -19,7 +19,7 @@ const setLabels = async (
     const address = addresses[0]
     const res = await chromeEvent.emit<
       typeof GET_NFT_USER_LABELS,
-      NFTUserLabelsResponse
+      NFTUserLabelsRes
     >(GET_NFT_USER_LABELS, {
       addresses: addresses as string[]
     })
@@ -37,7 +37,7 @@ const setLabels = async (
     // batch append
     const res = await chromeEvent.emit<
       typeof GET_NFT_USER_LABELS,
-      NFTUserLabelsResponse
+      NFTUserLabelsRes
     >(GET_NFT_USER_LABELS, {
       addresses: addresses as string[]
     })
@@ -75,7 +75,7 @@ const batchProcessAddressList = (addressEls: HTMLElement[]) => {
 }
 
 const genPhishAddressLabel = async (
-  pageName: typeof OPENSEA_PAGE_NAMES[number]
+  pageName: (typeof OPENSEA_PAGE_NAMES)[number]
 ) => {
   switch (pageName) {
     case OPENSEA_PAGES.COLLECTION.name:

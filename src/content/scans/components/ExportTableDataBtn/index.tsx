@@ -10,7 +10,7 @@ import {
   downloadCsv
 } from '@common/utils'
 import { chromeEvent } from '@common/event'
-import { GET_ADDRESS_LABEL } from '@common/constants'
+import { GET_ADDRESS_LABELS } from '@common/constants'
 import type { AddressLabel } from '@common/api/types'
 
 interface Props {
@@ -121,9 +121,9 @@ const ExportTableDataBtn: FC<Props> = ({ chain, table }) => {
     })
     if ((containsFrom && containsTo) || containsToken) {
       const res = await chromeEvent.emit<
-        typeof GET_ADDRESS_LABEL,
+        typeof GET_ADDRESS_LABELS,
         AddressLabel[]
-      >(GET_ADDRESS_LABEL, {
+      >(GET_ADDRESS_LABELS, {
         chain: chain,
         addresses: labelAddresses
       })
@@ -196,6 +196,7 @@ const ExportTableDataBtn: FC<Props> = ({ chain, table }) => {
       menus={menus}
       onClick={onClick}
       btnClassNames="btn btn-xs btn-primary dropdown-toggle"
+      btnStyle={{ lineHeight: 1.7 }}
     >
       <IconDownload size={12} mr={4} color="#fff" />
       Export Current Page Data

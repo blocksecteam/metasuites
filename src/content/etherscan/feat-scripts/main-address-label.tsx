@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
-import { GET_ADDRESS_LABEL } from '@common/constants'
+import { GET_ADDRESS_LABELS } from '@common/constants'
 
 import { MainAddressLabel } from '../components'
 
@@ -16,7 +16,7 @@ const genMainAddressLabel = async (chain: string) => {
   if (!mainAddress) return
 
   await chromeEvent
-    .emit(GET_ADDRESS_LABEL, { chain: chain, addresses: [mainAddress] })
+    .emit(GET_ADDRESS_LABELS, { chain: chain, addresses: [mainAddress] })
     .then((res: CallbackResponse<AddressLabel[]> | undefined) => {
       if (res?.success && res.data.length) {
         const containerEl = document.querySelector(

@@ -3,7 +3,7 @@ import type { Selection, BaseType } from 'd3-selection'
 import Big from 'big.js'
 import * as d3 from 'd3'
 
-import type { FundFlowNode, FundFlowResponse } from '@common/api/types'
+import type { FundFlowNode, FundFlowRes } from '@common/api/types'
 import { getImageUrl, saveAsSvg, saveSvgAsPng } from '@common/utils'
 import { SLEUTH_DOMAIN } from '@common/config/uri'
 import {
@@ -184,7 +184,7 @@ export const clearGraphTemp = () => {
   })
 }
 
-export const initNodes = (fundFlow: FundFlowResponse) => {
+export const initNodes = (fundFlow: FundFlowRes) => {
   const nodes = selectAll('#graph0  .node')
 
   nodes.each(function (d3Ele: any) {
@@ -275,7 +275,7 @@ export const toggleShowAddressIdx = (
   })
 }
 
-export const getFundFlowImages = (fundFlow?: FundFlowResponse) => {
+export const getFundFlowImages = (fundFlow?: FundFlowRes) => {
   return [
     ...Array.from(new Set(fundFlow?.nodes?.map(v => v.logo))),
     ...EXT_SUPPORT_WEB_LIST.map(v => v.logo),

@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client'
 
 import { chromeEvent } from '@common/event'
 import { GET_ADDRESS_FUNDER_RISK } from '@common/constants'
-import type { AddressFunderRiskResponse } from '@common/api/types'
+import type { AddressFunderRiskRes } from '@common/api/types'
 import { pickAddress } from '@common/utils'
 
 import { FundFromTag } from '../components'
@@ -27,7 +27,7 @@ const displayContractFundFrom = async (chain: string) => {
 
   const res = await chromeEvent.emit<
     typeof GET_ADDRESS_FUNDER_RISK,
-    AddressFunderRiskResponse
+    AddressFunderRiskRes
   >(GET_ADDRESS_FUNDER_RISK, {
     address,
     chain

@@ -4,7 +4,7 @@ import { validOrigin, isAddress } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import {
-  GET_ADDRESS_LABEL,
+  GET_ADDRESS_LABELS,
   TABLE_LIST_ADDRESS_SELECTORS_V2
 } from '@common/constants'
 import { widthScanV2Tooltip } from '@common/hoc'
@@ -17,8 +17,8 @@ const handleReplace = async (
   queryList: string[]
 ) => {
   if (!queryList.length) return
-  const res = await chromeEvent.emit<typeof GET_ADDRESS_LABEL, AddressLabel[]>(
-    GET_ADDRESS_LABEL,
+  const res = await chromeEvent.emit<typeof GET_ADDRESS_LABELS, AddressLabel[]>(
+    GET_ADDRESS_LABELS,
     {
       chain: chain,
       addresses: queryList

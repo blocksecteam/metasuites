@@ -6,7 +6,8 @@ import {
   genEnhancedSignatures,
   convertUTC2locale,
   genExportTableDataBtn,
-  genCopyIconBtn
+  genCopyIconBtn,
+  scanTxnFortaAlert
 } from '../feat-scripts'
 
 const initTxsPageScript = async (chain: string) => {
@@ -15,7 +16,8 @@ const initTxsPageScript = async (chain: string) => {
     enhancedSignatures,
     utc2locale,
     exportTableData,
-    showCopyIcon
+    showCopyIcon,
+    txnFortaAlert
   } = await store.get('options')
 
   if (enhancedLabels) {
@@ -27,6 +29,7 @@ const initTxsPageScript = async (chain: string) => {
   if (utc2locale) convertUTC2locale(SCAN_PAGES.TXS.name)
   if (exportTableData) genExportTableDataBtn(chain, SCAN_PAGES.TXS.name)
   if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.TXS.name)
+  if (txnFortaAlert) scanTxnFortaAlert(chain, SCAN_PAGES.TXS.name)
 }
 
 export default initTxsPageScript

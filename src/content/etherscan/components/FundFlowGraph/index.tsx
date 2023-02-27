@@ -15,11 +15,7 @@ import { debounce, isNil } from 'lodash-es'
 
 import { EXT_SUPPORT_WEB_LIST, GET_ADDRESS_FUND_FLOW } from '@common/constants'
 import { chromeEvent } from '@common/event'
-import type {
-  FundFlowResponse,
-  FundFlowEdge,
-  FundFlowNode
-} from '@common/api/types'
+import type { FundFlowRes, FundFlowEdge, FundFlowNode } from '@common/api/types'
 import { getImageUrl, getSubStr, unique } from '@common/utils'
 import { IconDownload, Switch } from '@common/components'
 import { SLEUTH_DOMAIN } from '@common/config/uri'
@@ -43,7 +39,7 @@ interface Props {
 const ModalFundFlow: FC<Props> = ({ visible, mainAddress, chain, onClose }) => {
   const graphvizRef = useRef<any>(null)
   const graphContainerRef = useRef<HTMLDivElement>(null)
-  const [fundFlow, setFundFlow] = useState<FundFlowResponse>()
+  const [fundFlow, setFundFlow] = useState<FundFlowRes>()
   const [error, setError] = useState(false)
   const [loading, setLoading] = useState(false)
   const [addressKeywords, setAddressKeywords] = useState('')
@@ -61,7 +57,7 @@ const ModalFundFlow: FC<Props> = ({ visible, mainAddress, chain, onClose }) => {
     setLoading(true)
     const res = await chromeEvent.emit<
       typeof GET_ADDRESS_FUND_FLOW,
-      FundFlowResponse
+      FundFlowRes
     >(GET_ADDRESS_FUND_FLOW, {
       chain: chain,
       address: mainAddress
@@ -289,11 +285,18 @@ const ModalFundFlow: FC<Props> = ({ visible, mainAddress, chain, onClose }) => {
                 </div>
               </div>
               <Button
+                className="align-center"
                 type="primary"
                 onClick={() =>
                   window.open(`${SLEUTH_DOMAIN}/result/${chain}/${mainAddress}`)
                 }
               >
+                <img
+                  className="me-1"
+                  style={{ width: '18px' }}
+                  src="https://assets.blocksec.com/image/1677135239463-4.png"
+                  alt=""
+                />
                 Try Enhanced Version
               </Button>
             </div>

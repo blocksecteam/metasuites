@@ -75,6 +75,8 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - [x] Show export data for a part of transactions
 - [x] Show alternative block explorers
 - [x] Show approval diagnosis
+- [x] Show enhanced address labels by Forta
+- [x] Alert suspicious transactions by Forta
 - [ ] Sandwich Attack Risk Detection
 
 ## Supported Websites List
@@ -92,6 +94,12 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - opensea.io
 
 ## Changelog
+
+### v2.2.0
+
+- [feat] Display labels from Forta bots
+- [feat] Mark suspicious transactions based on Forta alert
+- [feat] Support Approval Diagnosis
 
 ### v2.1.0
 

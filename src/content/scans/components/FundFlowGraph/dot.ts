@@ -1,8 +1,4 @@
-import type {
-  FundFlowResponse,
-  FundFlowNode,
-  FundFlowEdge
-} from '@common/api/types'
+import type { FundFlowRes, FundFlowNode, FundFlowEdge } from '@common/api/types'
 import { swapItem } from '@common/utils'
 import { EXT_SUPPORT_WEB_LIST, DEFAULT_CHAIN_ICON } from '@common/constants'
 
@@ -136,7 +132,7 @@ const sort = (edges: FundFlowEdge[]) => {
 const genDotStr = (
   chain: string,
   mainAddress: string,
-  fundFlow: FundFlowResponse
+  fundFlow: FundFlowRes
 ) => {
   const sortedEdges = sort(fundFlow.edges).filter(edge => edge.selected)
   const addressMap: AddressMap = new Map()

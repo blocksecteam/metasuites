@@ -81,7 +81,7 @@ const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       const txnTags = document.querySelectorAll<HTMLElement>(
         "a.hash-tag.myFnExpandBox_searchVal[href^='/tx/'], span.hash-tag > a[href^='/tx/']"
       )
-      handleTxnNodeListCopy(txnTags)
+      handleTxnNodeListCopy(txnTags, 'self')
       const internalTxnTags = document.querySelectorAll<HTMLElement>(
         "#ContentPlaceHolder1_divinternaltxtable table tbody tr td:nth-of-type(1) a.hash-tag[href^='/tx/']"
       )

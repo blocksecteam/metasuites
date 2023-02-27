@@ -11,6 +11,7 @@ const setBtn = async (
 ) => {
   const btnRootEl = document.createElement('div')
   btnRootEl.style.display = 'inline-block'
+  btnRootEl.style.verticalAlign = 'middle'
   if (position === 'head') {
     btnRootEl.classList.add('mr-2')
     containerEl?.prepend(btnRootEl)

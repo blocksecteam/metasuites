@@ -1,19 +1,30 @@
-import React, { type FC, type PropsWithChildren, useState } from 'react'
+import React, {
+  type FC,
+  type PropsWithChildren,
+  useState,
+  type CSSProperties
+} from 'react'
 import cls from 'classnames'
+
+import type { BaseComponent } from '@common/types'
 
 import styles from './index.module.less'
 
 export type DropdownMenus = { key: string; label: string }[]
 
-interface Props {
+interface Props extends BaseComponent {
   btnClassNames?: string
+  btnStyle?: CSSProperties
   menus: DropdownMenus
   onClick: (key: string) => void
 }
 
 const Dropdown: FC<PropsWithChildren<Props>> = ({
+  className,
+  style,
   menus,
   btnClassNames,
+  btnStyle = {},
   onClick,
   children
 }) => {
@@ -26,13 +37,14 @@ const Dropdown: FC<PropsWithChildren<Props>> = ({
 
   return (
     <div
-      className={cls(styles.dropdown, { [styles.open]: open })}
+      style={style}
+      className={cls(styles.dropdown, { [styles.open]: open }, className)}
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
       <a
         className={cls(styles.btn, btnClassNames)}
-        style={{ color: '#fff', cursor: 'pointer' }}
+        style={Object.assign({ color: '#fff', cursor: 'pointer' }, btnStyle)}
       >
         {children}
       </a>

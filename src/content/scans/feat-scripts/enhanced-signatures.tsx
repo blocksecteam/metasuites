@@ -2,7 +2,7 @@ import { isMethod } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { MethodLabel } from '@common/api/types'
 import {
-  GET_ADDRESS_METHOD,
+  GET_ADDRESS_METHODS,
   TABLE_LIST_METHOD_SELECTORS
 } from '@common/constants'
 
@@ -11,8 +11,8 @@ const handleReplace = async (
   elements: HTMLElement[],
   queryList: string[]
 ) => {
-  const res = await chromeEvent.emit<typeof GET_ADDRESS_METHOD, MethodLabel[]>(
-    GET_ADDRESS_METHOD,
+  const res = await chromeEvent.emit<typeof GET_ADDRESS_METHODS, MethodLabel[]>(
+    GET_ADDRESS_METHODS,
     { codeHash: queryList }
   )
 

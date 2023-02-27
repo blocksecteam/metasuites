@@ -1,13 +1,13 @@
 import { type FC } from 'react'
 import cls from 'classnames'
 
-import type { AddressFunderRiskResponse } from '@common/api/types'
+import type { AddressFunderRiskRes } from '@common/api/types'
 
 import styles from './index.module.less'
 import TokenSymbol from '../TokenSymbol'
 
 interface Props {
-  data: AddressFunderRiskResponse
+  data: AddressFunderRiskRes
 }
 
 const FundFromTag: FC<Props> = ({ data: { risky, label, address } }) => {

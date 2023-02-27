@@ -27,7 +27,9 @@ const OPTIONS = [
   'decompileInEthervm',
   'exportTableData',
   'alternativeBlockExplorers',
-  'approvalDiagnosis'
+  'approvalDiagnosis',
+  'enhancedFortaLabels',
+  'txnFortaAlert'
 ] as const
 
 export type OptKeys = (typeof OPTIONS)[number]
@@ -71,7 +73,9 @@ export const defaultValue: StorageInfo = {
     decompileInEthervm: true,
     exportTableData: true,
     alternativeBlockExplorers: true,
-    approvalDiagnosis: true
+    approvalDiagnosis: true,
+    enhancedFortaLabels: true,
+    txnFortaAlert: true
   }
 }
 

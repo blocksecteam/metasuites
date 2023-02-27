@@ -6,11 +6,11 @@ import {
   type OPENSEA_PAGE_NAMES,
   GET_NFT_RARITY_RANK
 } from '@common/constants'
-import type { NFTRarityRankResponse, NFTRarityRankReq } from '@common/api/types'
+import type { NFTRarityRankRes, NFTRarityRankReq } from '@common/api/types'
 import { RarityLabel } from '@common/components'
 
 const genRarityRankLabel = async (
-  pageName: typeof OPENSEA_PAGE_NAMES[number]
+  pageName: (typeof OPENSEA_PAGE_NAMES)[number]
 ) => {
   switch (pageName) {
     case OPENSEA_PAGES.COLLECTION.name:
@@ -38,7 +38,7 @@ const genRarityRankLabel = async (
         if (assets.tokenIds.length) {
           const res = await chromeEvent.emit<
             typeof GET_NFT_RARITY_RANK,
-            NFTRarityRankResponse
+            NFTRarityRankRes
           >(GET_NFT_RARITY_RANK, assets)
 
           if (res?.success && res.data) {
@@ -76,7 +76,7 @@ const genRarityRankLabel = async (
         if (containerEl && address && id) {
           const res = await chromeEvent.emit<
             typeof GET_NFT_RARITY_RANK,
-            NFTRarityRankResponse
+            NFTRarityRankRes
           >(GET_NFT_RARITY_RANK, { address, tokenIds: [id] })
 
           if (res?.success && res.data && res.data.length) {

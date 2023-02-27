@@ -6,5 +6,5 @@ export const getNodeValue = (content: HTMLElement | null): string | null => {
       arr.push(content.childNodes[i].nodeValue)
     }
   }
-  return arr.join('')
+  return arr.join('').trim()
 }

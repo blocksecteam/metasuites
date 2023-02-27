@@ -11,7 +11,7 @@ export interface TransferAddress {
   risk: AddressRiskLevel
 }
 
-export interface PostAddressListParams {
+export interface PostAddressesParams {
   chain: string
   addresses: string[]
 }
@@ -32,19 +32,15 @@ export interface MethodLabel {
   function: string
 }
 
-export interface PostAddressMethodParams {
+export interface AddressMethodsReq {
   codeHash: string[]
 }
 
-export interface PostAddressRiskLabel {
-  labels?: string[]
+export interface AddressRiskScoreReq extends PostAddressParams {
+  addressLabel?: { labels?: string[]; nameTag?: string[] }
 }
 
-export interface PostAddressRiskScoreParams extends PostAddressParams {
-  addressLabel?: PostAddressRiskLabel
-}
-
-export interface FundFlowResponse {
+export interface FundFlowRes {
   nodes: FundFlowNode[]
   edges: FundFlowEdge[]
 }
@@ -75,7 +71,7 @@ export interface FundFlowEdge extends Record<string, unknown> {
   selected?: boolean
 }
 
-export interface NFTInfoResponse {
+export interface NFTInfoRes {
   chain: string
   collectionName: string
   nftGoUrl: string
@@ -98,9 +94,9 @@ export interface NFTRarityRankResItem {
   tokenId: string
 }
 
-export type NFTRarityRankResponse = NFTRarityRankResItem[]
+export type NFTRarityRankRes = NFTRarityRankResItem[]
 
-export interface NFTRiskResponse {
+export interface NFTRiskRes {
   onChain: NFTRiskLevel
   offChain: NFTRiskLevel
   market: NFTRiskLevel
@@ -110,17 +106,17 @@ export interface NFTUserLabelsReq {
   addresses: string[]
 }
 
-export interface NFTUserLabelsResponse {
+export interface NFTUserLabelsRes {
   labels: Record<string, string>
 }
 
-export interface AddressFunderRiskResponse {
+export interface AddressFunderRiskRes {
   label: string
   risky: boolean
   address: string
 }
 
-export interface PostComprehensiveSearchParams {
+export interface ComprehensiveSearchReq {
   type?: number
   keyword: string
 }
@@ -161,3 +157,17 @@ export interface ApprovalRisk {
   chain: string
   address: string
 }
+
+export interface FortaAlertReq {
+  chain: string
+  address?: string
+  txHashes?: string[]
+  blockNumberRange?: { start: number; end: number }
+}
+
+export type FortaAlertRes = {
+  txHash?: string
+  alertUrl: string
+  label: string
+  subscribeUrl: string
+}[]

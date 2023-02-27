@@ -5,16 +5,23 @@ import {
   genCopyIconBtn,
   genEnhancedLabels,
   convertUTC2locale,
-  genExportTableDataBtn
+  genExportTableDataBtn,
+  scanTxnFortaAlert
 } from '../feat-scripts'
 
 const initTokentxnsPageScript = async (chain: string) => {
-  const { showCopyIcon, enhancedLabels, utc2locale, exportTableData } =
-    await store.get('options')
+  const {
+    showCopyIcon,
+    enhancedLabels,
+    utc2locale,
+    exportTableData,
+    txnFortaAlert
+  } = await store.get('options')
   if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.TOKENTXNS.name)
   if (enhancedLabels) genEnhancedLabels(chain)
   if (utc2locale) convertUTC2locale(SCAN_PAGES.TOKENTXNS.name)
   if (exportTableData) genExportTableDataBtn(chain, SCAN_PAGES.TOKENTXNS.name)
+  if (txnFortaAlert) scanTxnFortaAlert(chain, SCAN_PAGES.TOKENTXNS.name)
 }
 
 export default initTokentxnsPageScript

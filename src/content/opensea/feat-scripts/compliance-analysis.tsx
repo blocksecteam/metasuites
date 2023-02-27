@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { ComplianceRadarPlot } from '@common/components'
 import { chromeEvent } from '@common/event'
 import { GET_NFT_RISK, EXT_SUPPORT_WEB_LIST } from '@common/constants'
-import type { NFTRiskResponse } from '@common/api/types'
+import type { NFTRiskRes } from '@common/api/types'
 import { pickAddress } from '@common/utils'
 
 const genComplianceRadarPlot = async () => {
@@ -35,7 +35,7 @@ const genComplianceRadarPlot = async () => {
 
     if (!chain || !address) return
 
-    const res = await chromeEvent.emit<typeof GET_NFT_RISK, NFTRiskResponse>(
+    const res = await chromeEvent.emit<typeof GET_NFT_RISK, NFTRiskRes>(
       GET_NFT_RISK,
       {
         address,

@@ -13,7 +13,7 @@ const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
         "#ContentPlaceHolder1_divTransactions table td a[href^='/block/']"
       )
       const txnTags = document.querySelectorAll<HTMLElement>(
-        '#ContentPlaceHolder1_divTransactions table tbody tr td:nth-of-type(2) .hash-tag'
+        "#ContentPlaceHolder1_divTransactions table tbody tr td:nth-of-type(2) a[href^='/tx/']"
       )
       handleBlockNodeListCopy(blockTags)
       handleTxnNodeListCopy(txnTags)

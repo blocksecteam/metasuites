@@ -15,9 +15,8 @@ const genQuick2parsersBtn = (chain: string) => {
     jsClipboardEl.style.marginRight = '20px'
   }
   if (txHashEl) {
-    txHashEl.classList.add('align-center')
-    txHashEl.style.flexWrap = 'wrap'
     const rootEl = document.createElement('div')
+    rootEl.style.display = 'inline-block'
     txHashEl.appendChild(rootEl)
     createRoot(rootEl).render(<ParsersBtn chain={chain} />)
   }

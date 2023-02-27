@@ -2,7 +2,7 @@ import type { CallbackResponse } from 'chrome-extension-core/lib/event'
 
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
-import { GET_ADDRESS_LABEL } from '@common/constants'
+import { GET_ADDRESS_LABELS } from '@common/constants'
 import { createRoot } from 'react-dom/client'
 
 import { MainAddressLabel } from '../components'
@@ -16,7 +16,7 @@ const genMainAddressLabel = async (chain: string) => {
   if (!mainAddress) return
 
   await chromeEvent
-    .emit(GET_ADDRESS_LABEL, { chain: chain, addresses: [mainAddress] })
+    .emit(GET_ADDRESS_LABELS, { chain: chain, addresses: [mainAddress] })
     .then((res: CallbackResponse<AddressLabel[]> | undefined) => {
       if (res?.success && res.data.length) {
         const containerEl = document.querySelector(
@@ -26,6 +26,7 @@ const genMainAddressLabel = async (chain: string) => {
         if (label && containerEl) {
           const labelRootEl = document.createElement('div')
           labelRootEl.style.display = 'inline-block'
+          labelRootEl.classList.add('mt-1')
           containerEl?.appendChild(labelRootEl)
           createRoot(labelRootEl).render(<MainAddressLabel label={label} />)
         }
