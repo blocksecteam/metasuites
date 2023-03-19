@@ -20,7 +20,10 @@ import {
   genExportTableDataBtn,
   genApprovalDiagnosisBtn,
   genMainAddressFortaLabels,
-  scanTxnFortaAlert
+  scanTxnFortaAlert,
+  genContractPrivateVariables,
+  formatWriteContractParams,
+  genTokenMarketplacesBtn
 } from '../feat-scripts'
 
 const initAddressPageScript = async (chain: string) => {
@@ -42,7 +45,10 @@ const initAddressPageScript = async (chain: string) => {
     exportTableData,
     approvalDiagnosis,
     enhancedFortaLabels,
-    txnFortaAlert
+    txnFortaAlert,
+    privateVariables,
+    formatContractParams,
+    tokenMarketplaces
   } = await store.get('options')
 
   if (enhancedSignatures) genEnhancedSignatures(chain)
@@ -66,6 +72,9 @@ const initAddressPageScript = async (chain: string) => {
   if (approvalDiagnosis) genApprovalDiagnosisBtn()
   if (enhancedFortaLabels) genMainAddressFortaLabels(chain)
   if (txnFortaAlert) scanTxnFortaAlert(chain, SCAN_PAGES.ADDRESS.name)
+  if (privateVariables) genContractPrivateVariables(chain)
+  if (formatContractParams) formatWriteContractParams()
+  // if (tokenMarketplaces) genTokenMarketplacesBtn(chain, SCAN_PAGES.ADDRESS.name)
 }
 
 export default initAddressPageScript

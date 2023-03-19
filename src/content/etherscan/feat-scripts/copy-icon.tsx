@@ -8,6 +8,13 @@ import {
 /** show copy icon */
 const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
   switch (pageName) {
+    case SCAN_PAGES.TX.name: {
+      const blockTags = document.querySelectorAll<HTMLElement>(
+        "#ContentPlaceHolder1_maintable > div.card:first-child >.row:nth-of-type(3) a[href^='/block/']"
+      )
+      handleBlockNodeListCopy(blockTags)
+      break
+    }
     case SCAN_PAGES.TXS.name: {
       const blockTags = document.querySelectorAll<HTMLElement>(
         "#ContentPlaceHolder1_divTransactions table td a[href^='/block/']"

@@ -12,13 +12,9 @@ interface ExtSupportWebsite {
 }
 
 interface ToolsSupportWebsite {
-  pathname: string
+  pathname?: string
   chain: string
-}
-
-interface EtherscanDethSupportWebsite {
-  chain: string
-  scanHrefPrefix: string
+  url?: string
 }
 
 export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
@@ -227,40 +223,49 @@ export const DEDAUB_SUPPORT_DIRECT_LIST: ToolsSupportWebsite[] = [
   }
 ]
 
-export const ETHERSCAN_DETH_SUPPORT_LIST: EtherscanDethSupportWebsite[] = [
+export const ETHERSCAN_DETH_SUPPORT_LIST: ToolsSupportWebsite[] = [
   {
     chain: 'eth',
-    scanHrefPrefix: 'https://etherscan.deth.net/address'
+    url: 'https://etherscan.deth.net/address'
   },
   {
     chain: 'bsc',
-    scanHrefPrefix: 'https://bscscan.deth.net/address'
+    url: 'https://bscscan.deth.net/address'
   },
   {
     chain: 'polygon',
-    scanHrefPrefix: 'https://polygonscan.deth.net/address'
+    url: 'https://polygonscan.deth.net/address'
   },
   {
     chain: 'fantom',
-    scanHrefPrefix: 'https://ftmscan.deth.net/address'
+    url: 'https://ftmscan.deth.net/address'
   },
   {
     chain: 'optimism',
-    scanHrefPrefix: 'https://optimistic.etherscan.deth.net/address'
+    url: 'https://optimistic.etherscan.deth.net/address'
   },
   {
     chain: 'arbitrum',
-    scanHrefPrefix: 'https://arbiscan.deth.net/address'
+    url: 'https://arbiscan.deth.net/address'
   },
   {
     chain: 'avalanche',
-    scanHrefPrefix: 'https://snowtrace.deth.net/address'
+    url: 'https://snowtrace.deth.net/address'
   },
   {
     chain: 'cronos',
-    scanHrefPrefix: 'https://cronoscan.deth.net/address'
+    url: 'https://cronoscan.deth.net/address'
   }
 ]
 
 /** https://ethervm.io */
-export const ETHERVM_SUPPORT_DIRECT_LIST: string[] = ['eth', 'bsc']
+export const ETHERVM_SUPPORT_DIRECT_LIST: ToolsSupportWebsite[] = [
+  {
+    chain: 'eth',
+    url: 'https://ethervm.io/decompile'
+  },
+  {
+    chain: 'bsc',
+    url: 'https://ethervm.io/decompile/binance'
+  }
+]

@@ -1,4 +1,8 @@
-import type { AddressRiskLevel, NFTRiskLevel } from '@common/constants'
+import type {
+  AddressRiskLevel,
+  NFTRiskLevel,
+  TokenType
+} from '@common/constants'
 
 export interface RiskScore {
   address: string
@@ -21,6 +25,10 @@ export interface PostAddressParams {
   address: string
 }
 
+export interface PostPrivateVariablesParams extends PostAddressParams {
+  implAddress?: string
+}
+
 export interface AddressLabel {
   label: string
   address: string
@@ -37,7 +45,7 @@ export interface AddressMethodsReq {
 }
 
 export interface AddressRiskScoreReq extends PostAddressParams {
-  addressLabel?: { labels?: string[]; nameTag?: string[] }
+  addressLabel?: { labels?: string[]; nameTag?: string }
 }
 
 export interface FundFlowRes {
@@ -171,3 +179,36 @@ export type FortaAlertRes = {
   label: string
   subscribeUrl: string
 }[]
+
+export interface QueryPrivateVariableReq {
+  chain: string
+  address: string
+  variableName: string
+  implAddress?: string
+  inputs: string[]
+}
+
+export interface PrivateVariableArgument {
+  name: string
+  type: string
+  value: string | PrivateVariableArgument[]
+}
+
+export interface PrivateVariable {
+  name: string
+  inputs: { name: string; type: string }[]
+  outputs: { name: string; type: string }[]
+  value?: PrivateVariableArgument
+}
+
+export type PrivateVariablesRes = PrivateVariable[]
+
+export interface TokenMarket {
+  name: string
+  url: string
+}
+
+export interface TokenMarketplacesRes {
+  tokenType: TokenType
+  markets: TokenMarket[]
+}

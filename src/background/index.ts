@@ -1,3 +1,5 @@
+import browser from 'webextension-polyfill'
+
 import { chromeEvent } from '@common/event'
 import { reloadCurrentTab } from '@common/utils'
 import {
@@ -15,17 +17,12 @@ chromeEvent.on(REFRESH, () => {
 })
 
 /** reload BTC content script  */
-chrome.webRequest.onCompleted.addListener(
+browser.webRequest.onCompleted.addListener(
   async details => {
     const { tabId } = details
 
     if (tabId) {
-      chrome.tabs.sendMessage(tabId, EXECUTE_BTC_CONTENT_SCRIPT, function () {
-        /** ⚠️ do not delete following code that will cause a warning */
-        if (!chrome.runtime.lastError) {
-          // if you have any response
-        }
-      })
+      browser.tabs.sendMessage(tabId, EXECUTE_BTC_CONTENT_SCRIPT)
     }
   },
   {
@@ -37,17 +34,12 @@ chrome.webRequest.onCompleted.addListener(
 )
 
 /** for approval diagnosis  */
-chrome.webRequest.onCompleted.addListener(
+browser.webRequest.onCompleted.addListener(
   async details => {
     const { tabId } = details
 
     if (tabId) {
-      chrome.tabs.sendMessage(tabId, GET_TOKEN_APPROVAL_DATATABLE, function () {
-        /** ⚠️ do not delete following code that will cause a warning */
-        if (!chrome.runtime.lastError) {
-          // if you have any response
-        }
-      })
+      browser.tabs.sendMessage(tabId, GET_TOKEN_APPROVAL_DATATABLE)
     }
   },
   {
@@ -62,21 +54,12 @@ chrome.webRequest.onCompleted.addListener(
   }
 )
 
-chrome.webRequest.onCompleted.addListener(
+browser.webRequest.onCompleted.addListener(
   async details => {
     const { tabId } = details
 
     if (tabId) {
-      chrome.tabs.sendMessage(
-        tabId,
-        GET_TOKEN_APPROVAL_ERC20_FILTER,
-        function () {
-          /** ⚠️ do not delete following code that will cause a warning */
-          if (!chrome.runtime.lastError) {
-            // if you have any response
-          }
-        }
-      )
+      browser.tabs.sendMessage(tabId, GET_TOKEN_APPROVAL_ERC20_FILTER)
     }
   },
   {

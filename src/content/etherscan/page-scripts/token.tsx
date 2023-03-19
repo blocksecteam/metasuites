@@ -10,7 +10,10 @@ import {
   displayTokenPrice,
   genExportTableDataBtn,
   genCopyIconBtn,
-  scanTxnFortaAlert
+  scanTxnFortaAlert,
+  genContractPrivateVariables,
+  formatWriteContractParams,
+  genTokenMarketplacesBtn
 } from '../feat-scripts'
 
 const initTokenPageScript = async (chain: string) => {
@@ -23,7 +26,10 @@ const initTokenPageScript = async (chain: string) => {
     nftFloorPrice,
     exportTableData,
     showCopyIcon,
-    txnFortaAlert
+    txnFortaAlert,
+    privateVariables,
+    formatContractParams,
+    tokenMarketplaces
   } = await store.get('options')
 
   if (enhancedLabels) genEnhancedLabels(chain)
@@ -34,7 +40,10 @@ const initTokenPageScript = async (chain: string) => {
   if (nftFloorPrice) displayTokenPrice()
   if (exportTableData) genExportTableDataBtn(chain, SCAN_PAGES.TOKEN.name)
   if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.TOKEN.name)
-  if (txnFortaAlert) scanTxnFortaAlert(chain, SCAN_PAGES.TOKEN.name)
+  if (txnFortaAlert) scanTxnFortaAlert(chain)
+  if (privateVariables) genContractPrivateVariables(chain)
+  if (formatContractParams) formatWriteContractParams()
+  if (tokenMarketplaces) genTokenMarketplacesBtn(chain, SCAN_PAGES.TOKEN.name)
 }
 
 export default initTokenPageScript

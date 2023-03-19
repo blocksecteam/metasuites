@@ -10,7 +10,12 @@ import {
   genQuickViewSourceCodeBtn,
   displayTokenPrice,
   genExportTableDataBtn,
-  scanTxnFortaAlert
+  scanTxnFortaAlert,
+  genContractPrivateVariables,
+  formatWriteContractParams,
+  genDecompileInDedaubBtn,
+  genDecompileInEthervmBtn,
+  genTokenMarketplacesBtn
 } from '../feat-scripts'
 
 const initTokenPageScript = async (chain: string) => {
@@ -23,7 +28,12 @@ const initTokenPageScript = async (chain: string) => {
     dethCode,
     nftFloorPrice,
     exportTableData,
-    txnFortaAlert
+    txnFortaAlert,
+    privateVariables,
+    formatContractParams,
+    decompileInDedaub,
+    decompileInEthervm,
+    tokenMarketplaces
   } = await store.get('options')
   if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.TOKEN.name)
   if (enhancedLabels) genEnhancedLabels(chain)
@@ -34,6 +44,11 @@ const initTokenPageScript = async (chain: string) => {
   if (nftFloorPrice) displayTokenPrice()
   if (exportTableData) genExportTableDataBtn(chain, SCAN_PAGES.TOKEN.name)
   if (txnFortaAlert) scanTxnFortaAlert(chain, SCAN_PAGES.TOKEN.name)
+  if (privateVariables) genContractPrivateVariables(chain)
+  if (formatContractParams) formatWriteContractParams()
+  if (decompileInDedaub) genDecompileInDedaubBtn(chain)
+  if (decompileInEthervm) genDecompileInEthervmBtn(chain)
+  // if (tokenMarketplaces) genTokenMarketplacesBtn(chain, SCAN_PAGES.TOKEN.name)
 }
 
 export default initTokenPageScript

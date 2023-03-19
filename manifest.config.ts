@@ -13,6 +13,7 @@ export default defineManifest((env: ConfigEnv) => ({
     '16': 'src/assets/icons/icon16.png',
     '32': 'src/assets/icons/icon32.png',
     '48': 'src/assets/icons/icon48.png',
+    '64': 'src/assets/icons/icon64.png',
     '128': 'src/assets/icons/icon128.png'
   },
   content_scripts: [
@@ -63,6 +64,7 @@ export default defineManifest((env: ConfigEnv) => ({
       '16': 'src/assets/icons/icon16.png',
       '32': 'src/assets/icons/icon32.png',
       '48': 'src/assets/icons/icon48.png',
+      '64': 'src/assets/icons/icon64.png',
       '128': 'src/assets/icons/icon128.png'
     }
   },

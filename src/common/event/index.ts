@@ -10,7 +10,9 @@ import type {
   NFTUserLabelsReq,
   ComprehensiveSearchReq,
   ApprovalsRiskReq,
-  FortaAlertReq
+  FortaAlertReq,
+  QueryPrivateVariableReq,
+  PostPrivateVariablesParams
 } from '@common/api/types'
 import type {
   REFRESH,
@@ -26,7 +28,10 @@ import type {
   GET_ADDRESS_FUNDER_RISK,
   GET_COMPREHENSIVE_SEARCH_RESULTS,
   GET_APPROVAL_RISK,
-  GET_FORTA_ALERT
+  GET_FORTA_ALERT,
+  GET_PRIVATE_VARIABLES,
+  QUERY_PRIVATE_VARIABLE,
+  GET_TOKEN_MARKETPLACES
 } from '@common/constants/event'
 
 export type EventInfo = {
@@ -44,6 +49,9 @@ export type EventInfo = {
   [GET_COMPREHENSIVE_SEARCH_RESULTS]: ComprehensiveSearchReq
   [GET_APPROVAL_RISK]: ApprovalsRiskReq
   [GET_FORTA_ALERT]: FortaAlertReq
+  [GET_PRIVATE_VARIABLES]: PostPrivateVariablesParams
+  [QUERY_PRIVATE_VARIABLE]: QueryPrivateVariableReq
+  [GET_TOKEN_MARKETPLACES]: PostAddressParams
 }
 
 export const chromeEvent = new Event<EventInfo>(SCOPE)

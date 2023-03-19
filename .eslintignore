@@ -1,3 +1,4 @@
 *.d.ts
 iconfont.js
 _locales/
+build/

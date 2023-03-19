@@ -21,7 +21,12 @@ import type {
   ApprovalRisk,
   FortaAlertReq,
   FortaAlertRes,
-  PostAddressesParams
+  PostAddressesParams,
+  PrivateVariableArgument,
+  QueryPrivateVariableReq,
+  PrivateVariablesRes,
+  PostPrivateVariablesParams,
+  TokenMarketplacesRes
 } from './types'
 
 export default {
@@ -84,5 +89,17 @@ export default {
   getFortaAlert: (params: FortaAlertReq) =>
     request
       .post('api/v1/forta-alert', { json: params })
-      .json<BscResponse<FortaAlertRes>>()
+      .json<BscResponse<FortaAlertRes>>(),
+  getPrivateVariables: (params: PostPrivateVariablesParams) =>
+    request
+      .post('api/v1/private-variable/list', { json: params })
+      .json<BscResponse<PrivateVariablesRes>>(),
+  queryPrivateVariable: (params: QueryPrivateVariableReq) =>
+    request
+      .post('api/v1/private-variable/query', { json: params })
+      .json<BscResponse<PrivateVariableArgument>>(),
+  getTokenMarketplaces: (params: PostAddressParams) =>
+    request
+      .post('api/v1/token-market/list', { json: params })
+      .json<BscResponse<TokenMarketplacesRes>>()
 }

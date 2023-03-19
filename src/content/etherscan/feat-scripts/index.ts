@@ -18,3 +18,6 @@ export { default as genAlternativeBlockExplorersBtn } from './alternative-block-
 export { default as genCopyIconBtn } from './copy-icon'
 export * from './approval-diagnosis'
 export * from './forta-alert'
+export { default as genContractPrivateVariables } from './contract-private-variables'
+export { default as formatWriteContractParams } from './contract-params-format'
+export { default as genTokenMarketplacesBtn } from './token-marketplaces'

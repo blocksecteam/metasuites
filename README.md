@@ -1,6 +1,6 @@
-# MetaDock Chrome Extension
+# MetaDock Browser Extension
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Chrome Web Store](https://img.shields.io/chrome-web-store/stars/fkhgpeojcbhimodmppkbbliepkpcgcoo?label=MetaDock&style=flat&logo=google)](https://chrome.google.com/webstore/detail/metadock/fkhgpeojcbhimodmppkbbliepkpcgcoo)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Chrome Web Store](https://img.shields.io/chrome-web-store/stars/fkhgpeojcbhimodmppkbbliepkpcgcoo?label=MetaDock&style=flat&logo=google)](https://chrome.google.com/webstore/detail/metadock/fkhgpeojcbhimodmppkbbliepkpcgcoo) [![Firefox Web Store](https://img.shields.io/chrome-web-store/stars/fkhgpeojcbhimodmppkbbliepkpcgcoo?label=MetaDock&style=flat&logo=firefox)](https://addons.mozilla.org/firefox/addon/metadock/) [![Twitter Follow](https://img.shields.io/twitter/follow/MetaDockTeam?style=social)](https://twitter.com/MetaDockTeam)
 
 <p align="center"><a href="https://chrome.google.com/webstore/detail/metadock/fkhgpeojcbhimodmppkbbliepkpcgcoo" target="_blank" rel="noreferrer noopener"><img width="500" alt="MetaDock" src="https://assets.blocksec.com/image/1670212325471-2.png"></a></p>
 
@@ -28,10 +28,13 @@ yarn install
 yarn
 ```
 
-- Build the project to the `/dist` folder with `yarn build:prod`.
+- Build the project to the `/dist` folder with `yarn build:prod` or `yarn build-firefox:prod`.
 
 ```shell
+# chrome
 yarn build:prod
+# firefox
+yarn build-firefox:prod
 ```
 
 - Optionally, you may run `yarn dev` to run dev mode.
@@ -77,6 +80,10 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - [x] Show approval diagnosis
 - [x] Show enhanced address labels by Forta
 - [x] Alert suspicious transactions by Forta
+- [x] Show private variables
+- [x] Quick format parameters
+- [x] Show nft marketplaces
+- [ ] Show token marketplaces
 - [ ] Sandwich Attack Risk Detection
 
 ## Supported Websites List
@@ -94,6 +101,14 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - opensea.io
 
 ## Changelog
+
+### v2.3.1
+
+- [feat] Add compatibility with Firefox
+- [feat] Support private variables on the read contract tab
+- [feat] Support formatting parameters on the write contract tab
+- [feat] Add NFT marketplace shortcuts
+- [feat] Enhance quick copy
 
 ### v2.2.0
 

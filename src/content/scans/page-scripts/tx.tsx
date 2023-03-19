@@ -6,7 +6,8 @@ import {
   genQuick2ParsersBtn,
   convertUTC2locale,
   genAlternativeBlockExplorersBtn,
-  genTxFortaAlertTip
+  genTxFortaAlertTip,
+  genCopyIconBtn
 } from '../feat-scripts'
 
 const initTxPageScript = async (chain: string) => {
@@ -14,13 +15,15 @@ const initTxPageScript = async (chain: string) => {
     quick2Parsers,
     utc2locale,
     alternativeBlockExplorers,
-    txnFortaAlert
+    txnFortaAlert,
+    showCopyIcon
   } = await store.get('options')
   if (quick2Parsers && isSupportParsers(chain)) genQuick2ParsersBtn(chain)
   if (utc2locale) convertUTC2locale(SCAN_PAGES.TX.name)
   if (alternativeBlockExplorers)
     genAlternativeBlockExplorersBtn(SCAN_PAGES.TX.name, chain)
   if (txnFortaAlert) genTxFortaAlertTip(chain)
+  if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.TX.name)
 }
 
 export default initTxPageScript

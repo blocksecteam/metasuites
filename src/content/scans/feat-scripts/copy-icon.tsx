@@ -14,6 +14,13 @@ import { validOrigin } from '@common/utils'
 /** show copy icon */
 const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
   switch (pageName) {
+    case SCAN_PAGES.TX.name: {
+      const blockTags = document.querySelectorAll<HTMLElement>(
+        "#ContentPlaceHolder1_maintable > .row:nth-of-type(3) a[href^='/block/']"
+      )
+      handleBlockNodeListCopy(blockTags)
+      break
+    }
     case SCAN_PAGES.TXS.name: {
       const addressTags = document.querySelectorAll<HTMLElement>(
         TABLE_LIST_ADDRESS_SELECTORS
@@ -110,9 +117,13 @@ const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
                 const iframeTxnTags = _document.querySelectorAll<HTMLElement>(
                   '.hash-tag.myFnExpandBox_searchVal > a'
                 )
+                // ERC-20 Token Txns / ERC-721 Token Txns
+                const ercTokenTxns = _document.querySelectorAll<HTMLElement>(
+                  ".table-responsive .table tr td:first-child .hash-tag > a[href^='/tx/']"
+                )
                 handleAddressNodeListCopy(iframeAddressTags)
                 handleTokenNodeListCopy(iframeTokenTags)
-                handleTxnNodeListCopy(iframeTxnTags)
+                handleTxnNodeListCopy([...iframeTxnTags, ...ercTokenTxns])
               }
             },
             true

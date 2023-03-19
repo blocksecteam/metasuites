@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client'
+import $ from 'jquery'
 
 import { chromeEvent } from '@common/event'
 import type { RiskScore } from '@common/api/types'
@@ -8,15 +9,20 @@ import { ComplianceScoreLabel } from '../components'
 
 const getScanLabels = (): string[] => {
   const labels: string[] = []
-
-  const addressLabelEls = document.querySelectorAll<HTMLElement>(
-    '#ContentPlaceHolder1_divLabels > .badge'
-  )
-  for (let i = 0; i < addressLabelEls.length; i++) {
-    labels.push(addressLabelEls[i].innerText.trim())
-  }
-
+  const addressLabelEls = $('#ContentPlaceHolder1_divLabels > .badge')
+  addressLabelEls.each(function () {
+    labels.push($(this).text().trim())
+  })
   return labels
+}
+
+const getNameTag = (): string => {
+  return $('#ContentPlaceHolder1_moreoptionsdiv')
+    .prev()
+    .find('> *')
+    .has("i[class*='fa-tag']")
+    .text()
+    .trim()
 }
 
 /** address compliance score*/
@@ -42,7 +48,8 @@ const genComplianceScoresBtn = async (chain: string) => {
       chain: chain,
       address: mainAddress,
       addressLabel: {
-        labels: getScanLabels()
+        labels: getScanLabels(),
+        nameTag: getNameTag()
       }
     }
   )

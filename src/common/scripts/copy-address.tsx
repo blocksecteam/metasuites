@@ -57,7 +57,7 @@ export const handleTokenNodeListCopy = (tokenTags: NodeListOf<HTMLElement>) => {
 }
 
 export const handleTxnNodeListCopy = (
-  txnTags: NodeListOf<HTMLElement>,
+  txnTags: NodeListOf<HTMLElement> | HTMLElement[],
   targetPosition: 'self' | 'parent' = 'parent'
 ) => {
   for (let i = 0; i < txnTags.length; i++) {

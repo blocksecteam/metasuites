@@ -12,7 +12,7 @@ const genNode = (
   mainAddress: string,
   node: FundFlowNode
 ) => {
-  const { address, label, id, type, selected, logo, chain, url } = node
+  const { address, label, id, type, selected, logo, chain } = node
   if (!selected) return ''
 
   return `"${id}" 
@@ -79,7 +79,6 @@ const genEdge = (
   return `
         "${fromNode.id}" -> "${toNode.id}"
         [
-          title="Hh"
           dir="forward"
           class="transfer-0"
           style="solid"

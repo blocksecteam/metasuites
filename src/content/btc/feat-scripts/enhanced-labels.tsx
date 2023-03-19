@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 import { pickAddress } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
@@ -36,9 +38,9 @@ const handleReplace = async (
 }
 
 const genEnhancedLabels = async (chain: string) => {
-  const addressTags = document.querySelectorAll<HTMLElement>(
+  const addressTags = $(
     "a[href*='/btc/address' i], a[href*='/btc/address' i] > div"
-  )
+  ).toArray()
 
   const addressList: string[] = []
   const tagsList: HTMLElement[] = []

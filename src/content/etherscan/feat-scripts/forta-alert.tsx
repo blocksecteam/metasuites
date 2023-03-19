@@ -2,17 +2,8 @@ import { createRoot } from 'react-dom/client'
 
 import { chromeEvent } from '@common/event'
 import type { FortaAlertRes, FortaAlertReq } from '@common/api/types'
-import {
-  GET_FORTA_ALERT,
-  type SCAN_PAGE_NAMES,
-  SCAN_PAGES
-} from '@common/constants'
-import {
-  validOrigin,
-  getNodeValue,
-  getHrefQueryVariable,
-  pickAddress
-} from '@common/utils'
+import { GET_FORTA_ALERT } from '@common/constants'
+import { validOrigin, getNodeValue } from '@common/utils'
 
 import {
   FortaAlertLabel,
@@ -85,11 +76,7 @@ export const genTxFortaAlertTip = async (chain: string) => {
   }
 }
 
-const handleAlerts = async (
-  chain: string,
-  elements: HTMLElement[],
-  address?: string | null
-) => {
+const handleAlerts = async (chain: string, elements: HTMLElement[]) => {
   const txHashes: string[] = []
   elements.forEach(el => {
     const value = getNodeValue(el)
@@ -99,13 +86,10 @@ const handleAlerts = async (
   })
   if (!txHashes.length) return
   const res = await getFortaAlerts(
-    Object.assign(
-      {
-        chain: chain,
-        txHashes: txHashes
-      },
-      address ? { address } : {}
-    )
+    Object.assign({
+      chain: chain,
+      txHashes: txHashes
+    })
   )
 
   res.forEach(item => {
@@ -123,26 +107,11 @@ const handleAlerts = async (
   })
 }
 
-export const scanTxnFortaAlert = async (
-  chain: string,
-  pageName: (typeof SCAN_PAGE_NAMES)[number]
-) => {
-  let mainAddress: string | undefined | null
-  switch (pageName) {
-    case SCAN_PAGES.TOKEN.name:
-    case SCAN_PAGES.ADDRESS.name:
-      mainAddress = pickAddress(window.location.pathname)
-      break
-    case SCAN_PAGES.TXS.name:
-    case SCAN_PAGES.TOKENTXNS.name: {
-      mainAddress = getHrefQueryVariable(window.location.href, 'a')
-      break
-    }
-  }
+export const scanTxnFortaAlert = async (chain: string) => {
   const txnTags = document.querySelectorAll<HTMLElement>(
     '.card table tbody a.myFnExpandBox_searchVal'
   )
-  handleAlerts(chain, [...txnTags], mainAddress)
+  handleAlerts(chain, [...txnTags])
   const iframes = document.querySelectorAll('iframe')
   for (let i = 0; i < iframes.length; ++i) {
     const iframe = iframes[i]
@@ -155,7 +124,7 @@ export const scanTxnFortaAlert = async (
             const iframeTxnTags = _document.querySelectorAll<HTMLElement>(
               ".table-responsive table tbody a.myFnExpandBox_searchVal, .table-responsive table tbody span.myFnExpandBox_searchVal > a[href*='tx/']"
             )
-            handleAlerts(chain, [...iframeTxnTags], mainAddress)
+            handleAlerts(chain, [...iframeTxnTags])
           }
         },
         true

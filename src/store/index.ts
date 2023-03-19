@@ -29,7 +29,10 @@ const OPTIONS = [
   'alternativeBlockExplorers',
   'approvalDiagnosis',
   'enhancedFortaLabels',
-  'txnFortaAlert'
+  'txnFortaAlert',
+  'privateVariables',
+  'formatContractParams',
+  'tokenMarketplaces'
 ] as const
 
 export type OptKeys = (typeof OPTIONS)[number]
@@ -75,7 +78,10 @@ export const defaultValue: StorageInfo = {
     alternativeBlockExplorers: true,
     approvalDiagnosis: true,
     enhancedFortaLabels: true,
-    txnFortaAlert: true
+    txnFortaAlert: true,
+    privateVariables: true,
+    formatContractParams: true,
+    tokenMarketplaces: true
   }
 }
 

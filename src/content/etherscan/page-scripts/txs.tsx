@@ -29,7 +29,7 @@ const initTxsPageScript = async (chain: string) => {
   if (utc2locale) convertUTC2locale(SCAN_PAGES.TXS.name)
   if (exportTableData) genExportTableDataBtn(chain, SCAN_PAGES.TXS.name)
   if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.TXS.name)
-  if (txnFortaAlert) scanTxnFortaAlert(chain, SCAN_PAGES.TXS.name)
+  if (txnFortaAlert) scanTxnFortaAlert(chain)
 }
 
 export default initTxsPageScript

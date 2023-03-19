@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client'
+import $ from 'jquery'
 
 import { chromeEvent } from '@common/event'
 import type { RiskScore } from '@common/api/types'
@@ -8,15 +9,22 @@ import { ComplianceScoreLabel } from '../components'
 
 const getScanLabels = (): string[] => {
   const labels: string[] = []
-
-  const contractLabelEls = document.querySelectorAll<HTMLElement>(
+  const addressLabelEls = $(
     "#content > .container > div:first-child > div:first-child > div > a[href*='/accounts/label'], #content > .container > div:first-child > div:first-child > div > span"
   )
-  for (let i = 0; i < contractLabelEls.length; i++) {
-    labels.push(contractLabelEls[i].innerText)
-  }
-
+  addressLabelEls.each(function () {
+    labels.push($(this).text().trim())
+  })
   return labels
+}
+
+const getNameTag = (): string => {
+  return $(
+    "#ContentPlaceHolder1_divSummary h2.card-header-title:contains('Overview')"
+  )
+    .siblings()
+    .text()
+    .trim()
 }
 
 /** address compliance score*/
@@ -41,7 +49,8 @@ const genComplianceScoresBtn = async (chain: string) => {
       chain: chain,
       address: mainAddress,
       addressLabel: {
-        labels: getScanLabels()
+        labels: getScanLabels(),
+        nameTag: getNameTag()
       }
     }
   )

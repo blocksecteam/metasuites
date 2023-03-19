@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client'
+import browser from 'webextension-polyfill'
 
 import {
   GET_TOKEN_APPROVAL_DATATABLE,
@@ -123,7 +124,7 @@ export const inspectTokenApprovals = (chain: string) => {
   } else {
     genRiskLabels(chain)
   }
-  chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     if (message === GET_TOKEN_APPROVAL_DATATABLE) {
       genRiskLabels(chain)
     }

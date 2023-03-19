@@ -1,3 +1,5 @@
+import browser from 'webextension-polyfill'
+
 import { store } from '@src/store'
 import { SCAN_PAGES, GET_TOKEN_APPROVAL_DATATABLE } from '@common/constants'
 
@@ -11,7 +13,7 @@ const runScript = async (chain: string) => {
 }
 
 const initTokenApprovalCheckerPageScript = async (chain: string) => {
-  chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     if (message === GET_TOKEN_APPROVAL_DATATABLE) {
       sendResponse()
       requestIdleCallback(() => runScript(chain))

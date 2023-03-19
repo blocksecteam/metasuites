@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client'
+import $ from 'jquery'
 
 import { validOrigin, isAddress } from '@common/utils'
 import { chromeEvent } from '@common/event'
@@ -57,12 +58,10 @@ const handleReplace = async (
 
 /** enhanced address label */
 const genEnhancedLabels = async (chain: string) => {
-  const addressTags = document.querySelectorAll<HTMLElement>(
-    TABLE_LIST_ADDRESS_SELECTORS_V2
-  )
+  const addressTags = $(TABLE_LIST_ADDRESS_SELECTORS_V2).toArray()
   const iframes = document.querySelectorAll('iframe')
 
-  function handleCollectReplaceTarget(nodeList: NodeListOf<HTMLElement>) {
+  function handleCollectReplaceTarget(nodeList: HTMLElement[]) {
     const tagsList: HTMLElement[] = []
     const addressList: string[] = []
 
@@ -90,9 +89,11 @@ const genEnhancedLabels = async (chain: string) => {
       iframe.addEventListener('load', function () {
         const _document = iframe?.contentWindow?.document
         if (_document) {
-          const iframeAddressTags = _document.querySelectorAll<HTMLElement>(
-            "a:has(+ a.js-clipboard[aria-label='Copy Address']), span:has(+ a.js-clipboard[aria-label='Copy Address'])"
-          )
+          const iframeAddressTags = $(_document)
+            .find(
+              "a:has(+ a.js-clipboard[aria-label='Copy Address']), span:has(+ a.js-clipboard[aria-label='Copy Address'])"
+            )
+            .toArray()
 
           const [tagsList, addressList] =
             handleCollectReplaceTarget(iframeAddressTags)

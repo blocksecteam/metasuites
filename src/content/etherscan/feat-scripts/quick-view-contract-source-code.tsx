@@ -23,7 +23,7 @@ const genQuickViewSourceCodeBtn = async (chain: string) => {
   )
 
   if (dethItem) {
-    const href = `${dethItem.scanHrefPrefix}/${mainAddress}`
+    const href = `${dethItem.url}/${mainAddress}`
 
     const parentEl = document.querySelector<HTMLElement>(
       '#dividcode > div:first-child > div:first-child > div'

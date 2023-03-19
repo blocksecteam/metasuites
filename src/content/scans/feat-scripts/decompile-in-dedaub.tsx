@@ -1,4 +1,7 @@
 import { createRoot } from 'react-dom/client'
+
+import { pickAddress } from '@common/utils'
+
 import { DecompileInDedaubBtn, CopyByteCodeBtn } from '../components'
 
 const setBtns = (
@@ -38,8 +41,7 @@ const genDecompileInDedaubBtn = (chain: string) => {
   /** The decompile button is only added when the contract is not open source */
   if (contractCodeEl) return
 
-  const mainAddress =
-    document.querySelector<HTMLElement>('#mainaddress')?.innerText
+  const mainAddress = pickAddress(window.location.pathname)
 
   if (!mainAddress) return
 

@@ -193,12 +193,39 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               }
             />
             <Cell
-              border={false}
               title="Alert suspicious transactions by Forta"
               action={
                 <Switch
                   checked={options.txnFortaAlert as boolean}
                   onChange={val => onChange('txnFortaAlert', val)}
+                />
+              }
+            />
+            <Cell
+              title="Show private variables"
+              action={
+                <Switch
+                  checked={options.privateVariables as boolean}
+                  onChange={val => onChange('privateVariables', val)}
+                />
+              }
+            />
+            <Cell
+              title="Quick format parameters"
+              action={
+                <Switch
+                  checked={options.formatContractParams as boolean}
+                  onChange={val => onChange('formatContractParams', val)}
+                />
+              }
+            />
+            <Cell
+              border={false}
+              title="Show nft marketplaces"
+              action={
+                <Switch
+                  checked={options.tokenMarketplaces as boolean}
+                  onChange={val => onChange('tokenMarketplaces', val)}
                 />
               }
             />

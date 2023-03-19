@@ -21,7 +21,7 @@ const initTokentxnsPageScript = async (chain: string) => {
   if (utc2locale) convertUTC2locale(SCAN_PAGES.TOKENTXNS.name)
   if (exportTableData) genExportTableDataBtn(chain, SCAN_PAGES.TOKENTXNS.name)
   if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.TOKENTXNS.name)
-  if (txnFortaAlert) scanTxnFortaAlert(chain, SCAN_PAGES.TOKENTXNS.name)
+  if (txnFortaAlert) scanTxnFortaAlert(chain)
 }
 
 export default initTokentxnsPageScript

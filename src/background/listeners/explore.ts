@@ -8,7 +8,10 @@ import {
   GET_NFT_PRICE,
   GET_ADDRESS_FUNDER_RISK,
   GET_APPROVAL_RISK,
-  GET_FORTA_ALERT
+  GET_FORTA_ALERT,
+  GET_PRIVATE_VARIABLES,
+  QUERY_PRIVATE_VARIABLE,
+  GET_TOKEN_MARKETPLACES
 } from '@common/constants'
 import commonApi from '@common/api'
 import { isNil } from '@common/utils'
@@ -126,6 +129,50 @@ export default function initExploreRequest() {
   chromeEvent.on(GET_FORTA_ALERT, async params => {
     try {
       const res = await commonApi.getFortaAlert(params)
+      return {
+        success: isNil(res.code),
+        data: res,
+        message: res.message ?? 'success'
+      }
+    } catch (error) {
+      /** external exception */
+      return { success: false, data: error, message: 'error' }
+    }
+  })
+  chromeEvent.on(GET_PRIVATE_VARIABLES, async params => {
+    try {
+      const res = await commonApi.getPrivateVariables(params)
+      return {
+        success: isNil(res.code),
+        data: res,
+        message: res.message ?? 'success'
+      }
+    } catch (error) {
+      /** external exception */
+      return { success: false, data: error, message: 'error' }
+    }
+  })
+  chromeEvent.on(QUERY_PRIVATE_VARIABLE, async params => {
+    try {
+      const res = await commonApi.queryPrivateVariable(params)
+      return {
+        success: isNil(res.code),
+        data: res,
+        message: res.message ?? 'success'
+      }
+    } catch (error: any) {
+      const errorJson = await error?.response?.json()
+      /** external exception */
+      return {
+        success: false,
+        data: error,
+        message: errorJson?.message ?? 'error'
+      }
+    }
+  })
+  chromeEvent.on(GET_TOKEN_MARKETPLACES, async params => {
+    try {
+      const res = await commonApi.getTokenMarketplaces(params)
       return {
         success: isNil(res.code),
         data: res,

@@ -1,13 +1,16 @@
+import { createRoot } from 'react-dom/client'
+import $ from 'jquery'
+
 import { validOrigin } from '@common/utils'
 import { type SCAN_PAGE_NAMES, SCAN_PAGES } from '@common/constants'
-import { createRoot } from 'react-dom/client'
+
 import { ExportTableDataBtn } from '../components'
 
 const setBtn = async (
   chain: string,
   containerEl: HTMLElement,
   tableEl: HTMLElement,
-  position: 'head' | 'tail' = 'tail'
+  position: 'head' | 'tail' = 'head'
 ) => {
   const btnRootEl = document.createElement('div')
   btnRootEl.style.display = 'inline-block'
@@ -40,8 +43,7 @@ const genExportTableDataBtn = async (
         const txTable = document.querySelector<HTMLElement>(
           '#transactions table'
         )
-        if (txContainerEl && txTable)
-          setBtn(chain, txContainerEl, txTable, 'head')
+        if (txContainerEl && txTable) setBtn(chain, txContainerEl, txTable)
         const interTxTable = document.querySelector<HTMLElement>(
           '#ContentPlaceHolder1_divinternaltxtable table'
         )
@@ -56,14 +58,25 @@ const genExportTableDataBtn = async (
               function () {
                 const _document = iframe?.contentWindow?.document
                 if (_document) {
+                  const tableEl = _document.querySelector<HTMLElement>('table')
+
                   const containerEl =
                     _document.querySelector<HTMLElement>(
                       '#linkShowAllTokenTxns'
                     )?.parentElement ||
                     _document.querySelector<HTMLElement>('#divTokenStatus')
-                  const tableEl = _document.querySelector<HTMLElement>('table')
-                  if (containerEl && tableEl)
+
+                  const ercTokenContainer = $(_document)
+                    .find('#overlay')
+                    .next()[0]
+
+                  if (containerEl && tableEl) {
                     setBtn(chain, containerEl, tableEl)
+                  }
+
+                  if (ercTokenContainer && tableEl) {
+                    setBtn(chain, ercTokenContainer, tableEl, 'tail')
+                  }
                 }
               },
               true

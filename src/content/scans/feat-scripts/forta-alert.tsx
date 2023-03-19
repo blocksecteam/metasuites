@@ -7,12 +7,7 @@ import {
   type SCAN_PAGE_NAMES,
   SCAN_PAGES
 } from '@common/constants'
-import {
-  validOrigin,
-  getNodeValue,
-  getHrefQueryVariable,
-  pickAddress
-} from '@common/utils'
+import { validOrigin, getNodeValue } from '@common/utils'
 
 import {
   FortaAlertLabel,
@@ -84,7 +79,6 @@ export const genTxFortaAlertTip = async (chain: string) => {
 const handleAlerts = async (
   chain: string,
   elements: HTMLElement[],
-  address?: string | null,
   useAntd = true
 ) => {
   const txHashes: string[] = []
@@ -96,13 +90,10 @@ const handleAlerts = async (
   })
   if (!txHashes.length) return
   const res = await getFortaAlerts(
-    Object.assign(
-      {
-        chain: chain,
-        txHashes: txHashes
-      },
-      address ? { address } : {}
-    )
+    Object.assign({
+      chain: chain,
+      txHashes: txHashes
+    })
   )
 
   res.forEach(item => {
@@ -129,11 +120,9 @@ export const scanTxnFortaAlert = async (
   chain: string,
   pageName: (typeof SCAN_PAGE_NAMES)[number]
 ) => {
-  let mainAddress: string | undefined | null
   const txnTags: HTMLElement[] = []
   switch (pageName) {
     case SCAN_PAGES.TOKEN.name: {
-      mainAddress = pickAddress(window.location.pathname)
       txnTags.push(
         ...document.querySelectorAll<HTMLElement>(
           '#maindiv table tbody tr td:nth-of-type(1) .hash-tag > a'
@@ -149,7 +138,7 @@ export const scanTxnFortaAlert = async (
             const iframeTxnTags = _document.querySelectorAll<HTMLElement>(
               '#body .table-responsive table tbody tr td:nth-of-type(1) a'
             )
-            handleAlerts(chain, [...iframeTxnTags], mainAddress, false)
+            handleAlerts(chain, [...iframeTxnTags], false)
           }
         },
         true
@@ -157,7 +146,6 @@ export const scanTxnFortaAlert = async (
       break
     }
     case SCAN_PAGES.ADDRESS.name: {
-      mainAddress = pickAddress(window.location.pathname)
       const transactionsTags = document.querySelectorAll<HTMLElement>(
         '.card table tbody a.myFnExpandBox_searchVal'
       )
@@ -177,7 +165,7 @@ export const scanTxnFortaAlert = async (
                 const iframeTxnTags = _document.querySelectorAll<HTMLElement>(
                   '.hash-tag.myFnExpandBox_searchVal > a'
                 )
-                handleAlerts(chain, [...iframeTxnTags], mainAddress, false)
+                handleAlerts(chain, [...iframeTxnTags], false)
               }
             },
             true
@@ -193,9 +181,8 @@ export const scanTxnFortaAlert = async (
           '.card table tbody a.myFnExpandBox_searchVal'
         )
       )
-      mainAddress = getHrefQueryVariable(window.location.href, 'a')
       break
     }
   }
-  handleAlerts(chain, [...txnTags], mainAddress)
+  handleAlerts(chain, [...txnTags])
 }
