@@ -94,7 +94,7 @@ const replaceDateElsContent = (dateEls?: NodeListOf<HTMLElement>) => {
 }
 
 /** UTC date to local date */
-const convertUTC2locale = (pageName: typeof SCAN_PAGE_NAMES[number]) => {
+const convertUTC2locale = (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
   switch (pageName) {
     case SCAN_PAGES.TX.name:
     case SCAN_PAGES.BLOCK.name: {
@@ -162,6 +162,14 @@ const convertUTC2locale = (pageName: typeof SCAN_PAGE_NAMES[number]) => {
       const lnkAgeDateTimeEl = document.querySelector<HTMLElement>(
         '#lnkTokenTxnsAgeDateTime'
       )
+      replaceInkTxAgeDateTime(lnkAgeDateTimeEl ? [lnkAgeDateTimeEl] : [])
+      replaceAgeElsTipContent()
+      replaceDateElsContent()
+      break
+    }
+    case SCAN_PAGES.TXS_INTERNAL.name: {
+      const lnkAgeDateTimeEl =
+        document.querySelector<HTMLElement>('#lnkAgeDateTime')
       replaceInkTxAgeDateTime(lnkAgeDateTimeEl ? [lnkAgeDateTimeEl] : [])
       replaceAgeElsTipContent()
       replaceDateElsContent()

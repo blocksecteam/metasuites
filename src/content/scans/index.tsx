@@ -12,10 +12,15 @@ import {
   initTokenPageScript,
   initTokentxnsPageScript,
   initBlocksPageScript,
-  initTokenApprovalCheckerPageScript
+  initTokenApprovalCheckerPageScript,
+  initTxsInternalPageScript
 } from './page-scripts'
 
 const init = async () => {
+  if (window.self !== window.top) {
+    return // This page is embedded in an iframe
+  }
+
   /** get user options */
   const { supportWebList } = await store.get('options')
 
@@ -56,6 +61,9 @@ const init = async () => {
       break
     case SCAN_PAGES.TOKEN_APPROVAL_CHECKER.name:
       initTokenApprovalCheckerPageScript(chain)
+      break
+    case SCAN_PAGES.TXS_INTERNAL.name:
+      initTxsInternalPageScript(chain)
       break
   }
 }

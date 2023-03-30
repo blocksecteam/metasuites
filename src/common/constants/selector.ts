@@ -8,7 +8,7 @@ export const TABLE_LIST_METHOD_SELECTORS =
 
 /** *scans address v2 */
 export const TABLE_LIST_ADDRESS_SELECTORS_V2 =
-  ".card tbody .hash-tag:has(+ a.js-clipboard[aria-label='Copy Address'])"
+  ".card tbody *:has(+ a.js-clipboard[aria-label='Copy Address'])"
 
 /** *scans methods v2 */
 export const TABLE_LIST_METHOD_SELECTORS_V2 =

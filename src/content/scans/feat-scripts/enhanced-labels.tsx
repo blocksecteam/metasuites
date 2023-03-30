@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client'
 
-import { isAddress, validOrigin } from '@common/utils'
+import { isAddress, validOrigin, getSubStr } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import {
@@ -31,7 +31,9 @@ const handleReplace = async (
       elements.forEach(el => {
         const innerText = el.innerText
         if (item.address === innerText) {
-          el.innerHTML = `<a target="_parent" href="/address/${item.address}">${item.label}</a>`
+          el.innerHTML = `<a target="_parent" href="/address/${
+            item.address
+          }">${getSubStr(item.label, [8, 6])}</a>`
           el.parentNode?.childNodes.forEach(item => {
             if (item.nodeName === 'I') {
               item.remove()

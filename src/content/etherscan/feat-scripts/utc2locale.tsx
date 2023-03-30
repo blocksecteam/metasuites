@@ -119,7 +119,7 @@ const convertUTC2locale = (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       )
       replaceAgeElsTipContent()
       replaceDateElsContent()
-      const iframes = document.querySelectorAll('iframe')
+      const iframes = document.querySelectorAll<HTMLIFrameElement>('iframe')
       replaceInkTxAgeDateTime([...lnkAgeDateTimeEls])
       for (let i = 0; i < iframes.length; ++i) {
         const iframe = iframes[i]
@@ -170,6 +170,25 @@ const convertUTC2locale = (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       replaceInkTxAgeDateTime(lnkAgeDateTimeEl ? [lnkAgeDateTimeEl] : [])
       replaceAgeElsTipContent()
       replaceDateElsContent()
+      break
+    }
+    case SCAN_PAGES.TXS_INTERNAL.name: {
+      const lnkAgeDateTimeEl =
+        document.querySelector<HTMLElement>('#lnkAgeDateTime')
+      replaceInkTxAgeDateTime(lnkAgeDateTimeEl ? [lnkAgeDateTimeEl] : [])
+      replaceAgeElsTipContent()
+      replaceDateElsContent()
+      break
+    }
+    case SCAN_PAGES.NFT_TRANSFERS.name: {
+      // TODO: lost data-bs-title attr
+      const lnkAgeDateTimeEl =
+        document.querySelector<HTMLElement>('#lnkAgeDateTimeV2')
+      const dateEls = document.querySelectorAll<HTMLElement>('.showDate > span')
+      const ageEls = document.querySelectorAll<HTMLElement>('.showAge > span')
+      replaceInkTxAgeDateTime(lnkAgeDateTimeEl ? [lnkAgeDateTimeEl] : [])
+      replaceAgeElsTipContent(ageEls)
+      replaceDateElsContent(dateEls)
       break
     }
   }

@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 
-import { validOrigin, isAddress } from '@common/utils'
+import { validOrigin, isAddress, getSubStr } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import {
@@ -34,7 +34,9 @@ const handleReplace = async (
         const address =
           el.nextElementSibling?.getAttribute('data-clipboard-text') ?? ''
         if (item.address === address) {
-          el.innerHTML = `<a target="_parent" href="/address/${item.address}">${item.label}</a>`
+          el.innerHTML = `<a target="_parent" href="/address/${
+            item.address
+          }">${getSubStr(item.label, [8, 6])}</a>`
           el.parentNode?.childNodes.forEach(item => {
             if (item.nodeName === 'I') {
               item.remove()

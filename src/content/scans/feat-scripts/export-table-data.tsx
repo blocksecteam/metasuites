@@ -60,22 +60,23 @@ const genExportTableDataBtn = async (
                 if (_document) {
                   const tableEl = _document.querySelector<HTMLElement>('table')
 
-                  const containerEl =
-                    _document.querySelector<HTMLElement>(
-                      '#linkShowAllTokenTxns'
-                    )?.parentElement ||
+                  const containerEl = _document.querySelector<HTMLElement>(
+                    '#linkShowAllTokenTxns'
+                  )?.parentElement
+
+                  const divTokenStatusContainerEl =
                     _document.querySelector<HTMLElement>('#divTokenStatus')
 
-                  const ercTokenContainer = $(_document)
-                    .find('#overlay')
-                    .next()[0]
+                  if (!tableEl) return
 
-                  if (containerEl && tableEl) {
+                  if (containerEl) {
                     setBtn(chain, containerEl, tableEl)
+                    return
                   }
 
-                  if (ercTokenContainer && tableEl) {
-                    setBtn(chain, ercTokenContainer, tableEl, 'tail')
+                  if (divTokenStatusContainerEl) {
+                    setBtn(chain, divTokenStatusContainerEl, tableEl, 'tail')
+                    return
                   }
                 }
               },
@@ -169,6 +170,20 @@ const genExportTableDataBtn = async (
         )
         if (containerEl && tableEl) {
           containerEl.style.display = 'flex'
+          setBtn(chain, containerEl, tableEl)
+        }
+      }
+      break
+    case SCAN_PAGES.TXS_INTERNAL.name:
+      {
+        const containerEl = document.querySelector<HTMLElement>(
+          "#ContentPlaceHolder1_divTopPagination > nav[aria-label='page navigation']"
+        )
+        const tableEl = document.querySelector<HTMLElement>(
+          '.table-responsive > table'
+        )
+        if (tableEl && containerEl) {
+          containerEl.setAttribute('style', 'display:flex;margin-left:0.5rem')
           setBtn(chain, containerEl, tableEl)
         }
       }

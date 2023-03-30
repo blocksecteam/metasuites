@@ -165,6 +165,13 @@ const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       handleBlockNodeListCopy(blockTags)
       break
     }
+    case SCAN_PAGES.TXS_INTERNAL.name: {
+      const blockTags = document.querySelectorAll<HTMLElement>(
+        ".table-responsive table td a[href^='/block/']"
+      )
+      handleBlockNodeListCopy(blockTags)
+      break
+    }
   }
 }
 

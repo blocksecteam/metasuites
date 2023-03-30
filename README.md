@@ -102,6 +102,12 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 
 ## Changelog
 
+### v2.3.4
+
+- [fix] fix some bugs related to button display
+- [fix] adapt to tokentnxs, nft-transfers and txsInternal pages
+- [perf] optimize nametag display
+
 ### v2.3.1
 
 - [feat] Add compatibility with Firefox

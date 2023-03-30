@@ -87,6 +87,24 @@ const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       handleBlockNodeListCopy(blockTags)
       break
     }
+    case SCAN_PAGES.TXS_INTERNAL.name: {
+      const blockTags = document.querySelectorAll<HTMLElement>(
+        ".table-responsive table td a[href^='/block/']"
+      )
+      const txnTags = document.querySelectorAll<HTMLElement>(
+        ".table-responsive table tbody tr td a.hash-tag[href^='/tx/']"
+      )
+      handleBlockNodeListCopy(blockTags)
+      handleTxnNodeListCopy(txnTags, 'self')
+      break
+    }
+    case SCAN_PAGES.NFT_TRANSFERS.name: {
+      const txnTags = document.querySelectorAll<HTMLElement>(
+        "table#datatable tbody a.myFnExpandBox_searchVal, table#datatable tbody span.myFnExpandBox_searchVal > a[href*='tx/']"
+      )
+      handleTxnNodeListCopy(txnTags)
+      break
+    }
   }
 }
 

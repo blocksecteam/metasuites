@@ -164,6 +164,34 @@ const genExportTableDataBtn = async (
         }
       }
       break
+    case SCAN_PAGES.TXS_INTERNAL.name:
+      {
+        const containerEl = document.querySelector<HTMLElement>(
+          "#ContentPlaceHolder1_divTopPagination > nav[aria-label='page navigation']"
+        )
+        const tableEl = document.querySelector<HTMLElement>(
+          '.table-responsive > table'
+        )
+        if (tableEl && containerEl) {
+          containerEl.setAttribute('style', 'display:flex;margin-left:0.5rem')
+          setBtn(chain, containerEl, tableEl)
+        }
+      }
+      break
+    case SCAN_PAGES.NFT_TRANSFERS.name:
+      {
+        const containerEl = document.querySelector<HTMLElement>(
+          '#datatable_wrapper > .topdivdt > div:last-child'
+        )
+        const tableEl = document.querySelector<HTMLElement>(
+          '.table-responsive > table'
+        )
+        if (tableEl && containerEl) {
+          containerEl.setAttribute('class', 'd-flex align-items-center')
+          setBtn(chain, containerEl, tableEl)
+        }
+      }
+      break
   }
 }
 

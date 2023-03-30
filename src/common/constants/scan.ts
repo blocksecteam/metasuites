@@ -7,7 +7,9 @@ export const SCAN_PAGE_NAMES = [
   'ACCOUNTS',
   'TOKEN',
   'TOKENTXNS',
-  'TOKEN_APPROVAL_CHECKER'
+  'TOKEN_APPROVAL_CHECKER',
+  'TXS_INTERNAL',
+  'NFT_TRANSFERS'
 ] as const
 
 interface ScanPage {
@@ -16,6 +18,10 @@ interface ScanPage {
 }
 
 export const SCAN_PAGES: Record<(typeof SCAN_PAGE_NAMES)[number], ScanPage> = {
+  TXS_INTERNAL: {
+    name: 'TXS_INTERNAL',
+    pattern: /^\/txsInternal.?/
+  },
   TXS: {
     name: 'TXS',
     pattern: /^\/txs.?/
@@ -40,16 +46,20 @@ export const SCAN_PAGES: Record<(typeof SCAN_PAGE_NAMES)[number], ScanPage> = {
     name: 'ACCOUNTS',
     pattern: /^\/accounts.?/
   },
-  TOKEN: {
-    name: 'TOKEN',
-    pattern: /^\/token\/.+/
-  },
   TOKENTXNS: {
     name: 'TOKENTXNS',
     pattern: /^\/tokentxns.?/
   },
+  TOKEN: {
+    name: 'TOKEN',
+    pattern: /^\/token\/.+/
+  },
   TOKEN_APPROVAL_CHECKER: {
     name: 'TOKEN_APPROVAL_CHECKER',
     pattern: /^\/tokenapprovalchecker.?/
+  },
+  NFT_TRANSFERS: {
+    name: 'NFT_TRANSFERS',
+    pattern: /^\/nft-transfers.?/
   }
 }
