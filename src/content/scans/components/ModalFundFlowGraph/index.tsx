@@ -36,7 +36,12 @@ interface Props {
   onClose: () => void
 }
 
-const ModalFundFlow: FC<Props> = ({ visible, mainAddress, chain, onClose }) => {
+const ModalFundFlowGraph: FC<Props> = ({
+  visible,
+  mainAddress,
+  chain,
+  onClose
+}) => {
   const graphvizRef = useRef<any>(null)
   const graphContainerRef = useRef<HTMLDivElement>(null)
   const [fundFlow, setFundFlow] = useState<FundFlowRes>()
@@ -292,7 +297,7 @@ const ModalFundFlow: FC<Props> = ({ visible, mainAddress, chain, onClose }) => {
                 }
               >
                 <img
-                  className="me-1"
+                  className="mr-1"
                   style={{ width: '18px' }}
                   src="https://assets.blocksec.com/image/1677135239463-4.png"
                   alt=""
@@ -543,4 +548,4 @@ const ModalFundFlow: FC<Props> = ({ visible, mainAddress, chain, onClose }) => {
   )
 }
 
-export default ModalFundFlow
+export default ModalFundFlowGraph

@@ -9,7 +9,7 @@ import Button from '../Button'
 const DownloadSourceCodeBtn: FC<PostAddressParams> = ({ chain, address }) => {
   return (
     <Button
-      className="ms-1"
+      className="me-2"
       href={
         `${BASE_URL}/api/v1/source-code/download/?` +
         new URLSearchParams({ chain, address })

@@ -3,6 +3,7 @@ import type {
   NFTRiskLevel,
   TokenType
 } from '@common/constants'
+import type { TransactionSummaryType } from '@common/constants'
 
 export interface RiskScore {
   address: string
@@ -211,4 +212,26 @@ export interface TokenMarket {
 export interface TokenMarketplacesRes {
   tokenType: TokenType
   markets: TokenMarket[]
+}
+
+export interface GptTxExplainRes {
+  role: string
+  content: string
+  template: number
+  type: TransactionSummaryType
+}
+
+export interface MarkGptTxExplainReq {
+  tx: string
+  template: number
+  score: 1 | -1
+}
+
+export interface ProxyContractLog {
+  id: number
+  block: number
+  ts: number
+  proxyAddress: string
+  tx: string
+  hub: string
 }

@@ -37,14 +37,25 @@ const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       break
     }
     case SCAN_PAGES.TOKEN.name: {
-      const addressTags = document.querySelectorAll<HTMLElement>(
-        TABLE_LIST_ADDRESS_SELECTORS
+      const tokenTxnsIframe =
+        document.querySelector<HTMLIFrameElement>('#tokentxnsiframe')
+      tokenTxnsIframe?.addEventListener(
+        'load',
+        function () {
+          const _document = tokenTxnsIframe?.contentWindow?.document
+          if (_document) {
+            const iframeTxnTags = _document.querySelectorAll<HTMLElement>(
+              '#maindiv table tbody tr td span.hash-tag a'
+            )
+            handleTxnNodeListCopy(iframeTxnTags)
+            const iframeAddressTags = _document.querySelectorAll<HTMLElement>(
+              '#maindiv table tbody tr td a.hash-tag, #maindiv table tbody tr td span.hash-tag'
+            )
+            handleAddressNodeListCopy(iframeAddressTags)
+          }
+        },
+        true
       )
-      handleAddressNodeListCopy(addressTags)
-      const txnTags = document.querySelectorAll<HTMLElement>(
-        '#maindiv table tbody tr td:nth-of-type(1) .hash-tag > a'
-      )
-      handleTxnNodeListCopy(txnTags)
 
       const tokenHoldersIframe =
         document.querySelector<HTMLIFrameElement>('#tokeholdersiframe')

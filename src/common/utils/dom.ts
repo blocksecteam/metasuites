@@ -8,3 +8,15 @@ export const getNodeValue = (content: HTMLElement | null): string | null => {
   }
   return arr.join('').trim()
 }
+
+export const setDeepestChildText = (
+  element: ChildNode | null,
+  text: string
+) => {
+  if (!element) return
+  if (element.firstChild === null) {
+    element.textContent = text
+  } else {
+    setDeepestChildText(element.lastChild, text)
+  }
+}

@@ -32,7 +32,7 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
     <div className={styles.quick2ParsersBtn}>
       {phalconPathname && (
         <a
-          href={`https://phalcon.blocksec.com/tx/${phalconPathname}/${txHash}`}
+          href={`https://explorer.phalcon.xyz/tx/${phalconPathname}/${txHash}`}
           target="_blank"
           rel="noopener noreferrer"
         >

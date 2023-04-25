@@ -32,7 +32,9 @@ const OPTIONS = [
   'txnFortaAlert',
   'privateVariables',
   'formatContractParams',
-  'tokenMarketplaces'
+  'tokenMarketplaces',
+  // 'txSummary',
+  'proxyLog'
 ] as const
 
 export type OptKeys = (typeof OPTIONS)[number]
@@ -81,7 +83,9 @@ export const defaultValue: StorageInfo = {
     txnFortaAlert: true,
     privateVariables: true,
     formatContractParams: true,
-    tokenMarketplaces: true
+    tokenMarketplaces: true,
+    // txSummary: false,
+    proxyLog: true
   }
 }
 

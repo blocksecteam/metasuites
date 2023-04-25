@@ -23,7 +23,8 @@ import {
   scanTxnFortaAlert,
   genContractPrivateVariables,
   genTokenMarketplacesBtn,
-  formatWriteContractParams
+  formatWriteContractParams,
+  genProxyContractLog
 } from '../feat-scripts'
 
 const initAddressPageScript = async (chain: string) => {
@@ -48,7 +49,8 @@ const initAddressPageScript = async (chain: string) => {
     txnFortaAlert,
     privateVariables,
     formatContractParams,
-    tokenMarketplaces
+    tokenMarketplaces,
+    proxyLog
   } = await store.get('options')
 
   if (enhancedSignatures) genEnhancedSignatures(chain)
@@ -75,6 +77,7 @@ const initAddressPageScript = async (chain: string) => {
   if (privateVariables) genContractPrivateVariables(chain)
   if (formatContractParams) formatWriteContractParams()
   if (tokenMarketplaces) genTokenMarketplacesBtn(chain, SCAN_PAGES.ADDRESS.name)
+  if (proxyLog) genProxyContractLog(chain)
 }
 
 export default initAddressPageScript

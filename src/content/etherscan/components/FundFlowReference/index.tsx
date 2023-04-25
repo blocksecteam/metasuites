@@ -2,7 +2,7 @@ import { type FC, useState } from 'react'
 
 import { getImageUrl } from '@common/utils'
 
-import FundFlowGraph from '../FundFlowGraph'
+import ModalFundFlowGraph from '../ModalFundFlowGraph'
 import Button from '../Button'
 
 interface Props {
@@ -22,7 +22,7 @@ const FundFlowReference: FC<Props> = ({ chain, mainAddress }) => {
       >
         Fund Flow
       </Button>
-      <FundFlowGraph
+      <ModalFundFlowGraph
         visible={visible}
         chain={chain}
         mainAddress={mainAddress}

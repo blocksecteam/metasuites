@@ -93,7 +93,7 @@ const genEnhancedLabels = async (chain: string) => {
         const _document = iframe?.contentWindow?.document
         if (_document) {
           const iframeAddressTags = _document.querySelectorAll<HTMLElement>(
-            "a.hash-tag[href^='/address/'], span.hash-tag[title*='0x' i]"
+            'a.hash-tag, span.hash-tag'
           )
           const [tagsList, addressList] =
             handleCollectReplaceTarget(iframeAddressTags)

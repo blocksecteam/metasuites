@@ -1,5 +1,5 @@
 import type { FundFlowRes, FundFlowNode, FundFlowEdge } from '@common/api/types'
-import { swapItem } from '@common/utils'
+import { swapItem, decodeHTMLEntities } from '@common/utils'
 import { EXT_SUPPORT_WEB_LIST, DEFAULT_CHAIN_ICON } from '@common/constants'
 
 import { NodeType } from './enum'
@@ -14,6 +14,8 @@ const genNode = (
 ) => {
   const { address, label, id, type, selected, logo, chain } = node
   if (!selected) return ''
+
+  const decodedLabel = decodeHTMLEntities(label)
 
   return `"${id}" 
         [
@@ -33,12 +35,14 @@ const genNode = (
             DEFAULT_CHAIN_ICON
           }"
           label=<<table border="0">${
-            label
+            decodedLabel
               ? `<tr><td ALIGN="left" balign="left" FIXEDSIZE="true" width="40" height="15"><FONT
                 COLOR="#000000"
                 POINT-SIZE="12px"
               >${
-                label.length > 20 ? `${label.slice(0, 20)}...` : label
+                decodedLabel.length > 20
+                  ? `${decodedLabel.slice(0, 20)}...`
+                  : decodedLabel
               }</FONT></td></tr>`
               : ``
           }<tr><td ALIGN="left" balign="left" FIXEDSIZE="true" width="40" height="13"><FONT

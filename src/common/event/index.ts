@@ -12,7 +12,8 @@ import type {
   ApprovalsRiskReq,
   FortaAlertReq,
   QueryPrivateVariableReq,
-  PostPrivateVariablesParams
+  PostPrivateVariablesParams,
+  MarkGptTxExplainReq
 } from '@common/api/types'
 import type {
   REFRESH,
@@ -31,17 +32,20 @@ import type {
   GET_FORTA_ALERT,
   GET_PRIVATE_VARIABLES,
   QUERY_PRIVATE_VARIABLE,
-  GET_TOKEN_MARKETPLACES
+  GET_TOKEN_MARKETPLACES,
+  GET_GPT_TX_EXPLAIN,
+  MARK_GPT_TX_EXPLAIN,
+  GET_PROXY_CONTRACT_LOG
 } from '@common/constants/event'
 
 export type EventInfo = {
   [REFRESH]: boolean
+  [GET_NFT_INFO]: string
+  [GET_NFT_PRICE]: string
   [GET_ADDRESS_RISK_SCORE]: AddressRiskScoreReq
   [GET_ADDRESS_LABELS]: PostAddressesParams
   [GET_ADDRESS_METHODS]: AddressMethodsReq
   [GET_ADDRESS_FUND_FLOW]: PostAddressParams
-  [GET_NFT_INFO]: string
-  [GET_NFT_PRICE]: string
   [GET_NFT_RARITY_RANK]: NFTRarityRankReq
   [GET_NFT_RISK]: PostAddressParams
   [GET_NFT_USER_LABELS]: NFTUserLabelsReq
@@ -52,6 +56,9 @@ export type EventInfo = {
   [GET_PRIVATE_VARIABLES]: PostPrivateVariablesParams
   [QUERY_PRIVATE_VARIABLE]: QueryPrivateVariableReq
   [GET_TOKEN_MARKETPLACES]: PostAddressParams
+  [GET_GPT_TX_EXPLAIN]: string
+  [MARK_GPT_TX_EXPLAIN]: MarkGptTxExplainReq
+  [GET_PROXY_CONTRACT_LOG]: PostAddressParams
 }
 
 export const chromeEvent = new Event<EventInfo>(SCOPE)

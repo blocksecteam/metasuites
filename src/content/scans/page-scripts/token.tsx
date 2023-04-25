@@ -15,7 +15,7 @@ import {
   formatWriteContractParams,
   genDecompileInDedaubBtn,
   genDecompileInEthervmBtn,
-  genTokenMarketplacesBtn
+  genProxyContractLog
 } from '../feat-scripts'
 
 const initTokenPageScript = async (chain: string) => {
@@ -33,7 +33,7 @@ const initTokenPageScript = async (chain: string) => {
     formatContractParams,
     decompileInDedaub,
     decompileInEthervm,
-    tokenMarketplaces
+    proxyLog
   } = await store.get('options')
   if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.TOKEN.name)
   if (enhancedLabels) genEnhancedLabels(chain)
@@ -48,7 +48,7 @@ const initTokenPageScript = async (chain: string) => {
   if (formatContractParams) formatWriteContractParams()
   if (decompileInDedaub) genDecompileInDedaubBtn(chain)
   if (decompileInEthervm) genDecompileInEthervmBtn(chain)
-  // if (tokenMarketplaces) genTokenMarketplacesBtn(chain, SCAN_PAGES.TOKEN.name)
+  if (proxyLog) genProxyContractLog(chain)
 }
 
 export default initTokenPageScript

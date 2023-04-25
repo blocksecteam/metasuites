@@ -102,6 +102,12 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 
 ## Changelog
 
+### v2.4.0
+
+- [feat] Add proxy log on Etherscan and Bscscan
+- [feat] Support reporting label issues
+- [fix] Fix some bugs on evm-compatible chains
+
 ### v2.3.4
 
 - [fix] fix some bugs related to button display

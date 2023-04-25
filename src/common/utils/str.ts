@@ -11,3 +11,9 @@ export const getSubStr = (str: string | undefined, lenArr = [8, 4]): string => {
 export const insertStr = (source: string, start: number, newStr: string) => {
   return source.slice(0, start) + newStr + source.slice(start)
 }
+
+export const decodeHTMLEntities = (str: string) => {
+  return str.replace(/&#(\d+);/g, function (match, dec) {
+    return String.fromCharCode(dec)
+  })
+}

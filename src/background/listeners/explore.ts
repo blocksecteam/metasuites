@@ -11,176 +11,62 @@ import {
   GET_FORTA_ALERT,
   GET_PRIVATE_VARIABLES,
   QUERY_PRIVATE_VARIABLE,
-  GET_TOKEN_MARKETPLACES
+  GET_TOKEN_MARKETPLACES,
+  GET_GPT_TX_EXPLAIN,
+  MARK_GPT_TX_EXPLAIN,
+  GET_PROXY_CONTRACT_LOG
 } from '@common/constants'
 import commonApi from '@common/api'
-import { isNil } from '@common/utils'
 
 export default function initExploreRequest() {
   chromeEvent.on(GET_ADDRESS_RISK_SCORE, async params => {
-    try {
-      const res = await commonApi.getAddressRiskScore(params)
-      return {
-        success: isNil(res.code),
-        data: res,
-        message: res.message ?? 'success'
-      }
-    } catch (error) {
-      /** external exception */
-      return { success: false, data: error, message: 'error' }
-    }
+    return await commonApi.getAddressRiskScore(params)
   })
 
   chromeEvent.on(GET_ADDRESS_LABELS, async params => {
-    try {
-      const res = await commonApi.getAddressLabels(params)
-      return {
-        success: isNil(res.code),
-        data: res,
-        message: res.message ?? 'success'
-      }
-    } catch (error) {
-      /** external exception */
-      return { success: false, data: error, message: 'error' }
-    }
+    return await commonApi.getAddressLabels(params)
   })
 
   chromeEvent.on(GET_ADDRESS_METHODS, async params => {
-    try {
-      const res = await commonApi.getAddressMethods(params)
-      return {
-        success: isNil(res.code),
-        data: res,
-        message: res.message ?? 'success'
-      }
-    } catch (error) {
-      /** external exception */
-      return { success: false, data: error, message: 'error' }
-    }
+    return await commonApi.getAddressMethods(params)
   })
 
   chromeEvent.on(GET_ADDRESS_FUND_FLOW, async params => {
-    try {
-      const res = await commonApi.getAddressFundFlow(params)
-      return {
-        success: isNil(res.code),
-        data: res,
-        message: res.message ?? 'success'
-      }
-    } catch (error) {
-      /** external exception */
-      return { success: false, data: error, message: 'error' }
-    }
+    return await commonApi.getAddressFundFlow(params)
   })
 
   chromeEvent.on(GET_NFT_INFO, async address => {
-    try {
-      const res = await commonApi.getNFTInfo(address)
-      return {
-        success: isNil(res.code),
-        data: res,
-        message: res.message ?? 'success'
-      }
-    } catch (error) {
-      /** external exception */
-      return { success: false, data: error, message: 'error' }
-    }
+    return await commonApi.getNFTInfo(address)
   })
 
   chromeEvent.on(GET_NFT_PRICE, async address => {
-    try {
-      const res = await commonApi.getNFTPrice(address)
-      return {
-        success: isNil(res.code),
-        data: res,
-        message: res.message ?? 'success'
-      }
-    } catch (error) {
-      /** external exception */
-      return { success: false, data: error, message: 'error' }
-    }
+    return await commonApi.getNFTPrice(address)
   })
   chromeEvent.on(GET_ADDRESS_FUNDER_RISK, async params => {
-    try {
-      const res = await commonApi.getAddressFunderRisk(params)
-      return {
-        success: isNil(res.code),
-        data: res,
-        message: res.message ?? 'success'
-      }
-    } catch (error) {
-      /** external exception */
-      return { success: false, data: error, message: 'error' }
-    }
+    return await commonApi.getAddressFunderRisk(params)
   })
   chromeEvent.on(GET_APPROVAL_RISK, async params => {
-    try {
-      const res = await commonApi.getApprovalRisk(params)
-      return {
-        success: isNil(res.code),
-        data: res,
-        message: res.message ?? 'success'
-      }
-    } catch (error) {
-      /** external exception */
-      return { success: false, data: error, message: 'error' }
-    }
+    return await commonApi.getApprovalRisk(params)
   })
   chromeEvent.on(GET_FORTA_ALERT, async params => {
-    try {
-      const res = await commonApi.getFortaAlert(params)
-      return {
-        success: isNil(res.code),
-        data: res,
-        message: res.message ?? 'success'
-      }
-    } catch (error) {
-      /** external exception */
-      return { success: false, data: error, message: 'error' }
-    }
+    return await commonApi.getFortaAlert(params)
   })
   chromeEvent.on(GET_PRIVATE_VARIABLES, async params => {
-    try {
-      const res = await commonApi.getPrivateVariables(params)
-      return {
-        success: isNil(res.code),
-        data: res,
-        message: res.message ?? 'success'
-      }
-    } catch (error) {
-      /** external exception */
-      return { success: false, data: error, message: 'error' }
-    }
+    return await commonApi.getPrivateVariables(params)
   })
   chromeEvent.on(QUERY_PRIVATE_VARIABLE, async params => {
-    try {
-      const res = await commonApi.queryPrivateVariable(params)
-      return {
-        success: isNil(res.code),
-        data: res,
-        message: res.message ?? 'success'
-      }
-    } catch (error: any) {
-      const errorJson = await error?.response?.json()
-      /** external exception */
-      return {
-        success: false,
-        data: error,
-        message: errorJson?.message ?? 'error'
-      }
-    }
+    return await commonApi.queryPrivateVariable(params)
   })
   chromeEvent.on(GET_TOKEN_MARKETPLACES, async params => {
-    try {
-      const res = await commonApi.getTokenMarketplaces(params)
-      return {
-        success: isNil(res.code),
-        data: res,
-        message: res.message ?? 'success'
-      }
-    } catch (error) {
-      /** external exception */
-      return { success: false, data: error, message: 'error' }
-    }
+    return await commonApi.getTokenMarketplaces(params)
+  })
+  chromeEvent.on(GET_GPT_TX_EXPLAIN, async params => {
+    return await commonApi.getGptTxExplain(params)
+  })
+  chromeEvent.on(MARK_GPT_TX_EXPLAIN, async params => {
+    return await commonApi.markGptTxExplain(params)
+  })
+  chromeEvent.on(GET_PROXY_CONTRACT_LOG, async params => {
+    return await commonApi.getProxyContractLog(params)
   })
 }

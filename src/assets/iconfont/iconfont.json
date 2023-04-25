@@ -6,6 +6,34 @@
   "description": "插件项目",
   "glyphs": [
     {
+      "icon_id": "34940206",
+      "name": "编组",
+      "font_class": "bianzu1",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "34940207",
+      "name": "刷新",
+      "font_class": "shuaxin",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "34940208",
+      "name": "编组 2",
+      "font_class": "a-bianzu2",
+      "unicode": "e66f",
+      "unicode_decimal": 58991
+    },
+    {
+      "icon_id": "10463848",
+      "name": "格式刷",
+      "font_class": "geshishua",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
       "icon_id": "28075377",
       "name": "79-医院",
       "font_class": "a-79-yiyuan",
@@ -172,13 +200,6 @@
       "font_class": "cha1",
       "unicode": "e61a",
       "unicode_decimal": 58906
-    },
-    {
-      "icon_id": "5993150",
-      "name": "复制",
-      "font_class": "fuzhi",
-      "unicode": "ec7a",
-      "unicode_decimal": 60538
     },
     {
       "icon_id": "6194670",

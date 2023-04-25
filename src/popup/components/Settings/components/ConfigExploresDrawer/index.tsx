@@ -220,12 +220,30 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               }
             />
             <Cell
-              border={false}
               title="Show nft marketplaces"
               action={
                 <Switch
                   checked={options.tokenMarketplaces as boolean}
                   onChange={val => onChange('tokenMarketplaces', val)}
+                />
+              }
+            />
+            {/*<Cell*/}
+            {/*  title="Show transaction summary"*/}
+            {/*  action={*/}
+            {/*    <Switch*/}
+            {/*      checked={options.txSummary as boolean}*/}
+            {/*      onChange={val => onChange('txSummary', val)}*/}
+            {/*    />*/}
+            {/*  }*/}
+            {/*/>*/}
+            <Cell
+              border={false}
+              title="Show proxy log"
+              action={
+                <Switch
+                  checked={options.proxyLog as boolean}
+                  onChange={val => onChange('proxyLog', val)}
                 />
               }
             />

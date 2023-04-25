@@ -13,7 +13,7 @@ const QuickViewSourceCodeBtn: FC<Props> = ({ href }) => {
     <Button
       href={href}
       type="secondary"
-      className="ms-1"
+      className="me-2"
       icon={<IconCodeSnippet mr={4} color="var(--bs-btn-color)" />}
     >
       View in DethCode

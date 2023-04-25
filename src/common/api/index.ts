@@ -26,7 +26,10 @@ import type {
   QueryPrivateVariableReq,
   PrivateVariablesRes,
   PostPrivateVariablesParams,
-  TokenMarketplacesRes
+  TokenMarketplacesRes,
+  GptTxExplainRes,
+  MarkGptTxExplainReq,
+  ProxyContractLog
 } from './types'
 
 export default {
@@ -101,5 +104,17 @@ export default {
   getTokenMarketplaces: (params: PostAddressParams) =>
     request
       .post('api/v1/token-market/list', { json: params })
-      .json<BscResponse<TokenMarketplacesRes>>()
+      .json<BscResponse<TokenMarketplacesRes>>(),
+  getGptTxExplain: (tx: string) =>
+    request
+      .post('api/v1/gpt-explain/tx', { json: { tx } })
+      .json<BscResponse<GptTxExplainRes>>(),
+  markGptTxExplain: (params: MarkGptTxExplainReq) =>
+    request
+      .post('api/v1/gpt-explain/tx', { json: params })
+      .json<BscResponse<GptTxExplainRes>>(),
+  getProxyContractLog: (params: PostAddressParams) =>
+    request
+      .post('api/v1/contract/upgrades', { json: params })
+      .json<BscResponse<ProxyContractLog[]>>()
 }

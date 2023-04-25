@@ -22,7 +22,9 @@ const Footer: FC = () => {
         </a>
       </div>
       <div className={styles.brand}>
-        <span className={styles.copy}>@2022 BlockSec</span>
+        <span className={styles.copy}>
+          @{new Date().getFullYear()} BlockSec
+        </span>
         <span>Version {version}</span>
       </div>
     </div>

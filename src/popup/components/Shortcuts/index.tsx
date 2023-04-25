@@ -25,6 +25,7 @@ import type {
   SearchResultItem,
   SearchResultItemValue
 } from '@common/api/types'
+import commonApi from '@common/api'
 
 import styles from './index.module.less'
 
@@ -50,17 +51,14 @@ const Shortcuts: FC = () => {
   const onSearch = useCallback(
     debounce(async () => {
       setLoading(true)
-      const res = await chromeEvent.emit<
-        typeof GET_COMPREHENSIVE_SEARCH_RESULTS,
-        SearchResultItem[]
-      >(GET_COMPREHENSIVE_SEARCH_RESULTS, {
+      const { data, success } = await commonApi.getComprehensiveSearchResults({
         type: -1,
         keyword: valueRef.current
       })
       setActiveIdx(0)
       setLoading(false)
-      if (res?.success) {
-        setSearchResults(res.data ?? [])
+      if (success) {
+        setSearchResults(data ?? [])
       } else {
         setSearchResults([])
       }

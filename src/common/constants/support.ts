@@ -143,6 +143,10 @@ export const PHALCON_SUPPORT_LIST: ToolsSupportWebsite[] = [
   {
     pathname: 'arbitrum',
     chain: 'arbitrum'
+  },
+  {
+    pathname: 'optimism',
+    chain: 'optimism'
   }
 ]
 
@@ -269,3 +273,14 @@ export const ETHERVM_SUPPORT_DIRECT_LIST: ToolsSupportWebsite[] = [
     url: 'https://ethervm.io/decompile/binance'
   }
 ]
+
+export const PROXY_LOG_SUPPORT_LIST = [
+  {
+    chain: 'eth',
+    value: 'etherscan'
+  },
+  {
+    chain: 'bsc',
+    value: 'bscscan'
+  }
+] as const
