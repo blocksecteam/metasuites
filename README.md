@@ -6,9 +6,11 @@
 
 MetaDock is a powerful browser extension designed for the crypto community. It aims to deliver an enhanced user experience by seamlessly integrating various innovative features into the blockchain explorers.
 
-MetaDock supports Google Chrome. We recommend using the latest available browser version.
+MetaDock supports Google Chrome and Firefox. We recommend using the latest available browser version.
 
 For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam) or [Medium](https://blocksecteam.medium.com/getting-started-with-metadock-5e3b3aeb64d4) pages.
+
+Support us in the [Gitcoin](https://explorer.gitcoin.co/#/round/1/0x12bb5bbbfe596dbc489d209299b8302c3300fa40/0x12bb5bbbfe596dbc489d209299b8302c3300fa40-104) Grants to help us do even better!
 
 ## Building
 
