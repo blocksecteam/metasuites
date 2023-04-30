@@ -1,7 +1,7 @@
 import React, { type FC, useEffect, useState } from 'react'
 import cls from 'classnames'
 import ReactDOM from 'react-dom'
-import { Table } from 'antd'
+import { Table, Empty } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
 
 import { getImageUrl } from '@common/utils'
@@ -22,6 +22,7 @@ interface Props {
 
 const ModalProxyLog: FC<Props> = ({ visible, onClose, chain, address }) => {
   const [loading, setLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [dataList, setDataList] = useState<ProxyContractLog[]>([])
 
   const columns: ColumnsType<ProxyContractLog> = [
@@ -43,19 +44,19 @@ const ModalProxyLog: FC<Props> = ({ visible, onClose, chain, address }) => {
       )
     },
     {
-      title: 'Implementation address',
-      dataIndex: 'proxyAddress',
-      key: 'proxyAddress',
-      render: proxyAddress => (
+      title: 'Implementation Address',
+      dataIndex: 'currentImpl',
+      key: 'currentImpl',
+      render: currentImpl => (
         <div className={styles.cell}>
           <a
-            href={`${window.location.origin}/address/${proxyAddress}`}
+            href={`${window.location.origin}/address/${currentImpl}`}
             target="_blank"
             rel="noreferrer"
           >
-            {proxyAddress}
+            {currentImpl}
           </a>
-          <CopyButton className={styles.copyButton} text={proxyAddress} />
+          <CopyButton className={styles.copyButton} text={currentImpl} />
         </div>
       )
     },
@@ -99,6 +100,7 @@ const ModalProxyLog: FC<Props> = ({ visible, onClose, chain, address }) => {
 
   const getProxyLog = async () => {
     setLoading(true)
+    setErrorMessage('')
     const res = await chromeEvent.emit<
       typeof GET_PROXY_CONTRACT_LOG,
       ProxyContractLog[]
@@ -109,6 +111,8 @@ const ModalProxyLog: FC<Props> = ({ visible, onClose, chain, address }) => {
     setLoading(false)
     if (res?.success && res?.data) {
       setDataList(res.data)
+    } else {
+      setErrorMessage(res?.message ?? '')
     }
   }
 
@@ -138,7 +142,7 @@ const ModalProxyLog: FC<Props> = ({ visible, onClose, chain, address }) => {
         <header className={styles.header}>
           <div className="align-center">
             <TokenSymbol />
-            Proxy Log
+            Proxy Upgrade Log
             <span className={styles.address}>({address})</span>
           </div>
           <div className={styles.btn} onClick={onClose}>
@@ -147,11 +151,16 @@ const ModalProxyLog: FC<Props> = ({ visible, onClose, chain, address }) => {
         </header>
         <div className={styles.body}>
           <Table
+            locale={{
+              emptyText: () =>
+                errorMessage || <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} />
+            }}
             loading={loading}
             className={styles.table}
             columns={columns}
             dataSource={dataList}
             pagination={false}
+            rowKey="id"
           />
         </div>
       </div>

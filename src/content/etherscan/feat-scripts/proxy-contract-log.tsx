@@ -3,15 +3,9 @@ import $ from 'jquery'
 
 import { pickAddress } from '@common/utils'
 import { ProxyLogReference } from '@src/content/etherscan/components'
-import { PROXY_LOG_SUPPORT_LIST } from '@common/constants'
 
 /** Show proxy log */
 const genProxyContractLog = async (chain: string) => {
-  const supportNetwork = PROXY_LOG_SUPPORT_LIST.find(
-    item => item.chain === chain
-  )
-  if (!supportNetwork) return
-
   const mainAddress = pickAddress(window.location.pathname)
   if (!mainAddress) return
 
@@ -26,7 +20,7 @@ const genProxyContractLog = async (chain: string) => {
   rootEl.css('display', 'contents')
   navTabsEl.append(rootEl)
   createRoot(rootEl[0]).render(
-    <ProxyLogReference chain={supportNetwork.value} address={mainAddress} />
+    <ProxyLogReference chain={chain} address={mainAddress} />
   )
 }
 

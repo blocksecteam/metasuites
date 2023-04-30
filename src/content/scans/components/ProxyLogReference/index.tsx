@@ -23,7 +23,7 @@ const ProxyLogReference: FC<Props> = ({ chain, address }) => {
       >
         <span className="nav-link">
           <TokenSymbol mr={4} />
-          <span className="d-none d-sm-inline-block">Proxy Log</span>
+          <span className="d-none d-sm-inline-block">Proxy Upgrade Log</span>
         </span>
       </li>
       <ModalProxyLog

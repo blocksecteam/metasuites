@@ -231,7 +231,7 @@ export interface ProxyContractLog {
   id: number
   block: number
   ts: number
-  proxyAddress: string
+  currentImpl: string
   tx: string
   hub: string
 }

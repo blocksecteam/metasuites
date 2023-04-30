@@ -239,7 +239,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
             {/*/>*/}
             <Cell
               border={false}
-              title="Show proxy log"
+              title="Show proxy upgrade log"
               action={
                 <Switch
                   checked={options.proxyLog as boolean}
