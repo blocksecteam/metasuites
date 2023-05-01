@@ -31,11 +31,15 @@ const genTxPageAddressLabel = async (chain: string) => {
     if (isFromTo && (match || !isAddress(text))) return
     // ======
 
-    const address = pickAddress(el.attr('href')!)
+    const address = pickAddress(el.attr('href')!)?.toLowerCase()
     if (address) {
       const tooltip = el.find("*[data-bs-toggle='tooltip']")
       if (tooltip.length) {
-        el.addClass('center')
+        el.css({
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        })
       }
 
       if (!addressList.includes(address)) {
@@ -59,7 +63,9 @@ const genTxPageAddressLabel = async (chain: string) => {
     const resultLabels: AddressLabel[] = res.data
     resultLabels.forEach(item => {
       tagsList.forEach(el => {
-        const address = pickAddress(el.getAttribute('href') ?? '')
+        const address = pickAddress(
+          el.getAttribute('href') ?? ''
+        )?.toLowerCase()
         if (item.address === address) {
           if (isFromToAddress(el)) {
             $(el).text(item.address)

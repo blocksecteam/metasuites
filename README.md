@@ -85,6 +85,7 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - [x] Show private variables
 - [x] Quick format parameters
 - [x] Show nft marketplaces
+- [x] Show proxy upgrade log
 - [ ] Show token marketplaces
 - [ ] Sandwich Attack Risk Detection
 
@@ -103,6 +104,14 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - opensea.io
 
 ## Changelog
+
+### v2.4.2
+
+- [fix] Fixed some style issues and tag display bugs.
+
+### v2.4.1
+
+- [feat] Proxy logs now support several other EVM chains.
 
 ### v2.4.0
 

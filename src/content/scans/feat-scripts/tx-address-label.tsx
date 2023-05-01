@@ -20,11 +20,15 @@ const genTxPageAddressLabel = async (chain: string) => {
       // === Do not process elements that are already labeled ===
       if (!el.text().startsWith('0x')) return
       // ======
-      const address = pickAddress(el.attr('href')!)
+      const address = pickAddress(el.attr('href')!)?.toLowerCase()
       if (address) {
         const tooltip = el.find("*[data-bs-toggle='tooltip']")
         if (tooltip.length) {
-          el.addClass('center')
+          el.css({
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          })
         }
 
         if (!addressList.includes(address)) {
@@ -60,7 +64,9 @@ const genTxPageAddressLabel = async (chain: string) => {
     const resultLabels: AddressLabel[] = res.data
     resultLabels.forEach(item => {
       tagsList.forEach(el => {
-        const address = pickAddress(el.getAttribute('href') ?? '')
+        const address = pickAddress(
+          el.getAttribute('href') ?? ''
+        )?.toLowerCase()
 
         if (item.address === address) {
           const id = el.getAttribute('id')
