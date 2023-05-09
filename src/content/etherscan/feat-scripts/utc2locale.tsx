@@ -163,6 +163,14 @@ const convertUTC2locale = (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       replaceDateElsContent()
       break
     }
+    case SCAN_PAGES.BLOCKS_FORKED.name: {
+      const lnkAgeDateTimeEl =
+        document.querySelector<HTMLElement>('#lnkAgeDateTime')
+      replaceInkTxAgeDateTime(lnkAgeDateTimeEl ? [lnkAgeDateTimeEl] : [])
+      replaceAgeElsTipContent()
+      replaceDateElsContent()
+      break
+    }
     case SCAN_PAGES.TOKEN.name: {
       const lnkAgeDateTimeEl = document.querySelector<HTMLElement>(
         '#lnkTokenTxnsAgeDateTime'

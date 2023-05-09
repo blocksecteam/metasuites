@@ -9,7 +9,8 @@ export const SCAN_PAGE_NAMES = [
   'TOKENTXNS',
   'TOKEN_APPROVAL_CHECKER',
   'TXS_INTERNAL',
-  'NFT_TRANSFERS'
+  'NFT_TRANSFERS',
+  'BLOCKS_FORKED'
 ] as const
 
 interface ScanPage {
@@ -29,6 +30,10 @@ export const SCAN_PAGES: Record<(typeof SCAN_PAGE_NAMES)[number], ScanPage> = {
   BLOCK: {
     name: 'BLOCK',
     pattern: /^\/block\/.+/
+  },
+  BLOCKS_FORKED: {
+    name: 'BLOCKS_FORKED',
+    pattern: /^\/blocks_forked/
   },
   BLOCKS: {
     name: 'BLOCKS',

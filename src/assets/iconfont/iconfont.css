@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'iconfont'; /* Project id 3741688 */
-  src: url('iconfont.woff2?t=1680931676307') format('woff2'),
-    url('iconfont.woff?t=1680931676307') format('woff'),
-    url('iconfont.ttf?t=1680931676307') format('truetype');
+  src: url('iconfont.woff2?t=1683176624389') format('woff2'),
+    url('iconfont.woff?t=1683176624389') format('woff'),
+    url('iconfont.ttf?t=1683176624389') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,26 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-donate:before {
+  content: '\efa1';
+}
+
+.icon-linkedin-fill:before {
+  content: '\eab1';
+}
+
+.icon-a-zu2:before {
+  content: '\e670';
+}
+
+.icon-quanbudingdan:before {
+  content: '\e600';
+}
+
+.icon-a-bianzu2-copy:before {
+  content: '\e67a';
 }
 
 .icon-bianzu1:before {

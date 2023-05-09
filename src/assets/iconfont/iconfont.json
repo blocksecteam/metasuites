@@ -6,6 +6,41 @@
   "description": "插件项目",
   "glyphs": [
     {
+      "icon_id": "5633997",
+      "name": "donate",
+      "font_class": "donate",
+      "unicode": "efa1",
+      "unicode_decimal": 61345
+    },
+    {
+      "icon_id": "19449267",
+      "name": "linkedin",
+      "font_class": "linkedin-fill",
+      "unicode": "eab1",
+      "unicode_decimal": 60081
+    },
+    {
+      "icon_id": "35105642",
+      "name": "组 2",
+      "font_class": "a-zu2",
+      "unicode": "e670",
+      "unicode_decimal": 58992
+    },
+    {
+      "icon_id": "162881",
+      "name": "全部订单",
+      "font_class": "quanbudingdan",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "34990400",
+      "name": "编组 2",
+      "font_class": "a-bianzu2-copy",
+      "unicode": "e67a",
+      "unicode_decimal": 59002
+    },
+    {
       "icon_id": "34940206",
       "name": "编组",
       "font_class": "bianzu1",

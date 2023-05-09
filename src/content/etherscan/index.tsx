@@ -14,7 +14,8 @@ import {
   initBlocksPageScript,
   initTokenApprovalCheckerPageScript,
   initTxsInternalPageScript,
-  initNftTransfersPageScript
+  initNftTransfersPageScript,
+  initBlocksForkedPageScript
 } from './page-scripts'
 
 const init = async () => {
@@ -67,6 +68,9 @@ const init = async () => {
       break
     case SCAN_PAGES.NFT_TRANSFERS.name:
       initNftTransfersPageScript(chain)
+      break
+    case SCAN_PAGES.BLOCKS_FORKED.name:
+      initBlocksForkedPageScript(chain)
       break
   }
 }

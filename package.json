@@ -1,6 +1,6 @@
 {
   "name": "metadock",
-  "version": "2.4.2",
+  "version": "2.4.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/blocksecteam/metadock.git"
@@ -12,6 +12,8 @@
     "build:test": "vite build --mode test",
     "build-firefox:prod": "yarn build:prod && node build/firefox.js",
     "build-firefox:test": "yarn build:test && node build/firefox.js",
+    "build-safari:prod": "yarn build:prod && node build/safari.js",
+    "build-safari:test": "yarn build:test && node build/safari.js",
     "stylelint": "stylelint \"**/*.{css,scss,less}\"",
     "stylelint:fix": "stylelint \"**/*.{css,scss,less}\" --fix",
     "prepare": "husky install && husky set .husky/pre-commit \"npx lint-staged\" && husky set .husky/commit-msg 'npx --no -- commitlint --edit \"$1\"'",

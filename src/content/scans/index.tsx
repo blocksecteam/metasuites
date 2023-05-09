@@ -13,7 +13,8 @@ import {
   initTokentxnsPageScript,
   initBlocksPageScript,
   initTokenApprovalCheckerPageScript,
-  initTxsInternalPageScript
+  initTxsInternalPageScript,
+  initBlocksForkedPageScript
 } from './page-scripts'
 
 const init = async () => {
@@ -33,7 +34,7 @@ const init = async () => {
   if (!allowed || !chain) return
 
   const pageName = getPageName()
-
+  console.log('=======', pageName)
   switch (pageName) {
     case SCAN_PAGES.ADDRESS.name:
       initAddressPageScript(chain)
@@ -64,6 +65,9 @@ const init = async () => {
       break
     case SCAN_PAGES.TXS_INTERNAL.name:
       initTxsInternalPageScript(chain)
+      break
+    case SCAN_PAGES.BLOCKS_FORKED.name:
+      initBlocksForkedPageScript(chain)
       break
   }
 }

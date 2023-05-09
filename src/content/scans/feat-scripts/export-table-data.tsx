@@ -174,6 +174,7 @@ const genExportTableDataBtn = async (
         }
       }
       break
+    case SCAN_PAGES.BLOCKS_FORKED.name:
     case SCAN_PAGES.TXS_INTERNAL.name:
       {
         const containerEl = document.querySelector<HTMLElement>(

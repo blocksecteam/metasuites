@@ -148,6 +148,7 @@ const convertUTC2locale = (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       }
       break
     }
+    case SCAN_PAGES.BLOCKS_FORKED.name:
     case SCAN_PAGES.TOKENTXNS.name:
     case SCAN_PAGES.TXS.name:
     case SCAN_PAGES.BLOCKS.name: {

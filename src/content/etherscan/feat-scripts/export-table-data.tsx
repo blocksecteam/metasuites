@@ -126,6 +126,7 @@ const genExportTableDataBtn = async (
         }
       }
       break
+    case SCAN_PAGES.BLOCKS_FORKED.name:
     case SCAN_PAGES.BLOCKS.name:
       {
         const containerEl = document.querySelector<HTMLElement>('ul.pagination')

@@ -13,12 +13,8 @@ import * as blockies from 'blockies-ts'
 import { debounce } from 'lodash-es'
 import cls from 'classnames'
 
-import { chromeEvent } from '@common/event'
 import { getImageUrl, createTab } from '@common/utils'
-import {
-  EXT_SUPPORT_WEB_LIST,
-  GET_COMPREHENSIVE_SEARCH_RESULTS
-} from '@common/constants'
+import { EXT_SUPPORT_WEB_LIST } from '@common/constants'
 import { Iconfont, LoadingOutlined } from '@common/components'
 import type {
   SearchResultType,
