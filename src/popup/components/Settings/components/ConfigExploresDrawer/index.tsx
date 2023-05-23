@@ -21,6 +21,15 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
         <div className={styles.content}>
           <Cell.Group>
             <Cell
+              title="Show transaction summary"
+              action={
+                <Switch
+                  checked={options.txSummary as boolean}
+                  onChange={val => onChange('txSummary', val)}
+                />
+              }
+            />
+            <Cell
               title="Show the fund flow chart"
               action={
                 <Switch
@@ -228,15 +237,6 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
                 />
               }
             />
-            {/*<Cell*/}
-            {/*  title="Show transaction summary"*/}
-            {/*  action={*/}
-            {/*    <Switch*/}
-            {/*      checked={options.txSummary as boolean}*/}
-            {/*      onChange={val => onChange('txSummary', val)}*/}
-            {/*    />*/}
-            {/*  }*/}
-            {/*/>*/}
             <Cell
               border={false}
               title="Show proxy upgrade log"

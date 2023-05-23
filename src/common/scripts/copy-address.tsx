@@ -1,26 +1,33 @@
 import { createRoot } from 'react-dom/client'
+import isMobile from 'is-mobile'
 
 import { CopyButton } from '@common/components'
 import { pickAddress, getHrefQueryVariable } from '@common/utils'
 import { PATTERN_EVM_TX_HASH } from '@common/constants'
 
 const handleTargetElCopy = (el: HTMLElement, text: string) => {
-  el.onmouseover = () => {
-    const btnEl = el.querySelector<HTMLElement>(
-      '.__metadock-copy-address-btn__'
-    )
-    if (btnEl) btnEl.style.display = 'inline-block'
+  if (!isMobile()) {
+    el.onmouseover = () => {
+      const btnEl = el.querySelector<HTMLElement>(
+        '.__metadock-copy-address-btn__'
+      )
+      if (btnEl) btnEl.style.display = 'inline-block'
+    }
+    el.onmouseout = () => {
+      const btnEl = el.querySelector<HTMLElement>(
+        '.__metadock-copy-address-btn__'
+      )
+      if (btnEl) btnEl.style.display = 'none'
+    }
   }
-  el.onmouseout = () => {
-    const btnEl = el.querySelector<HTMLElement>(
-      '.__metadock-copy-address-btn__'
-    )
-    if (btnEl) btnEl.style.display = 'none'
-  }
+
   el.setAttribute('style', 'padding-right:18px;position:relative')
   const rootEl = document.createElement('span')
   rootEl.classList.add('__metadock-copy-address-btn__')
-  rootEl.setAttribute('style', 'position:absolute;right:0;display:none')
+  rootEl.setAttribute(
+    'style',
+    `position:absolute;right:0;display:${isMobile() ? 'inline-block' : 'none'}`
+  )
   el?.appendChild(rootEl)
   createRoot(rootEl).render(<CopyButton text={text} />)
 }

@@ -103,6 +103,7 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - [x] Quick format parameters
 - [x] Show nft marketplaces
 - [x] Show proxy upgrade log
+- [x] Show transaction summary
 - [ ] Show token marketplaces
 - [ ] Sandwich Attack Risk Detection
 

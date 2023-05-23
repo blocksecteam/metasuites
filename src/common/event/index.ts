@@ -13,7 +13,8 @@ import type {
   FortaAlertReq,
   QueryPrivateVariableReq,
   PostPrivateVariablesParams,
-  MarkGptTxExplainReq
+  MarkGptTxExplainReq,
+  GptTxExplainReq
 } from '@common/api/types'
 import type {
   REFRESH,
@@ -56,7 +57,7 @@ export type EventInfo = {
   [GET_PRIVATE_VARIABLES]: PostPrivateVariablesParams
   [QUERY_PRIVATE_VARIABLE]: QueryPrivateVariableReq
   [GET_TOKEN_MARKETPLACES]: PostAddressParams
-  [GET_GPT_TX_EXPLAIN]: string
+  [GET_GPT_TX_EXPLAIN]: GptTxExplainReq
   [MARK_GPT_TX_EXPLAIN]: MarkGptTxExplainReq
   [GET_PROXY_CONTRACT_LOG]: PostAddressParams
 }

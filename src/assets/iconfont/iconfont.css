@@ -1,8 +1,8 @@
 @font-face {
   font-family: 'iconfont'; /* Project id 3741688 */
-  src: url('iconfont.woff2?t=1683176624389') format('woff2'),
-    url('iconfont.woff?t=1683176624389') format('woff'),
-    url('iconfont.ttf?t=1683176624389') format('truetype');
+  src: url('iconfont.woff2?t=1684479744668') format('woff2'),
+    url('iconfont.woff?t=1684479744668') format('woff'),
+    url('iconfont.ttf?t=1684479744668') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,18 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-yincang:before {
+  content: '\e88b';
+}
+
+.icon-gengduo:before {
+  content: '\e642';
+}
+
+.icon-jinzhi:before {
+  content: '\e663';
 }
 
 .icon-donate:before {
@@ -31,6 +43,10 @@
 
 .icon-a-bianzu2-copy:before {
   content: '\e67a';
+}
+
+.icon-bianzu1-copy:before {
+  content: '\efa2';
 }
 
 .icon-bianzu1:before {

@@ -33,7 +33,7 @@ const OPTIONS = [
   'privateVariables',
   'formatContractParams',
   'tokenMarketplaces',
-  // 'txSummary',
+  'txSummary',
   'proxyLog'
 ] as const
 
@@ -84,7 +84,7 @@ export const defaultValue: StorageInfo = {
     privateVariables: true,
     formatContractParams: true,
     tokenMarketplaces: true,
-    // txSummary: false,
+    txSummary: true,
     proxyLog: true
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "metadock",
-  "version": "2.4.3",
+  "version": "3.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/blocksecteam/metadock.git"
@@ -32,6 +32,7 @@
     "d3-graphviz": "2.6.1",
     "dayjs": "^1.11.6",
     "ethers": "^6.0.8",
+    "is-mobile": "^4.0.0",
     "jquery": "^3.6.3",
     "ky": "^0.32.2",
     "lodash-es": "^4.17.21",

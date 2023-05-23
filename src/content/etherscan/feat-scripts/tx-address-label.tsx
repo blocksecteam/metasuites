@@ -2,7 +2,11 @@ import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 import { isAddress } from 'ethers'
 
-import { pickAddress, setDeepestChildText } from '@common/utils'
+import {
+  pickAddress,
+  setDeepestChildText,
+  getHrefQueryVariable
+} from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import { GET_ADDRESS_LABELS } from '@common/constants'
@@ -18,7 +22,7 @@ const genTxPageAddressLabel = async (chain: string) => {
   const tagsList: HTMLElement[] = []
   const addressList: string[] = []
 
-  $("*[href^='/address/']").each(function () {
+  $("*[href^='/address/'], *[href^='/token/']").each(function () {
     const el = $(this)
 
     // === Do not process elements that are already labeled ===
@@ -31,21 +35,25 @@ const genTxPageAddressLabel = async (chain: string) => {
     if (isFromTo && (match || !isAddress(text))) return
     // ======
 
-    const address = pickAddress(el.attr('href')!)?.toLowerCase()
-    if (address) {
-      const tooltip = el.find("*[data-bs-toggle='tooltip']")
-      if (tooltip.length) {
-        el.css({
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        })
-      }
+    if (el.text().startsWith('0x')) {
+      const href = el.attr('href')!.toLowerCase()
+      const address =
+        getHrefQueryVariable(href, 'a') ?? pickAddress(href)?.toLowerCase()
+      if (address) {
+        const tooltip = el.find("*[data-bs-toggle='tooltip']")
+        if (tooltip.length) {
+          el.css({
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          })
+        }
 
-      if (!addressList.includes(address)) {
-        addressList.push(address)
+        if (!addressList.includes(address)) {
+          addressList.push(address)
+        }
+        tagsList.push(el[0])
       }
-      tagsList.push(el[0])
     }
   })
 
@@ -63,9 +71,8 @@ const genTxPageAddressLabel = async (chain: string) => {
     const resultLabels: AddressLabel[] = res.data
     resultLabels.forEach(item => {
       tagsList.forEach(el => {
-        const address = pickAddress(
-          el.getAttribute('href') ?? ''
-        )?.toLowerCase()
+        const href = el.getAttribute('href')?.toLowerCase() ?? ''
+        const address = getHrefQueryVariable(href, 'a') ?? pickAddress(href)
         if (item.address === address) {
           if (isFromToAddress(el)) {
             $(el).text(item.address)

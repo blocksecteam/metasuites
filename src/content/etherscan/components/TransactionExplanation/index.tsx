@@ -1,58 +1,55 @@
-import { type FC, useState, useEffect } from 'react'
 import cls from 'classnames'
+import { Dropdown, type MenuProps } from 'antd'
+import React, { type FC, useState, useEffect } from 'react'
+import isMobile from 'is-mobile'
 
 import { TokenSymbol } from '@src/content/scans/components'
-import { LoadingOutlined, RefreshIcon } from '@src/common/components'
+import { CopyButton } from '@common/components'
 import type { GptTxExplainRes } from '@common/api/types'
 import { chromeEvent } from '@common/event'
-import {
-  GET_GPT_TX_EXPLAIN,
-  TransactionSummaryType,
-  MARK_GPT_TX_EXPLAIN
-} from '@common/constants'
+import { MARK_GPT_TX_EXPLAIN, GET_GPT_TX_EXPLAIN } from '@common/constants'
+import { useStore } from '@common/hooks'
 
 import styles from './index.module.less'
 
 interface Props {
-  txHash: string
+  tx: string
+  chain: string
 }
 
-const TransactionExplanation: FC<Props> = ({ txHash }) => {
+const TransactionExplanation: FC<Props> = props => {
   const [loading, setLoading] = useState(true)
   const [result, setResult] = useState<GptTxExplainRes>()
-  const [typing, setTyping] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const [innerText, setInnerText] = useState('')
   const [liked, setLiked] = useState(false)
   const [disliked, setDisliked] = useState(false)
-  const [txType, setTxType] = useState<TransactionSummaryType>()
+  const [hidden, setHidden] = useState(false)
+  const [showMessage, setShowMessage] = useState(false)
+  const [errorOccur, setErrorOccur] = useState(false)
+
+  const [options, setOptions] = useStore('options')
 
   const requestData = async () => {
     setLoading(true)
     const res = await chromeEvent.emit<
       typeof GET_GPT_TX_EXPLAIN,
       GptTxExplainRes
-    >(GET_GPT_TX_EXPLAIN, txHash)
+    >(GET_GPT_TX_EXPLAIN, props)
     setLoading(false)
     if (res?.success) {
       setResult(res.data)
-      setTxType(res.data.type)
+    } else {
+      setErrorOccur(true)
+      setInnerText(res?.message ?? '')
     }
-  }
-
-  const onRegenerate = () => {
-    setTimeout(() => {
-      setResult(undefined)
-      setLiked(false)
-      setDisliked(false)
-      requestData()
-    }, 500)
   }
 
   const onLike = async () => {
     if (liked) return
     setLiked(true)
     chromeEvent.emit<typeof MARK_GPT_TX_EXPLAIN>(MARK_GPT_TX_EXPLAIN, {
-      tx: txHash,
+      ...props,
       template: result!.template,
       score: 1
     })
@@ -62,29 +59,58 @@ const TransactionExplanation: FC<Props> = ({ txHash }) => {
     if (disliked) return
     setDisliked(true)
     chromeEvent.emit<typeof MARK_GPT_TX_EXPLAIN>(MARK_GPT_TX_EXPLAIN, {
-      tx: txHash,
+      ...props,
       template: result!.template,
       score: -1
     })
   }
 
-  useEffect(() => {
-    if (txHash) {
-      requestData()
+  const onDisable = () => {
+    setShowMessage(true)
+    setTimeout(() => {
+      setShowMessage(false)
+      setOptions({
+        ...options,
+        txSummary: false
+      })
+    }, 2500)
+  }
+
+  const items: MenuProps['items'] = [
+    {
+      key: '1',
+      label: (
+        <div className={styles.dropdownItem} onClick={() => setHidden(true)}>
+          <img
+            src="https://assets.blocksec.com/image/1684480373829-3.svg"
+            alt=""
+          />
+          Hide for this transaction
+        </div>
+      )
+    },
+    {
+      key: '2',
+      label: (
+        <div className={styles.dropdownItem} onClick={onDisable}>
+          <img
+            src="https://assets.blocksec.com/image/1684480373829-2.svg"
+            alt=""
+          />
+          Disable the feature
+        </div>
+      )
     }
-  }, [txHash])
+  ]
 
   useEffect(() => {
     if (result) {
-      setLoading(false)
-      setInnerText('')
-      setTyping(true)
+      setMounted(true)
       const chars = result.content.split('')
       let i = 0
       const interval = setInterval(function () {
         if (i >= chars.length) {
           clearInterval(interval)
-          setTyping(false)
         } else {
           setInnerText(v => {
             const value = v + chars[i]
@@ -96,66 +122,92 @@ const TransactionExplanation: FC<Props> = ({ txHash }) => {
     }
   }, [result])
 
+  useEffect(() => {
+    requestData()
+  }, [])
+
   return (
     <div
       className={cls(
         styles.transactionExplanation,
-        'p-5 bg-success bg-opacity-10 border border-success border-opacity-25 text-green-600'
+        { [styles.hidden]: !options.txSummary || hidden },
+        'p-5 card'
       )}
     >
+      <div className={cls(styles.message, { [styles.show]: showMessage })}>
+        <img
+          src="https://assets.blocksec.com/image/1684488852891-2.svg"
+          alt=""
+        />
+        Transaction summary feature is turned off. You can always re-enable this
+        feature in the settings.
+      </div>
       <div className="row">
-        <div className="col-md-3 text-green-600 mb-md-0">
-          <TokenSymbol size={17} />
+        <div className="col-md-3 mb-md-0 text-dt">
+          <TokenSymbol
+            size={17}
+            className={cls(styles.mdLogo, { [styles.animation]: mounted })}
+          />
           Transaction Explanation:
         </div>
-        <div className={cls('col-md-9', styles.content)}>
-          {loading ? (
-            <div className={styles.loadingContainer}>
-              <LoadingOutlined />
-            </div>
-          ) : (
-            <>
-              <TokenSymbol
-                size={17}
-                style={{ verticalAlign: 'sub' }}
-                mr={6}
-                logo="https://assets.blocksec.com/image/1681125752966-2.png"
-              />
-              <span>{innerText}</span>
-              {!typing && (
-                <>
-                  {!disliked && (
+        <div
+          className={cls('col-md-9', styles.content, {
+            [styles.column]: isMobile()
+          })}
+        >
+          <div className={styles.contentWrap}>
+            <TokenSymbol
+              className={cls(styles.gptLogo, { [styles.animation]: loading })}
+              size={17}
+              style={{ verticalAlign: 'sub' }}
+              mr={6}
+              logo="https://assets.blocksec.com/image/1681125752966-2.png"
+            />
+            <span>{innerText}</span>
+          </div>
+          {!loading && (
+            <div className={styles.actionGroup}>
+              <div className="align-center">
+                {!errorOccur && (
+                  <CopyButton
+                    theme="#adb5bd"
+                    size={14}
+                    mr={5}
+                    text={result?.content ?? ''}
+                  />
+                )}
+                {!liked && (
+                  <img
+                    className={cls(styles.btn, {
+                      [styles.active]: disliked
+                    })}
+                    src="https://assets.blocksec.com/image/1684478165365-3.svg"
+                    alt=""
+                    onClick={onDislike}
+                  />
+                )}
+                {!disliked && (
+                  <img
+                    className={cls(styles.btn, {
+                      [styles.active]: liked
+                    })}
+                    src="https://assets.blocksec.com/image/1684478165365-2.svg"
+                    alt=""
+                    onClick={onLike}
+                  />
+                )}
+                <Dropdown menu={{ items }}>
+                  <a onClick={e => e.preventDefault()}>
                     <img
-                      style={{ marginLeft: 28 }}
-                      className={cls(styles.btn, {
-                        [styles.active]: liked
-                      })}
-                      src="https://assets.blocksec.com/image/1680932127068-2.png"
-                      alt=""
-                      onClick={onLike}
-                    />
-                  )}
-                  {!liked && (
-                    <img
-                      className={cls(styles.btn, {
-                        [styles.active]: disliked
-                      })}
-                      src="https://assets.blocksec.com/image/1681182333273-2.png"
-                      alt=""
-                      onClick={onDislike}
-                    />
-                  )}
-                  {txType === TransactionSummaryType.GPT && (
-                    <RefreshIcon
-                      size={12}
-                      color="#00a186"
                       className={styles.btn}
-                      onClick={onRegenerate}
+                      style={{ marginLeft: 46 }}
+                      src="https://assets.blocksec.com/image/1684479319437-2.svg"
+                      alt=""
                     />
-                  )}
-                </>
-              )}
-            </>
+                  </a>
+                </Dropdown>
+              </div>
+            </div>
           )}
         </div>
       </div>

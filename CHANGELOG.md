@@ -1,7 +1,13 @@
+### v3.0.0
+
+- [feat] Support Transaction Explanation
+- [feat] Compatible with Mises browser
+
 ### v2.4.3
 
 - [feat] Adapt to block_forked pages
 - [feat] Add Gitcoin entry to popup
+- [feat] Add compatibility with Safari
 
 ### v2.4.2
 

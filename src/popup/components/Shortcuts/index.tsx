@@ -199,7 +199,7 @@ const Shortcuts: FC = () => {
       </div>
       <div className={styles.navbar}>
         <a
-          href="https://phalcon.blocksec.com/"
+          href="https://explorer.phalcon.xyz/"
           target="_blank"
           rel="noopener noreferrer"
         >

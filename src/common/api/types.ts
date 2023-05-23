@@ -214,15 +214,18 @@ export interface TokenMarketplacesRes {
   markets: TokenMarket[]
 }
 
+export interface GptTxExplainReq {
+  tx: string
+  chain: string
+}
+
 export interface GptTxExplainRes {
-  role: string
   content: string
   template: number
   type: TransactionSummaryType
 }
 
-export interface MarkGptTxExplainReq {
-  tx: string
+export interface MarkGptTxExplainReq extends GptTxExplainReq {
   template: number
   score: 1 | -1
 }

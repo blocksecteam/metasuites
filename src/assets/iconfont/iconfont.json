@@ -6,6 +6,27 @@
   "description": "插件项目",
   "glyphs": [
     {
+      "icon_id": "9626987",
+      "name": "隐藏",
+      "font_class": "yincang",
+      "unicode": "e88b",
+      "unicode_decimal": 59531
+    },
+    {
+      "icon_id": "10157356",
+      "name": "更多",
+      "font_class": "gengduo",
+      "unicode": "e642",
+      "unicode_decimal": 58946
+    },
+    {
+      "icon_id": "28417989",
+      "name": "禁止",
+      "font_class": "jinzhi",
+      "unicode": "e663",
+      "unicode_decimal": 58979
+    },
+    {
       "icon_id": "5633997",
       "name": "donate",
       "font_class": "donate",
@@ -39,6 +60,13 @@
       "font_class": "a-bianzu2-copy",
       "unicode": "e67a",
       "unicode_decimal": 59002
+    },
+    {
+      "icon_id": "35592533",
+      "name": "编组-copy",
+      "font_class": "bianzu1-copy",
+      "unicode": "efa2",
+      "unicode_decimal": 61346
     },
     {
       "icon_id": "34940206",

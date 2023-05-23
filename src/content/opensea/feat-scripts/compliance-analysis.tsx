@@ -50,7 +50,6 @@ const genComplianceRadarPlot = async () => {
       containerEl.style.position = 'relative'
       const rootEl = document.createElement('div')
       rootEl.id = '__metadock-ComplianceRadarPlot__'
-      rootEl.setAttribute('style', 'position:absolute;right:0;top:0')
       containerEl.appendChild(rootEl)
       createRoot(rootEl).render(<ComplianceRadarPlot data={res.data} />)
     }

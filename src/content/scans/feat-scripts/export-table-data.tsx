@@ -1,5 +1,4 @@
 import { createRoot } from 'react-dom/client'
-import $ from 'jquery'
 
 import { validOrigin } from '@common/utils'
 import { type SCAN_PAGE_NAMES, SCAN_PAGES } from '@common/constants'

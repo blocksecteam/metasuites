@@ -183,6 +183,14 @@ const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       handleBlockNodeListCopy(blockTags)
       break
     }
+    case SCAN_PAGES.BLOCKS_FORKED.name:
+    case SCAN_PAGES.BLOCKS.name: {
+      const blockTags = document.querySelectorAll<HTMLElement>(
+        ".card tbody > tr > td > a[href^='/block/']"
+      )
+      handleBlockNodeListCopy(blockTags)
+      break
+    }
   }
 }
 

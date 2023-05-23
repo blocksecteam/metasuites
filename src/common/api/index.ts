@@ -29,7 +29,8 @@ import type {
   TokenMarketplacesRes,
   GptTxExplainRes,
   MarkGptTxExplainReq,
-  ProxyContractLog
+  ProxyContractLog,
+  GptTxExplainReq
 } from './types'
 
 export default {
@@ -105,13 +106,13 @@ export default {
     request
       .post('api/v1/token-market/list', { json: params })
       .json<BscResponse<TokenMarketplacesRes>>(),
-  getGptTxExplain: (tx: string) =>
+  getGptTxExplain: (params: GptTxExplainReq) =>
     request
-      .post('api/v1/gpt-explain/tx', { json: { tx } })
+      .post('api/v1/explain/tx', { json: params })
       .json<BscResponse<GptTxExplainRes>>(),
   markGptTxExplain: (params: MarkGptTxExplainReq) =>
     request
-      .post('api/v1/gpt-explain/tx', { json: params })
+      .post('api/v1/gpt-explain/mark', { json: params })
       .json<BscResponse<GptTxExplainRes>>(),
   getProxyContractLog: (params: PostAddressParams) =>
     request
