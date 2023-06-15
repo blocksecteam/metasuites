@@ -34,6 +34,9 @@ export interface AddressLabel {
   label: string
   address: string
   logo?: string
+  implementAddress?: string
+  implementLabel?: string
+  implementLogo?: string
 }
 
 export interface MethodLabel {

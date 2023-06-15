@@ -34,7 +34,8 @@ const OPTIONS = [
   'formatContractParams',
   'tokenMarketplaces',
   'txSummary',
-  'proxyLog'
+  'proxyLog',
+  'evmStorage'
 ] as const
 
 export type OptKeys = (typeof OPTIONS)[number]
@@ -85,7 +86,8 @@ export const defaultValue: StorageInfo = {
     formatContractParams: true,
     tokenMarketplaces: true,
     txSummary: true,
-    proxyLog: true
+    proxyLog: true,
+    evmStorage: true
   }
 }
 

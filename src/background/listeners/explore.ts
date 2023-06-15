@@ -14,7 +14,9 @@ import {
   GET_TOKEN_MARKETPLACES,
   GET_GPT_TX_EXPLAIN,
   MARK_GPT_TX_EXPLAIN,
-  GET_PROXY_CONTRACT_LOG
+  GET_PROXY_CONTRACT_LOG,
+  GET_IMPL_LABELS,
+  GET_CONSERVATIVE_BLOCK
 } from '@common/constants'
 import commonApi from '@common/api'
 
@@ -68,5 +70,11 @@ export default function initExploreRequest() {
   })
   chromeEvent.on(GET_PROXY_CONTRACT_LOG, async params => {
     return await commonApi.getProxyContractLog(params)
+  })
+  chromeEvent.on(GET_IMPL_LABELS, async params => {
+    return await commonApi.getImplLabels(params)
+  })
+  chromeEvent.on(GET_CONSERVATIVE_BLOCK, async params => {
+    return await commonApi.getConservativeBlock(params)
   })
 }

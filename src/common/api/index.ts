@@ -117,5 +117,12 @@ export default {
   getProxyContractLog: (params: PostAddressParams) =>
     request
       .post('api/v1/contract/upgrades', { json: params })
-      .json<BscResponse<ProxyContractLog[]>>()
+      .json<BscResponse<ProxyContractLog[]>>(),
+  getImplLabels: (params: PostAddressesParams) =>
+    request
+      .post('api/v1/address/impl-label', { json: params })
+      .json<BscResponse<AddressLabel[]>>(),
+  /** The supported blocks by evm.storage may experience delays, so the latest block cannot be obtained. */
+  getConservativeBlock: (chain: string) =>
+    request.get(`api/v1/${chain}/block`).json<BscResponse<AddressLabel[]>>()
 }

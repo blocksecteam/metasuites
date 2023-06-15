@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client'
+import isMobile from 'is-mobile'
 
 import { ComplianceRadarPlot } from '@common/components'
 import { chromeEvent } from '@common/event'
@@ -50,6 +51,9 @@ const genComplianceRadarPlot = async () => {
       containerEl.style.position = 'relative'
       const rootEl = document.createElement('div')
       rootEl.id = '__metadock-ComplianceRadarPlot__'
+      if (!isMobile()) {
+        rootEl.setAttribute('style', 'position:absolute;right:0;top:0')
+      }
       containerEl.appendChild(rootEl)
       createRoot(rootEl).render(<ComplianceRadarPlot data={res.data} />)
     }

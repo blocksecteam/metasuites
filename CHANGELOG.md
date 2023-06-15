@@ -1,3 +1,17 @@
+### v3.1.0
+
+- [feat] Introduce evm.storage shortcut in the contract tab
+- [feat] Add implementation contract shortcut in the proxy contract label
+
+### v3.0.2
+
+- [fix] Resolve an issue causing rarity tags to render multiple times
+- [fix] Mobile radar chart now correctly implements line breaks
+
+### v3.0.1
+
+- [style] ui
+
 ### v3.0.0
 
 - [feat] Support Transaction Explanation

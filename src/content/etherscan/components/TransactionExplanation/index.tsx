@@ -144,10 +144,17 @@ const TransactionExplanation: FC<Props> = props => {
       </div>
       <div className="row">
         <div className="col-md-3 mb-md-0 text-dt">
-          <TokenSymbol
-            size={17}
-            className={cls(styles.mdLogo, { [styles.animation]: mounted })}
-          />
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://blocksec.com/metadock"
+            style={{ display: 'contents' }}
+          >
+            <TokenSymbol
+              size={17}
+              className={cls(styles.mdLogo, { [styles.animation]: mounted })}
+            />
+          </a>
           Transaction Explanation:
         </div>
         <div
@@ -176,24 +183,24 @@ const TransactionExplanation: FC<Props> = props => {
                     text={result?.content ?? ''}
                   />
                 )}
-                {!liked && (
-                  <img
-                    className={cls(styles.btn, {
-                      [styles.active]: disliked
-                    })}
-                    src="https://assets.blocksec.com/image/1684478165365-3.svg"
-                    alt=""
-                    onClick={onDislike}
-                  />
-                )}
                 {!disliked && (
                   <img
                     className={cls(styles.btn, {
                       [styles.active]: liked
                     })}
-                    src="https://assets.blocksec.com/image/1684478165365-2.svg"
+                    src="https://assets.blocksec.com/image/1684478165365-3.svg"
                     alt=""
                     onClick={onLike}
+                  />
+                )}
+                {!liked && (
+                  <img
+                    className={cls(styles.btn, {
+                      [styles.active]: disliked
+                    })}
+                    src="https://assets.blocksec.com/image/1684478165365-2.svg"
+                    alt=""
+                    onClick={onDislike}
                   />
                 )}
                 <Dropdown menu={{ items }}>

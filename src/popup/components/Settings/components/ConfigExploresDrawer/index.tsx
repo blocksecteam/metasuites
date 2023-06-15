@@ -237,13 +237,23 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
                 />
               }
             />
+            {/**/}
             <Cell
-              border={false}
               title="Show proxy upgrade log"
               action={
                 <Switch
                   checked={options.proxyLog as boolean}
                   onChange={val => onChange('proxyLog', val)}
+                />
+              }
+            />
+            <Cell
+              border={false}
+              title="Show evm.storage shortcut"
+              action={
+                <Switch
+                  checked={options.evmStorage as boolean}
+                  onChange={val => onChange('evmStorage', val)}
                 />
               }
             />

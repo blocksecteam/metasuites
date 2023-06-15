@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client'
+import $ from 'jquery'
 
 import { chromeEvent } from '@common/event'
 import {
@@ -67,23 +68,28 @@ const genRarityRankLabel = async (
       break
     case OPENSEA_PAGES.ASSETS.name:
       {
-        const containerEl = document.querySelector<HTMLElement>(
-          'section.item--counts'
-        )
+        const containerEl = $<HTMLElement>('section.item--counts')
         const [, , address, id] =
           window.location.pathname?.split('/')?.filter(i => !!i) ?? []
 
-        if (containerEl && address && id) {
-          const res = await chromeEvent.emit<
-            typeof GET_NFT_RARITY_RANK,
-            NFTRarityRankRes
-          >(GET_NFT_RARITY_RANK, { address, tokenIds: [id] })
+        const mrl = $('#__metadock-rarity-label__')
 
-          if (res?.success && res.data && res.data.length) {
-            const rootEl = document.createElement('div')
-            rootEl.style.marginRight = '24px'
-            containerEl?.prepend(rootEl)
-            createRoot(rootEl).render(<RarityLabel data={res.data[0]} />)
+        const rootEl = $('<div></div>')
+
+        if (!mrl.length) {
+          // Avoid duplicate rendering
+          rootEl.attr('id', '__metadock-rarity-label__')
+          containerEl.prepend(rootEl)
+          if (address && id) {
+            const res = await chromeEvent.emit<
+              typeof GET_NFT_RARITY_RANK,
+              NFTRarityRankRes
+            >(GET_NFT_RARITY_RANK, { address, tokenIds: [id] })
+
+            if (res?.success && res.data && res.data.length) {
+              rootEl.css('margin-right', '24px')
+              createRoot(rootEl[0]).render(<RarityLabel data={res.data[0]} />)
+            }
           }
         }
       }

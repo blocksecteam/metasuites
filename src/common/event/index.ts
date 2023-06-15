@@ -36,7 +36,9 @@ import type {
   GET_TOKEN_MARKETPLACES,
   GET_GPT_TX_EXPLAIN,
   MARK_GPT_TX_EXPLAIN,
-  GET_PROXY_CONTRACT_LOG
+  GET_PROXY_CONTRACT_LOG,
+  GET_IMPL_LABELS,
+  GET_CONSERVATIVE_BLOCK
 } from '@common/constants/event'
 
 export type EventInfo = {
@@ -60,6 +62,8 @@ export type EventInfo = {
   [GET_GPT_TX_EXPLAIN]: GptTxExplainReq
   [MARK_GPT_TX_EXPLAIN]: MarkGptTxExplainReq
   [GET_PROXY_CONTRACT_LOG]: PostAddressParams
+  [GET_IMPL_LABELS]: PostAddressesParams
+  [GET_CONSERVATIVE_BLOCK]: string
 }
 
 export const chromeEvent = new Event<EventInfo>(SCOPE)

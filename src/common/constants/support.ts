@@ -148,6 +148,10 @@ export const PHALCON_SUPPORT_LIST: ToolsSupportWebsite[] = [
     pathname: 'optimism',
     chain: 'optimism'
   }
+  // {
+  //   pathname: 'ftm',
+  //   chain: 'fantom'
+  // }
 ]
 
 export const TRANSACTION_VIEWER_SUPPORT_LIST: ToolsSupportWebsite[] = [

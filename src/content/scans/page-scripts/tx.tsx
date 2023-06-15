@@ -8,7 +8,7 @@ import {
   genAlternativeBlockExplorersBtn,
   genTxFortaAlertTip,
   genCopyIconBtn,
-  genTxPageAddressLabel
+  genTxPageAddressLabels
 } from '../feat-scripts'
 
 const initTxPageScript = async (chain: string) => {
@@ -26,7 +26,7 @@ const initTxPageScript = async (chain: string) => {
     genAlternativeBlockExplorersBtn(SCAN_PAGES.TX.name, chain)
   if (txnFortaAlert) genTxFortaAlertTip(chain)
   if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.TX.name)
-  if (enhancedLabels) genTxPageAddressLabel(chain)
+  if (enhancedLabels) genTxPageAddressLabels(chain)
 }
 
 export default initTxPageScript

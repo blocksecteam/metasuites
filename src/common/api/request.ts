@@ -22,13 +22,23 @@ const request = ky.create({
   hooks: {
     afterResponse: [
       async (request, options, response) => {
-        const res = await response.json()
-        const bscResponse = {
-          success: isNil(res.code),
-          data: res,
-          message: res.message ?? 'success'
+        try {
+          const res = await response.json()
+          const bscResponse = {
+            success: isNil(res.code),
+            data: res,
+            message: res.message ?? 'success'
+          }
+          return new Response(JSON.stringify(bscResponse))
+        } catch (e) {
+          return new Response(
+            JSON.stringify({
+              success: false,
+              message:
+                'The service is currently unavailable, please try again later.'
+            })
+          )
         }
-        return new Response(JSON.stringify(bscResponse))
       }
     ]
   }

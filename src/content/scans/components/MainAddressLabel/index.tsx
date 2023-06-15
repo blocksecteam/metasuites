@@ -1,13 +1,17 @@
 import { Tooltip } from 'antd'
 import { type FC } from 'react'
 
+import type { AddressLabel } from '@common/api/types'
+
 import { TokenSymbol } from '../../components'
 
 interface Props {
-  label: string
+  data: AddressLabel
 }
 
-const MainAddressLabel: FC<Props> = ({ label }) => {
+const MainAddressLabel: FC<Props> = ({
+  data: { label, implementLabel, implementAddress, implementLogo }
+}) => {
   return (
     <Tooltip
       title={
@@ -23,6 +27,15 @@ const MainAddressLabel: FC<Props> = ({ label }) => {
       <div className="u-label u-label--xs u-label--info">
         <TokenSymbol />
         {label}
+        {implementLabel && (
+          <a
+            href={`/address/${implementAddress}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {` ( ->`} <TokenSymbol logo={implementLogo} /> {implementLabel} )
+          </a>
+        )}
       </div>
     </Tooltip>
   )

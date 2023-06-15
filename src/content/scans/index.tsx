@@ -34,7 +34,6 @@ const init = async () => {
   if (!allowed || !chain) return
 
   const pageName = getPageName()
-  console.log('=======', pageName)
   switch (pageName) {
     case SCAN_PAGES.ADDRESS.name:
       initAddressPageScript(chain)

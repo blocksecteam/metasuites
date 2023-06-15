@@ -1,6 +1,7 @@
 import React, { type FC } from 'react'
 import { Radar } from '@ant-design/plots'
 import cls from 'classnames'
+import isMobile from 'is-mobile'
 
 import type { BaseComponent } from '@common/types'
 import type { NFTRiskRes } from '@common/api/types'

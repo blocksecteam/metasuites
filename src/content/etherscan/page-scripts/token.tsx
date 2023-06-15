@@ -14,7 +14,8 @@ import {
   genContractPrivateVariables,
   formatWriteContractParams,
   genTokenMarketplacesBtn,
-  genProxyContractLog
+  genProxyContractLog,
+  genEvmStorageShortcut
 } from '../feat-scripts'
 
 const initTokenPageScript = async (chain: string) => {
@@ -31,7 +32,8 @@ const initTokenPageScript = async (chain: string) => {
     privateVariables,
     formatContractParams,
     tokenMarketplaces,
-    proxyLog
+    proxyLog,
+    evmStorage
   } = await store.get('options')
 
   if (enhancedLabels) genEnhancedLabels(chain)
@@ -47,6 +49,7 @@ const initTokenPageScript = async (chain: string) => {
   if (formatContractParams) formatWriteContractParams()
   if (tokenMarketplaces) genTokenMarketplacesBtn(chain, SCAN_PAGES.TOKEN.name)
   if (proxyLog) genProxyContractLog(chain)
+  if (evmStorage) genEvmStorageShortcut(chain)
 }
 
 export default initTokenPageScript
