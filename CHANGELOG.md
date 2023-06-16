@@ -1,3 +1,7 @@
+### v3.2.0
+
+- [feat] Support for viewing Fantom transactions on Phalcon
+
 ### v3.1.0
 
 - [feat] Introduce evm.storage shortcut in the contract tab
