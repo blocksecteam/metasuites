@@ -2,8 +2,7 @@ import { Tooltip } from 'antd'
 import { type FC } from 'react'
 
 import type { AddressLabel } from '@common/api/types'
-
-import { TokenSymbol } from '../../components'
+import { TokenSymbol } from '@common/components'
 
 interface Props {
   data: AddressLabel

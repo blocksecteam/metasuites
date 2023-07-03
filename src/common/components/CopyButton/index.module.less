@@ -1,29 +1,51 @@
-.container {
-  overflow: hidden;
+.copyButton {
   display: inline-block;
-  vertical-align: sub;
+  overflow: hidden;
+  white-space: nowrap;
+  min-width: fit-content;
 
-  &.copied {
+  &.hoverShowIcon {
+    &:hover {
+      .iconContainer {
+        visibility: visible;
+      }
+    }
+    .iconContainer {
+      visibility: hidden;
+      @media (max-width: 575px) {
+        visibility: visible !important;
+      }
+    }
+  }
+
+  .iconContainer {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: sub;
+
+    svg {
+      margin: 0;
+    }
+
+    &.copied {
+      .iconCopy {
+        transform: translateY(-100%) !important;
+      }
+      .iconSuccess {
+        transform: translateY(-100%) !important;
+      }
+    }
+
     .iconCopy {
-      transform: translateY(-100%) !important;
+      display: block;
+      cursor: pointer;
+      transition: all 0.3s;
+      transform: translateY(0) !important;
     }
-
     .iconSuccess {
-      transform: translateY(-100%) !important;
+      display: block;
+      transition: all 0.3s;
+      transform: translateY(100%) !important;
     }
-  }
-
-  .iconCopy {
-    display: block;
-    cursor: pointer;
-    transition: all 0.3s;
-    transform: translateY(0) !important;
-    margin-bottom: 0;
-  }
-
-  .iconSuccess {
-    display: block;
-    transition: all 0.3s;
-    transform: translateY(100%) !important;
   }
 }

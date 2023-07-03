@@ -36,3 +36,8 @@ export const isSupportParsers = (chain: string): boolean => {
     isSupportTransactionViewer(chain)
   )
 }
+
+export const isSupportSimulator = (chain: string) => {
+  return !!PHALCON_SUPPORT_LIST.find(item => item.chain === chain)
+    ?.supportSimulator
+}

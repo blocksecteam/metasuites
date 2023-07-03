@@ -10,8 +10,7 @@ import {
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import { GET_ADDRESS_LABELS, GET_IMPL_LABELS } from '@common/constants'
-
-import { TokenSymbol } from '../components'
+import { TokenSymbol } from '@common/components'
 
 const isFromToAddress = (el: HTMLElement) => {
   return !!$(el).parent().siblings("a.js-clipboard[aria-label='Copy Address']")
@@ -90,12 +89,16 @@ const genImplAddressLabels = async (chain: string) => {
           const matchEthersTag = $(el).parent().text().match(regex)
           // Replace the tags added by Etherscan
           if (matchEthersTag) {
+            // case: to address
             $(el)
               .next()
               .filter(function () {
                 return regex.test($(this).text())
               })
               .remove()
+            // case: from address
+            const textNode = $(el)[0].nextSibling
+            if (textNode) $(textNode).remove()
           }
           const {
             label,

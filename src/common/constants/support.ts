@@ -11,12 +11,6 @@ interface ExtSupportWebsite {
   logo?: string
 }
 
-interface ToolsSupportWebsite {
-  pathname?: string
-  chain: string
-  url?: string
-}
-
 export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
   {
     name: 'BTC',
@@ -105,7 +99,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
   }
 ]
 
-export const SLEUTH_SUPPORT_LIST: string[] = [
+export const SLEUTH_SUPPORT_LIST = [
   'eth',
   'bsc',
   'polygon',
@@ -117,44 +111,52 @@ export const SLEUTH_SUPPORT_LIST: string[] = [
   'optimism'
 ]
 
-export const ALTERNATIVE_BLOCK_EXPLORES_SUPPORT_LIST: string[] = ['eth']
+export const ALTERNATIVE_BLOCK_EXPLORES_SUPPORT_LIST = ['eth']
 
-export const PHALCON_SUPPORT_LIST: ToolsSupportWebsite[] = [
+export const PHALCON_SUPPORT_LIST = [
   {
     pathname: 'eth',
-    chain: 'eth'
+    chain: 'eth',
+    supportSimulator: true
   },
   {
     pathname: 'polygon',
-    chain: 'polygon'
+    chain: 'polygon',
+    supportSimulator: true
   },
   {
     pathname: 'bsc',
-    chain: 'bsc'
+    chain: 'bsc',
+    supportSimulator: true
   },
   {
     pathname: 'avax',
-    chain: 'avalanche'
+    chain: 'avalanche',
+    supportSimulator: true
   },
   {
     pathname: 'cro',
-    chain: 'cronos'
+    chain: 'cronos',
+    supportSimulator: false
   },
   {
     pathname: 'arbitrum',
-    chain: 'arbitrum'
+    chain: 'arbitrum',
+    supportSimulator: true
   },
   {
     pathname: 'optimism',
-    chain: 'optimism'
+    chain: 'optimism',
+    supportSimulator: true
   },
   {
     pathname: 'ftm',
-    chain: 'fantom'
+    chain: 'fantom',
+    supportSimulator: false
   }
 ]
 
-export const TRANSACTION_VIEWER_SUPPORT_LIST: ToolsSupportWebsite[] = [
+export const TRANSACTION_VIEWER_SUPPORT_LIST = [
   {
     pathname: 'ethereum',
     chain: 'eth'
@@ -185,7 +187,7 @@ export const TRANSACTION_VIEWER_SUPPORT_LIST: ToolsSupportWebsite[] = [
   }
 ]
 
-export const TENDERLY_SUPPORT_LIST: ToolsSupportWebsite[] = [
+export const TENDERLY_SUPPORT_LIST = [
   {
     pathname: 'polygon',
     chain: 'polygon'
@@ -220,7 +222,7 @@ export const TENDERLY_SUPPORT_LIST: ToolsSupportWebsite[] = [
 ]
 
 /** https://library.dedaub.com/ */
-export const DEDAUB_SUPPORT_DIRECT_LIST: ToolsSupportWebsite[] = [
+export const DEDAUB_SUPPORT_DIRECT_LIST = [
   {
     chain: 'eth',
     pathname: 'Ethereum'
@@ -231,7 +233,7 @@ export const DEDAUB_SUPPORT_DIRECT_LIST: ToolsSupportWebsite[] = [
   }
 ]
 
-export const ETHERSCAN_DETH_SUPPORT_LIST: ToolsSupportWebsite[] = [
+export const ETHERSCAN_DETH_SUPPORT_LIST = [
   {
     chain: 'eth',
     url: 'https://etherscan.deth.net/address'
@@ -267,7 +269,7 @@ export const ETHERSCAN_DETH_SUPPORT_LIST: ToolsSupportWebsite[] = [
 ]
 
 /** https://ethervm.io */
-export const ETHERVM_SUPPORT_DIRECT_LIST: ToolsSupportWebsite[] = [
+export const ETHERVM_SUPPORT_DIRECT_LIST = [
   {
     chain: 'eth',
     url: 'https://ethervm.io/decompile'
@@ -275,5 +277,63 @@ export const ETHERVM_SUPPORT_DIRECT_LIST: ToolsSupportWebsite[] = [
   {
     chain: 'bsc',
     url: 'https://ethervm.io/decompile/binance'
+  }
+]
+
+/** phalcon simulator */
+export const SIMULATE_SUPPORT_LIST = [
+  {
+    chain: 'eth',
+    name: 'ETH',
+    logo: 'https://assets.blocksec.com/image/1671685360787-7.png',
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 }
+  },
+  {
+    chain: 'bsc',
+    name: 'BSC',
+    logo: 'https://assets.blocksec.com/image/1671685360787-4.png',
+    nativeCurrency: {
+      decimals: 18,
+      name: 'BNB',
+      symbol: 'BNB'
+    }
+  },
+  {
+    name: 'Polygon',
+    chain: 'polygon',
+    logo: 'https://assets.blocksec.com/image/1671685360787-12.png',
+    nativeCurrency: { name: 'MATIC', symbol: 'MATIC', decimals: 18 }
+  },
+  {
+    name: 'Fantom',
+    chain: 'fantom',
+    logo: 'https://assets.blocksec.com/image/1671685360787-8.png',
+    nativeCurrency: {
+      decimals: 18,
+      name: 'Fantom',
+      symbol: 'FTM'
+    }
+  },
+  {
+    name: 'Arbitrum',
+    chain: 'arbitrum',
+    logo: 'https://assets.blocksec.com/image/1671685360787-2.png',
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 }
+  },
+  {
+    name: 'Avalanche',
+    chain: 'avalanche',
+    logo: 'https://assets.blocksec.com/image/1671777583236-3.png',
+    nativeCurrency: {
+      decimals: 18,
+      name: 'Avalanche',
+      symbol: 'AVAX'
+    }
+  },
+  {
+    name: 'Optimism',
+    chain: 'optimism',
+    logo: 'https://assets.blocksec.com/image/1671777583236-2.png',
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 }
   }
 ]

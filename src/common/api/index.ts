@@ -30,7 +30,12 @@ import type {
   GptTxExplainRes,
   MarkGptTxExplainReq,
   ProxyContractLog,
-  GptTxExplainReq
+  GptTxExplainReq,
+  VerifiedContractData,
+  SimulateTxParams,
+  GetContractByAddressReq,
+  GetContractByABIReq,
+  PostSignatureReq
 } from './types'
 
 export default {
@@ -124,5 +129,36 @@ export default {
       .json<BscResponse<AddressLabel[]>>(),
   /** The supported blocks by evm.storage may experience delays, so the latest block cannot be obtained. */
   getConservativeBlock: (chain: string) =>
-    request.get(`api/v1/${chain}/block`).json<BscResponse<AddressLabel[]>>()
+    request.get(`api/v1/${chain}/block`).json<BscResponse<{ block: number }>>(),
+  getContractByAddress: ({
+    address,
+    chain,
+    callData
+  }: GetContractByAddressReq) =>
+    request
+      .post('api/v1/simulation/verify', {
+        json: { address, chain, callData }
+      })
+      .json<BscResponse<VerifiedContractData>>(),
+  getContractByABI: ({ abi, callData }: GetContractByABIReq) =>
+    request
+      .post('api/v1/simulation/decode', {
+        json: { abi, callData }
+      })
+      .json<BscResponse<VerifiedContractData>>(),
+  /** 模拟交易api post */
+  simulateTransaction: (params: SimulateTxParams) =>
+    request
+      .post('api/v1/simulation/simulator', { json: params })
+      .json<BscResponse<{ key: string }>>(),
+  getSignatureBySelector: (params: PostSignatureReq) =>
+    request
+      .post('api/v1/simulation/sig', {
+        json: params
+      })
+      .json<BscResponse<{ sig: string }>>(),
+  getLatestBlock: (chain: string) =>
+    request
+      .get(`api/v1/${chain}/latest-block`)
+      .json<BscResponse<{ block: number }>>()
 }

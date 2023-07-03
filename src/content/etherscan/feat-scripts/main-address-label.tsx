@@ -1,17 +1,17 @@
 import type { CallbackResponse } from 'chrome-extension-core/lib/event'
 import { createRoot } from 'react-dom/client'
+import $ from 'jquery'
 
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import { GET_IMPL_LABELS } from '@common/constants'
+import { getEtherscanNameTag } from '@common/utils'
 
 import { MainAddressLabel } from '../components'
 
 /** enhanced address label */
 const genMainAddressLabel = async (chain: string) => {
-  const mainAddressEl = document.querySelector<HTMLElement>('#mainaddress')
-
-  const mainAddress = mainAddressEl?.innerText
+  const mainAddress = $('#mainaddress').text().trim()
 
   if (!mainAddress) return
 
@@ -19,18 +19,15 @@ const genMainAddressLabel = async (chain: string) => {
     .emit(GET_IMPL_LABELS, { chain: chain, addresses: [mainAddress] })
     .then((res: CallbackResponse<AddressLabel[]> | undefined) => {
       if (res?.success && res.data.length) {
-        const containerEl = document.querySelector(
+        const containerEl = $(
           '#ContentPlaceHolder1_divSummary > div:first-child > div:first-child'
         )
         const label = res.data[0].label
-        if (label && containerEl) {
-          document
-            .querySelector('#ContentPlaceHolder1_divSummary > div')
-            ?.removeAttribute('style')
-          const labelRootEl = document.createElement('div')
-          labelRootEl.style.display = 'inline-block'
-          containerEl?.appendChild(labelRootEl)
-          createRoot(labelRootEl).render(
+        if (label && label !== getEtherscanNameTag()) {
+          $('#ContentPlaceHolder1_divSummary > div').removeAttr('style')
+          const labelRootEl = $('<span></span>')
+          containerEl.append(labelRootEl)
+          createRoot(labelRootEl[0]).render(
             <MainAddressLabel data={res.data[0]} />
           )
         }

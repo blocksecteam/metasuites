@@ -168,7 +168,7 @@ const Shortcuts: FC = () => {
             ) : (
               <Iconfont
                 style={{ display: value ? 'inline' : 'none' }}
-                type="icon-cuowu"
+                type="icon-close"
                 cursor="pointer"
                 onClick={onClear}
               />

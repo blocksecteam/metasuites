@@ -14,7 +14,11 @@ import type {
   QueryPrivateVariableReq,
   PostPrivateVariablesParams,
   MarkGptTxExplainReq,
-  GptTxExplainReq
+  GptTxExplainReq,
+  GetContractByAddressReq,
+  GetContractByABIReq,
+  SimulateTxParams,
+  PostSignatureReq
 } from '@common/api/types'
 import type {
   REFRESH,
@@ -38,7 +42,12 @@ import type {
   MARK_GPT_TX_EXPLAIN,
   GET_PROXY_CONTRACT_LOG,
   GET_IMPL_LABELS,
-  GET_CONSERVATIVE_BLOCK
+  GET_CONSERVATIVE_BLOCK,
+  GET_CONTRACT_BY_ADDRESS,
+  GET_CONTRACT_BY_ABI,
+  SIMULATE_TRANSACTION,
+  GET_SIGNATURE_BY_SELECTOR,
+  GET_LATEST_BLOCK
 } from '@common/constants/event'
 
 export type EventInfo = {
@@ -64,6 +73,11 @@ export type EventInfo = {
   [GET_PROXY_CONTRACT_LOG]: PostAddressParams
   [GET_IMPL_LABELS]: PostAddressesParams
   [GET_CONSERVATIVE_BLOCK]: string
+  [GET_CONTRACT_BY_ADDRESS]: GetContractByAddressReq
+  [GET_CONTRACT_BY_ABI]: GetContractByABIReq
+  [SIMULATE_TRANSACTION]: SimulateTxParams
+  [GET_SIGNATURE_BY_SELECTOR]: PostSignatureReq
+  [GET_LATEST_BLOCK]: string
 }
 
 export const chromeEvent = new Event<EventInfo>(SCOPE)

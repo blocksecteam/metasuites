@@ -7,9 +7,7 @@ import {
   GET_ADDRESS_LABELS,
   TABLE_LIST_ADDRESS_SELECTORS
 } from '@common/constants'
-import { CopyButton } from '@common/components'
-
-import { TokenSymbol } from '../components'
+import { CopyButton, TokenSymbol } from '@common/components'
 
 const handleReplace = async (
   chain: string,

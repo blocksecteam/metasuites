@@ -4,6 +4,7 @@ import $ from 'jquery'
 import { chromeEvent } from '@common/event'
 import type { RiskScore } from '@common/api/types'
 import { GET_ADDRESS_RISK_SCORE } from '@common/constants'
+import { getEtherscanNameTag } from '@common/utils'
 
 import { ComplianceScoreLabel } from '../components'
 
@@ -14,15 +15,6 @@ const getScanLabels = (): string[] => {
     labels.push($(this).text().trim())
   })
   return labels
-}
-
-const getNameTag = (): string => {
-  return $('#ContentPlaceHolder1_moreoptionsdiv')
-    .prev()
-    .find('> *')
-    .has("i[class*='fa-tag']")
-    .text()
-    .trim()
 }
 
 /** address compliance score*/
@@ -49,7 +41,7 @@ const genComplianceScoresBtn = async (chain: string) => {
       address: mainAddress,
       addressLabel: {
         labels: getScanLabels(),
-        nameTag: getNameTag()
+        nameTag: getEtherscanNameTag()
       }
     }
   )

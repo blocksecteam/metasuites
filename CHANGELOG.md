@@ -1,3 +1,8 @@
+### v3.3.0
+
+- [feat] Introduce transaction simulation support
+- [fix] Resolve bugs related to private variables and forta alerts
+
 ### v3.2.0
 
 - [feat] Support for viewing Fantom transactions on Phalcon

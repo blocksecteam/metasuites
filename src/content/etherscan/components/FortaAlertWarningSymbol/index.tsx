@@ -1,7 +1,8 @@
 import { useEffect, useRef, useMemo, type FC, useState } from 'react'
 
+import { TokenSymbol } from '@common/components'
+
 import styles from './index.module.less'
-import { TokenSymbol } from '../../components'
 
 interface Props {
   alertUrl: string
@@ -34,9 +35,16 @@ const FortaAlertWarningSymbol: FC<Props> = ({ alertUrl }) => {
         <div className={styles.overlayInner}>
           <TokenSymbol style={{ marginRight: '6px' }} />
           <span>Forta Alert: This is a suspicious exploit transaction</span>
-          <a className="ms-2" href={alertUrl} target="_blank" rel="noreferrer">
-            Detail
-          </a>
+          {alertUrl && (
+            <a
+              className="ms-2"
+              href={alertUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Detail
+            </a>
+          )}
         </div>
       </div>
     </div>

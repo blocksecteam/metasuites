@@ -248,12 +248,21 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               }
             />
             <Cell
-              border={false}
               title="Show evm.storage shortcut"
               action={
                 <Switch
                   checked={options.evmStorage as boolean}
                   onChange={val => onChange('evmStorage', val)}
+                />
+              }
+            />
+            <Cell
+              border={false}
+              title="Show transaction simulator"
+              action={
+                <Switch
+                  checked={options.txSimulator as boolean}
+                  onChange={val => onChange('txSimulator', val)}
                 />
               }
             />

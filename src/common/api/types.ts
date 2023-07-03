@@ -241,3 +241,85 @@ export interface ProxyContractLog {
   tx: string
   hub: string
 }
+
+export interface VerifiedContractData {
+  isProxy: boolean
+  proxy?: {
+    contractName: string
+    methods: ContractMethod[]
+    abi: string
+  }
+  implementation: {
+    contractName: string
+    methods: ContractMethod[]
+    abi: string
+  }
+  proxyMatch: boolean
+  functionName?: string
+  unpacked?: boolean
+  unpackedCallData?: {
+    functionName: string
+    signature: string
+    params: []
+  }
+}
+
+export interface ContractMethod {
+  name: string
+  signature: string
+  argumentsIn: Arguments[]
+  argumentsOut: Arguments[]
+  constant: boolean
+  isProxy?: boolean
+}
+
+export interface Arguments {
+  name: string
+  type: string
+}
+
+export type ContractMethodSelectOptions = {
+  label: string
+  options: ContractMethodOption[]
+}[]
+
+export interface ContractMethodOption extends ContractMethod {
+  label: string
+  value: string
+}
+
+export interface ContractABI {
+  proxyABI: string
+  implementationABI: string
+}
+
+export interface SimulateTxParams {
+  chain: string
+  blockNumber?: number
+  position?: number
+  value: string
+  sender: string
+  receiver: string
+  inputData: string
+  gasPrice: string
+  gasLimit: number
+  isPrerun: boolean
+}
+
+export interface GetContractByAddressReq {
+  chain: string
+  address: string
+  callData?: string
+}
+
+export interface GetContractByABIReq {
+  abi: string
+  callData?: string
+}
+
+export interface PostSignatureReq {
+  chain: string
+  contract: string
+  selector?: string
+  funcName?: string
+}

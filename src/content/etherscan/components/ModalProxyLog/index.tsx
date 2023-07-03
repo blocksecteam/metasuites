@@ -8,10 +8,9 @@ import { getImageUrl } from '@common/utils'
 import type { ProxyContractLog } from '@common/api/types'
 import { chromeEvent } from '@common/event'
 import { GET_PROXY_CONTRACT_LOG } from '@common/constants'
-import { CopyButton } from '@common/components'
+import { CopyButton, TokenSymbol } from '@common/components'
 
 import styles from './index.module.less'
-import TokenSymbol from '../TokenSymbol'
 
 interface Props {
   chain: string

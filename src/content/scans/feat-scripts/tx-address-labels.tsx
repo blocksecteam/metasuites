@@ -10,8 +10,7 @@ import {
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import { GET_ADDRESS_LABELS, GET_IMPL_LABELS } from '@common/constants'
-
-import { TokenSymbol } from '../components'
+import { TokenSymbol } from '@common/components'
 
 const genImplAddressLabel = async (chain: string) => {
   const addressList: string[] = []
@@ -124,15 +123,11 @@ const genNormalAddressLabels = async (chain: string) => {
       }
     })
 
+  // from address
   $('#addressCopy').each(function () {
     const regex = /\((.*?)\)/
-    const match = $(this)
-      .parent()
-      .children()
-      .not('#wrapperContent')
-      .text()
-      .match(regex)
     const text = $(this).text()
+    const match = $(this).parent().text().trim().match(regex)
     if (!match && isAddress(text)) {
       tagList.push($(this)[0])
       if (!addressList.includes(text)) {

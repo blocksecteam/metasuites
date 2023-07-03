@@ -2,9 +2,9 @@ import { type FC } from 'react'
 import cls from 'classnames'
 
 import type { AddressFunderRiskRes } from '@common/api/types'
+import { TokenSymbol } from '@common/components'
 
 import styles from './index.module.less'
-import TokenSymbol from '../TokenSymbol'
 
 interface Props {
   data: AddressFunderRiskRes

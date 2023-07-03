@@ -38,7 +38,7 @@ const Cell: FC<CellProps> = props => {
           <div className={styles.action}>{action}</div>
         ) : (
           <div className={styles.iconContainer}>
-            <Iconfont type="icon-jinru" />
+            <Iconfont type="icon-arrow-right" />
           </div>
         )}
       </div>

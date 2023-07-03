@@ -29,7 +29,7 @@ const Drawer: FC<PropsWithChildren<Props>> = props => {
           <header className={styles.title}>
             {title}
             <div className={styles.iconContainer} onClick={onClose}>
-              <Iconfont type="icon-cha" />
+              <Iconfont type="icon-close" />
             </div>
           </header>
           <div className={styles.body}>{children}</div>

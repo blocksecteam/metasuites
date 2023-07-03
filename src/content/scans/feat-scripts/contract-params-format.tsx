@@ -47,7 +47,7 @@ const formatWriteContractParams = async () => {
     '#writecontractiframe, #writeproxycontractiframe'
   )
   writeContractIframes.each(function () {
-    $(this).on('load', async () => {
+    const renderButtons = () => {
       $(this)
         .contents()
         .find('.collapse .card-body form .form-group input')
@@ -73,6 +73,18 @@ const formatWriteContractParams = async () => {
             />
           )
         })
+    }
+
+    const iframeContentsExist = !!$(this).contents().find('#header').children()
+      .length
+
+    if (iframeContentsExist) {
+      renderButtons()
+      return
+    }
+
+    $(this).on('load', async () => {
+      renderButtons()
     })
   })
 }

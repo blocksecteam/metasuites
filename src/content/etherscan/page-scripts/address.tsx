@@ -1,5 +1,6 @@
 import { store } from '@src/store'
 import { SCAN_PAGES } from '@common/constants'
+import { isSupportSimulator } from '@common/utils'
 
 /** main features */
 import {
@@ -25,7 +26,8 @@ import {
   genTokenMarketplacesBtn,
   formatWriteContractParams,
   genProxyContractLog,
-  genEvmStorageShortcut
+  genEvmStorageShortcut,
+  genSimulateBtn
 } from '../feat-scripts'
 
 const initAddressPageScript = async (chain: string) => {
@@ -52,7 +54,8 @@ const initAddressPageScript = async (chain: string) => {
     formatContractParams,
     tokenMarketplaces,
     proxyLog,
-    evmStorage
+    evmStorage,
+    txSimulator
   } = await store.get('options')
 
   if (enhancedSignatures) genEnhancedSignatures(chain)
@@ -81,6 +84,7 @@ const initAddressPageScript = async (chain: string) => {
   if (tokenMarketplaces) genTokenMarketplacesBtn(chain, SCAN_PAGES.ADDRESS.name)
   if (proxyLog) genProxyContractLog(chain)
   if (evmStorage) genEvmStorageShortcut(chain)
+  if (txSimulator && isSupportSimulator(chain)) genSimulateBtn(chain)
 }
 
 export default initAddressPageScript

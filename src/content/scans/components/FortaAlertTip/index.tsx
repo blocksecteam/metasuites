@@ -16,13 +16,17 @@ const FortaAlertTip: FC<Props> = ({ alertUrl, subscribeUrl }) => {
       <span className={styles.desc}>
         This is a suspicious exploit transaction
       </span>
-      <a href={alertUrl} target="_blank" rel="noreferrer">
-        Detail
-      </a>
-      <span className="mx-2">|</span>
-      <a href={subscribeUrl} rel="noreferrer" target="_blank">
-        Subscribe
-      </a>
+      {alertUrl && (
+        <a href={alertUrl} target="_blank" rel="noreferrer">
+          Detail
+        </a>
+      )}
+      {alertUrl && subscribeUrl && <span className="mx-2">|</span>}
+      {subscribeUrl && (
+        <a href={subscribeUrl} rel="noreferrer" target="_blank">
+          Subscribe
+        </a>
+      )}
     </div>
   )
 }

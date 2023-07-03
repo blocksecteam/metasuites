@@ -1,5 +1,6 @@
 import { store } from '@src/store'
 import { SCAN_PAGES } from '@common/constants'
+import { isSupportSimulator } from '@common/utils'
 
 /** main features */
 import {
@@ -23,7 +24,8 @@ import {
   scanTxnFortaAlert,
   genContractPrivateVariables,
   formatWriteContractParams,
-  genProxyContractLog
+  genProxyContractLog,
+  genSimulateBtn
 } from '../feat-scripts'
 
 const initAddressPageScript = async (chain: string) => {
@@ -48,7 +50,8 @@ const initAddressPageScript = async (chain: string) => {
     txnFortaAlert,
     privateVariables,
     formatContractParams,
-    proxyLog
+    proxyLog,
+    txSimulator
   } = await store.get('options')
 
   if (enhancedSignatures) genEnhancedSignatures(chain)
@@ -75,6 +78,7 @@ const initAddressPageScript = async (chain: string) => {
   if (privateVariables) genContractPrivateVariables(chain)
   if (formatContractParams) formatWriteContractParams()
   if (proxyLog) genProxyContractLog(chain)
+  if (txSimulator && isSupportSimulator(chain)) genSimulateBtn(chain)
 }
 
 export default initAddressPageScript

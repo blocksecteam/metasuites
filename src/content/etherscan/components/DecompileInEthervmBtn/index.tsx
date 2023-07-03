@@ -12,7 +12,8 @@ interface Props {
 
 const DecompileInEthervmBtn: FC<Props> = ({ mainAddress, chain }) => {
   const toEthervm = () => {
-    if (ETHERVM_SUPPORT_DIRECT_LIST.includes(chain)) {
+    const item = ETHERVM_SUPPORT_DIRECT_LIST.find(i => i.chain === chain)
+    if (item) {
       window.open(`https://ethervm.io/decompile/${mainAddress}`)
     } else {
       window.open('https://ethervm.io/decompile')

@@ -35,7 +35,8 @@ const OPTIONS = [
   'tokenMarketplaces',
   'txSummary',
   'proxyLog',
-  'evmStorage'
+  'evmStorage',
+  'txSimulator'
 ] as const
 
 export type OptKeys = (typeof OPTIONS)[number]
@@ -87,7 +88,8 @@ export const defaultValue: StorageInfo = {
     tokenMarketplaces: true,
     txSummary: true,
     proxyLog: true,
-    evmStorage: true
+    evmStorage: true,
+    txSimulator: true
   }
 }
 

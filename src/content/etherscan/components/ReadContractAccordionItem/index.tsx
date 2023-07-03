@@ -11,8 +11,7 @@ import type {
   PrivateVariable,
   QueryPrivateVariableReq
 } from '@common/api/types'
-
-import { TokenSymbol } from '../../components'
+import { TokenSymbol } from '@common/components'
 
 interface Props {
   id: string
@@ -86,7 +85,7 @@ const ReadContractAccordionItem: FC<Props> = ({
         }
         return v.value
       } else {
-        return v.value.toString()
+        return JSON.stringify(v.value)
       }
     }
     return null

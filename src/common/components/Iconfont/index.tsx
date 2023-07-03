@@ -30,7 +30,7 @@ export default function Iconfont(props: IconFontProps) {
     scale,
     ml,
     mr,
-    cursor = 'default',
+    cursor = 'inherit',
     ...rest
   } = props
   const styleSheet: CSSProperties = Object.assign(

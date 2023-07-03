@@ -1,5 +1,6 @@
 import { SCAN_PAGES } from '@common/constants'
 import { store } from '@src/store'
+import { isSupportSimulator } from '@common/utils'
 
 import {
   genEnhancedLabels,
@@ -15,7 +16,8 @@ import {
   formatWriteContractParams,
   genTokenMarketplacesBtn,
   genProxyContractLog,
-  genEvmStorageShortcut
+  genEvmStorageShortcut,
+  genSimulateBtn
 } from '../feat-scripts'
 
 const initTokenPageScript = async (chain: string) => {
@@ -33,7 +35,8 @@ const initTokenPageScript = async (chain: string) => {
     formatContractParams,
     tokenMarketplaces,
     proxyLog,
-    evmStorage
+    evmStorage,
+    txSimulator
   } = await store.get('options')
 
   if (enhancedLabels) genEnhancedLabels(chain)
@@ -50,6 +53,7 @@ const initTokenPageScript = async (chain: string) => {
   if (tokenMarketplaces) genTokenMarketplacesBtn(chain, SCAN_PAGES.TOKEN.name)
   if (proxyLog) genProxyContractLog(chain)
   if (evmStorage) genEvmStorageShortcut(chain)
+  if (txSimulator && isSupportSimulator(chain)) genSimulateBtn(chain)
 }
 
 export default initTokenPageScript

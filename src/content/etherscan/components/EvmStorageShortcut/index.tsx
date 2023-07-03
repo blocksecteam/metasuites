@@ -2,8 +2,7 @@ import { type FC, useEffect, useState } from 'react'
 
 import { chromeEvent } from '@common/event'
 import { GET_CONSERVATIVE_BLOCK } from '@common/constants'
-
-import { TokenSymbol } from '../../components'
+import { TokenSymbol } from '@common/components'
 
 interface Props {
   chain: string
@@ -39,7 +38,7 @@ const EvmStorageShortcut: FC<Props> = ({ chain, address }) => {
     >
       <span className="nav-link">
         <TokenSymbol mr={4} />
-        <span className="d-none d-sm-inline-block">View in evm.storage</span>
+        <span className="d-sm-inline-block">View in evm.storage</span>
       </span>
     </li>
   )

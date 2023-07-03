@@ -1,6 +1,6 @@
 {
   "name": "metadock",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/blocksecteam/metadock.git"
@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@ant-design/plots": "^1.2.2",
-    "antd": "^5.2.0",
+    "antd": "^5.3.1",
     "big.js": "^6.2.1",
     "blockies-ts": "^1.0.0",
     "buffer": "^6.0.3",
@@ -61,6 +61,7 @@
     "@vitejs/plugin-react": "^2.2.0",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",

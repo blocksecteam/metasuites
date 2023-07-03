@@ -24,7 +24,7 @@ const Checkbox: FC<Props> = props => {
         }}
       />
       <span className={styles.checkmark}>
-        <Iconfont type="icon-gou" size={12} color="#fff" />
+        <Iconfont type="icon-check" size={12} color="#fff" />
       </span>
     </label>
   )

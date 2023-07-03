@@ -1,6 +1,8 @@
 import { type FC, useState } from 'react'
 
-import { TokenSymbol, ModalProxyLog } from '../../components'
+import { TokenSymbol } from '@common/components'
+
+import { ModalProxyLog } from '../../components'
 
 interface Props {
   chain: string
@@ -23,7 +25,7 @@ const ProxyLogReference: FC<Props> = ({ chain, address }) => {
       >
         <span className="nav-link">
           <TokenSymbol mr={4} />
-          <span className="d-none d-sm-inline-block">Proxy Upgrade Log</span>
+          <span className="d-sm-inline-block">Proxy Upgrade Log</span>
         </span>
       </li>
       <ModalProxyLog

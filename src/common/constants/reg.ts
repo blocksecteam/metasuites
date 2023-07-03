@@ -22,3 +22,5 @@ export const PATTERN_BTC_ADDRESS_EXAC =
   /^\b(?:[13][1-9A-HJ-NP-Za-km-z]{25,34})|(?:bc1(?:(?:(?:q[ac-hj-np-z02-9]{38}(?:[ac-hj-np-z02-9]{20})?)|(?:p[ac-hj-np-z02-9]{58}))))\b$/
 
 export const PATTERN_ENS = /\.(eth)$/
+
+export const PATTERN_INPUT_DATA = /^0[x|X][A-Fa-f0-9]*$/

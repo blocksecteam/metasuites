@@ -16,7 +16,12 @@ import {
   MARK_GPT_TX_EXPLAIN,
   GET_PROXY_CONTRACT_LOG,
   GET_IMPL_LABELS,
-  GET_CONSERVATIVE_BLOCK
+  GET_CONSERVATIVE_BLOCK,
+  GET_CONTRACT_BY_ADDRESS,
+  GET_CONTRACT_BY_ABI,
+  SIMULATE_TRANSACTION,
+  GET_SIGNATURE_BY_SELECTOR,
+  GET_LATEST_BLOCK
 } from '@common/constants'
 import commonApi from '@common/api'
 
@@ -76,5 +81,20 @@ export default function initExploreRequest() {
   })
   chromeEvent.on(GET_CONSERVATIVE_BLOCK, async params => {
     return await commonApi.getConservativeBlock(params)
+  })
+  chromeEvent.on(GET_CONTRACT_BY_ADDRESS, async params => {
+    return await commonApi.getContractByAddress(params)
+  })
+  chromeEvent.on(GET_CONTRACT_BY_ABI, async params => {
+    return await commonApi.getContractByABI(params)
+  })
+  chromeEvent.on(SIMULATE_TRANSACTION, async params => {
+    return await commonApi.simulateTransaction(params)
+  })
+  chromeEvent.on(GET_SIGNATURE_BY_SELECTOR, async params => {
+    return await commonApi.getSignatureBySelector(params)
+  })
+  chromeEvent.on(GET_LATEST_BLOCK, async params => {
+    return await commonApi.getLatestBlock(params)
   })
 }

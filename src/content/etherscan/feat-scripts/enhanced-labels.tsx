@@ -9,8 +9,7 @@ import {
   TABLE_LIST_ADDRESS_SELECTORS_V2
 } from '@common/constants'
 import { widthScanV2Tooltip } from '@common/hoc'
-
-import { TokenSymbol } from '../components'
+import { TokenSymbol } from '@common/components'
 
 const handleReplace = async (
   chain: string,
