@@ -38,6 +38,18 @@ export const getEtherscanNameTag = (): string => {
     .trim()
 }
 
+export const getEtherscanTags = (): string[] => {
+  const tags: string[] = []
+  $('#ContentPlaceHolder1_divLabels > a').each(function () {
+    tags.push($(this).text().trim())
+  })
+  return tags
+}
+
+export const getEtherscanEnsName = (): string => {
+  return $('#ensName').text().trim()
+}
+
 export const getAnyScanNameTag = (): string => {
   return $(
     "#ContentPlaceHolder1_divSummary h2.card-header-title:contains('Overview')"

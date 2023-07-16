@@ -5,13 +5,18 @@ import Big from 'big.js'
 import { isAddress } from 'ethers'
 
 import { chromeEvent } from '@common/event'
-import { QUERY_PRIVATE_VARIABLE } from '@common/constants'
+import {
+  QUERY_PRIVATE_VARIABLE,
+  ContractVariableMutability
+} from '@common/constants'
 import type {
   PrivateVariableArgument,
-  PrivateVariable,
-  QueryPrivateVariableReq
+  PrivateVariable
 } from '@common/api/types'
 import { TokenSymbol } from '@common/components'
+import { renderModalVariableLogs } from '@src/content/scans/feat-scripts'
+
+import { ContractVariableLogBtn } from '../../components'
 
 interface Props {
   id: string
@@ -26,24 +31,23 @@ const ReadContractAccordionItem: FC<Props> = ({
   address,
   id,
   implAddress,
-  data: { name, inputs, value, outputs }
+  data: { name, inputs, value, outputs, mutability }
 }) => {
   const [errorMsg, setErrorMsg] = useState('')
   const [formData, setFormData] = useState<Record<string, any>>({})
   const [queryResult, setQueryResult] = useState<PrivateVariableArgument>()
 
   const onQuery = async () => {
-    const params: QueryPrivateVariableReq = {
-      chain,
-      address,
-      variableName: name,
-      inputs: Object.values(formData)
-    }
-    if (implAddress) params.implAddress = implAddress
     const res = await chromeEvent.emit<
       typeof QUERY_PRIVATE_VARIABLE,
       PrivateVariableArgument
-    >(QUERY_PRIVATE_VARIABLE, params)
+    >(QUERY_PRIVATE_VARIABLE, {
+      chain,
+      address,
+      variableName: name,
+      inputs: Object.values(formData),
+      implAddress
+    })
     if (res?.success && res?.data) {
       setQueryResult(res.data)
     }
@@ -95,7 +99,7 @@ const ReadContractAccordionItem: FC<Props> = ({
     <div className={cls('card shadow-none mb-3')}>
       <div className="card-header bg-light card-collapse p-0">
         <a
-          className="btn btn-link btn-block text-dark d-flex justify-content-between align-items-center py-2 collapsed"
+          className="btn btn-link btn-block text-dark d-flex justify-between align-items-center py-2 collapsed"
           data-toggle="collapse"
           aria-expanded="false"
           href={`#${id}`}
@@ -107,7 +111,13 @@ const ReadContractAccordionItem: FC<Props> = ({
               {id.split('-')[1]}. {name} ({' '}
             </span>
             <TokenSymbol size={12} className="mx-1" />
-            <span>Private variable )</span>
+            <span>
+              Private
+              {mutability === ContractVariableMutability.IMMUTABLE
+                ? ' Immutable '
+                : ' '}
+              Variable )
+            </span>
           </div>
           <span className="accordion-arrow">
             <i className="fas fa-arrow-down small"></i>
@@ -148,6 +158,26 @@ const ReadContractAccordionItem: FC<Props> = ({
                   >
                     Query
                   </button>
+                  <ContractVariableLogBtn
+                    className="ml-2"
+                    onClick={errorCallback => {
+                      const _inputs = inputs.map(i => ({
+                        ...i,
+                        value: formData[i.name]
+                      }))
+                      if (_inputs.findIndex(i => !i.value?.trim()) !== -1) {
+                        return errorCallback()
+                      }
+                      renderModalVariableLogs({
+                        chain,
+                        address,
+                        variableName: name,
+                        implementation: implAddress,
+                        returnType: outputs.map(i => i.type).join(','),
+                        inputs: _inputs
+                      })
+                    }}
+                  />
                 </div>
                 <div className="mb-3">
                   <img
@@ -225,6 +255,20 @@ const ReadContractAccordionItem: FC<Props> = ({
                     {value?.type}
                   </span>
                 </i>
+                <div className="mt-4">
+                  <ContractVariableLogBtn
+                    onClick={() => {
+                      renderModalVariableLogs({
+                        chain,
+                        address,
+                        variableName: name,
+                        implementation: implAddress,
+                        returnType: value?.type ?? '',
+                        inputs: []
+                      })
+                    }}
+                  />
+                </div>
               </div>
             )}
           </form>

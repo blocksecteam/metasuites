@@ -21,7 +21,10 @@ import {
   GET_CONTRACT_BY_ABI,
   SIMULATE_TRANSACTION,
   GET_SIGNATURE_BY_SELECTOR,
-  GET_LATEST_BLOCK
+  GET_LATEST_BLOCK,
+  GET_CREATION_BLOCK,
+  GET_CONTRACT_VARIABLE_LOGS,
+  GET_CONTRACT_VARIABLE_LIST
 } from '@common/constants'
 import commonApi from '@common/api'
 
@@ -96,5 +99,14 @@ export default function initExploreRequest() {
   })
   chromeEvent.on(GET_LATEST_BLOCK, async params => {
     return await commonApi.getLatestBlock(params)
+  })
+  chromeEvent.on(GET_CREATION_BLOCK, async params => {
+    return await commonApi.getCreationBlock(params)
+  })
+  chromeEvent.on(GET_CONTRACT_VARIABLE_LOGS, async params => {
+    return await commonApi.getContractVariableLogs(params)
+  })
+  chromeEvent.on(GET_CONTRACT_VARIABLE_LIST, async params => {
+    return await commonApi.getContractVariableList(params)
   })
 }

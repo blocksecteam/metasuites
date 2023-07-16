@@ -1,5 +1,5 @@
 import type { FundFlowRes, FundFlowNode, FundFlowEdge } from '@common/api/types'
-import { swapItem, decodeHTMLEntities } from '@common/utils'
+import { swapItem, decodeUnicode } from '@common/utils'
 import { EXT_SUPPORT_WEB_LIST, DEFAULT_CHAIN_ICON } from '@common/constants'
 
 import { NodeType } from './enum'
@@ -15,7 +15,7 @@ const genNode = (
   const { address, label, id, type, selected, logo, chain } = node
   if (!selected) return ''
 
-  const decodedLabel = decodeHTMLEntities(label)
+  const decodedLabel = decodeUnicode(label)
 
   return `"${id}" 
         [

@@ -1,0 +1,47 @@
+@import '@common/styles/common.less';
+
+.modalProxyLog {
+  .title {
+    .align-center;
+    .address {
+      font-size: 14px;
+      color: #6c757d;
+      margin-left: 10px;
+    }
+    &.column {
+      .flex-column;
+
+      align-items: flex-start;
+    }
+  }
+
+  .table {
+    :global {
+      .ant-table-thead {
+        .ant-table-cell {
+          background: transparent;
+          &::before {
+            width: 0 !important;
+          }
+        }
+      }
+    }
+    .cell {
+      .align-center;
+      a {
+        display: inline-block;
+        max-width: 160px;
+        .text-ellipsis;
+      }
+      &:hover {
+        .copyButton {
+          visibility: visible;
+        }
+      }
+      .copyButton {
+        visibility: hidden;
+        margin-left: 4px;
+      }
+    }
+  }
+}

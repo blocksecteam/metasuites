@@ -21,9 +21,7 @@ const Settings: FC = () => {
   const [configNFTVisible, setConfigNFTVisible] = useState(false)
 
   const onWebsitesChange = (opt: OptWebsite, value: boolean) => {
-    const newWebOpt: OptWebsite[] = (
-      options.supportWebList as OptWebsite[]
-    ).map(item => {
+    const newWebOpt: OptWebsite[] = options.supportWebList.map(item => {
       return {
         ...item,
         enabled: opt.name === item.name ? value : item.enabled
@@ -36,7 +34,11 @@ const Settings: FC = () => {
     onRefresh()
   }
 
-  const onChange = (key: OptKeys, value: unknown, refresh = true) => {
+  const onChange = (
+    key: Exclude<OptKeys, 'supportWebList'>,
+    value: boolean,
+    refresh = true
+  ) => {
     setOptions({
       ...options,
       [key]: value

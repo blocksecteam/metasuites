@@ -18,7 +18,8 @@ import type {
   GetContractByAddressReq,
   GetContractByABIReq,
   SimulateTxParams,
-  PostSignatureReq
+  PostSignatureReq,
+  PostContractVariableLogsReq
 } from '@common/api/types'
 import type {
   REFRESH,
@@ -47,7 +48,10 @@ import type {
   GET_CONTRACT_BY_ABI,
   SIMULATE_TRANSACTION,
   GET_SIGNATURE_BY_SELECTOR,
-  GET_LATEST_BLOCK
+  GET_LATEST_BLOCK,
+  GET_CONTRACT_VARIABLE_LOGS,
+  GET_CREATION_BLOCK,
+  GET_CONTRACT_VARIABLE_LIST
 } from '@common/constants/event'
 
 export type EventInfo = {
@@ -78,6 +82,9 @@ export type EventInfo = {
   [SIMULATE_TRANSACTION]: SimulateTxParams
   [GET_SIGNATURE_BY_SELECTOR]: PostSignatureReq
   [GET_LATEST_BLOCK]: string
+  [GET_CONTRACT_VARIABLE_LOGS]: PostContractVariableLogsReq
+  [GET_CREATION_BLOCK]: PostAddressParams
+  [GET_CONTRACT_VARIABLE_LIST]: PostPrivateVariablesParams
 }
 
 export const chromeEvent = new Event<EventInfo>(SCOPE)

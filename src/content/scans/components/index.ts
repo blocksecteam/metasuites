@@ -23,5 +23,5 @@ export { default as ReadContractAccordionItem } from './ReadContractAccordionIte
 export { default as FormatParamBtn } from './FormatParamBtn'
 export { default as TokenMarketplacesBtn } from './TokenMarketplacesBtn'
 export { default as ProxyLogReference } from './ProxyLogReference'
-export { default as ModalProxyLog } from './ModalProxyLog'
 export { default as SimulateBtn } from './SimulateBtn'
+export { default as ContractVariableLogBtn } from './ContractVariableLogBtn'

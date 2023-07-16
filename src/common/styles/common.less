@@ -21,7 +21,13 @@
   .flex;
 }
 
-.justify-content-between {
+.justify-end {
+  justify-content: flex-end;
+
+  .flex;
+}
+
+.justify-between {
   .flex;
 
   justify-content: space-between;
@@ -91,4 +97,11 @@
 .letter-space-lr-1 {
   .letter-space-l-1;
   .letter-space-r-1;
+}
+
+.md-btn-primary {
+  background-color: @primary-color !important;
+  &:hover {
+    background-color: @primary-color--hover !important;
+  }
 }

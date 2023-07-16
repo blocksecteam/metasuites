@@ -1,0 +1,39 @@
+@import '@common/styles/common.less';
+
+.bscModal {
+  .modalTitle {
+    position: relative;
+    display: flex;
+    font-size: 15px;
+    padding-left: 20px;
+    .justify-between;
+    .align-center;
+    .closeIcon {
+      padding: 20px;
+      cursor: pointer;
+      .center;
+    }
+  }
+
+  :global {
+    .ant-modal-content {
+      border-radius: 2px !important;
+      padding: 0 !important;
+
+      .ant-modal-body {
+        padding: 20px;
+      }
+      .ant-modal-header {
+        padding: 0;
+        border-bottom: 1px solid #f0f0f0;
+        margin-bottom: 0;
+      }
+      .ant-modal-footer {
+        padding: 20px;
+        border-top: 1px solid #f0f0f0;
+        text-align: left;
+        margin-top: 0;
+      }
+    }
+  }
+}

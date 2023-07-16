@@ -12,8 +12,10 @@ export const insertStr = (source: string, start: number, newStr: string) => {
   return source.slice(0, start) + newStr + source.slice(start)
 }
 
-export const decodeHTMLEntities = (str: string) => {
-  return str.replace(/&#(\d+);/g, function (match, dec) {
-    return String.fromCharCode(dec)
-  })
+export const decodeUnicode = (text: string) => {
+  const parser = new DOMParser()
+  return (
+    parser.parseFromString('<!doctype html><body>' + text, 'text/html').body
+      .textContent ?? ''
+  )
 }

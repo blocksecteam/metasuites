@@ -1,10 +1,10 @@
 import { OPENSEA_PAGES } from '@common/constants'
-import { store } from '@src/store'
+import { getOptions } from '@src/store'
 
 import { genPhishAddressLabel } from '../feat-scripts'
 
 const initUserPageScript = async () => {
-  const { nftOwnersLabel } = await store.get('options')
+  const { nftOwnersLabel } = await getOptions()
   if (nftOwnersLabel) genPhishAddressLabel(OPENSEA_PAGES.USER.name)
 }
 

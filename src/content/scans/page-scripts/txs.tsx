@@ -1,4 +1,4 @@
-import { store } from '@src/store'
+import { getOptions } from '@src/store'
 import { SCAN_PAGES } from '@common/constants'
 
 import {
@@ -18,7 +18,7 @@ const initTxsPageScript = async (chain: string) => {
     showCopyIcon,
     exportTableData,
     txnFortaAlert
-  } = await store.get('options')
+  } = await getOptions()
 
   if (enhancedLabels) {
     genEnhancedLabels(chain)

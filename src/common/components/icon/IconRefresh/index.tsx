@@ -11,7 +11,7 @@ interface Props extends BaseComponent {
   onClick: () => void
 }
 
-const RefreshIcon: FC<Props> = props => {
+const IconRefresh: FC<Props> = props => {
   const { size = 16, onClick, className, style, color = '#000000' } = props
 
   const [isRotating, setIsRotating] = useState(false)
@@ -29,7 +29,7 @@ const RefreshIcon: FC<Props> = props => {
       // @ts-ignore
       t="1680946788919"
       className={cls(
-        styles.refreshIcon,
+        styles.iconRefresh,
         { [styles['rotate']]: isRotating },
         className
       )}
@@ -51,4 +51,4 @@ const RefreshIcon: FC<Props> = props => {
   )
 }
 
-export default RefreshIcon
+export default IconRefresh

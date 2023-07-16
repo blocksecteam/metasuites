@@ -34,9 +34,10 @@ const OPTIONS = [
   'formatContractParams',
   'tokenMarketplaces',
   'txSummary',
-  'proxyLog',
+  'proxyLogs',
   'evmStorage',
-  'txSimulator'
+  'txSimulator',
+  'variableLogs'
 ] as const
 
 export type OptKeys = (typeof OPTIONS)[number]
@@ -47,7 +48,9 @@ export interface OptWebsite extends Record<string, unknown> {
   enabled: boolean
 }
 
-export type Options = Record<OptKeys, boolean | string | OptWebsite[]>
+export type Options = {
+  [key in OptKeys]: key extends 'supportWebList' ? OptWebsite[] : boolean
+}
 
 export type StorageInfo = {
   options: Options
@@ -87,9 +90,10 @@ export const defaultValue: StorageInfo = {
     formatContractParams: true,
     tokenMarketplaces: true,
     txSummary: true,
-    proxyLog: true,
+    proxyLogs: true,
     evmStorage: true,
-    txSimulator: true
+    txSimulator: true,
+    variableLogs: true
   }
 }
 
@@ -103,3 +107,15 @@ export const store = new ChromeStorage<StorageInfo>(
     scope: SCOPE
   }
 )
+
+/**
+ * 📢📢📢
+ * const mergeDefaultRes = { ...this.defaultValue, ...reallyRes };
+ * So store.get('options') in content.js will overwrite the default value of options.
+ * solution1: Flatten the structure of options.
+ * solution2：Rewrite the method for retrieving options. ✅ (now)
+ * */
+export const getOptions = async () => {
+  const storedOptions = await store.get('options')
+  return { ...defaultValue.options, ...storedOptions }
+}

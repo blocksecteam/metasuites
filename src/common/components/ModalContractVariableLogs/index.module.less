@@ -1,0 +1,110 @@
+@import '@common/styles/common.less';
+
+.modalContractVariableLogs {
+  max-width: 1200px;
+  .title {
+    overflow: hidden;
+    .align-center;
+    .contract {
+      font-weight: normal;
+      .text-ellipsis;
+    }
+  }
+  .container {
+    .tablePanel {
+      .justify-between;
+      .metadata {
+        .align-center;
+        .variableName {
+          margin-right: 0.5rem;
+        }
+        .key {
+          margin-right: 13px;
+        }
+        .type {
+          height: 24px;
+          padding: 0 14px;
+          color: @primary-color;
+          border: 1px solid @primary-color;
+          font-size: 14px;
+          border-radius: 12px;
+          .align-center;
+        }
+      }
+      .filter {
+        .dateRange {
+          svg {
+            margin-bottom: 0;
+          }
+        }
+        :global {
+          .anticon {
+            display: inline-flex;
+          }
+          .ant-input-number-handler-wrap {
+            display: none !important;
+          }
+        }
+      }
+      &.mobile {
+        .flex-column;
+        .metadata {
+          margin-bottom: 8px;
+        }
+      }
+    }
+    .table {
+      margin-top: 16px;
+      :global {
+        .ant-table-tbody {
+          .ant-table-placeholder {
+            .ant-table-cell {
+              border-bottom: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+ul.values {
+  padding-left: 0;
+  margin-bottom: 0;
+  &:hover {
+    li .hoverShow {
+      opacity: 1;
+    }
+  }
+  li {
+    list-style: none;
+    .hoverShow {
+      opacity: 0;
+    }
+    .name {
+      margin-right: 0.5rem;
+    }
+    .value {
+      font-weight: 500;
+      &.basic {
+        font-weight: 400;
+      }
+    }
+    .type {
+      white-space: nowrap;
+      word-break: keep-all;
+      font-style: italic;
+      margin-left: 0.5rem;
+      color: var(--bs-secondary-color);
+    }
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.splitRow {
+  .center;
+
+  color: rgb(146, 146, 146);
+}

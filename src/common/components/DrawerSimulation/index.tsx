@@ -15,6 +15,7 @@ import { debounce, isObject } from 'lodash-es'
 import isMobile from 'is-mobile'
 import { ethers } from 'ethers'
 import { QuestionCircleOutlined } from '@ant-design/icons'
+import BigIntJSON from 'json-bigint'
 
 import { getImageUrl, getPhalconSimulationURL } from '@common/utils'
 import {
@@ -26,7 +27,7 @@ import {
   GET_LATEST_BLOCK,
   SIMULATE_TRANSACTION
 } from '@common/constants'
-import { CopyButton } from '@common/components'
+import { CopyButton, IconClose } from '@common/components'
 import { chromeEvent } from '@common/event'
 import type {
   VerifiedContractData,
@@ -255,7 +256,7 @@ const DrawerSimulation: FC<Props> = ({
     const parameters: Record<string, any> = {}
     Object.keys(params ?? {}).forEach(key => {
       try {
-        parameters[key] = JSON.parse(params[key])
+        parameters[key] = BigIntJSON({ storeAsString: true }).parse(params[key])
       } catch (error) {
         parameters[key] = params[key]
       }
@@ -300,20 +301,14 @@ const DrawerSimulation: FC<Props> = ({
 
   return (
     <Drawer
-      zIndex={10000}
+      zIndex={2147483647}
       rootClassName={styles.root}
       maskClosable
       width={isMobile() ? '100%' : 530}
       closable={false}
       title={
         <div className="align-center">
-          <Image
-            className="pointer"
-            width={16}
-            mr={16}
-            src={getImageUrl('close')}
-            onClick={() => setVisible(false)}
-          />
+          <IconClose mr={16} onClick={() => setVisible(false)} />
           <span>Simulator</span>
           <Tooltip
             title={
@@ -471,7 +466,7 @@ const DrawerSimulation: FC<Props> = ({
                   <Form.Item
                     label={<span className={styles.labelIcon}>Function</span>}
                   >
-                    <div className="justify-content-between">
+                    <div className="justify-between">
                       {renderRadioGroup()}
                       <div>
                         <Form.Item
@@ -549,7 +544,7 @@ const DrawerSimulation: FC<Props> = ({
                               return (
                                 <div
                                   key={index}
-                                  className="justify-content-between align-center"
+                                  className="justify-between align-center"
                                   style={{ marginLeft: 30 }}
                                 >
                                   <span

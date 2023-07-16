@@ -1,9 +1,11 @@
 import type {
   AddressRiskLevel,
   NFTRiskLevel,
-  TokenType
+  TokenType,
+  TransactionSummaryType,
+  ContractVariableVisibility,
+  ContractVariableMutability
 } from '@common/constants'
-import type { TransactionSummaryType } from '@common/constants'
 
 export interface RiskScore {
   address: string
@@ -203,6 +205,8 @@ export interface PrivateVariable {
   inputs: { name: string; type: string }[]
   outputs: { name: string; type: string }[]
   value?: PrivateVariableArgument
+  mutability: ContractVariableMutability
+  visibility: ContractVariableVisibility
 }
 
 export type PrivateVariablesRes = PrivateVariable[]
@@ -322,4 +326,39 @@ export interface PostSignatureReq {
   contract: string
   selector?: string
   funcName?: string
+}
+
+export interface CreationBlock {
+  blockNumber: number
+  timestamp: number
+}
+
+export interface PostContractVariableLogsReq extends PostAddressParams {
+  start?: number
+  end?: number
+  filter: 'time' | 'block'
+  variableName: string
+  implAddress?: string
+  inputs?: { name?: string; type: string; value: string }[]
+}
+
+export interface ContractVariableLog {
+  block: number
+  txHash: string
+  timestamp: number
+  value?: {
+    type: string
+    name?: string
+    value?: string
+    deep: number
+  }[]
+  isCreation?: boolean
+  isFirstUpdate?: boolean
+  isHolder?: boolean
+}
+
+export interface ContractVariableListItem {
+  name: string
+  mutability: ContractVariableMutability
+  visibility: ContractVariableVisibility
 }

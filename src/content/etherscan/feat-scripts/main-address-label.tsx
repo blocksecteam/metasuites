@@ -5,7 +5,11 @@ import $ from 'jquery'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import { GET_IMPL_LABELS } from '@common/constants'
-import { getEtherscanNameTag } from '@common/utils'
+import {
+  getEtherscanNameTag,
+  getEtherscanTags,
+  getEtherscanEnsName
+} from '@common/utils'
 
 import { MainAddressLabel } from '../components'
 
@@ -23,7 +27,12 @@ const genMainAddressLabel = async (chain: string) => {
           '#ContentPlaceHolder1_divSummary > div:first-child > div:first-child'
         )
         const label = res.data[0].label
-        if (label && label !== getEtherscanNameTag()) {
+        if (
+          label &&
+          label !== getEtherscanNameTag() &&
+          label !== getEtherscanEnsName() &&
+          !getEtherscanTags().includes(label)
+        ) {
           $('#ContentPlaceHolder1_divSummary > div').removeAttr('style')
           const labelRootEl = $('<span></span>')
           containerEl.append(labelRootEl)

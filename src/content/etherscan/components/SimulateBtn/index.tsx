@@ -51,7 +51,10 @@ const SimulateBtn: FC<Props> = ({
     <button
       disabled={loading}
       type="button"
-      className={cls('write-btn btn btn-primary border', className)}
+      className={cls(
+        'write-btn btn btn-primary border md-btn-primary',
+        className
+      )}
       style={style}
       onClick={handleClick}
     >

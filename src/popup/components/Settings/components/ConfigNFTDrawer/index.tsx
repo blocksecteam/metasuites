@@ -9,7 +9,11 @@ import styles from './index.module.less'
 interface Props {
   visible: boolean
   onClose: () => void
-  onChange: (key: OptKeys, value: unknown, refresh?: boolean) => void
+  onChange: (
+    key: Exclude<OptKeys, 'supportWebList'>,
+    value: boolean,
+    refresh?: boolean
+  ) => void
 }
 
 const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
@@ -24,7 +28,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show comprehensive risk graph of the collection"
               action={
                 <Switch
-                  checked={options.nftCollectionRisk as boolean}
+                  checked={options.nftCollectionRisk}
                   onChange={val => onChange('nftCollectionRisk', val)}
                 />
               }
@@ -33,7 +37,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show owner's address label"
               action={
                 <Switch
-                  checked={options.nftOwnersLabel as boolean}
+                  checked={options.nftOwnersLabel}
                   onChange={val => onChange('nftOwnersLabel', val)}
                 />
               }
@@ -43,7 +47,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show enhanced rarity information"
               action={
                 <Switch
-                  checked={options.nftRarity as boolean}
+                  checked={options.nftRarity}
                   onChange={val => onChange('nftRarity', val)}
                 />
               }

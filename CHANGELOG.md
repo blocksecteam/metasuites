@@ -1,3 +1,8 @@
+### v3.4.0
+
+- [feat] Support for contract variable logs query
+- [fix] Fix bugs related to the settings and simulator
+
 ### v3.3.0
 
 - [feat] Introduce transaction simulation support

@@ -70,10 +70,7 @@ const genExportTableDataBtn = async (
                   const containerEl = _document.querySelector<HTMLElement>(
                     '#divTokenStatus, #datatable_wrapper .datainfo'
                   )
-                  containerEl?.setAttribute(
-                    'class',
-                    'justify-content-between w100'
-                  )
+                  containerEl?.setAttribute('class', 'justify-between w100')
                   const tableEl = _document.querySelector<HTMLElement>('table')
                   if (containerEl && tableEl)
                     setBtn(chain, containerEl, tableEl, 'tail')

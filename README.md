@@ -105,6 +105,8 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - [x] Show proxy upgrade log
 - [x] Show transaction summary
 - [x] Show evm.storage shortcut
+- [x] Show transaction simulator
+- [x] Show Variable Logs
 - [ ] Show token marketplaces
 - [ ] Sandwich Attack Risk Detection
 

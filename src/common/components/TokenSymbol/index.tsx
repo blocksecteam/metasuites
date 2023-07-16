@@ -33,7 +33,7 @@ const TokenSymbol: FC<Props> = ({
     <img
       style={stylesheet}
       className={className}
-      src={logo || getImageUrl('default-token')}
+      src={logo || getImageUrl('logo-circle')}
       alt=""
     />
   )

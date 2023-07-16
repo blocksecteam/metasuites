@@ -1,5 +1,6 @@
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
+import $ from 'jquery'
 
 import { convertUTCDateToLocalDate, validOrigin } from '@common/utils'
 import {
@@ -10,21 +11,6 @@ import {
 import { widthScanV2Tooltip } from '@common/hoc'
 
 dayjs.extend(utc)
-
-/** Parse the time formatted by scan as local time, keeping the original format
- * e.g. 6 hrs 48 mins ago (Nov-22-2022 04:48:11 AM +UTC) => 7 hours ago (2022-11-22 12:48:11 local time) */
-const convertFormativeUTCTimeToLocale = (date: string) => {
-  const reg = /\(([^)]*)\)/
-  const dateUTC = date.match(reg)?.[1]?.replace('+UTC', 'UTC')?.trim()
-  if (!dateUTC) return date
-  try {
-    const dt = new Date(dateUTC).toLocaleString()
-    const ago = date.slice(0, date.indexOf('('))
-    return `${ago} (${dayjs(dt).format('YYYY-MM-DD HH:mm:ss')} local time)`
-  } catch (e) {
-    return date
-  }
-}
 
 /**
  * The switching function of this time display on the scan website is judged according to the string,
@@ -95,21 +81,15 @@ const convertUTC2locale = (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
   switch (pageName) {
     case SCAN_PAGES.TX.name:
     case SCAN_PAGES.BLOCK.name: {
-      const isTxPage = pageName === SCAN_PAGES.TX.name
-      let timestampEl: HTMLElement | null | undefined
-      if (isTxPage) {
-        timestampEl =
-          document.querySelector<HTMLElement>('#clock')?.parentElement
-      } else {
-        timestampEl = document.querySelector<HTMLElement>(
-          '#ContentPlaceHolder1_maintable > div .fa-clock'
-        )?.parentElement
-      }
-      if (!timestampEl) return
-      const childIdx = isTxPage ? 3 : 2
-      const date = convertFormativeUTCTimeToLocale(timestampEl.innerText)
-      if (timestampEl?.childNodes?.[childIdx]?.textContent) {
-        timestampEl.childNodes[childIdx].textContent = date
+      const timestampEl = $('#showUtcLocalDate')
+      const timestamp = timestampEl.attr('data-timestamp')
+      try {
+        const localDate = convertUTCDateToLocalDate(
+          new Date(Number(timestamp) * 1000)
+        )
+        timestampEl.text(localDate)
+      } catch (e) {
+        console.error(e)
       }
       break
     }

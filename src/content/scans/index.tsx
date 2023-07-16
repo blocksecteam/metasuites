@@ -1,5 +1,5 @@
 import '@common/styles/inject.common'
-import { store, type OptWebsite } from '@src/store'
+import { getOptions } from '@src/store'
 import { isAllowed, getChainSimpleName, getPageName } from '@common/utils'
 import { SCAN_PAGES } from '@common/constants'
 
@@ -23,10 +23,10 @@ const init = async () => {
   }
 
   /** get user options */
-  const { supportWebList } = await store.get('options')
+  const { supportWebList } = await getOptions()
 
   /** check whether the script is allowed to run on the current page  */
-  const allowed = isAllowed(supportWebList as OptWebsite[])
+  const allowed = isAllowed(supportWebList)
 
   /** get the necessary parameters required by the extension */
   const chain: string | undefined = getChainSimpleName()

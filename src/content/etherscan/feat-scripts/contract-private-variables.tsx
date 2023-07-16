@@ -19,20 +19,19 @@ const genContractPrivateVariables = async (chain: string) => {
     $(this).contents().find('body').css('height', 'fit-content')
 
     $(this).on('load', async () => {
-      const isProxy = window.location.hash === '#readProxyContract'
+      const isProxy = $(this).attr('id') === 'readproxycontractiframe'
       const mainAddress = pickAddress(window.location.pathname)
-      const implAddress = pickAddress(
-        $('#ContentPlaceHolder1_readProxyMessage').find('a').text()
-      )
+      const implAddress = isProxy
+        ? pickAddress(
+            $('#ContentPlaceHolder1_readProxyMessage').find('a').text()
+          )
+        : undefined
       if (!mainAddress || (isProxy && !implAddress)) return
 
       const params: PostPrivateVariablesParams = {
         chain: chain,
-        address: mainAddress
-      }
-
-      if (isProxy) {
-        params.implAddress = implAddress
+        address: mainAddress,
+        implAddress
       }
 
       const res = await chromeEvent.emit<

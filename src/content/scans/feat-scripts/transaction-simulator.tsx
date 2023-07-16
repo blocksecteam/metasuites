@@ -123,7 +123,7 @@ const renderDrawer = ({
 
   const readableInputs = setupInputData(container)
 
-  const rootEl = $('<div id="test"></div>')
+  const rootEl = $('<div></div>')
   createRoot(rootEl[0]).render(
     <DrawerSimulation
       chain={chain}

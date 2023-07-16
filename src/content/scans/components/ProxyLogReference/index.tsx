@@ -1,8 +1,6 @@
 import { type FC, useState } from 'react'
 
-import { TokenSymbol } from '@common/components'
-
-import { ModalProxyLog } from '../../components'
+import { TokenSymbol, ModalProxyLog } from '@common/components'
 
 interface Props {
   chain: string

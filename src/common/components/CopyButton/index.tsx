@@ -45,6 +45,10 @@ const CopyButton: FC<PropsWithChildren<Props>> = ({
   }
 
   const onCopy = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    const target = e.target as HTMLElement
+    if (target.nodeName.toLowerCase() === 'a' && target.getAttribute('href')) {
+      return
+    }
     e.stopPropagation()
     e.preventDefault()
     if (copied) return

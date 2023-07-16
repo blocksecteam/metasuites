@@ -17,7 +17,7 @@ import { EXT_SUPPORT_WEB_LIST, GET_ADDRESS_FUND_FLOW } from '@common/constants'
 import { chromeEvent } from '@common/event'
 import type { FundFlowRes, FundFlowEdge, FundFlowNode } from '@common/api/types'
 import { getImageUrl, getSubStr, unique } from '@common/utils'
-import { IconDownload, Switch } from '@common/components'
+import { IconDownload, Switch, IconClose } from '@common/components'
 import { SLEUTH_DOMAIN } from '@common/config/uri'
 
 import styles from './index.module.less'
@@ -319,7 +319,7 @@ const ModalFundFlowGraph: FC<Props> = ({
                       '__metadock-fundflow-options-wrapper__'
                     )!
                   }
-                  dropdownMatchSelectWidth={false}
+                  popupMatchSelectWidth={false}
                   dropdownStyle={{ width: 249, padding: '10px 0 0' }}
                   placeholder="Address / Entity"
                   onDropdownVisibleChange={(visible: boolean) => {
@@ -395,7 +395,7 @@ const ModalFundFlowGraph: FC<Props> = ({
                       '__metadock-fundflow-options-wrapper__'
                     )!
                   }
-                  dropdownMatchSelectWidth={false}
+                  popupMatchSelectWidth={false}
                   dropdownStyle={{ width: 296, padding: '10px 0 0' }}
                   placeholder="Token"
                   onDropdownVisibleChange={(visible: boolean) => {
@@ -489,7 +489,7 @@ const ModalFundFlowGraph: FC<Props> = ({
                 </div>
               </Tooltip>
               <div className={styles.btn} onClick={onClose}>
-                <img src={getImageUrl('close')} alt="" />
+                <IconClose />
               </div>
             </div>
           </ConfigProvider>

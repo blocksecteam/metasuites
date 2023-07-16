@@ -9,7 +9,11 @@ import styles from './index.module.less'
 interface Props {
   visible: boolean
   onClose: () => void
-  onChange: (key: OptKeys, value: unknown, refresh?: boolean) => void
+  onChange: (
+    key: Exclude<OptKeys, 'supportWebList'>,
+    value: boolean,
+    refresh?: boolean
+  ) => void
 }
 
 const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
@@ -24,7 +28,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show transaction summary"
               action={
                 <Switch
-                  checked={options.txSummary as boolean}
+                  checked={options.txSummary}
                   onChange={val => onChange('txSummary', val)}
                 />
               }
@@ -33,7 +37,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show the fund flow chart"
               action={
                 <Switch
-                  checked={options.fundFlow as boolean}
+                  checked={options.fundFlow}
                   onChange={val => onChange('fundFlow', val)}
                 />
               }
@@ -42,7 +46,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show enhanced function signatures"
               action={
                 <Switch
-                  checked={options.enhancedSignatures as boolean}
+                  checked={options.enhancedSignatures}
                   onChange={val => onChange('enhancedSignatures', val)}
                 />
               }
@@ -51,7 +55,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show compliance scores for addresses"
               action={
                 <Switch
-                  checked={options.complianceScores as boolean}
+                  checked={options.complianceScores}
                   onChange={val => onChange('complianceScores', val)}
                 />
               }
@@ -60,7 +64,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show enhanced address labels"
               action={
                 <Switch
-                  checked={options.enhancedLabels as boolean}
+                  checked={options.enhancedLabels}
                   onChange={val => onChange('enhancedLabels', val)}
                 />
               }
@@ -69,7 +73,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Convert UTC to Local Time Zone"
               action={
                 <Switch
-                  checked={options.utc2locale as boolean}
+                  checked={options.utc2locale}
                   onChange={val => onChange('utc2locale', val)}
                 />
               }
@@ -78,7 +82,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show enhanced copy icon"
               action={
                 <Switch
-                  checked={options.showCopyIcon as boolean}
+                  checked={options.showCopyIcon}
                   onChange={val => onChange('showCopyIcon', val)}
                 />
               }
@@ -87,7 +91,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show NFT floor price in major markets"
               action={
                 <Switch
-                  checked={options.nftFloorPrice as boolean}
+                  checked={options.nftFloorPrice}
                   onChange={val => onChange('nftFloorPrice', val)}
                 />
               }
@@ -96,7 +100,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show the source of funding for contract deployers"
               action={
                 <Switch
-                  checked={options.addressFunderLabel as boolean}
+                  checked={options.addressFunderLabel}
                   onChange={val => onChange('addressFunderLabel', val)}
                 />
               }
@@ -105,7 +109,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Enable batch download of contract source code and ABI"
               action={
                 <Switch
-                  checked={options.contractSourcecode as boolean}
+                  checked={options.contractSourcecode}
                   onChange={val => onChange('contractSourcecode', val)}
                 />
               }
@@ -114,7 +118,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show quick open in multiple enhanced parsers for transactions"
               action={
                 <Switch
-                  checked={options.quick2Parsers as boolean}
+                  checked={options.quick2Parsers}
                   onChange={val => onChange('quick2Parsers', val)}
                 />
               }
@@ -123,7 +127,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show quick open in DeBank for addresses"
               action={
                 <Switch
-                  checked={options.quick2debank as boolean}
+                  checked={options.quick2debank}
                   onChange={val => onChange('quick2debank', val)}
                 />
               }
@@ -132,7 +136,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show quick open in Dedaub for unverified contracts"
               action={
                 <Switch
-                  checked={options.decompileInDedaub as boolean}
+                  checked={options.decompileInDedaub}
                   onChange={val => onChange('decompileInDedaub', val)}
                 />
               }
@@ -142,7 +146,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show quick open in ethervm.io for unverified contracts"
               action={
                 <Switch
-                  checked={options.decompileInEthervm as boolean}
+                  checked={options.decompileInEthervm}
                   onChange={val => onChange('decompileInEthervm', val)}
                 />
               }
@@ -151,7 +155,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show quick open in DethCode for verified contracts"
               action={
                 <Switch
-                  checked={options.dethCode as boolean}
+                  checked={options.dethCode}
                   onChange={val => onChange('dethCode', val)}
                 />
               }
@@ -160,7 +164,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show quick open in NFTGo for NFT contracts"
               action={
                 <Switch
-                  checked={options.quick2NFTGo as boolean}
+                  checked={options.quick2NFTGo}
                   onChange={val => onChange('quick2NFTGo', val)}
                 />
               }
@@ -169,7 +173,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show export data for a part of transactions"
               action={
                 <Switch
-                  checked={options.exportTableData as boolean}
+                  checked={options.exportTableData}
                   onChange={val => onChange('exportTableData', val)}
                 />
               }
@@ -178,7 +182,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show alternative block explorers"
               action={
                 <Switch
-                  checked={options.alternativeBlockExplorers as boolean}
+                  checked={options.alternativeBlockExplorers}
                   onChange={val => onChange('alternativeBlockExplorers', val)}
                 />
               }
@@ -187,7 +191,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show approval diagnosis"
               action={
                 <Switch
-                  checked={options.approvalDiagnosis as boolean}
+                  checked={options.approvalDiagnosis}
                   onChange={val => onChange('approvalDiagnosis', val)}
                 />
               }
@@ -196,7 +200,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show enhanced address labels by Forta"
               action={
                 <Switch
-                  checked={options.enhancedFortaLabels as boolean}
+                  checked={options.enhancedFortaLabels}
                   onChange={val => onChange('enhancedFortaLabels', val)}
                 />
               }
@@ -205,7 +209,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Alert suspicious transactions by Forta"
               action={
                 <Switch
-                  checked={options.txnFortaAlert as boolean}
+                  checked={options.txnFortaAlert}
                   onChange={val => onChange('txnFortaAlert', val)}
                 />
               }
@@ -214,7 +218,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show private variables"
               action={
                 <Switch
-                  checked={options.privateVariables as boolean}
+                  checked={options.privateVariables}
                   onChange={val => onChange('privateVariables', val)}
                 />
               }
@@ -223,7 +227,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Quick format parameters"
               action={
                 <Switch
-                  checked={options.formatContractParams as boolean}
+                  checked={options.formatContractParams}
                   onChange={val => onChange('formatContractParams', val)}
                 />
               }
@@ -232,7 +236,7 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show nft marketplaces"
               action={
                 <Switch
-                  checked={options.tokenMarketplaces as boolean}
+                  checked={options.tokenMarketplaces}
                   onChange={val => onChange('tokenMarketplaces', val)}
                 />
               }
@@ -242,8 +246,8 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show proxy upgrade log"
               action={
                 <Switch
-                  checked={options.proxyLog as boolean}
-                  onChange={val => onChange('proxyLog', val)}
+                  checked={options.proxyLogs}
+                  onChange={val => onChange('proxyLogs', val)}
                 />
               }
             />
@@ -251,18 +255,27 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show evm.storage shortcut"
               action={
                 <Switch
-                  checked={options.evmStorage as boolean}
+                  checked={options.evmStorage}
                   onChange={val => onChange('evmStorage', val)}
                 />
               }
             />
             <Cell
-              border={false}
               title="Show transaction simulator"
               action={
                 <Switch
-                  checked={options.txSimulator as boolean}
+                  checked={options.txSimulator}
                   onChange={val => onChange('txSimulator', val)}
+                />
+              }
+            />
+            <Cell
+              border={false}
+              title="Show Variable Logs"
+              action={
+                <Switch
+                  checked={options.variableLogs}
+                  onChange={val => onChange('variableLogs', val)}
                 />
               }
             />

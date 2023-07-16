@@ -35,7 +35,11 @@ import type {
   SimulateTxParams,
   GetContractByAddressReq,
   GetContractByABIReq,
-  PostSignatureReq
+  PostSignatureReq,
+  CreationBlock,
+  PostContractVariableLogsReq,
+  ContractVariableLog,
+  ContractVariableListItem
 } from './types'
 
 export default {
@@ -160,5 +164,25 @@ export default {
   getLatestBlock: (chain: string) =>
     request
       .get(`api/v1/${chain}/latest-block`)
-      .json<BscResponse<{ block: number }>>()
+      .json<BscResponse<{ block: number }>>(),
+  getCreationBlock: ({ chain, address }: PostAddressParams) =>
+    request
+      .get(`api/v1/${chain}/${address}/creation`)
+      .json<BscResponse<CreationBlock>>(),
+  getContractVariableLogs: ({
+    chain,
+    address,
+    ...rest
+  }: PostContractVariableLogsReq) =>
+    request
+      .post(`api/v1/${chain}/${address}/variable-logs`, {
+        json: rest
+      })
+      .json<BscResponse<ContractVariableLog[]>>(),
+  getContractVariableList: (params: PostPrivateVariablesParams) =>
+    request
+      .post('api/v1/variable/list', {
+        json: params
+      })
+      .json<BscResponse<ContractVariableListItem[]>>()
 }

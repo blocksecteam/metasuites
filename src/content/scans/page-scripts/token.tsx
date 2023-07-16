@@ -1,5 +1,5 @@
 import { SCAN_PAGES } from '@common/constants'
-import { store } from '@src/store'
+import { getOptions } from '@src/store'
 import { isSupportSimulator } from '@common/utils'
 
 import {
@@ -17,7 +17,8 @@ import {
   genDecompileInDedaubBtn,
   genDecompileInEthervmBtn,
   genProxyContractLog,
-  genSimulateBtn
+  genSimulateBtn,
+  genContractVariableLogsBtn
 } from '../feat-scripts'
 
 const initTokenPageScript = async (chain: string) => {
@@ -35,9 +36,10 @@ const initTokenPageScript = async (chain: string) => {
     formatContractParams,
     decompileInDedaub,
     decompileInEthervm,
-    proxyLog,
-    txSimulator
-  } = await store.get('options')
+    proxyLogs,
+    txSimulator,
+    variableLogs
+  } = await getOptions()
   if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.TOKEN.name)
   if (enhancedLabels) genEnhancedLabels(chain)
   if (utc2locale) convertUTC2locale(SCAN_PAGES.TOKEN.name)
@@ -51,8 +53,9 @@ const initTokenPageScript = async (chain: string) => {
   if (formatContractParams) formatWriteContractParams()
   if (decompileInDedaub) genDecompileInDedaubBtn(chain)
   if (decompileInEthervm) genDecompileInEthervmBtn(chain)
-  if (proxyLog) genProxyContractLog(chain)
+  if (proxyLogs) genProxyContractLog(chain)
   if (txSimulator && isSupportSimulator(chain)) genSimulateBtn(chain)
+  if (variableLogs) genContractVariableLogsBtn(chain)
 }
 
 export default initTokenPageScript
