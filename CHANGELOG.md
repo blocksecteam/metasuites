@@ -1,3 +1,9 @@
+### v3.4.1
+
+- [feat] Enable address redirection in variable logs popup
+- [feat] Prioritize redirection to Phalcon for transaction hashes
+- [fix] Phalcon no longer supports Cronos scan
+
 ### v3.4.0
 
 - [feat] Support for contract variable logs query

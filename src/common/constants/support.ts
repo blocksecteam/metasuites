@@ -135,11 +135,6 @@ export const PHALCON_SUPPORT_LIST = [
     supportSimulator: true
   },
   {
-    pathname: 'cro',
-    chain: 'cronos',
-    supportSimulator: false
-  },
-  {
     pathname: 'arbitrum',
     chain: 'arbitrum',
     supportSimulator: true

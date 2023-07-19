@@ -4,6 +4,8 @@ import cls from 'classnames'
 
 import type { ContractVariableLog } from '@common/api/types'
 import { getSubStr, convertUTCDateToLocalDate } from '@common/utils'
+import { PHALCON_SUPPORT_LIST } from '@common/constants'
+import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
 
 import styles from './index.module.less'
 import { CopyButton } from '../../components'
@@ -15,7 +17,18 @@ const sharedOnCell = (record: ContractVariableLog) => {
   return {}
 }
 
-const columns = (utc2locale: boolean): ColumnsType<ContractVariableLog> => {
+const columns = (
+  chain: string,
+  utc2locale: boolean
+): ColumnsType<ContractVariableLog> => {
+  const getExplorerURL = (txHash: string) => {
+    const support = PHALCON_SUPPORT_LIST.find(i => i.chain === chain)
+    if (support) {
+      return `${PHALCON_EXPLORER_DOMAIN}/tx/${support.pathname}/${txHash}`
+    }
+    return `/tx/${txHash}`
+  }
+
   return [
     {
       title: 'ID',
@@ -94,7 +107,13 @@ const columns = (utc2locale: boolean): ColumnsType<ContractVariableLog> => {
                       [styles.basic]: isBasicType
                     })}
                   >
-                    {v.value}
+                    {v.type === 'address' ? (
+                      <a href={`/address/${v.value}`} target="_blank">
+                        {v.value}
+                      </a>
+                    ) : (
+                      v.value
+                    )}
                   </span>
                   <span className={styles.hoverShow}>
                     {!isBasicType && (
@@ -123,7 +142,7 @@ const columns = (utc2locale: boolean): ColumnsType<ContractVariableLog> => {
           ''
         ) : (
           <CopyButton hover text={txHash} ml={4}>
-            <a href={`/tx/${txHash}`} target="_blank" rel="noreferrer">
+            <a href={getExplorerURL(txHash)} target="_blank" rel="noreferrer">
               {getSubStr(txHash, [8])}
             </a>
           </CopyButton>
