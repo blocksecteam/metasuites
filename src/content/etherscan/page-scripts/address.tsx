@@ -1,4 +1,4 @@
-import { getOptions } from '@src/store'
+import { store } from '@src/store'
 import { SCAN_PAGES } from '@common/constants'
 import { isSupportSimulator } from '@common/utils'
 
@@ -58,7 +58,7 @@ const initAddressPageScript = async (chain: string) => {
     evmStorage,
     txSimulator,
     variableLogs
-  } = await getOptions()
+  } = await store.get('options')
 
   if (enhancedSignatures) genEnhancedSignatures(chain)
 

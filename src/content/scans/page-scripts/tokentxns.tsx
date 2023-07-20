@@ -1,5 +1,5 @@
 import { SCAN_PAGES } from '@common/constants'
-import { getOptions } from '@src/store'
+import { store } from '@src/store'
 
 import {
   genCopyIconBtn,
@@ -16,7 +16,7 @@ const initTokentxnsPageScript = async (chain: string) => {
     utc2locale,
     exportTableData,
     txnFortaAlert
-  } = await getOptions()
+  } = await store.get('options')
   if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.TOKENTXNS.name)
   if (enhancedLabels) genEnhancedLabels(chain)
   if (utc2locale) convertUTC2locale(SCAN_PAGES.TOKENTXNS.name)

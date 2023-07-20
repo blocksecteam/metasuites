@@ -1,10 +1,10 @@
 import { OPENSEA_PAGES } from '@common/constants'
-import { getOptions } from '@src/store'
+import { store } from '@src/store'
 
 import { genPhishAddressLabel, genRarityRankLabel } from '../feat-scripts'
 
 const initAssetsPageScript = async () => {
-  const { nftRarity, nftOwnersLabel } = await getOptions()
+  const { nftRarity, nftOwnersLabel } = await store.get('options')
 
   if (nftRarity) genRarityRankLabel(OPENSEA_PAGES.ASSETS.name)
 

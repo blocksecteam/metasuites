@@ -1,3 +1,8 @@
+### v3.4.2
+
+- [fix] Fix some style issues
+- [fix] Fix permission control for the Logs button inside private variables
+
 ### v3.4.1
 
 - [feat] Enable address redirection in variable logs popup

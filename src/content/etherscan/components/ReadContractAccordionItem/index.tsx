@@ -14,9 +14,10 @@ import type {
   PrivateVariable
 } from '@common/api/types'
 import { TokenSymbol } from '@common/components'
-import { renderModalVariableLogs } from '@src/content/etherscan/feat-scripts'
+import { useStore } from '@common/hooks'
 
 import { ContractVariableLogBtn } from '../../components'
+import { renderModalVariableLogs } from '../../feat-scripts'
 
 interface Props {
   id: string
@@ -36,6 +37,7 @@ const ReadContractAccordionItem: FC<Props> = ({
   const [errorMsg, setErrorMsg] = useState('')
   const [formData, setFormData] = useState<Record<string, any>>({})
   const [queryResult, setQueryResult] = useState<PrivateVariableArgument>()
+  const [options] = useStore('options')
 
   const onQuery = async () => {
     const res = await chromeEvent.emit<
@@ -158,26 +160,28 @@ const ReadContractAccordionItem: FC<Props> = ({
                   >
                     Query
                   </button>
-                  <ContractVariableLogBtn
-                    className="ms-2"
-                    onClick={errorCallback => {
-                      const _inputs = inputs.map(i => ({
-                        ...i,
-                        value: formData[i.name]
-                      }))
-                      if (_inputs.findIndex(i => !i.value?.trim()) !== -1) {
-                        return errorCallback()
-                      }
-                      renderModalVariableLogs({
-                        chain,
-                        address,
-                        variableName: name,
-                        implementation: implAddress,
-                        returnType: outputs.map(i => i.type).join(','),
-                        inputs: _inputs
-                      })
-                    }}
-                  />
+                  {options.variableLogs && (
+                    <ContractVariableLogBtn
+                      className="ms-2"
+                      onClick={errorCallback => {
+                        const _inputs = inputs.map(i => ({
+                          ...i,
+                          value: formData[i.name]
+                        }))
+                        if (_inputs.findIndex(i => !i.value?.trim()) !== -1) {
+                          return errorCallback()
+                        }
+                        renderModalVariableLogs({
+                          chain,
+                          address,
+                          variableName: name,
+                          implementation: implAddress,
+                          returnType: outputs.map(i => i.type).join(','),
+                          inputs: _inputs
+                        })
+                      }}
+                    />
+                  )}
                 </div>
                 <div className="my-3">
                   <img
@@ -255,20 +259,22 @@ const ReadContractAccordionItem: FC<Props> = ({
                     {value?.type}
                   </span>
                 </i>
-                <div className="mt-4">
-                  <ContractVariableLogBtn
-                    onClick={() => {
-                      renderModalVariableLogs({
-                        chain,
-                        address,
-                        variableName: name,
-                        implementation: implAddress,
-                        returnType: value?.type ?? '',
-                        inputs: []
-                      })
-                    }}
-                  />
-                </div>
+                {options.variableLogs && (
+                  <div className="mt-4">
+                    <ContractVariableLogBtn
+                      onClick={() => {
+                        renderModalVariableLogs({
+                          chain,
+                          address,
+                          variableName: name,
+                          implementation: implAddress,
+                          returnType: value?.type ?? '',
+                          inputs: []
+                        })
+                      }}
+                    />
+                  </div>
+                )}
               </div>
             )}
           </form>

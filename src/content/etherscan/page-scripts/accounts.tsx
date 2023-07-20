@@ -1,10 +1,10 @@
 import { SCAN_PAGES } from '@common/constants'
-import { getOptions } from '@src/store'
+import { store } from '@src/store'
 
 import { genExportTableDataBtn } from '../feat-scripts'
 
 const initAccountsPageScript = async (chain: string) => {
-  const { exportTableData } = await getOptions()
+  const { exportTableData } = await store.get('options')
 
   if (exportTableData) genExportTableDataBtn(chain, SCAN_PAGES.ACCOUNTS.name)
 }

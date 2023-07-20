@@ -12,7 +12,7 @@ const DownloadSourceCodeBtn: FC<PostAddressParams> = ({ chain, address }) => {
       className="ml-1"
       href={
         BASE_URL +
-        'api/v1/source-code/download/?' +
+        '/api/v1/source-code/download?' +
         new URLSearchParams({ chain, address })
       }
       type="secondary"

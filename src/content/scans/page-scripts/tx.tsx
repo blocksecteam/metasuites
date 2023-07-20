@@ -1,4 +1,4 @@
-import { getOptions } from '@src/store'
+import { store } from '@src/store'
 import { isSupportParsers } from '@common/utils'
 import { SCAN_PAGES } from '@common/constants'
 
@@ -19,7 +19,7 @@ const initTxPageScript = async (chain: string) => {
     txnFortaAlert,
     showCopyIcon,
     enhancedLabels
-  } = await getOptions()
+  } = await store.get('options')
   if (quick2Parsers && isSupportParsers(chain)) genQuick2ParsersBtn(chain)
   if (utc2locale) convertUTC2locale(SCAN_PAGES.TX.name)
   if (alternativeBlockExplorers)

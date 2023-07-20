@@ -1,9 +1,9 @@
-import { getOptions } from '@src/store'
+import { store } from '@src/store'
 
 import { inspectTokenApprovals } from '../feat-scripts'
 
 const initTokenApprovalCheckerPageScript = async (chain: string) => {
-  const { approvalDiagnosis } = await getOptions()
+  const { approvalDiagnosis } = await store.get('options')
 
   if (approvalDiagnosis) inspectTokenApprovals(chain)
 }

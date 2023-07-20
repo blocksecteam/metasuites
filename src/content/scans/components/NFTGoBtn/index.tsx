@@ -13,7 +13,7 @@ const NFTGoBtn: FC<Props> = ({ url }) => {
     <Button
       theme="#545EC0"
       fontColor="#FFFFFF"
-      ml={10}
+      mr={10}
       onClick={() => window.open(url)}
       icon={<img src={getImageUrl('NFTGo')} alt="" />}
     >

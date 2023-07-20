@@ -16,6 +16,7 @@ const FundFlowReference: FC<Props> = ({ chain, mainAddress }) => {
   return (
     <>
       <Button
+        mr={10}
         type="primary"
         icon={<img src={getImageUrl('fundflow')} alt="" />}
         onClick={() => setVisible(true)}

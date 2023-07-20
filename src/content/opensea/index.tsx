@@ -3,7 +3,7 @@ import { debounce } from 'lodash-es'
 
 import { getPageName, isAllowed, insertScript } from '@common/utils'
 import { OPENSEA_PAGES, GraphqlEventIds } from '@common/constants'
-import { getOptions } from '@src/store'
+import { store } from '@src/store'
 
 import {
   initCollectionPageScript,
@@ -12,7 +12,7 @@ import {
 } from './page-scripts'
 
 const runContentScript = debounce(async () => {
-  const { supportWebList } = await getOptions()
+  const { supportWebList } = await store.get('options')
 
   const allowed = isAllowed(supportWebList)
 

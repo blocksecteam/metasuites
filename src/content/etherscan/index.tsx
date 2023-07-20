@@ -1,5 +1,5 @@
 import '@common/styles/inject.common'
-import { store, type OptWebsite, getOptions } from '@src/store'
+import { store } from '@src/store'
 import { isAllowed, getChainSimpleName, getPageName } from '@common/utils'
 import { SCAN_PAGES } from '@common/constants'
 
@@ -23,7 +23,7 @@ const init = async () => {
     return // This page is embedded in an iframe
   }
   /** get user options */
-  const { supportWebList } = await getOptions()
+  const { supportWebList } = await store.get('options')
 
   /** check whether the script is allowed to run on the current page  */
   const allowed = isAllowed(supportWebList)

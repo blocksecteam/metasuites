@@ -19,7 +19,7 @@ const ApprovalDiagnosisBtn: FC<Props> = ({ address }) => {
     <Button
       theme="#00A54C"
       fontColor="#fff"
-      ml={10}
+      mr={10}
       onClick={toTokenApprovalChecker}
       icon={<img src={getImageUrl('approval-diagnosis')} alt="" />}
     >

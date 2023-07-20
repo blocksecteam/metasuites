@@ -44,7 +44,7 @@ import type {
 } from './types'
 import { formatContractData } from './utils'
 import { FUNC_SPLIT } from './constants'
-import { TokenSymbol, Image } from '../../components'
+import { TokenSymbol } from '../../components'
 
 const { TextArea } = Input
 

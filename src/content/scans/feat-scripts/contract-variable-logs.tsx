@@ -3,7 +3,7 @@ import $ from 'jquery'
 
 import { pickAddress, getImageUrl } from '@common/utils'
 import { ModalContractVariableLogs } from '@common/components'
-import { getOptions } from '@src/store'
+import { store } from '@src/store'
 import { chromeEvent } from '@common/event'
 import {
   GET_CONTRACT_VARIABLE_LIST,
@@ -37,7 +37,7 @@ export const renderModalVariableLogs = async ({
   variableName,
   returnType
 }: RenderModalLogsState) => {
-  const { utc2locale } = await getOptions()
+  const { utc2locale } = await store.get('options')
   const rootEl = $('<div></div>')
   createRoot(rootEl[0]).render(
     <ModalContractVariableLogs

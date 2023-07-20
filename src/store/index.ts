@@ -107,15 +107,3 @@ export const store = new ChromeStorage<StorageInfo>(
     scope: SCOPE
   }
 )
-
-/**
- * 📢📢📢
- * const mergeDefaultRes = { ...this.defaultValue, ...reallyRes };
- * So store.get('options') in content.js will overwrite the default value of options.
- * solution1: Flatten the structure of options.
- * solution2：Rewrite the method for retrieving options. ✅ (now)
- * */
-export const getOptions = async () => {
-  const storedOptions = await store.get('options')
-  return { ...defaultValue.options, ...storedOptions }
-}

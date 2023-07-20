@@ -17,7 +17,7 @@ const DeBankBtn: FC<Props> = ({ mainAddress }) => {
     <Button
       theme="#f85f36"
       fontColor="#fff"
-      ml={10}
+      mr={10}
       onClick={toDeBank}
       icon={<img src={getImageUrl('debank')} alt="" />}
     >

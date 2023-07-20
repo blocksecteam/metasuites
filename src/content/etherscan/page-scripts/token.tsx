@@ -1,5 +1,5 @@
 import { SCAN_PAGES } from '@common/constants'
-import { getOptions } from '@src/store'
+import { store } from '@src/store'
 import { isSupportSimulator } from '@common/utils'
 
 import {
@@ -39,7 +39,7 @@ const initTokenPageScript = async (chain: string) => {
     evmStorage,
     txSimulator,
     variableLogs
-  } = await getOptions()
+  } = await store.get('options')
 
   if (enhancedLabels) genEnhancedLabels(chain)
   if (utc2locale) convertUTC2locale(SCAN_PAGES.TOKEN.name)
