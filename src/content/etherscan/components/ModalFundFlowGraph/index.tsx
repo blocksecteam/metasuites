@@ -299,7 +299,7 @@ const ModalFundFlowGraph: FC<Props> = ({
                 <img
                   className="me-1"
                   style={{ width: '18px' }}
-                  src="https://assets.blocksec.com/image/1677135239463-4.png"
+                  src="https://assets.blocksec.com/image/1692101500475-3.png"
                   alt=""
                 />
                 Try Enhanced Version
@@ -536,7 +536,7 @@ const ModalFundFlowGraph: FC<Props> = ({
               rel="noreferrer"
             >
               <img
-                src="https://assets.blocksec.com/image/1669950517632-2.png"
+                src="https://assets.blocksec.com/image/1692101500475-4.png"
                 alt=""
               />
             </a>

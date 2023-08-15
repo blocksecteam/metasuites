@@ -22,7 +22,7 @@ export { default as genContractPrivateVariables } from './contract-private-varia
 export { default as formatWriteContractParams } from './contract-params-format'
 export { default as genTokenMarketplacesBtn } from './token-marketplaces'
 export { default as genTxPageAddressLabels } from './tx-address-labels'
-export { default as genTransactionSummary } from './transaction-summary'
+export { default as genTransactionExplanation } from './transaction-explanation'
 export { default as genProxyContractLog } from './proxy-contract-log'
 export { default as genEvmStorageShortcut } from './evm-storage'
 export * from './transaction-simulator'

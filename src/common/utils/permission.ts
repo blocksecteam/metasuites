@@ -2,7 +2,8 @@ import type { OptWebsite } from '@src/store'
 import {
   PHALCON_SUPPORT_LIST,
   TENDERLY_SUPPORT_LIST,
-  TRANSACTION_VIEWER_SUPPORT_LIST
+  TRANSACTION_VIEWER_SUPPORT_LIST,
+  TX_EXPLAIN_SUPPORT_LIST
 } from '@common/constants'
 
 /** judge from supportWebList */
@@ -40,4 +41,8 @@ export const isSupportParsers = (chain: string): boolean => {
 export const isSupportSimulator = (chain: string) => {
   return !!PHALCON_SUPPORT_LIST.find(item => item.chain === chain)
     ?.supportSimulator
+}
+
+export const isSupportTxExplain = (chain: string) => {
+  return TX_EXPLAIN_SUPPORT_LIST.findIndex(item => item === chain) !== -1
 }

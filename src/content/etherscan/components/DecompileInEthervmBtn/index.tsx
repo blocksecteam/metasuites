@@ -14,7 +14,7 @@ const DecompileInEthervmBtn: FC<Props> = ({ mainAddress, chain }) => {
   const toEthervm = () => {
     const item = ETHERVM_SUPPORT_DIRECT_LIST.find(i => i.chain === chain)
     if (item) {
-      window.open(`https://ethervm.io/decompile/${mainAddress}`)
+      window.open(`${item.url}/${mainAddress}`)
     } else {
       window.open('https://ethervm.io/decompile')
     }

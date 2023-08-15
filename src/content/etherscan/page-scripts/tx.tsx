@@ -1,5 +1,5 @@
 import { store } from '@src/store'
-import { isSupportParsers } from '@common/utils'
+import { isSupportParsers, isSupportTxExplain } from '@common/utils'
 import { SCAN_PAGES } from '@common/constants'
 
 import {
@@ -9,7 +9,7 @@ import {
   genTxFortaAlertTip,
   genCopyIconBtn,
   genTxPageAddressLabels,
-  genTransactionSummary
+  genTransactionExplanation
 } from '../feat-scripts'
 
 const initTxPageScript = async (chain: string) => {
@@ -30,7 +30,7 @@ const initTxPageScript = async (chain: string) => {
   if (txnFortaAlert) genTxFortaAlertTip(chain)
   if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.TX.name)
   if (enhancedLabels) genTxPageAddressLabels(chain)
-  if (txSummary) genTransactionSummary(chain)
+  if (txSummary && isSupportTxExplain(chain)) genTransactionExplanation(chain)
 }
 
 export default initTxPageScript

@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 
 import { TransactionExplanation } from '@src/content/etherscan/components'
 
-const genTransactionSummary = async (chain: string) => {
+const genTransactionExplanation = async (chain: string) => {
   const txHash = $('#spanTxHash').text()
 
   if (!isHexString(txHash, 32)) return
@@ -22,4 +22,4 @@ const genTransactionSummary = async (chain: string) => {
   )
 }
 
-export default genTransactionSummary
+export default genTransactionExplanation

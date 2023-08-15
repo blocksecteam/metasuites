@@ -332,3 +332,5 @@ export const SIMULATE_SUPPORT_LIST = [
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 }
   }
 ]
+
+export const TX_EXPLAIN_SUPPORT_LIST = ['eth']

@@ -1,3 +1,8 @@
+### v3.5.0
+
+- [feat] Change logo
+- [feat] Update to support the new appearance of BNB Chain
+
 ### v3.4.2
 
 - [fix] Fix some style issues

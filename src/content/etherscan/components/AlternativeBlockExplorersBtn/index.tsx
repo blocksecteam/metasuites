@@ -9,14 +9,14 @@ interface Props {
 const AlternativeBlockExplorersBtn: FC<Props> = ({ block }) => {
   return (
     <div className={styles.alternativeBlockExplorersBtn}>
-      <a
-        href={`https://explorer.edennetwork.io/block/${block}/`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Eden Network
-      </a>
-      <span className={styles.divider}>|</span>
+      {/*<a*/}
+      {/*  href={`https://explorer.edennetwork.io/block/${block}/`}*/}
+      {/*  target="_blank"*/}
+      {/*  rel="noopener noreferrer"*/}
+      {/*>*/}
+      {/*  Eden Network*/}
+      {/*</a>*/}
+      {/*<span className={styles.divider}>|</span>*/}
       <a
         href={`https://flashbots-explorer.marto.lol/?block=${block}`}
         target="_blank"
