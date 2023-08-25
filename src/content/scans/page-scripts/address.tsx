@@ -16,6 +16,7 @@ import {
   convertUTC2locale,
   genCopyIconBtn,
   genNFTGoBtn,
+  genDedaubStorageShortcut,
   displayContractFundFrom,
   genDecompileInEthervmBtn,
   genExportTableDataBtn,
@@ -39,6 +40,7 @@ const initAddressPageScript = async (chain: string) => {
     contractSourcecode,
     quick2debank,
     decompileInDedaub,
+    dedaubStorage,
     utc2locale,
     showCopyIcon,
     dethCode,
@@ -68,6 +70,7 @@ const initAddressPageScript = async (chain: string) => {
   if (dethCode) genQuickViewSourceCodeBtn(chain)
   if (quick2debank) genDeBankBtn()
   if (decompileInDedaub) genDecompileInDedaubBtn(chain)
+  if (dedaubStorage) genDedaubStorageShortcut(chain)
   if (utc2locale) convertUTC2locale(SCAN_PAGES.ADDRESS.name)
   if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.ADDRESS.name)
   if (quick2NFTGo) genNFTGoBtn()
