@@ -122,6 +122,7 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - moonscan.io
 - snowtrace.io
 - optimistic.etherscan.io
+- basescan.org
 - opensea.io
 
 ## Changelog
