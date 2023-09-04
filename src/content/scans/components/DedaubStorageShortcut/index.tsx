@@ -19,8 +19,7 @@ const DedaubStorageShortcut: FC<Props> = ({ chain, address }) => {
     <>
       {pathname && (
         <li
-          className="nav-item snap-align-start"
-          style={{ cursor: 'pointer' }}
+          className="nav-item snap-align-start pointer"
           onClick={() => {
             window.open(
               `https://library.dedaub.com/${pathname}/address/${address}/source?storage=true`,
