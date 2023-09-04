@@ -93,6 +93,14 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     logo: 'https://assets.blocksec.com/image/1671777583236-2.png'
   },
   {
+    name: 'Base',
+    chainID: 8453,
+    chain: 'base',
+    domains: ['basescan.org'],
+    siteName: 'SCAN',
+    logo: 'https://assets.blocksec.com/image/1671777583236-2.png'
+  },
+  {
     name: 'OpenSea',
     domains: ['opensea.io'],
     siteName: 'OPENSEA'
@@ -213,6 +221,10 @@ export const TENDERLY_SUPPORT_LIST = [
   {
     pathname: 'optimistic',
     chain: 'optimism'
+  },
+  {
+    pathname: 'base',
+    chain: 'base'
   }
 ]
 
@@ -260,6 +272,10 @@ export const ETHERSCAN_DETH_SUPPORT_LIST = [
   {
     chain: 'cronos',
     url: 'https://cronoscan.deth.net/address'
+  },
+  {
+    chain: 'base',
+    url: 'https://basescan.deth.net/address'
   }
 ]
 

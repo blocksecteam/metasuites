@@ -25,7 +25,8 @@ export default defineManifest((env: ConfigEnv) => ({
         '*://arbiscan.io/*',
         '*://ftmscan.com/*',
         '*://cronoscan.com/*',
-        '*://*.moonscan.io/*'
+        '*://*.moonscan.io/*',
+        '*://*.basescan.org/*'
       ],
       js: ['src/content/scans/index.tsx'],
       all_frames: true
@@ -84,6 +85,7 @@ export default defineManifest((env: ConfigEnv) => ({
     '*://ftmscan.com/*',
     '*://cronoscan.com/*',
     '*://*.moonscan.io/*',
+    '*://*.basescan.org/*',
     '*://*.blocksec.com/*',
     '*://explorer.api.btc.com/*'
   ]
