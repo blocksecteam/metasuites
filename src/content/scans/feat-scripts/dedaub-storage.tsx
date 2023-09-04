@@ -14,7 +14,6 @@ const genDedaubStorageShortcut = async (chain: string) => {
   )
 
   if (!isContract) {
-    console.log('IS not Contract')
     return
   }
 
