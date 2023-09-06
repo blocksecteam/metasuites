@@ -1,6 +1,7 @@
 import { type FC } from 'react'
 
 import {
+  DEDAUB_SUPPORT_DIRECT_LIST,
   PHALCON_SUPPORT_LIST,
   TENDERLY_SUPPORT_LIST,
   TRANSACTION_VIEWER_SUPPORT_LIST
@@ -18,6 +19,9 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
 
   if (!txHash) return null
 
+  const dedaubPathname = DEDAUB_SUPPORT_DIRECT_LIST.find(
+    item => item.chain === chain
+  )?.pathname
   const phalconPathname = PHALCON_SUPPORT_LIST.find(
     item => item.chain === chain
   )?.pathname
@@ -51,15 +55,27 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
           OpenChain
         </a>
       )}
+      {transactionViewerPathname && tenderlyPathname && (
+        <span className={styles.divider}>|</span>
+      )}
       {tenderlyPathname && (
+        <a
+          href={`https://dashboard.tenderly.co/tx/${tenderlyPathname}/${txHash}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Tenderly
+        </a>
+      )}
+      {dedaubPathname && (
         <>
           <span className={styles.divider}>|</span>
           <a
-            href={`https://dashboard.tenderly.co/tx/${tenderlyPathname}/${txHash}`}
+            href={`https://library.dedaub.com/${dedaubPathname}/tx/${txHash}`}
             target="_blank"
             rel="noopener noreferrer"
           >
-            Tenderly
+            Dedaub
           </a>
         </>
       )}

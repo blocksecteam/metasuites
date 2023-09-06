@@ -252,6 +252,15 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               }
             />
             <Cell
+              title="Show Dedaub storage shortcut"
+              action={
+                <Switch
+                  checked={options.dedaubStorage}
+                  onChange={val => onChange('dedaubStorage', val)}
+                />
+              }
+            />
+            <Cell
               title="Show evm.storage shortcut"
               action={
                 <Switch

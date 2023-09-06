@@ -16,7 +16,7 @@ const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
 
     if (item) {
       window.open(
-        `https://library.dedaub.com/contracts/${item.pathname}/${mainAddress}`
+        `https://library.dedaub.com/${item.pathname}/address/${mainAddress}/decompiled`
       )
     } else {
       window.open('https://library.dedaub.com/decompile')

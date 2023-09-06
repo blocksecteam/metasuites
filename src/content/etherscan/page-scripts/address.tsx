@@ -13,6 +13,7 @@ import {
   genEnhancedSignatures,
   genDeBankBtn,
   genDecompileInDedaubBtn,
+  genDedaubStorageShortcut,
   convertUTC2locale,
   genNFTGoBtn,
   displayContractFundFrom,
@@ -41,6 +42,7 @@ const initAddressPageScript = async (chain: string) => {
     contractSourcecode,
     quick2debank,
     decompileInDedaub,
+    dedaubStorage,
     utc2locale,
     dethCode,
     quick2NFTGo,
@@ -72,6 +74,7 @@ const initAddressPageScript = async (chain: string) => {
   if (dethCode) genQuickViewSourceCodeBtn(chain)
   if (quick2debank) genDeBankBtn()
   if (decompileInDedaub) genDecompileInDedaubBtn(chain)
+  if (dedaubStorage) genDedaubStorageShortcut(chain)
   if (utc2locale) convertUTC2locale(SCAN_PAGES.ADDRESS.name)
   if (quick2NFTGo) genNFTGoBtn()
   if (addressFunderLabel) displayContractFundFrom(chain)

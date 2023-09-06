@@ -220,11 +220,15 @@ export const TENDERLY_SUPPORT_LIST = [
 export const DEDAUB_SUPPORT_DIRECT_LIST = [
   {
     chain: 'eth',
-    pathname: 'Ethereum'
+    pathname: 'ethereum'
   },
   {
     chain: 'fantom',
-    pathname: 'Fantom'
+    pathname: 'fantom'
+  },
+  {
+    chain: 'arbitrum',
+    pathname: 'arbitrum'
   }
 ]
 

@@ -1,5 +1,6 @@
 import type { OptWebsite } from '@src/store'
 import {
+  DEDAUB_SUPPORT_DIRECT_LIST,
   PHALCON_SUPPORT_LIST,
   TENDERLY_SUPPORT_LIST,
   TRANSACTION_VIEWER_SUPPORT_LIST,
@@ -30,8 +31,15 @@ export const isSupportTransactionViewer = (chain: string): boolean => {
   )
 }
 
+export const isSupportDedaub = (chain: string): boolean => {
+  return (
+    DEDAUB_SUPPORT_DIRECT_LIST.findIndex(item => item.chain === chain) !== -1
+  )
+}
+
 export const isSupportParsers = (chain: string): boolean => {
   return (
+    isSupportDedaub(chain) ||
     isSupportTenderly(chain) ||
     isSupportPhalcon(chain) ||
     isSupportTransactionViewer(chain)
