@@ -1,5 +1,5 @@
 import '@common/styles/inject.common'
-import { store } from '@src/store'
+import { store, defaultValue } from '@src/store'
 import { isAllowed, getChainSimpleName, getPageName } from '@common/utils'
 import { SCAN_PAGES } from '@common/constants'
 
@@ -23,10 +23,10 @@ const init = async () => {
     return // This page is embedded in an iframe
   }
   /** get user options */
-  const { supportWebList } = await store.get('options')
+  const supportWebList = await store.get('supportWebList')
 
   /** check whether the script is allowed to run on the current page  */
-  const allowed = isAllowed(supportWebList)
+  const allowed = isAllowed(Object.values(supportWebList))
 
   /** get the necessary parameters required by the extension */
   const chain: string | undefined = getChainSimpleName()

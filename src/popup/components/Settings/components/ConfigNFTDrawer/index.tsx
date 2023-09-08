@@ -1,7 +1,8 @@
 import React, { type FC } from 'react'
+import { Switch } from 'antd'
 
 import type { OptKeys } from '@src/store'
-import { Cell, Drawer, Switch } from '@common/components'
+import { Cell, Drawer } from '@common/components'
 import { useStore } from '@common/hooks'
 
 import styles from './index.module.less'
@@ -9,14 +10,14 @@ import styles from './index.module.less'
 interface Props {
   visible: boolean
   onClose: () => void
-  onChange: (
-    key: Exclude<OptKeys, 'supportWebList'>,
-    value: boolean,
-    refresh?: boolean
-  ) => void
+  onSwitchChange: (key: OptKeys, value: boolean, refresh?: boolean) => void
 }
 
-const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
+const ConfigExploresDrawer: FC<Props> = ({
+  visible,
+  onClose,
+  onSwitchChange
+}) => {
   const [options] = useStore('options')
 
   return (
@@ -28,8 +29,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show comprehensive risk graph of the collection"
               action={
                 <Switch
+                  size="small"
                   checked={options.nftCollectionRisk}
-                  onChange={val => onChange('nftCollectionRisk', val)}
+                  onChange={val => onSwitchChange('nftCollectionRisk', val)}
                 />
               }
             />
@@ -37,8 +39,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show owner's address label"
               action={
                 <Switch
+                  size="small"
                   checked={options.nftOwnersLabel}
-                  onChange={val => onChange('nftOwnersLabel', val)}
+                  onChange={val => onSwitchChange('nftOwnersLabel', val)}
                 />
               }
             />
@@ -47,8 +50,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show enhanced rarity information"
               action={
                 <Switch
+                  size="small"
                   checked={options.nftRarity}
-                  onChange={val => onChange('nftRarity', val)}
+                  onChange={val => onSwitchChange('nftRarity', val)}
                 />
               }
             />

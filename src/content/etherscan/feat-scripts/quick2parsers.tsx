@@ -4,9 +4,8 @@ import { isSupportParsers } from '@common/utils'
 
 import ParsersBtn from '../components/ParsersBtn'
 
-const genQuick2parsersBtn = (chain: string) => {
-  const isSupport = isSupportParsers(chain)
-  if (!isSupport) return
+const genQuick2parsersBtn = async (chain: string) => {
+  if (!isSupportParsers(chain)) return
   const txHashEl =
     document.querySelector<HTMLElement>('#referralLink-1')?.parentElement
 

@@ -1,9 +1,9 @@
 import React, { type FC } from 'react'
 import { Tooltip, ConfigProvider } from 'antd'
 
-import { getImageUrl, numFormatter } from '@common/utils'
+import { numFormatter } from '@common/utils'
 import type { NFTRarityRankResItem } from '@common/api/types'
-import { IconArrow } from '@common/components'
+import { IconArrow, IconMetaDock } from '@common/components'
 
 import styles from './index.module.less'
 
@@ -46,7 +46,7 @@ const RarityLabel: FC<Props> = ({ data: { rank, total } }) => {
         <div className={styles.container}>
           <div className={styles.symbol}>
             <div>#</div>
-            <img src={getImageUrl('logo-pure')} alt="" />
+            <IconMetaDock className={styles.icon} />
           </div>
           <span>{numFormatter(rank.toString())}</span>
         </div>

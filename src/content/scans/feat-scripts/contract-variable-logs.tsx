@@ -102,9 +102,7 @@ export const genContractVariableLogsBtn = async (chain: string) => {
             <div>
               <span>
                 ${variableNameEl.text()}
-              </span> (<img style="width: 12px;height: 12px" src="${getImageUrl(
-                'logo-circle'
-              )}" class="ml-1" alt="">
+              </span> (<img style="width: 12px;height: 12px" src="https://assets.blocksec.com/image/1694169299939-2.svg" class="ml-1" alt="">
               <span>
                 ${
                   variable.visibility === ContractVariableVisibility.PRIVATE

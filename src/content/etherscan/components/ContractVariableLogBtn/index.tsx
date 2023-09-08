@@ -33,7 +33,7 @@ const ContractVariableLogBtn: FC<Props> = ({ onClick, className, style }) => {
         style={style}
         onClick={handleClick}
       >
-        <TokenSymbol />
+        <TokenSymbol color="#fff" />
         Logs
       </button>
       {error && (

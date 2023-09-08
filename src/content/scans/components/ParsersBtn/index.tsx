@@ -4,9 +4,11 @@ import {
   DEDAUB_SUPPORT_DIRECT_LIST,
   PHALCON_SUPPORT_LIST,
   TENDERLY_SUPPORT_LIST,
-  TRANSACTION_VIEWER_SUPPORT_LIST
+  OPENCHAIN_SUPPORT_LIST,
+  TransactionParsers
 } from '@common/constants'
 import { getNodeValue } from '@common/utils'
+import { useStore } from '@common/hooks'
 
 import styles from './index.module.less'
 
@@ -16,6 +18,7 @@ interface Props {
 
 const ParsersBtn: FC<Props> = ({ chain }) => {
   const txHash = getNodeValue(document.getElementById('spanTxHash'))
+  const [alternativeParsers] = useStore('alternativeParsers')
 
   if (!txHash) return null
 
@@ -25,7 +28,7 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
   const phalconPathname = PHALCON_SUPPORT_LIST.find(
     item => item.chain === chain
   )?.pathname
-  const transactionViewerPathname = TRANSACTION_VIEWER_SUPPORT_LIST.find(
+  const transactionViewerPathname = OPENCHAIN_SUPPORT_LIST.find(
     item => item.chain === chain
   )?.pathname
   const tenderlyPathname = TENDERLY_SUPPORT_LIST.find(
@@ -43,42 +46,45 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
           Phalcon
         </a>
       )}
-      {phalconPathname && transactionViewerPathname && (
-        <span className={styles.divider}>|</span>
-      )}
-      {transactionViewerPathname && (
-        <a
-          href={`https://openchain.xyz/trace/${transactionViewerPathname}/${txHash}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          OpenChain
-        </a>
-      )}
-      {transactionViewerPathname && tenderlyPathname && (
-        <span className={styles.divider}>|</span>
-      )}
-      {tenderlyPathname && (
-        <a
-          href={`https://dashboard.tenderly.co/tx/${tenderlyPathname}/${txHash}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Tenderly
-        </a>
-      )}
-      {dedaubPathname && (
-        <>
-          <span className={styles.divider}>|</span>
-          <a
-            href={`https://library.dedaub.com/${dedaubPathname}/tx/${txHash}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Dedaub
-          </a>
-        </>
-      )}
+      {transactionViewerPathname &&
+        alternativeParsers[TransactionParsers.OPENCHAIN.value()] && (
+          <>
+            <span className={styles.divider}>|</span>
+            <a
+              href={`https://openchain.xyz/trace/${transactionViewerPathname}/${txHash}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              OpenChain
+            </a>
+          </>
+        )}
+      {tenderlyPathname &&
+        alternativeParsers[TransactionParsers.TENDERLY.value()] && (
+          <>
+            <span className={styles.divider}>|</span>
+            <a
+              href={`https://dashboard.tenderly.co/tx/${tenderlyPathname}/${txHash}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Tenderly
+            </a>
+          </>
+        )}
+      {dedaubPathname &&
+        alternativeParsers[TransactionParsers.DEDAUB.value()] && (
+          <>
+            <span className={styles.divider}>|</span>
+            <a
+              href={`https://library.dedaub.com/${dedaubPathname}/tx/${txHash}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Dedaub
+            </a>
+          </>
+        )}
     </div>
   )
 }

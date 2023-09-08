@@ -9,6 +9,9 @@ export const getURL = (path: string) => {
 }
 
 export const getImageUrl = (name: string, suffix = 'png') => {
+  if (name.startsWith('/')) {
+    return getURL(`/src/assets/${name.substring(1)}.${suffix}`)
+  }
   return getURL(`/src/assets/images/${name}.${suffix}`)
 }
 

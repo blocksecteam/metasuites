@@ -58,7 +58,7 @@ const SimulateBtn: FC<Props> = ({
       style={style}
       onClick={handleClick}
     >
-      {loading ? <LoadingOutlined /> : <TokenSymbol />}
+      {loading ? <LoadingOutlined /> : <TokenSymbol color="#fff" />}
       Simulate
     </button>
   )

@@ -12,12 +12,11 @@ import {
 
 const runScript = debounce(async () => {
   /** get user options */
-  const { enhancedLabels, supportWebList, showCopyIcon } = await store.get(
-    'options'
-  )
+  const { enhancedLabels, showCopyIcon } = await store.get('options')
+  const supportWebList = await store.get('supportWebList')
 
   /** check whether the script is allowed to run on the current page  */
-  const allowed = isAllowed(supportWebList as OptWebsite[])
+  const allowed = isAllowed(Object.values(supportWebList))
 
   /** get the necessary parameters required by the extension */
   const chain: string | undefined = getChainSimpleName()

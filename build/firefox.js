@@ -66,7 +66,7 @@ function main() {
   // Copy background.html to dist/
   fs.cp(
     path.join(__dirname, './', 'background.html'),
-    path.join(__dirname, '../dist', 'background.html'),
+    path.join(__dirname, '../dist/firefox-extension', 'background.html'),
     err => {
       if (err) throw err
     }
@@ -74,7 +74,9 @@ function main() {
 
   // Smooth out the differences in the configuration file: chrome v3 => firefox v2
   // TODO: Upgrade to firefox v3
-  defineFirefoxManifestV2(path.join(__dirname, '../dist', 'manifest.json'))
+  defineFirefoxManifestV2(
+    path.join(__dirname, '../dist/firefox-extension', 'manifest.json')
+  )
 }
 
 main()

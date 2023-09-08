@@ -17,7 +17,12 @@ import { EXT_SUPPORT_WEB_LIST, GET_ADDRESS_FUND_FLOW } from '@common/constants'
 import { chromeEvent } from '@common/event'
 import type { FundFlowRes, FundFlowEdge, FundFlowNode } from '@common/api/types'
 import { getImageUrl, getSubStr, unique } from '@common/utils'
-import { IconDownload, Switch, IconClose } from '@common/components'
+import {
+  IconDownload,
+  Switch,
+  IconClose,
+  IconMetaDock
+} from '@common/components'
 import { SLEUTH_DOMAIN } from '@common/config/uri'
 
 import styles from './index.module.less'
@@ -497,7 +502,7 @@ const ModalFundFlowGraph: FC<Props> = ({
         <div className={styles.body}>
           {loading && (
             <div className={styles.loading}>
-              <img src={getImageUrl('logo-pure')} alt="" />
+              <IconMetaDock className={styles.iconMetaDock} />
             </div>
           )}
           {error && (
@@ -536,7 +541,7 @@ const ModalFundFlowGraph: FC<Props> = ({
               rel="noreferrer"
             >
               <img
-                src="https://assets.blocksec.com/image/1669950517632-2.png"
+                src="https://assets.blocksec.com/image/1692101500475-4.png"
                 alt=""
               />
             </a>

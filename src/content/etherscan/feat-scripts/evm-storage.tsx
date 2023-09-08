@@ -1,11 +1,12 @@
 import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 
-import { pickAddress } from '@common/utils'
+import { pickAddress, isSupportEvmStorage } from '@common/utils'
 import { EvmStorageShortcut } from '@src/content/etherscan/components'
 
 /** Show evm.storage shortcut */
 const genEvmStorageShortcut = async (chain: string) => {
+  if (!isSupportEvmStorage(chain)) return
   const mainAddress = pickAddress(window.location.pathname)
   if (!mainAddress) return
 

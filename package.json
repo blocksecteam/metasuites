@@ -1,6 +1,6 @@
 {
   "name": "metadock",
-  "version": "3.5.0",
+  "version": "3.6.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/blocksecteam/metadock.git"
@@ -8,12 +8,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite --mode development",
-    "build:prod": "vite build --mode production",
-    "build:test": "vite build --mode test",
-    "build-firefox:prod": "yarn build:prod && node build/firefox.js",
-    "build-firefox:test": "yarn build:test && node build/firefox.js",
-    "build-safari:prod": "yarn build:prod && node build/safari.js",
-    "build-safari:test": "yarn build:test && node build/safari.js",
+    "build:prod": "vite build --mode production --outDir dist/chrome-extension",
+    "build:test": "vite build --mode test --outDir dist/chrome-extension",
+    "build-firefox:prod": "vite build --mode production --outDir dist/firefox-extension && node build/firefox.js",
+    "build-firefox:test": "vite build --mode test --outDir dist/firefox-extension && node build/firefox.js",
+    "build-safari:prod": "vite build --mode production --outDir dist/safari-extension && node build/safari.js",
+    "build-safari:test": "vite build --mode test --outDir dist/safari-extension && node build/safari.js",
+    "build:all": "yarn build:prod & yarn build-firefox:prod & yarn build-safari:prod",
     "stylelint": "stylelint \"**/*.{css,scss,less}\"",
     "stylelint:fix": "stylelint \"**/*.{css,scss,less}\" --fix",
     "prepare": "husky install && husky set .husky/pre-commit \"npx lint-staged\" && husky set .husky/commit-msg 'npx --no -- commitlint --edit \"$1\"'",

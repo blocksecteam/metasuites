@@ -18,7 +18,8 @@ import {
   genDecompileInEthervmBtn,
   genProxyContractLog,
   genSimulateBtn,
-  genContractVariableLogsBtn
+  genContractVariableLogsBtn,
+  genDedaubStorageShortcut
 } from '../feat-scripts'
 
 const initTokenPageScript = async (chain: string) => {
@@ -38,7 +39,8 @@ const initTokenPageScript = async (chain: string) => {
     decompileInEthervm,
     proxyLogs,
     txSimulator,
-    variableLogs
+    variableLogs,
+    dedaubStorage
   } = await store.get('options')
   if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.TOKEN.name)
   if (enhancedLabels) genEnhancedLabels(chain)
@@ -54,6 +56,7 @@ const initTokenPageScript = async (chain: string) => {
   if (decompileInDedaub) genDecompileInDedaubBtn(chain)
   if (decompileInEthervm) genDecompileInEthervmBtn(chain)
   if (proxyLogs) genProxyContractLog(chain)
+  if (dedaubStorage) genDedaubStorageShortcut(chain)
   if (txSimulator && isSupportSimulator(chain)) genSimulateBtn(chain)
   if (variableLogs) genContractVariableLogsBtn(chain)
 }

@@ -1,12 +1,16 @@
 import { ChromeStorage } from 'chrome-extension-core'
 
-import { SCOPE, EXT_SUPPORT_WEB_LIST } from '@common/constants'
+import {
+  SCOPE,
+  EXT_SUPPORT_WEB_LIST,
+  TransactionParsers,
+  type ExtSupportWebsite
+} from '@common/constants'
 
 /**
  * current support options
  */
 const OPTIONS = [
-  'supportWebList',
   'fundFlow',
   'enhancedSignatures',
   'complianceScores',
@@ -43,27 +47,26 @@ const OPTIONS = [
 
 export type OptKeys = (typeof OPTIONS)[number]
 
-export interface OptWebsite extends Record<string, unknown> {
-  name: string
-  domains: string[]
-  enabled: boolean
+export type Options = {
+  [key in OptKeys]: boolean
 }
 
-export type Options = {
-  [key in OptKeys]: key extends 'supportWebList' ? OptWebsite[] : boolean
-}
+export type OptWebsite = ExtSupportWebsite & { enabled: boolean }
 
 export type StorageInfo = {
+  supportWebList: {
+    [key: ExtSupportWebsite['name']]: OptWebsite
+  }
   options: Options
+  alternativeParsers: Record<string, boolean>
 }
 
 export const defaultValue: StorageInfo = {
-  /** default settings */
+  supportWebList: EXT_SUPPORT_WEB_LIST.reduce((obj: any, item) => {
+    obj[item.name] = { ...item, enabled: true }
+    return obj
+  }, {}),
   options: {
-    supportWebList: EXT_SUPPORT_WEB_LIST.map(item => ({
-      ...item,
-      enabled: true
-    })),
     fundFlow: true,
     enhancedSignatures: true,
     complianceScores: true,
@@ -96,6 +99,11 @@ export const defaultValue: StorageInfo = {
     evmStorage: true,
     txSimulator: true,
     variableLogs: true
+  },
+  alternativeParsers: {
+    [TransactionParsers.OPENCHAIN.name()]: true,
+    [TransactionParsers.TENDERLY.name()]: true,
+    [TransactionParsers.DEDAUB.name()]: false
   }
 }
 

@@ -5,8 +5,7 @@ import { isSupportParsers } from '@common/utils'
 import ParsersBtn from '../components/ParsersBtn'
 
 const genQuick2parsersBtn = (chain: string) => {
-  const isSupport = isSupportParsers(chain)
-  if (!isSupport) return
+  if (!isSupportParsers(chain)) return
   const txHashEl = document.querySelector<HTMLElement>(
     '#ContentPlaceHolder1_maintable > div > div:nth-child(2)'
   )

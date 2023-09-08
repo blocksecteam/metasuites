@@ -31,7 +31,7 @@ yarn
 
 ### Chrome and Firefox
 
-- Build the project to the `/dist` folder with `yarn build:prod` or `yarn build-firefox:prod`.
+- Build the project to the `/dist/*` folder with `yarn build:prod` or `yarn build-firefox:prod`.
 
 ```shell
 # chrome
@@ -40,7 +40,7 @@ yarn build:prod
 yarn build-firefox:prod
 # safari
 yarn build-safari:prod
-xcrun safari-web-extension-converter --macos-only /path/to/metadock/dist
+xcrun safari-web-extension-converter --macos-only /path/to/metadock/dist/safari-extension
 ```
 
 - Optionally, you may run `yarn dev` to run dev mode.
@@ -57,7 +57,7 @@ To build the extension for distribution, or to run it locally for testing purpos
 # step 1
 yarn build-safari:prod
 # step 2
-xcrun safari-web-extension-converter --macos-only /path/to/metadock/dist
+xcrun safari-web-extension-converter --macos-only /path/to/metadock/dist/safari-extension
 ```
 
 For more information on building and debugging Safari extensions, see the [official documentation](https://developer.apple.com/documentation/safariservices/safari_web_extensions/).

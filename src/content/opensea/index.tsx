@@ -12,9 +12,9 @@ import {
 } from './page-scripts'
 
 const runContentScript = debounce(async () => {
-  const { supportWebList } = await store.get('options')
+  const supportWebList = await store.get('supportWebList')
 
-  const allowed = isAllowed(supportWebList)
+  const allowed = isAllowed(Object.values(supportWebList))
 
   if (!allowed) return
 

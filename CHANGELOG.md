@@ -1,3 +1,10 @@
+### v3.6.0
+
+- [feat] Improve MetaDock's Dedaub Support
+- [build] Configure GitHub Actions for automated workflows
+- [fix] Fix evm.storage to only support Ethereum chain
+- [fix] Fix the issue of the supported website list becoming invalid in the settings
+
 ### v3.5.0
 
 - [feat] Change logo

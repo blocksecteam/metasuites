@@ -52,7 +52,10 @@ const genComplianceRadarPlot = async () => {
       const rootEl = document.createElement('div')
       rootEl.id = '__metadock-ComplianceRadarPlot__'
       if (!isMobile()) {
-        rootEl.setAttribute('style', 'position:absolute;right:0;top:0')
+        rootEl.setAttribute(
+          'style',
+          'position:absolute;right:0;top:0;z-index:2147483647;'
+        )
       }
       containerEl.appendChild(rootEl)
       createRoot(rootEl).render(<ComplianceRadarPlot data={res.data} />)

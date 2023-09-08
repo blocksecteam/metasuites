@@ -32,6 +32,7 @@ export default defineConfig(({ mode }) => {
       open: ''
     },
     build: {
+      outDir: 'dist/dev',
       sourcemap: false,
       assetsDir: 'bundle',
       minify: 'terser',

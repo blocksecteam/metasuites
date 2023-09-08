@@ -18,7 +18,8 @@ import {
   genProxyContractLog,
   genEvmStorageShortcut,
   genSimulateBtn,
-  genContractVariableLogsBtn
+  genContractVariableLogsBtn,
+  genDedaubStorageShortcut
 } from '../feat-scripts'
 
 const initTokenPageScript = async (chain: string) => {
@@ -38,7 +39,8 @@ const initTokenPageScript = async (chain: string) => {
     proxyLogs,
     evmStorage,
     txSimulator,
-    variableLogs
+    variableLogs,
+    dedaubStorage
   } = await store.get('options')
 
   if (enhancedLabels) genEnhancedLabels(chain)
@@ -54,6 +56,7 @@ const initTokenPageScript = async (chain: string) => {
   if (formatContractParams) formatWriteContractParams()
   if (tokenMarketplaces) genTokenMarketplacesBtn(chain, SCAN_PAGES.TOKEN.name)
   if (proxyLogs) genProxyContractLog(chain)
+  if (dedaubStorage) genDedaubStorageShortcut(chain)
   if (evmStorage) genEvmStorageShortcut(chain)
   if (txSimulator && isSupportSimulator(chain)) genSimulateBtn(chain)
   if (variableLogs) genContractVariableLogsBtn(chain)

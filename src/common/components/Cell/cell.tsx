@@ -17,31 +17,41 @@ export interface CellProps extends BaseComponent {
 }
 
 const Cell: FC<CellProps> = props => {
-  const { title, desc, action, icon, border = true, pointer, onClick } = props
+  const {
+    className,
+    style,
+    title,
+    desc,
+    action,
+    icon,
+    border = true,
+    pointer,
+    onClick
+  } = props
 
   return (
-    <div className={styles.container} onClick={onClick}>
-      <div
-        className={cls(styles.content, {
-          [styles.border]: border,
-          [styles.pointer]: pointer ? pointer : !action
-        })}
-      >
-        <div className="align-center">
-          {icon && <img className={styles.icon} src={icon} alt="" />}
-          <div className={styles.title}>
-            <span style={{ fontSize: desc ? '14px' : '12px' }}>{title}</span>
-            {desc && <span>{desc}</span>}
-          </div>
+    <div
+      className={cls(styles.container, className, {
+        [styles.border]: border,
+        [styles.pointer]: pointer ? pointer : action === undefined
+      })}
+      style={style}
+      onClick={onClick}
+    >
+      <div className="align-center flex1">
+        {icon && <img className={styles.icon} src={icon} alt="" />}
+        <div className={cls(styles.title, 'flex1')}>
+          <span style={{ fontSize: desc ? '14px' : '12px' }}>{title}</span>
+          {desc && <span>{desc}</span>}
         </div>
-        {action ? (
-          <div className={styles.action}>{action}</div>
-        ) : (
-          <div className={styles.iconContainer}>
-            <Iconfont type="icon-arrow-right" />
-          </div>
-        )}
       </div>
+      {action !== undefined ? (
+        <div className={styles.action}>{action}</div>
+      ) : (
+        <div className={styles.iconContainer}>
+          <Iconfont type="icon-arrow-right" />
+        </div>
+      )}
     </div>
   )
 }

@@ -3,8 +3,10 @@ import { isHexString } from 'ethers'
 import { createRoot } from 'react-dom/client'
 
 import { TransactionExplanation } from '@src/content/etherscan/components'
+import { isSupportTxExplain } from '@common/utils'
 
 const genTransactionExplanation = async (chain: string) => {
+  if (!isSupportTxExplain(chain)) return
   const txHash = $('#spanTxHash').text()
 
   if (!isHexString(txHash, 32)) return

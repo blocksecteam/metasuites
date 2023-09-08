@@ -1,23 +1,28 @@
 import React, { type FC } from 'react'
+import { Space, Checkbox, Switch } from 'antd'
 
 import type { OptKeys } from '@src/store'
-import { Cell, Drawer, Switch } from '@common/components'
+import { Cell, Drawer } from '@common/components'
 import { useStore } from '@common/hooks'
+import { TransactionParsers } from '@common/constants'
 
 import styles from './index.module.less'
 
 interface Props {
   visible: boolean
   onClose: () => void
-  onChange: (
-    key: Exclude<OptKeys, 'supportWebList'>,
-    value: boolean,
-    refresh?: boolean
-  ) => void
+  onSwitchChange: (key: OptKeys, value: boolean, refresh?: boolean) => void
+  onAlternativeParsersChange: (parser: string, enabled: boolean) => void
 }
 
-const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
+const ConfigExploresDrawer: FC<Props> = ({
+  visible,
+  onClose,
+  onSwitchChange,
+  onAlternativeParsersChange
+}) => {
   const [options] = useStore('options')
+  const [alternativeParsers] = useStore('alternativeParsers')
 
   return (
     <Drawer visible={visible} onClose={onClose}>
@@ -28,8 +33,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show transaction summary"
               action={
                 <Switch
+                  size="small"
                   checked={options.txSummary}
-                  onChange={val => onChange('txSummary', val)}
+                  onChange={val => onSwitchChange('txSummary', val)}
                 />
               }
             />
@@ -37,8 +43,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show the fund flow chart"
               action={
                 <Switch
+                  size="small"
                   checked={options.fundFlow}
-                  onChange={val => onChange('fundFlow', val)}
+                  onChange={val => onSwitchChange('fundFlow', val)}
                 />
               }
             />
@@ -46,8 +53,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show enhanced function signatures"
               action={
                 <Switch
+                  size="small"
                   checked={options.enhancedSignatures}
-                  onChange={val => onChange('enhancedSignatures', val)}
+                  onChange={val => onSwitchChange('enhancedSignatures', val)}
                 />
               }
             />
@@ -55,8 +63,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show compliance scores for addresses"
               action={
                 <Switch
+                  size="small"
                   checked={options.complianceScores}
-                  onChange={val => onChange('complianceScores', val)}
+                  onChange={val => onSwitchChange('complianceScores', val)}
                 />
               }
             />
@@ -64,8 +73,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show enhanced address labels"
               action={
                 <Switch
+                  size="small"
                   checked={options.enhancedLabels}
-                  onChange={val => onChange('enhancedLabels', val)}
+                  onChange={val => onSwitchChange('enhancedLabels', val)}
                 />
               }
             />
@@ -73,8 +83,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Convert UTC to Local Time Zone"
               action={
                 <Switch
+                  size="small"
                   checked={options.utc2locale}
-                  onChange={val => onChange('utc2locale', val)}
+                  onChange={val => onSwitchChange('utc2locale', val)}
                 />
               }
             />
@@ -82,8 +93,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show enhanced copy icon"
               action={
                 <Switch
+                  size="small"
                   checked={options.showCopyIcon}
-                  onChange={val => onChange('showCopyIcon', val)}
+                  onChange={val => onSwitchChange('showCopyIcon', val)}
                 />
               }
             />
@@ -91,8 +103,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show NFT floor price in major markets"
               action={
                 <Switch
+                  size="small"
                   checked={options.nftFloorPrice}
-                  onChange={val => onChange('nftFloorPrice', val)}
+                  onChange={val => onSwitchChange('nftFloorPrice', val)}
                 />
               }
             />
@@ -100,8 +113,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show the source of funding for contract deployers"
               action={
                 <Switch
+                  size="small"
                   checked={options.addressFunderLabel}
-                  onChange={val => onChange('addressFunderLabel', val)}
+                  onChange={val => onSwitchChange('addressFunderLabel', val)}
                 />
               }
             />
@@ -109,26 +123,80 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Enable batch download of contract source code and ABI"
               action={
                 <Switch
+                  size="small"
                   checked={options.contractSourcecode}
-                  onChange={val => onChange('contractSourcecode', val)}
+                  onChange={val => onSwitchChange('contractSourcecode', val)}
                 />
               }
             />
             <Cell
-              title="Show quick open in multiple enhanced parsers for transactions"
+              border={false}
+              title="Show other enhanced parsers for transactions"
               action={
                 <Switch
+                  size="small"
                   checked={options.quick2Parsers}
-                  onChange={val => onChange('quick2Parsers', val)}
+                  onChange={val => onSwitchChange('quick2Parsers', val)}
                 />
+              }
+            />
+            <Cell
+              style={{ paddingTop: 0 }}
+              action={null}
+              title={
+                <div className="justify-between">
+                  <Space>
+                    <span style={{ fontSize: 'inherit' }}>Openchain</span>
+                    <Checkbox
+                      checked={
+                        alternativeParsers[TransactionParsers.OPENCHAIN.value()]
+                      }
+                      onChange={e =>
+                        onAlternativeParsersChange(
+                          TransactionParsers.OPENCHAIN.value(),
+                          e.target.checked
+                        )
+                      }
+                    />
+                  </Space>
+                  <Space>
+                    <span style={{ fontSize: 'inherit' }}>Tenderly</span>
+                    <Checkbox
+                      checked={
+                        alternativeParsers[TransactionParsers.TENDERLY.value()]
+                      }
+                      onChange={e =>
+                        onAlternativeParsersChange(
+                          TransactionParsers.TENDERLY.value(),
+                          e.target.checked
+                        )
+                      }
+                    />
+                  </Space>
+                  <Space>
+                    <span style={{ fontSize: 'inherit' }}>Dedaub</span>
+                    <Checkbox
+                      checked={
+                        alternativeParsers[TransactionParsers.DEDAUB.value()]
+                      }
+                      onChange={e =>
+                        onAlternativeParsersChange(
+                          TransactionParsers.DEDAUB.value(),
+                          e.target.checked
+                        )
+                      }
+                    />
+                  </Space>
+                </div>
               }
             />
             <Cell
               title="Show quick open in DeBank for addresses"
               action={
                 <Switch
+                  size="small"
                   checked={options.quick2debank}
-                  onChange={val => onChange('quick2debank', val)}
+                  onChange={val => onSwitchChange('quick2debank', val)}
                 />
               }
             />
@@ -136,18 +204,19 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show quick open in Dedaub for unverified contracts"
               action={
                 <Switch
+                  size="small"
                   checked={options.decompileInDedaub}
-                  onChange={val => onChange('decompileInDedaub', val)}
+                  onChange={val => onSwitchChange('decompileInDedaub', val)}
                 />
               }
             />
             <Cell
-              border={false}
               title="Show quick open in ethervm.io for unverified contracts"
               action={
                 <Switch
+                  size="small"
                   checked={options.decompileInEthervm}
-                  onChange={val => onChange('decompileInEthervm', val)}
+                  onChange={val => onSwitchChange('decompileInEthervm', val)}
                 />
               }
             />
@@ -155,8 +224,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show quick open in DethCode for verified contracts"
               action={
                 <Switch
+                  size="small"
                   checked={options.dethCode}
-                  onChange={val => onChange('dethCode', val)}
+                  onChange={val => onSwitchChange('dethCode', val)}
                 />
               }
             />
@@ -164,8 +234,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show quick open in NFTGo for NFT contracts"
               action={
                 <Switch
+                  size="small"
                   checked={options.quick2NFTGo}
-                  onChange={val => onChange('quick2NFTGo', val)}
+                  onChange={val => onSwitchChange('quick2NFTGo', val)}
                 />
               }
             />
@@ -173,8 +244,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show export data for a part of transactions"
               action={
                 <Switch
+                  size="small"
                   checked={options.exportTableData}
-                  onChange={val => onChange('exportTableData', val)}
+                  onChange={val => onSwitchChange('exportTableData', val)}
                 />
               }
             />
@@ -182,8 +254,11 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show alternative block explorers"
               action={
                 <Switch
+                  size="small"
                   checked={options.alternativeBlockExplorers}
-                  onChange={val => onChange('alternativeBlockExplorers', val)}
+                  onChange={val =>
+                    onSwitchChange('alternativeBlockExplorers', val)
+                  }
                 />
               }
             />
@@ -191,8 +266,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show approval diagnosis"
               action={
                 <Switch
+                  size="small"
                   checked={options.approvalDiagnosis}
-                  onChange={val => onChange('approvalDiagnosis', val)}
+                  onChange={val => onSwitchChange('approvalDiagnosis', val)}
                 />
               }
             />
@@ -200,8 +276,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show enhanced address labels by Forta"
               action={
                 <Switch
+                  size="small"
                   checked={options.enhancedFortaLabels}
-                  onChange={val => onChange('enhancedFortaLabels', val)}
+                  onChange={val => onSwitchChange('enhancedFortaLabels', val)}
                 />
               }
             />
@@ -209,8 +286,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Alert suspicious transactions by Forta"
               action={
                 <Switch
+                  size="small"
                   checked={options.txnFortaAlert}
-                  onChange={val => onChange('txnFortaAlert', val)}
+                  onChange={val => onSwitchChange('txnFortaAlert', val)}
                 />
               }
             />
@@ -218,8 +296,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show private variables"
               action={
                 <Switch
+                  size="small"
                   checked={options.privateVariables}
-                  onChange={val => onChange('privateVariables', val)}
+                  onChange={val => onSwitchChange('privateVariables', val)}
                 />
               }
             />
@@ -227,8 +306,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Quick format parameters"
               action={
                 <Switch
+                  size="small"
                   checked={options.formatContractParams}
-                  onChange={val => onChange('formatContractParams', val)}
+                  onChange={val => onSwitchChange('formatContractParams', val)}
                 />
               }
             />
@@ -236,8 +316,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show nft marketplaces"
               action={
                 <Switch
+                  size="small"
                   checked={options.tokenMarketplaces}
-                  onChange={val => onChange('tokenMarketplaces', val)}
+                  onChange={val => onSwitchChange('tokenMarketplaces', val)}
                 />
               }
             />
@@ -246,8 +327,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show proxy upgrade log"
               action={
                 <Switch
+                  size="small"
                   checked={options.proxyLogs}
-                  onChange={val => onChange('proxyLogs', val)}
+                  onChange={val => onSwitchChange('proxyLogs', val)}
                 />
               }
             />
@@ -255,8 +337,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show Dedaub storage shortcut"
               action={
                 <Switch
+                  size="small"
                   checked={options.dedaubStorage}
-                  onChange={val => onChange('dedaubStorage', val)}
+                  onChange={val => onSwitchChange('dedaubStorage', val)}
                 />
               }
             />
@@ -264,8 +347,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show evm.storage shortcut"
               action={
                 <Switch
+                  size="small"
                   checked={options.evmStorage}
-                  onChange={val => onChange('evmStorage', val)}
+                  onChange={val => onSwitchChange('evmStorage', val)}
                 />
               }
             />
@@ -273,8 +357,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show transaction simulator"
               action={
                 <Switch
+                  size="small"
                   checked={options.txSimulator}
-                  onChange={val => onChange('txSimulator', val)}
+                  onChange={val => onSwitchChange('txSimulator', val)}
                 />
               }
             />
@@ -283,8 +368,9 @@ const ConfigExploresDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               title="Show Variable Logs"
               action={
                 <Switch
+                  size="small"
                   checked={options.variableLogs}
-                  onChange={val => onChange('variableLogs', val)}
+                  onChange={val => onSwitchChange('variableLogs', val)}
                 />
               }
             />

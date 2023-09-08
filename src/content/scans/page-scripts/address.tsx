@@ -70,7 +70,6 @@ const initAddressPageScript = async (chain: string) => {
   if (dethCode) genQuickViewSourceCodeBtn(chain)
   if (quick2debank) genDeBankBtn()
   if (decompileInDedaub) genDecompileInDedaubBtn(chain)
-  if (dedaubStorage) genDedaubStorageShortcut(chain)
   if (utc2locale) convertUTC2locale(SCAN_PAGES.ADDRESS.name)
   if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.ADDRESS.name)
   if (quick2NFTGo) genNFTGoBtn()
@@ -83,6 +82,7 @@ const initAddressPageScript = async (chain: string) => {
   if (privateVariables) genContractPrivateVariables(chain)
   if (formatContractParams) formatWriteContractParams()
   if (proxyLogs) genProxyContractLog(chain)
+  if (dedaubStorage) genDedaubStorageShortcut(chain)
   if (txSimulator && isSupportSimulator(chain)) genSimulateBtn(chain)
   if (variableLogs) genContractVariableLogsBtn(chain)
 }

@@ -7,7 +7,7 @@ import { REFRESH } from '@common/constants'
 import { chromeEvent } from '@common/event'
 
 import {
-  SupportWebsitesDrawer,
+  SupportWebsiteDrawer,
   ConfigNFTDrawer,
   ConfigExploresDrawer
 } from './components'
@@ -15,35 +15,38 @@ import styles from './index.module.less'
 
 const Settings: FC = () => {
   const [options, setOptions] = useStore('options')
+  const [supportWebList, setSupportWebList] = useStore('supportWebList')
+  const [alternativeParsers, setAlternativeParsers] =
+    useStore('alternativeParsers')
 
   const [configSupportWebVisible, setConfigSupportWebVisible] = useState(false)
   const [configExploresVisible, setConfigExploresVisible] = useState(false)
   const [configNFTVisible, setConfigNFTVisible] = useState(false)
 
-  const onWebsitesChange = (opt: OptWebsite, value: boolean) => {
-    const newWebOpt: OptWebsite[] = options.supportWebList.map(item => {
-      return {
-        ...item,
-        enabled: opt.name === item.name ? value : item.enabled
+  const onWebsiteChange = (opt: OptWebsite, value: boolean) => {
+    const newWebOpt = { ...supportWebList }
+    for (const key in newWebOpt) {
+      if (key === opt.name) {
+        newWebOpt[key].enabled = value
       }
-    })
-    setOptions({
-      ...options,
-      supportWebList: newWebOpt
-    })
+    }
+    setSupportWebList(newWebOpt)
     onRefresh()
   }
 
-  const onChange = (
-    key: Exclude<OptKeys, 'supportWebList'>,
-    value: boolean,
-    refresh = true
-  ) => {
+  const onSwitchChange = (key: OptKeys, value: boolean, refresh = true) => {
     setOptions({
       ...options,
       [key]: value
     })
     if (refresh) onRefresh()
+  }
+
+  const onAlternativeParsersChange = (parser: string, enabled: boolean) => {
+    setAlternativeParsers({
+      ...alternativeParsers,
+      [parser]: enabled
+    })
   }
 
   const onRefresh = () => {
@@ -69,20 +72,21 @@ const Settings: FC = () => {
           />
         </Cell.Group>
       </div>
-      <SupportWebsitesDrawer
+      <SupportWebsiteDrawer
         visible={configSupportWebVisible}
         onClose={() => setConfigSupportWebVisible(false)}
-        onChange={onWebsitesChange}
+        onChange={onWebsiteChange}
       />
       <ConfigExploresDrawer
         visible={configExploresVisible}
         onClose={() => setConfigExploresVisible(false)}
-        onChange={onChange}
+        onSwitchChange={onSwitchChange}
+        onAlternativeParsersChange={onAlternativeParsersChange}
       />
       <ConfigNFTDrawer
         visible={configNFTVisible}
         onClose={() => setConfigNFTVisible(false)}
-        onChange={onChange}
+        onSwitchChange={onSwitchChange}
       />
     </div>
   )

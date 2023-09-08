@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 
-import { pickAddress } from '@common/utils'
+import { pickAddress, isSupportSimulator } from '@common/utils'
 import { DrawerSimulation } from '@common/components'
 import type { ReadableInputData } from '@common/components/DrawerSimulation/types'
 
@@ -160,6 +160,7 @@ const renderUnverifiedSimulateButton = (chain: string, address: string) => {
 }
 
 export const genSimulateBtn = async (chain: string) => {
+  if (!isSupportSimulator(chain)) return
   const address = pickAddress(window.location.pathname)
   if (!address) return
 

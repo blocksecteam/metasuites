@@ -36,7 +36,7 @@ function main() {
   // Copy background.html to dist/
   fs.cp(
     path.join(__dirname, './', 'background.html'),
-    path.join(__dirname, '../dist', 'background.html'),
+    path.join(__dirname, '../dist/safari-extension', 'background.html'),
     err => {
       if (err) throw err
     }
@@ -44,7 +44,9 @@ function main() {
 
   // Smooth out the differences in the configuration file: chrome v3 => firefox v2
   // TODO: Upgrade to firefox v3
-  defineSafariManifestV2(path.join(__dirname, '../dist', 'manifest.json'))
+  defineSafariManifestV2(
+    path.join(__dirname, '../dist/safari-extension', 'manifest.json')
+  )
 }
 
 main()

@@ -1,6 +1,8 @@
+import BaseConstant from './abstract/BaseConstants'
+
 export const SCOPE = 'metaDockChromeExt'
 
-interface ExtSupportWebsite {
+export interface ExtSupportWebsite {
   name: string
   domains: string[]
   chain?: string
@@ -151,7 +153,7 @@ export const PHALCON_SUPPORT_LIST = [
   }
 ]
 
-export const TRANSACTION_VIEWER_SUPPORT_LIST = [
+export const OPENCHAIN_SUPPORT_LIST = [
   {
     pathname: 'ethereum',
     chain: 'eth'
@@ -338,3 +340,28 @@ export const SIMULATE_SUPPORT_LIST = [
 ]
 
 export const TX_EXPLAIN_SUPPORT_LIST = ['eth']
+
+export const EVM_STORAGE_SUPPORT_LIST = ['eth']
+
+export class TransactionParsers extends BaseConstant {
+  static PHALCON = new BaseConstant(
+    'phalcon',
+    'phalcon',
+    'https://explorer.phalcon.xyz'
+  )
+  static TENDERLY = new BaseConstant(
+    'tenderly',
+    'tenderly',
+    'https://dashboard.tenderly.co'
+  )
+  static OPENCHAIN = new BaseConstant(
+    'openchain',
+    'openchain',
+    'https://openchain.xyz/trace'
+  )
+  static DEDAUB = new BaseConstant(
+    'dedaub',
+    'dedaub',
+    'https://library.dedaub.com'
+  )
+}

@@ -1,16 +1,18 @@
 import { type FC } from 'react'
 
-import { getImageUrl } from '@common/utils'
 import type { BaseComponent } from '@common/types'
+import { IconMetaDock } from '@common/components'
 
 interface Props extends BaseComponent {
   logo?: string
   size?: number
   mr?: number
   ml?: number
+  color?: string
 }
 
 const TokenSymbol: FC<Props> = ({
+  color,
   logo,
   style = {},
   size = 14,
@@ -29,13 +31,10 @@ const TokenSymbol: FC<Props> = ({
     style
   )
 
-  return (
-    <img
-      style={stylesheet}
-      className={className}
-      src={logo || getImageUrl('logo-circle')}
-      alt=""
-    />
+  return logo ? (
+    <img style={stylesheet} className={className} src={logo} alt="" />
+  ) : (
+    <IconMetaDock style={stylesheet} className={className} color={color} />
   )
 }
 
