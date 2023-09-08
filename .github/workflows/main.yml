@@ -1,0 +1,69 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.*'
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get Previous tag
+        id: previoustag
+        uses: 'WyriHaximus/github-action-get-previous-tag@v1'
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.15.1' # replace with your Node.js version
+
+      - name: Build Extensions
+        id: build_extensions
+        run: |
+          yarn install
+          yarn build:prod &
+          yarn build-firefox:prod &
+          wait
+
+      - name: Zip Dist Folder
+        run: |
+          zip -r dist/chrome-extension.zip dist/chrome-extension
+          zip -r dist/firefox-extension.zip dist/firefox-extension
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.previoustag.outputs.tag }}
+          release_name: ${{ steps.previoustag.outputs.tag }}
+          body: |
+            You can find the changelog for version ${{ steps.previoustag.outputs.tag }} [here](./CHANGELOG.md).
+          draft: false
+          prerelease: false
+
+      - name: Create and Upload Chrome Extension ZIP
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: dist/chrome-extension.zip
+          asset_name: chrome-extension.zip
+          asset_content_type: application/zip
+
+      - name: Create and Upload Firefox Extension ZIP
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: dist/firefox-extension.zip
+          asset_name: firefox-extension.zip
+          asset_content_type: application/zip
