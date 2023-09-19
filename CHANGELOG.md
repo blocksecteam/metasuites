@@ -1,3 +1,7 @@
+### v3.7.0
+
+- [feat] Preview of v4 version
+
 ### v3.6.0
 
 - [feat] Improve MetaDock's Dedaub Support

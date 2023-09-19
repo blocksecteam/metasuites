@@ -78,8 +78,14 @@ const ExportTableDataBtn: FC<Props> = ({ chain, table }) => {
       Array.from(colEls).forEach((td, idx) => {
         if (!uselessCols.includes(idx)) {
           if (idx === fromIdx || idx === toIdx) {
-            const clipboardEl = td.querySelector<HTMLElement>('.js-clipboard')
-            const hashTagEl = td.querySelector<HTMLElement>('.hash-tag')
+            const clipboardEl = td.querySelector<HTMLElement>(
+              '.js-clipboard, .js-clipboard-required-confirmation'
+            )
+            let hashTagEl = td.querySelector<HTMLElement>('.hash-tag')
+            if (!hashTagEl) {
+              hashTagEl =
+                clipboardEl?.previousElementSibling as HTMLElement | null
+            }
             const address =
               clipboardEl?.getAttribute('data-clipboard-text') ?? ''
             const label = (hashTagEl?.innerText ?? '').trim()

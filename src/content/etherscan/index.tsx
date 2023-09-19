@@ -1,5 +1,5 @@
 import '@common/styles/inject.common'
-import { store, defaultValue } from '@src/store'
+import { store } from '@src/store'
 import { isAllowed, getChainSimpleName, getPageName } from '@common/utils'
 import { SCAN_PAGES } from '@common/constants'
 

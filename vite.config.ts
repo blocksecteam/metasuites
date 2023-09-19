@@ -46,7 +46,8 @@ export default defineConfig(({ mode }) => {
       },
       rollupOptions: {
         input: {
-          policy: 'src/pages/PrivacyPolicy/index.html'
+          policy: 'src/pages/PrivacyPolicy/index.html',
+          upgradeGuide: 'src/pages/UpgradeGuide/index.html'
         }
       }
     },

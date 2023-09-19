@@ -6,6 +6,20 @@
   "description": "插件项目",
   "glyphs": [
     {
+      "icon_id": "36614558",
+      "name": "github",
+      "font_class": "github",
+      "unicode": "e684",
+      "unicode_decimal": 59012
+    },
+    {
+      "icon_id": "36614562",
+      "name": "推特",
+      "font_class": "twitter",
+      "unicode": "e688",
+      "unicode_decimal": 59016
+    },
+    {
       "icon_id": "30957414",
       "name": "错误",
       "font_class": "close",

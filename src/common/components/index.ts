@@ -16,3 +16,4 @@ export { default as ModalContractVariableLogs } from './ModalContractVariableLog
 export { default as BscModal } from './BscModal'
 export * from './icon'
 export { default as ModalProxyLog } from './ModalProxyLog'
+export { default as Container } from './Container'

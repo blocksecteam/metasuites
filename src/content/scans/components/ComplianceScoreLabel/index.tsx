@@ -1,5 +1,6 @@
 import { type FC } from 'react'
 import cls from 'classnames'
+import { Tooltip } from 'antd'
 
 import { getImageUrl } from '@common/utils'
 import { type AddressRiskLevel, ADDRESS_RISK_OPTIONS } from '@common/constants'
@@ -16,7 +17,17 @@ const ComplianceScoreLabel: FC<Props> = ({ risk }) => {
   )
 
   return (
-    <>
+    <Tooltip
+      title={
+        <div>
+          Compliance risk by algorithm. Welcome to contact us if you have any
+          questions.
+          <a href="mailto:metadockteam@blocksec.com" target="_blank">
+            📧
+          </a>
+        </div>
+      }
+    >
       {riskOpt && (
         <div
           className={cls(styles.complianceScoreLabel, {
@@ -34,7 +45,7 @@ const ComplianceScoreLabel: FC<Props> = ({ risk }) => {
           {riskOpt.label}
         </div>
       )}
-    </>
+    </Tooltip>
   )
 }
 
