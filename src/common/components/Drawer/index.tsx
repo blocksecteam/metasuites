@@ -2,7 +2,7 @@ import type { FC, PropsWithChildren } from 'react'
 import cls from 'classnames'
 
 import type { BaseComponent } from '@common/types'
-import { Iconfont } from '@common/components'
+import { IconClose } from '@common/components'
 
 import styles from './index.module.less'
 
@@ -29,7 +29,7 @@ const Drawer: FC<PropsWithChildren<Props>> = props => {
           <header className={styles.title}>
             {title}
             <div className={styles.iconContainer} onClick={onClose}>
-              <Iconfont type="icon-close" />
+              <IconClose />
             </div>
           </header>
           <div className={styles.body}>{children}</div>

@@ -1,4 +1,7 @@
 import { createRoot } from 'react-dom/client'
+
+import { isSupportEthervm } from '@common/utils'
+
 import { DecompileInEthervmBtn, CopyByteCodeBtn } from '../components'
 
 const setBtns = (
@@ -13,7 +16,7 @@ const setBtns = (
     'style',
     'display:inline-block; vertical-align: middle'
   )
-  decompileBtnRootEl.setAttribute('class', 'mb-2 mx-1')
+  decompileBtnRootEl.setAttribute('class', 'mb-2 me-1')
   parentNode.insertBefore(decompileBtnRootEl, referenceNode)
   createRoot(decompileBtnRootEl).render(
     <DecompileInEthervmBtn chain={chain} mainAddress={mainAddress} />
@@ -30,6 +33,7 @@ const setBtns = (
 
 /** Show quick open in ethervm.io for unverified contracts */
 const genDecompileInEthervmBtn = (chain: string) => {
+  if (!isSupportEthervm(chain)) return
   const contractCodeEl = document.querySelector<HTMLElement>(
     '#ContentPlaceHolder1_contractCodeDiv'
   )

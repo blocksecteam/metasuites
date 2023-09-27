@@ -1,14 +1,13 @@
 import browser from 'webextension-polyfill'
 
 import { chromeEvent } from '@common/event'
-import { reloadCurrentTab, getURL } from '@common/utils'
+import { reloadCurrentTab } from '@common/utils'
 import {
   REFRESH,
   EXECUTE_BTC_CONTENT_SCRIPT,
   GET_TOKEN_APPROVAL_DATATABLE,
   GET_TOKEN_APPROVAL_ERC20_FILTER
 } from '@common/constants'
-import { store } from '@src/store'
 
 import { initBackgroundRequest } from './listeners'
 
@@ -67,21 +66,5 @@ browser.webRequest.onCompleted.addListener(
     urls: ['https://*/tokenapprovalchecker.aspx/GetERC20TokenApprovalForFilter']
   }
 )
-
-browser.runtime.onInstalled.addListener(({ reason }) => {
-  if (reason === 'update' || reason === 'install') {
-    store.get('installed').then(installed => {
-      if (!installed) {
-        browser.tabs
-          .create({
-            url: getURL('src/pages/UpgradeGuide/index.html')
-          })
-          .then(() => {
-            store.set('installed', true)
-          })
-      }
-    })
-  }
-})
 
 initBackgroundRequest()

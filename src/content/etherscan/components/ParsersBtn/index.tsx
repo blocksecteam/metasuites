@@ -1,4 +1,5 @@
 import { type FC } from 'react'
+import { Space } from 'antd'
 
 import {
   DEDAUB_SUPPORT_DIRECT_LIST,
@@ -37,19 +38,18 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
 
   return (
     <div className={styles.quick2ParsersBtn}>
-      {phalconPathname && (
-        <a
-          href={`https://explorer.phalcon.xyz/tx/${phalconPathname}/${txHash}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Phalcon
-        </a>
-      )}
-      {openchainPathname &&
-        alternativeParsers[TransactionParsers.OPENCHAIN.value()] && (
-          <>
-            <span className={styles.divider}>|</span>
+      <Space split={'|'}>
+        {phalconPathname && (
+          <a
+            href={`https://explorer.phalcon.xyz/tx/${phalconPathname}/${txHash}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Phalcon
+          </a>
+        )}
+        {openchainPathname &&
+          alternativeParsers[TransactionParsers.OPENCHAIN.value()] && (
             <a
               href={`https://openchain.xyz/trace/${openchainPathname}/${txHash}`}
               target="_blank"
@@ -57,12 +57,9 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
             >
               OpenChain
             </a>
-          </>
-        )}
-      {tenderlyPathname &&
-        alternativeParsers[TransactionParsers.TENDERLY.value()] && (
-          <>
-            <span className={styles.divider}>|</span>
+          )}
+        {tenderlyPathname &&
+          alternativeParsers[TransactionParsers.TENDERLY.value()] && (
             <a
               href={`https://dashboard.tenderly.co/tx/${tenderlyPathname}/${txHash}`}
               target="_blank"
@@ -70,12 +67,9 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
             >
               Tenderly
             </a>
-          </>
-        )}
-      {dedaubPathname &&
-        alternativeParsers[TransactionParsers.DEDAUB.value()] && (
-          <>
-            <span className={styles.divider}>|</span>
+          )}
+        {dedaubPathname &&
+          alternativeParsers[TransactionParsers.DEDAUB.value()] && (
             <a
               href={`https://library.dedaub.com/${dedaubPathname}/tx/${txHash}`}
               target="_blank"
@@ -83,8 +77,8 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
             >
               Dedaub
             </a>
-          </>
-        )}
+          )}
+      </Space>
     </div>
   )
 }

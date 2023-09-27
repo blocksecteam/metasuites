@@ -3,7 +3,7 @@ import { Tooltip, ConfigProvider } from 'antd'
 
 import { numFormatter } from '@common/utils'
 import type { NFTRarityRankResItem } from '@common/api/types'
-import { IconArrow, IconMetaDock } from '@common/components'
+import { IconLeftOutlined, IconMetaDock } from '@common/components'
 
 import styles from './index.module.less'
 
@@ -38,7 +38,7 @@ const RarityLabel: FC<Props> = ({ data: { rank, total } }) => {
               rel="noreferrer"
               className={styles.desc}
             >
-              By NFTGo <IconArrow rotate={180} scale={0.6} />
+              By NFTGo <IconLeftOutlined rotate={180} scale={0.6} />
             </a>
           </div>
         }

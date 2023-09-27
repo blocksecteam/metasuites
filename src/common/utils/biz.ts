@@ -7,11 +7,10 @@ import {
   PHALCON_SUPPORT_LIST
 } from '@common/constants'
 import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
+import { ChainUtils } from '@common/utils/chain'
 
 export const getChainSimpleName = (): string | undefined => {
-  const host = window.location.host
-  return EXT_SUPPORT_WEB_LIST.find(item => item.domains.some(i => host === i))
-    ?.chain
+  return ChainUtils.getCurrentChain()
 }
 
 export const getPageName = (
@@ -21,7 +20,10 @@ export const getPageName = (
     OPENSEA_PAGES,
     SCAN_PAGES
   }
-  const siteName = EXT_SUPPORT_WEB_LIST.find(site =>
+  const siteName = EXT_SUPPORT_WEB_LIST.flatMap(item => [
+    item,
+    ...(item.testNets || [])
+  ]).find(site =>
     site.domains.some(item => window.location.host === item)
   )?.siteName
   return Object.values(PAGES[`${siteName}_PAGES`]).find(item =>

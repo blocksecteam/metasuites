@@ -38,10 +38,20 @@ export default class BaseConstant<V = any> {
     enumList.forEach(_enum => {
       if (_enum.value() === value) {
         name = _enum.name()
-        return true
       }
     })
     return name
+  }
+
+  static getDescByValue(value: unknown) {
+    const enumList = this.getEnumList()
+    let desc = ''
+    enumList.forEach(_enum => {
+      if (_enum.value() === value) {
+        desc = _enum.desc()
+      }
+    })
+    return desc
   }
 
   static getSelectOptionsByDescAndValue<V>(fieldNames?: FieldNames) {

@@ -59,7 +59,6 @@ export type StorageInfo = {
   }
   options: Options
   alternativeParsers: Record<string, boolean>
-  installed: boolean
 }
 
 export const defaultValue: StorageInfo = {
@@ -105,8 +104,7 @@ export const defaultValue: StorageInfo = {
     [TransactionParsers.OPENCHAIN.name()]: true,
     [TransactionParsers.TENDERLY.name()]: true,
     [TransactionParsers.DEDAUB.name()]: false
-  },
-  installed: false
+  }
 }
 
 /**

@@ -11,7 +11,7 @@ interface Props extends BaseComponent {
   scale?: number
 }
 
-const IconDownload: FC<Props> = ({
+const IconLeftOutlined: FC<Props> = ({
   size = 16,
   color = '#000000',
   className,
@@ -53,4 +53,4 @@ const IconDownload: FC<Props> = ({
   )
 }
 
-export default IconDownload
+export default IconLeftOutlined

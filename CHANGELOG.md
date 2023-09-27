@@ -1,3 +1,8 @@
+### v4.0.0
+
+- [feat] Add support for multiple new chains including Base, Linea, Polygon zkEVM
+- [feat] Optimize and adjust tool entry points and layout
+
 ### v3.7.0
 
 - [feat] Preview of v4 version

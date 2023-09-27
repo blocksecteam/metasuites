@@ -1,6 +1,6 @@
-import '@common/styles/inject.common'
 import { debounce } from 'lodash-es'
 
+import '@common/styles/inject.common'
 import { getPageName, isAllowed, insertScript } from '@common/utils'
 import { OPENSEA_PAGES, GraphqlEventIds } from '@common/constants'
 import { store } from '@src/store'
@@ -88,8 +88,10 @@ const initObserver = () => {
   })
 }
 
-initObserver()
+export const initOpensea = () => {
+  initObserver()
 
-runContentScript()
+  runContentScript()
 
-insertScript('opensea-fetch-interceptor')
+  insertScript('opensea-fetch-interceptor')
+}

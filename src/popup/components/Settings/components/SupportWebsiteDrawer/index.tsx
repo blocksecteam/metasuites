@@ -1,11 +1,10 @@
 import React, { type FC } from 'react'
 import { Checkbox } from 'antd'
 
-import { getImageUrl } from '@common/utils'
 import { Cell, Drawer } from '@common/components'
 import { useStore } from '@common/hooks'
 import { type OptWebsite } from '@src/store'
-import { EXT_SUPPORT_WEB_LIST } from '@common/constants'
+import { EXT_SUPPORT_WEB_LIST, type ExtSupportWebsite } from '@common/constants'
 
 import styles from './index.module.less'
 
@@ -17,6 +16,19 @@ interface Props {
 
 const SupportWebsiteDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
   const [supportWebList] = useStore('supportWebList')
+
+  const extractSecondLevelDomain = (item: ExtSupportWebsite) => {
+    if (!item.testNets?.length) {
+      return item.domains[0]
+    }
+    const regex = /[a-z0-9-]+\.[a-z]{2,}$/i
+    const match = item.domains[0].match(regex)
+    if (match) {
+      return `*.${match[0]}`
+    } else {
+      return `*.${item.domains[0]}`
+    }
+  }
 
   return (
     <Drawer visible={visible} onClose={onClose}>
@@ -30,11 +42,11 @@ const SupportWebsiteDrawer: FC<Props> = ({ visible, onClose, onChange }) => {
               return (
                 <Cell
                   pointer
-                  icon={getImageUrl(item.name)}
+                  icon={item.logo}
                   key={item.name}
                   border={false}
                   title={item.name}
-                  desc={item.domains[0]}
+                  desc={extractSecondLevelDomain(item)}
                   action={
                     <Checkbox
                       checked={opt.enabled}

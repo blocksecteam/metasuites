@@ -13,10 +13,10 @@ import { Select, Input, Checkbox, ConfigProvider, Button, Tooltip } from 'antd'
 import type { CheckboxChangeEvent } from 'antd/es/checkbox'
 import { debounce, isNil } from 'lodash-es'
 
-import { EXT_SUPPORT_WEB_LIST, GET_ADDRESS_FUND_FLOW } from '@common/constants'
+import { GET_ADDRESS_FUND_FLOW, SLEUTH_SUPPORT_LIST } from '@common/constants'
 import { chromeEvent } from '@common/event'
 import type { FundFlowRes, FundFlowEdge, FundFlowNode } from '@common/api/types'
-import { getImageUrl, getSubStr, unique } from '@common/utils'
+import { getImageUrl, getSubStr, unique, ChainUtils } from '@common/utils'
 import {
   IconDownload,
   Switch,
@@ -117,13 +117,6 @@ const ModalFundFlowGraph: FC<Props> = ({
       setError(true)
     }
   }
-
-  const icon = useMemo(() => {
-    const network = EXT_SUPPORT_WEB_LIST.find(
-      item => item.chain === chain
-    )?.name
-    return network ? getImageUrl(network) : ''
-  }, [chain])
 
   const onAddressFilter = (node: FundFlowNode, checked: boolean) => {
     setAddressOptions(
@@ -277,7 +270,11 @@ const ModalFundFlowGraph: FC<Props> = ({
             }}
           >
             <div className={styles.basicInfo}>
-              <img className={styles.tokenLogo} src={icon} alt="" />
+              <img
+                className={styles.tokenLogo}
+                src={ChainUtils.getChainLogo(chain)}
+                alt=""
+              />
               <div className={styles.mainAddress} title={mainAddress}>
                 {mainAddress}
               </div>
@@ -294,21 +291,25 @@ const ModalFundFlowGraph: FC<Props> = ({
                   Enhanced Version&rdquo;, or go to MetaSleuth.
                 </div>
               </div>
-              <Button
-                className="align-center"
-                type="primary"
-                onClick={() =>
-                  window.open(`${SLEUTH_DOMAIN}/result/${chain}/${mainAddress}`)
-                }
-              >
-                <img
-                  className="mr-1"
-                  style={{ width: '18px' }}
-                  src="https://assets.blocksec.com/image/1677135239463-4.png"
-                  alt=""
-                />
-                Try Enhanced Version
-              </Button>
+              {SLEUTH_SUPPORT_LIST.includes(chain) && (
+                <Button
+                  className="align-center"
+                  type="primary"
+                  onClick={() =>
+                    window.open(
+                      `${SLEUTH_DOMAIN}/result/${chain}/${mainAddress}`
+                    )
+                  }
+                >
+                  <img
+                    className="mr-1"
+                    style={{ width: '18px' }}
+                    src="https://assets.blocksec.com/image/1677135239463-4.png"
+                    alt=""
+                  />
+                  Try Enhanced Version
+                </Button>
+              )}
             </div>
             <div
               id="__metadock-fundflow-options-wrapper__"

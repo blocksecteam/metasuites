@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client'
 
-import { FundFlowReference } from '../components'
+import { FundFlowBtn } from '../components'
 
 const setBtn = (txHashEl: HTMLElement, chain: string, mainAddress: string) => {
   const btnRootEl = document.createElement('div')
@@ -9,7 +9,7 @@ const setBtn = (txHashEl: HTMLElement, chain: string, mainAddress: string) => {
   btnRootEl.style.verticalAlign = 'bottom'
   txHashEl?.appendChild(btnRootEl)
   createRoot(btnRootEl).render(
-    <FundFlowReference chain={chain} mainAddress={mainAddress} />
+    <FundFlowBtn chain={chain} mainAddress={mainAddress} />
   )
 }
 

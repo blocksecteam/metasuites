@@ -1,6 +1,5 @@
 import type { FundFlowRes, FundFlowNode, FundFlowEdge } from '@common/api/types'
-import { swapItem, decodeUnicode } from '@common/utils'
-import { EXT_SUPPORT_WEB_LIST, DEFAULT_CHAIN_ICON } from '@common/constants'
+import { swapItem, decodeUnicode, ChainUtils } from '@common/utils'
 
 import { NodeType } from './enum'
 
@@ -29,11 +28,7 @@ const genNode = (
           fixedsize="true"
           width="2.9"
           height="1"
-          image="${
-            logo ||
-            EXT_SUPPORT_WEB_LIST.find(v => v.chain === chain)?.logo ||
-            DEFAULT_CHAIN_ICON
-          }"
+          image="${logo || ChainUtils.getChainLogo(chain)}"
           label=<<table border="0">${
             decodedLabel
               ? `<tr><td ALIGN="left" balign="left" FIXEDSIZE="true" width="40" height="15"><FONT

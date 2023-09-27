@@ -17,7 +17,7 @@ import {
   initBlocksForkedPageScript
 } from './page-scripts'
 
-const init = async () => {
+export const initEtherscanV1 = async () => {
   if (window.self !== window.top) {
     return // This page is embedded in an iframe
   }
@@ -70,5 +70,3 @@ const init = async () => {
       break
   }
 }
-
-init()

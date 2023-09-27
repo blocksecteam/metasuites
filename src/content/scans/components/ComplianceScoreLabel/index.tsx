@@ -18,13 +18,13 @@ const ComplianceScoreLabel: FC<Props> = ({ risk }) => {
 
   return (
     <Tooltip
+      overlayInnerStyle={{ width: 288 }}
       title={
         <div>
-          Compliance risk by algorithm. Welcome to contact us if you have any
-          questions.
           <a href="mailto:metadockteam@blocksec.com" target="_blank">
-            📧
+            Contact us{' '}
           </a>
+          for any questions regarding compliance risk assessment by algorithm.
         </div>
       }
     >

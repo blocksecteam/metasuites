@@ -120,7 +120,7 @@ const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
               if (_document) {
                 const iframeAddressTags =
                   _document.querySelectorAll<HTMLElement>(
-                    "a.hash-tag[href^='/address/'], span.hash-tag[title*='0x' i]"
+                    "a.hash-tag[href^='/address/'], span.hash-tag"
                   )
                 const iframeTokenTags = _document.querySelectorAll<HTMLElement>(
                   "a[href^='/token/0x' i][href*='a=0x' i]:not([data-original-title])"

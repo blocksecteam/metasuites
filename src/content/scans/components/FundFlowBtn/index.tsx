@@ -1,8 +1,8 @@
 import { type FC, useState } from 'react'
 
 import { getImageUrl } from '@common/utils'
+import { ModalFundFlow } from '@common/components'
 
-import ModalFundFlowGraph from '../ModalFundFlowGraph'
 import Button from '../Button'
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
   mainAddress: string
 }
 
-const FundFlowReference: FC<Props> = ({ chain, mainAddress }) => {
+const FundFlowBtn: FC<Props> = ({ chain, mainAddress }) => {
   const [visible, setVisible] = useState(false)
 
   return (
@@ -23,7 +23,7 @@ const FundFlowReference: FC<Props> = ({ chain, mainAddress }) => {
       >
         Fund Flow
       </Button>
-      <ModalFundFlowGraph
+      <ModalFundFlow
         visible={visible}
         chain={chain}
         mainAddress={mainAddress}
@@ -33,4 +33,4 @@ const FundFlowReference: FC<Props> = ({ chain, mainAddress }) => {
   )
 }
 
-export default FundFlowReference
+export default FundFlowBtn

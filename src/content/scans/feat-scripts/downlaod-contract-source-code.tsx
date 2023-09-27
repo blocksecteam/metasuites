@@ -23,7 +23,7 @@ const genDownloadSourceCodeBtn = async (chain: string) => {
 
   if (parentEl) {
     const rootEl = document.createElement('div')
-    parentEl.style.display = 'flex'
+    parentEl.setAttribute('style', 'display: flex; gap: 0.25rem')
     parentEl.prepend(rootEl)
 
     createRoot(rootEl).render(

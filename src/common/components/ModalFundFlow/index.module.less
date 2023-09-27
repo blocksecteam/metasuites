@@ -8,7 +8,7 @@
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 2147483647;
-  .center;
+  .flex-center;
 
   transition: all 0.2s ease-in-out;
   transition-delay: 0.2s;
@@ -75,7 +75,7 @@
       .btn {
         padding: 22px;
         cursor: pointer;
-        .center;
+        .flex-center;
 
         img {
           width: 16px;
@@ -137,6 +137,10 @@
       .selector {
         margin-right: 10px;
 
+        svg {
+          margin-bottom: 0;
+        }
+
         :global {
           .ant-select-selector {
             border: none;
@@ -148,7 +152,6 @@
           }
 
           .ant-select-arrow {
-            margin-top: -10px;
             color: #000000;
           }
         }
@@ -224,7 +227,7 @@
       .loading {
         height: 100%;
         width: 100%;
-        .center;
+        .flex-center;
 
         .iconMetaDock {
           width: 80px;
@@ -244,7 +247,7 @@
         .flex-column;
 
         align-items: center;
-        .center;
+        .flex-center;
 
         img {
           width: 33%;
@@ -265,7 +268,7 @@
           color: #ffffff;
           font-size: 14px;
           cursor: pointer;
-          .center;
+          .flex-center;
 
           &:hover {
             background-color: #017f3a;

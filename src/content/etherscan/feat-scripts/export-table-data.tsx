@@ -1,6 +1,8 @@
+import { createRoot } from 'react-dom/client'
+
 import { validOrigin } from '@common/utils'
 import { type SCAN_PAGE_NAMES, SCAN_PAGES } from '@common/constants'
-import { createRoot } from 'react-dom/client'
+
 import { ExportTableDataBtn } from '../components'
 
 const setBtn = async (

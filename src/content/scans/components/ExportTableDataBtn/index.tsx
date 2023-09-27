@@ -175,7 +175,7 @@ const ExportTableDataBtn: FC<Props> = ({ chain, table }) => {
     }
 
     if (key === 'csv') {
-      downloadCsv(Date.now().toString(), [headTitles, ...rows])
+      downloadCsv(`${chain}-${Date.now()}`, [headTitles, ...rows])
     }
 
     if (key === 'json') {
@@ -187,7 +187,7 @@ const ExportTableDataBtn: FC<Props> = ({ chain, table }) => {
           jsonObj[index][key] = col
         })
       })
-      downloadJson(Date.now().toString(), jsonObj)
+      downloadJson(`${chain}-${Date.now()}`, jsonObj)
     }
   }
 

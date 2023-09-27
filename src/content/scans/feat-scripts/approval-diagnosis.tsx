@@ -3,7 +3,8 @@ import { createRoot } from 'react-dom/client'
 import {
   GET_APPROVAL_RISK,
   ApprovalRiskLevel,
-  APPROVAL_RISK_OPTIONS
+  APPROVAL_RISK_OPTIONS,
+  APPROVAL_DIAGNOSIS_SUPPORT_LIST
 } from '@common/constants'
 import { chromeEvent } from '@common/event'
 import type { ApprovalsRiskReq, ApprovalRisk } from '@common/api/types'
@@ -19,7 +20,8 @@ const setBtn = (txHashEl: HTMLElement, mainAddress: string) => {
   createRoot(btnRootEl).render(<ApprovalDiagnosisBtn address={mainAddress} />)
 }
 
-export const genApprovalDiagnosisBtn = async () => {
+export const genApprovalDiagnosisBtn = async (chain: string) => {
+  if (!APPROVAL_DIAGNOSIS_SUPPORT_LIST.includes(chain)) return
   const isContract = !!document.querySelector(
     '#ContentPlaceHolder1_li_contracts'
   )

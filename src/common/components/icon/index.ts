@@ -1,6 +1,7 @@
-export { default as IconArrow } from './IconArrow'
+export { default as IconLeftOutlined } from './IconLeftOutlined'
 export { default as IconCodeSnippet } from './IconCodeSnippet'
 export { default as IconDownload } from './IconDownload'
 export { default as IconClose } from './IconClose'
 export { default as IconRefresh } from './IconRefresh'
 export { default as IconMetaDock } from './IconMetaDock'
+export { default as IconArrowRightOutlined } from './IconArrowRightOutlined'

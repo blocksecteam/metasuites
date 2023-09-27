@@ -13,7 +13,7 @@ const setBtns = (
     'style',
     'display:inline-block; vertical-align: middle'
   )
-  decompileBtnRootEl.setAttribute('class', 'mb-2 mr-1')
+  decompileBtnRootEl.setAttribute('class', 'mb-2 me-1')
   parentNode.insertBefore(decompileBtnRootEl, referenceNode)
   createRoot(decompileBtnRootEl).render(
     <DecompileInDedaubBtn chain={chain} mainAddress={mainAddress} />

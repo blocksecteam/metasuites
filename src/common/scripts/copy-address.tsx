@@ -48,6 +48,8 @@ export const handleAddressNodeListCopy = (
       address = pickAddress(dataOriginalTitle)
     } else if (title) {
       address = pickAddress(title)
+    } else {
+      address = pickAddress(el.innerText)
     }
     if (address) handleTargetElCopy(el, address)
   }

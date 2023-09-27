@@ -58,15 +58,17 @@ const genExportTableDataBtn = async (
                 const _document = iframe?.contentWindow?.document
                 if (_document) {
                   const tableEl = _document.querySelector<HTMLElement>('table')
+                  if (!tableEl) return
 
                   const containerEl = _document.querySelector<HTMLElement>(
-                    '#linkShowAllTokenTxns'
-                  )?.parentElement
+                    '#overlay + div > nav'
+                  )
 
                   const divTokenStatusContainerEl =
                     _document.querySelector<HTMLElement>('#divTokenStatus')
 
-                  if (!tableEl) return
+                  const containerElWithoutViewAll =
+                    _document.querySelector<HTMLElement>('#overlay + div')
 
                   if (containerEl) {
                     setBtn(chain, containerEl, tableEl)
@@ -75,6 +77,11 @@ const genExportTableDataBtn = async (
 
                   if (divTokenStatusContainerEl) {
                     setBtn(chain, divTokenStatusContainerEl, tableEl, 'tail')
+                    return
+                  }
+
+                  if (containerElWithoutViewAll) {
+                    setBtn(chain, containerElWithoutViewAll, tableEl, 'tail')
                     return
                   }
                 }

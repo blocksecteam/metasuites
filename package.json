@@ -1,6 +1,6 @@
 {
   "name": "metadock",
-  "version": "3.7.0",
+  "version": "4.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/blocksecteam/metadock.git"
@@ -21,7 +21,6 @@
     "lint": "eslint 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
-    "@ant-design/plots": "^1.2.2",
     "antd": "^5.3.1",
     "big.js": "^6.2.1",
     "blockies-ts": "^1.0.0",
@@ -32,6 +31,8 @@
     "d3": "^5.0.0",
     "d3-graphviz": "2.6.1",
     "dayjs": "^1.11.6",
+    "echarts": "^5.4.3",
+    "echarts-for-react": "^3.0.2",
     "ethers": "^6.0.8",
     "is-mobile": "^4.0.0",
     "jquery": "^3.6.3",

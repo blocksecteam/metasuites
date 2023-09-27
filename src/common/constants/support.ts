@@ -10,7 +10,8 @@ export interface ExtSupportWebsite {
   href?: string
   chainID?: number
   siteName: string
-  logo?: string
+  logo: string
+  testNets?: ExtSupportWebsite[]
 }
 
 export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
@@ -28,7 +29,25 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 1,
     chain: 'eth',
     siteName: 'SCAN',
-    logo: 'https://assets.blocksec.com/image/1671685360787-7.png'
+    logo: 'https://assets.blocksec.com/image/1671685360787-7.png',
+    testNets: [
+      {
+        name: 'Sepolia',
+        domains: ['sepolia.etherscan.io'],
+        chainID: 11_155_111,
+        chain: 'sepolia.eth',
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1671685360787-7.png'
+      },
+      {
+        name: 'Goerli',
+        domains: ['goerli.etherscan.io'],
+        chainID: 5,
+        chain: 'gor.eth',
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1671685360787-7.png'
+      }
+    ]
   },
   {
     name: 'BSC',
@@ -36,7 +55,25 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['bscscan.com', 'www.bscscan.com'],
     chain: 'bsc',
     siteName: 'SCAN',
-    logo: 'https://assets.blocksec.com/image/1671685360787-4.png'
+    logo: 'https://assets.blocksec.com/image/1671685360787-4.png',
+    testNets: [
+      {
+        name: 'Binance Smart Chain Testnet',
+        chainID: 97,
+        domains: ['testnet.bscscan.com'],
+        chain: 'test.bsc',
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1671685360787-4.png'
+      },
+      {
+        name: 'opBNB Testnet',
+        chainID: 5611,
+        domains: ['opbnb-testnet.bscscan.com'],
+        chain: 'test.op',
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1671685360787-4.png'
+      }
+    ]
   },
   {
     name: 'Polygon',
@@ -44,7 +81,17 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chain: 'polygon',
     domains: ['polygonscan.com'],
     siteName: 'SCAN',
-    logo: 'https://assets.blocksec.com/image/1671685360787-12.png'
+    logo: 'https://assets.blocksec.com/image/1671685360787-12.png',
+    testNets: [
+      {
+        name: 'Polygon Mumbai',
+        chainID: 80_001,
+        chain: 'mumbai.polygon',
+        domains: ['mumbai.polygonscan.com'],
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1671685360787-12.png'
+      }
+    ]
   },
   {
     name: 'Fantom',
@@ -52,15 +99,35 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chain: 'fantom',
     chainID: 250,
     siteName: 'SCAN',
-    logo: 'https://assets.blocksec.com/image/1671685360787-8.png'
+    logo: 'https://assets.blocksec.com/image/1671685360787-8.png',
+    testNets: [
+      {
+        name: 'Fantom Testnet',
+        domains: ['testnet.ftmscan.com'],
+        chain: 'test.fantom',
+        chainID: 4_002,
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1671685360787-8.png'
+      }
+    ]
   },
   {
     name: 'Arbitrum',
     domains: ['arbiscan.io'],
     chain: 'arbitrum',
-    chainID: 42161,
+    chainID: 42_161,
     siteName: 'SCAN',
-    logo: 'https://assets.blocksec.com/image/1671685360787-2.png'
+    logo: 'https://assets.blocksec.com/image/1671685360787-2.png',
+    testNets: [
+      {
+        name: 'Arbitrum Goerli',
+        domains: ['testnet.arbiscan.io'],
+        chain: 'gor.arbitrum',
+        chainID: 421_613,
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1671685360787-2.png'
+      }
+    ]
   },
   {
     name: 'Cronos',
@@ -74,9 +141,19 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     name: 'Moonbeam',
     chainID: 1284,
     chain: 'moonbeam',
-    domains: ['moonscan.io', 'www.moonscan.io'],
+    domains: ['moonscan.io', 'www.moonscan.io', 'moonbeam.moonscan.io'],
     siteName: 'SCAN',
-    logo: 'https://assets.blocksec.com/image/1671685360787-9.png'
+    logo: 'https://assets.blocksec.com/image/1671685360787-9.png',
+    testNets: [
+      {
+        name: 'Moonbase Alpha',
+        chainID: 1287,
+        chain: 'moonbase',
+        domains: ['moonbase.moonscan.io'],
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1671685360787-9.png'
+      }
+    ]
   },
   {
     name: 'Avalanche',
@@ -84,7 +161,17 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chain: 'avalanche',
     domains: ['snowtrace.io'],
     siteName: 'SCAN',
-    logo: 'https://assets.blocksec.com/image/1671777583236-3.png'
+    logo: 'https://assets.blocksec.com/image/1671777583236-3.png',
+    testNets: [
+      {
+        name: 'Avalanche Fuji',
+        chainID: 43_113,
+        chain: 'fuji.avalanche',
+        domains: ['testnet.snowtrace.io'],
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1671777583236-3.png'
+      }
+    ]
   },
   {
     name: 'Optimism',
@@ -92,12 +179,155 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chain: 'optimism',
     domains: ['optimistic.etherscan.io'],
     siteName: 'SCAN',
-    logo: 'https://assets.blocksec.com/image/1671777583236-2.png'
+    logo: 'https://assets.blocksec.com/image/1671777583236-2.png',
+    testNets: [
+      {
+        name: 'Optimism Goerli',
+        chainID: 420,
+        chain: 'gor.optimism',
+        domains: ['goerli-optimism.etherscan.io'],
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1671777583236-2.png'
+      }
+    ]
+  },
+  {
+    name: 'Arbitrum Nova',
+    domains: ['nova.arbiscan.io'],
+    chain: 'nova.arbitrum',
+    chainID: 42_170,
+    siteName: 'SCAN',
+    logo: 'https://assets.blocksec.com/image/1695376609975-2.png'
+  },
+  {
+    name: 'Moonriver',
+    chainID: 1285,
+    chain: 'moonriver',
+    domains: ['moonriver.moonscan.io'],
+    siteName: 'SCAN',
+    logo: 'https://assets.blocksec.com/image/1695197156966-2.png'
+  },
+  {
+    name: 'BitTorrent',
+    chainID: 199,
+    chain: 'btt',
+    domains: ['bttcscan.com'],
+    siteName: 'SCAN',
+    logo: 'https://assets.blocksec.com/image/1695197176921-2.png',
+    testNets: [
+      {
+        name: 'Donau',
+        chainID: 1028,
+        chain: 'test.btt',
+        domains: ['testnet.bttcscan.com'],
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1695197176921-2.png'
+      }
+    ]
+  },
+  {
+    name: 'Celo',
+    chainID: 42_220,
+    chain: 'celo',
+    domains: ['celoscan.io'],
+    siteName: 'SCAN',
+    logo: 'https://assets.blocksec.com/image/1695197240068-2.png',
+    testNets: [
+      {
+        name: 'Alfajores',
+        chainID: 44_787,
+        chain: 'alfa.celo',
+        domains: ['alfajores.celoscan.io'],
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1695197240068-2.png'
+      }
+    ]
+  },
+  {
+    name: 'Gnosis',
+    chainID: 100,
+    chain: 'gnosis',
+    domains: ['gnosisscan.io'],
+    siteName: 'SCAN',
+    logo: 'https://assets.blocksec.com/image/1695197286815-3.png'
+  },
+  {
+    name: 'Base',
+    chainID: 8453,
+    chain: 'base',
+    domains: ['basescan.org'],
+    siteName: 'SCAN',
+    logo: 'https://assets.blocksec.com/image/1695197286815-2.png',
+    testNets: [
+      {
+        name: 'Base Goerli',
+        chainID: 84531,
+        chain: 'gor.base',
+        domains: ['goerli.basescan.org'],
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1695197286815-2.png'
+      }
+    ]
+  },
+  {
+    name: 'Polygon zkEVM',
+    chainID: 1101,
+    chain: 'zkevm',
+    domains: ['zkevm.polygonscan.com'],
+    siteName: 'SCAN',
+    logo: 'https://assets.blocksec.com/image/1695197286815-5.png',
+    testNets: [
+      {
+        name: 'Polygon zkEVM Testnet',
+        chainID: 1442,
+        chain: 'test.zkevm',
+        domains: ['testnet-zkevm.polygonscan.com'],
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1695197286815-5.png'
+      }
+    ]
+  },
+  {
+    name: 'Linea',
+    chainID: 59_144,
+    chain: 'linea',
+    domains: ['lineascan.build'],
+    siteName: 'SCAN',
+    logo: 'https://assets.blocksec.com/image/1695197286815-4.png',
+    testNets: [
+      {
+        name: 'Linea Goerli Testnet',
+        chainID: 59_140,
+        chain: 'test.linea',
+        domains: ['goerli.lineascan.build'],
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1695197286815-4.png'
+      }
+    ]
+  },
+  {
+    name: 'WEMIX',
+    chainID: 1111,
+    chain: 'wemix',
+    domains: ['wemixscan.com'],
+    siteName: 'SCAN',
+    logo: 'https://assets.blocksec.com/image/1695197286815-6.png',
+    testNets: [
+      {
+        name: 'WEMIX3.0 Testnet',
+        chainID: 1112,
+        chain: 'test.wemix',
+        domains: ['testnet.wemixscan.com'],
+        siteName: 'SCAN',
+        logo: 'https://assets.blocksec.com/image/1695197286815-6.png'
+      }
+    ]
   },
   {
     name: 'OpenSea',
     domains: ['opensea.io'],
-    siteName: 'OPENSEA'
+    siteName: 'OPENSEA',
+    logo: 'https://assets.blocksec.com/image/1695197676298-2.png'
   }
 ]
 
@@ -110,7 +340,9 @@ export const SLEUTH_SUPPORT_LIST = [
   'cronos',
   'moonbeam',
   'avalanche',
-  'optimism'
+  'optimism',
+  'linea',
+  'base'
 ]
 
 export const ALTERNATIVE_BLOCK_EXPLORES_SUPPORT_LIST = ['eth']
@@ -120,6 +352,16 @@ export const PHALCON_SUPPORT_LIST = [
     pathname: 'eth',
     chain: 'eth',
     supportSimulator: true
+  },
+  {
+    pathname: 'sepolia',
+    chain: 'sepolia.eth',
+    supportSimulator: false
+  },
+  {
+    pathname: 'goerli',
+    chain: 'gor.eth',
+    supportSimulator: false
   },
   {
     pathname: 'polygon',
@@ -189,12 +431,10 @@ export const TENDERLY_SUPPORT_LIST = [
     pathname: 'polygon',
     chain: 'polygon'
   },
-
   {
     pathname: 'binance',
     chain: 'bsc'
   },
-
   {
     pathname: 'arbitrum',
     chain: 'arbitrum'
@@ -215,6 +455,58 @@ export const TENDERLY_SUPPORT_LIST = [
   {
     pathname: 'optimistic',
     chain: 'optimism'
+  },
+  {
+    pathname: 'base',
+    chain: 'base'
+  },
+  {
+    pathname: 'cronos',
+    chain: 'cronos'
+  },
+  {
+    pathname: 'moonbeam',
+    chain: 'moonbeam'
+  },
+  {
+    pathname: 'moonriver',
+    chain: 'moonriver'
+  },
+  {
+    pathname: 'gnosis-chain',
+    chain: 'gnosis'
+  },
+  {
+    pathname: 'goerli',
+    chain: 'gor.eth'
+  },
+  {
+    pathname: 'fantom-testnet',
+    chain: 'test.fantom'
+  },
+  {
+    pathname: 'optimistic-goerli',
+    chain: 'gor.optimism'
+  },
+  {
+    pathname: 'polygon-mumbai',
+    chain: 'mumbai.polygon'
+  },
+  {
+    pathname: 'sepolia',
+    chain: 'sepolia.eth'
+  },
+  {
+    pathname: 'base-goerli',
+    chain: 'gor.base'
+  },
+  {
+    pathname: 'arbitrum-goerli',
+    chain: 'gor.arbitrum'
+  },
+  {
+    pathname: 'arbitrum-nova',
+    chain: 'nova.arbitrum'
   }
 ]
 
@@ -231,6 +523,10 @@ export const DEDAUB_SUPPORT_DIRECT_LIST = [
   {
     chain: 'arbitrum',
     pathname: 'arbitrum'
+  },
+  {
+    chain: 'base',
+    pathname: 'base'
   }
 ]
 
@@ -278,6 +574,14 @@ export const ETHERVM_SUPPORT_DIRECT_LIST = [
   {
     chain: 'bsc',
     url: 'https://ethervm.io/decompile/binance'
+  },
+  {
+    chain: 'gor.eth',
+    url: 'https://ethervm.io/decompile/goerli'
+  },
+  {
+    chain: 'sepolia.eth',
+    url: 'https://ethervm.io/decompile/sepolia'
   }
 ]
 
@@ -365,3 +669,56 @@ export class TransactionParsers extends BaseConstant {
     'https://library.dedaub.com'
   )
 }
+
+export const PROXY_LOG_SUPPORT_LIST = [
+  'eth',
+  'bsc',
+  'polygon',
+  'fantom',
+  'arbitrum',
+  'cronos',
+  'moonbeam',
+  'avalanche',
+  'optimism'
+]
+
+export const DEBANK_SUPPORT_LIST = [
+  'eth',
+  'bsc',
+  'polygon',
+  'fantom',
+  'arbitrum',
+  'cronos',
+  'moonbeam',
+  'avalanche',
+  'optimism',
+  'base',
+  'zkevm',
+  'linea',
+  'btt',
+  'celo',
+  'gnosis',
+  'moonriver',
+  'wemix',
+  'nova.arbitrum'
+]
+
+export const APPROVAL_DIAGNOSIS_SUPPORT_LIST = [
+  'eth',
+  'bsc',
+  'polygon',
+  'fantom',
+  'arbitrum',
+  'cronos',
+  'moonbeam',
+  'avalanche',
+  'optimism',
+  'moonriver',
+  'btt',
+  'celo',
+  'gnosis',
+  'base',
+  'zkevm',
+  'linea',
+  'wemix'
+]

@@ -1,7 +1,5 @@
 import { MSG_METADOCK_INSTALLED } from '@common/constants'
 
-const init = () => {
+export const initBlocksec = () => {
   window.postMessage(MSG_METADOCK_INSTALLED)
 }
-
-init()

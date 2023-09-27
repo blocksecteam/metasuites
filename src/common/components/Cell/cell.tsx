@@ -2,7 +2,7 @@ import React, { type FC, type ReactNode, type MouseEvent } from 'react'
 import cls from 'classnames'
 
 import type { BaseComponent } from '@common/types'
-import { Iconfont } from '@common/components'
+import { IconArrowRightOutlined } from '@common/components'
 
 import styles from './index.module.less'
 
@@ -49,7 +49,7 @@ const Cell: FC<CellProps> = props => {
         <div className={styles.action}>{action}</div>
       ) : (
         <div className={styles.iconContainer}>
-          <Iconfont type="icon-arrow-right" />
+          <IconArrowRightOutlined />
         </div>
       )}
     </div>

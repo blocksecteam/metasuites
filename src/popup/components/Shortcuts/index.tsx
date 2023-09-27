@@ -15,7 +15,7 @@ import cls from 'classnames'
 
 import { getImageUrl, createTab } from '@common/utils'
 import { EXT_SUPPORT_WEB_LIST } from '@common/constants'
-import { Iconfont, LoadingOutlined } from '@common/components'
+import { LoadingOutlined, IconClose } from '@common/components'
 import type {
   SearchResultType,
   SearchResultItem,
@@ -166,10 +166,11 @@ const Shortcuts: FC = () => {
             loading ? (
               <LoadingOutlined />
             ) : (
-              <Iconfont
-                style={{ display: value ? 'inline' : 'none' }}
-                type="icon-close"
-                cursor="pointer"
+              <IconClose
+                style={{
+                  display: value ? 'inline' : 'none',
+                  cursor: 'pointer'
+                }}
                 onClick={onClear}
               />
             )
@@ -212,7 +213,7 @@ const Shortcuts: FC = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src={getImageUrl(item.name)} alt="" />
+            <img src={item.logo} alt="" />
           </a>
         ))}
       </div>

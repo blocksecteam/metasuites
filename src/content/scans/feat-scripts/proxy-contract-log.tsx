@@ -3,9 +3,11 @@ import $ from 'jquery'
 
 import { pickAddress } from '@common/utils'
 import { ProxyLogReference } from '@src/content/scans/components'
+import { PROXY_LOG_SUPPORT_LIST } from '@common/constants'
 
 /** Show proxy log */
 const genProxyContractLog = async (chain: string) => {
+  if (!PROXY_LOG_SUPPORT_LIST.includes(chain)) return
   const mainAddress = pickAddress(window.location.pathname)
   if (!mainAddress) return
 
