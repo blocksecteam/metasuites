@@ -24,7 +24,7 @@ export default defineManifest((env: ConfigEnv) => {
         matches: isDev
           ? [
               '*://*.etherscan.io/*',
-              '*://cn.etherscan.com/*',
+              '*://*.etherscan.com/*',
               '*://*.bscscan.com/*',
               '*://*.polygonscan.com/*',
               '*://*.snowtrace.io/*',

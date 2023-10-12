@@ -54,6 +54,7 @@ interface Props {
   receiver: string
   isProxy: boolean
   signature?: string
+  gasPrice: string
   readableInputs?: ReadableInputData[]
 }
 
@@ -62,6 +63,7 @@ const DrawerSimulation: FC<Props> = ({
   receiver,
   sender,
   isProxy,
+  gasPrice,
   readableInputs = [],
   signature
 }) => {
@@ -91,6 +93,10 @@ const DrawerSimulation: FC<Props> = ({
       }
     })
 
+  const estimatedGas = Number.isNaN(gasPrice)
+    ? '100'
+    : Math.ceil(Number(gasPrice) * (1 + 0.2)).toString()
+
   const handleOk = debounce(() => {
     form.validateFields().then(values => {
       const params: SimulateTxParams = {
@@ -100,7 +106,7 @@ const DrawerSimulation: FC<Props> = ({
         inputData: values.inputData,
         value: values.value || '0',
         gasLimit: Number(values.gasLimit) || 1000000,
-        gasPrice: values.gasPrice || '100',
+        gasPrice: values.gasPrice || estimatedGas,
         receiver: values.receiver || ''
       }
       if (!values.isPrerun) {
@@ -207,8 +213,15 @@ const DrawerSimulation: FC<Props> = ({
           form.setFieldValue('useABI', true)
           form.setFieldValue('function', functionValue)
           const parameters: Record<string, any> = {}
+
+          const funcName = signature.replace(/\([^)]*\)/g, '')
+
           readableInputs.forEach(item => {
-            parameters[`${functionValue}_${item.argumentName}`] = item.value
+            if (funcName === item.argumentName) {
+              form.setFieldValue('value', item.value)
+            } else {
+              parameters[`${functionValue}_${item.argumentName}`] = item.value
+            }
           })
           form.setFieldValue('parameters', parameters)
         }
@@ -762,7 +775,7 @@ const DrawerSimulation: FC<Props> = ({
               return value.replace(/[^\d{1,}\\.\d{1,}|\d{1,}]/g, '')
             }}
           >
-            <Input suffix="Gwei" placeholder="Default is 100" />
+            <Input suffix="Gwei" placeholder={`Default is ${estimatedGas}`} />
           </Form.Item>
         </Form>
         <Button

@@ -120,12 +120,15 @@ const renderDrawer = ({
   const func = $(`#${id}`).contents().find('#connectStatus').attr('onclick')
   const sender = func ? pickAddress(func) : undefined
 
+  const gasPrice = $('#spanGasTooltip .gasPricePlaceHolder').text().trim()
+
   const readableInputs = setupInputData(container)
 
   const rootEl = $('<div></div>')
   createRoot(rootEl[0]).render(
     <DrawerSimulation
       chain={chain}
+      gasPrice={gasPrice}
       receiver={address}
       sender={sender}
       isProxy={isProxy}

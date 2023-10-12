@@ -19,11 +19,14 @@ export default {
   ],
   ETHERSCAN_V2_MATCHES: [
     '*://cn.etherscan.com/*',
+    '*://goto.etherscan.com/*',
     '*://sepolia.etherscan.io/*',
     '*://goerli.etherscan.io/*',
     '*://cn.etherscan.com/*',
     '*://etherscan.io/*',
     '*://bscscan.com/*',
+    '*://goto.bscscan.com/*',
+    '*://www.bscscan.com/*',
     '*://testnet.bscscan.com/*'
   ],
   BTC_EXPLORER_MATCHES: ['*://explorer.btc.com/*'],

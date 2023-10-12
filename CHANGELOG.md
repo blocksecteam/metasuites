@@ -1,3 +1,9 @@
+### v4.0.1
+
+- [fix] Resolve domain matching issues
+- [fix] Fix issue with ABI parameter parsing affecting Simulation functionality
+- [feat] Auto-fetch gasPrice for Simulation
+
 ### v4.0.0
 
 - [feat] Add support for multiple new chains including Base, Linea, Polygon zkEVM

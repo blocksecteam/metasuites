@@ -17,7 +17,7 @@ export interface ExtSupportWebsite {
 export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
   {
     name: 'BTC',
-    domains: ['btc.com', 'explorer.btc.com'],
+    domains: ['explorer.btc.com'],
     href: 'https://explorer.btc.com/btc',
     chain: 'btc',
     siteName: 'SCAN',
@@ -25,7 +25,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
   },
   {
     name: 'ETH',
-    domains: ['etherscan.io', 'cn.etherscan.com'],
+    domains: ['etherscan.io', 'cn.etherscan.com', 'goto.etherscan.com'],
     chainID: 1,
     chain: 'eth',
     siteName: 'SCAN',
@@ -52,7 +52,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
   {
     name: 'BSC',
     chainID: 56,
-    domains: ['bscscan.com', 'www.bscscan.com'],
+    domains: ['bscscan.com', 'www.bscscan.com', 'goto.bscscan.com'],
     chain: 'bsc',
     siteName: 'SCAN',
     logo: 'https://assets.blocksec.com/image/1671685360787-4.png',
@@ -309,7 +309,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     name: 'WEMIX',
     chainID: 1111,
     chain: 'wemix',
-    domains: ['wemixscan.com'],
+    domains: ['wemixscan.com', 'www.wemixscan.com'],
     siteName: 'SCAN',
     logo: 'https://assets.blocksec.com/image/1695197286815-6.png',
     testNets: [
