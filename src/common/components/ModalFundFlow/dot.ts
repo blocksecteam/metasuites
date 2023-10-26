@@ -26,7 +26,7 @@ const genNode = (
           tooltip="${address}"
           target="_blank"
           fixedsize="true"
-          width="2.9"
+          width="3"
           height="1"
           image="${logo || ChainUtils.getChainLogo(chain)}"
           label=<<table border="0">${

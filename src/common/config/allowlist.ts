@@ -1,6 +1,6 @@
 export default {
   ETHERSCAN_V1_MATCHES: [
-    '*://*.polygonscan.com/*',
+    '*://mumbai.polygonscan.com/*',
     '*://*.snowtrace.io/*',
     '*://optimistic.etherscan.io/*',
     '*://*.arbiscan.io/*',
@@ -27,7 +27,8 @@ export default {
     '*://bscscan.com/*',
     '*://goto.bscscan.com/*',
     '*://www.bscscan.com/*',
-    '*://testnet.bscscan.com/*'
+    '*://testnet.bscscan.com/*',
+    '*://polygonscan.com/*'
   ],
   BTC_EXPLORER_MATCHES: ['*://explorer.btc.com/*'],
   BLOCKSEC_MATCHES: ['*://*.blocksec.com/*'],

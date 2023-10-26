@@ -1,3 +1,7 @@
+### v4.1.0
+
+[feat] Adapt to the new template of Polygonscan [fix] Resolve NFT risk radar chart malfunction due to opensea website updates [fix] Correct invalid redirect links in the downloaded fundflow SVG images
+
 ### v4.0.1
 
 - [fix] Resolve domain matching issues

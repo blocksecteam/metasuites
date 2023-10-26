@@ -97,7 +97,7 @@ export const nodeHover = (
           }
         })
 
-      imgPosition.analyze.x = `${Number(pathList[8][0]) + 10}`
+      imgPosition.analyze.x = `${Number(pathList[8][0]) + 12}`
       imgPosition.analyze.y = `${Number(pathList[8][1]) - 30}`
     }
 
@@ -157,10 +157,6 @@ export const nodeHover = (
   nodeAClone.on('mouseleave', () => {
     clearGraphTemp()
   })
-
-  nodeAClone.on('click', function () {
-    if (nodeData.url) window.open(nodeData.url)
-  })
 }
 
 export const nodeStrokeWidthChange = (
@@ -192,6 +188,10 @@ export const initNodes = (fundFlow: FundFlowRes) => {
 
     node.select('path').attr('fill', '#f8f8f8')
 
+    node
+      .select('g > a')
+      .attr('href', fundFlow.nodes.find(v => v.id === d3Ele.key)!.url)
+
     // Initializes the position of the image
     const _image = node.select('image')
     if (_image) {
@@ -207,7 +207,7 @@ export const initNodes = (fundFlow: FundFlowRes) => {
     node.on('mouseenter', () => {
       nodeStrokeWidthChange(node, '#00a54c', '3')
 
-      nodeHover(node, d3Ele.key, fundFlow!.nodes.find(v => v.id === d3Ele.key)!)
+      nodeHover(node, d3Ele.key, fundFlow.nodes.find(v => v.id === d3Ele.key)!)
     })
 
     node.on('mouseleave', () => {
