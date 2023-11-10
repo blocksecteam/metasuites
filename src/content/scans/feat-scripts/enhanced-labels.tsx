@@ -5,7 +5,8 @@ import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import {
   GET_ADDRESS_LABELS,
-  TABLE_LIST_ADDRESS_SELECTORS
+  TABLE_LIST_ADDRESS_SELECTORS,
+  TR_CONTRACT_ADDRESS_SELECTORS
 } from '@common/constants'
 import { CopyButton, TokenSymbol } from '@common/components'
 
@@ -62,7 +63,7 @@ const handleReplace = async (
 /** enhanced address label */
 const genEnhancedLabels = async (chain: string) => {
   const addressTags = document.querySelectorAll<HTMLElement>(
-    TABLE_LIST_ADDRESS_SELECTORS
+    `${TABLE_LIST_ADDRESS_SELECTORS}, ${TR_CONTRACT_ADDRESS_SELECTORS}`
   )
   const iframes = document.querySelectorAll('iframe')
 

@@ -67,7 +67,9 @@ const columns = (
       width: 220,
       render: (timestamp: number, record) => {
         if (record.isHolder) return ''
-        const formattedDate = dayjs(timestamp).format('YYYY-MM-DD HH:mm:ss')
+        const formattedDate = dayjs(timestamp)
+          .utc()
+          .format('YYYY-MM-DD HH:mm:ss')
         return (
           <span>
             {utc2locale

@@ -6,7 +6,8 @@ import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import {
   GET_ADDRESS_LABELS,
-  TABLE_LIST_ADDRESS_SELECTORS_V2
+  TABLE_LIST_ADDRESS_SELECTORS_V2,
+  TR_CONTRACT_ADDRESS_SELECTORS_V2
 } from '@common/constants'
 import { widthScanV2Tooltip } from '@common/hoc'
 import { TokenSymbol } from '@common/components'
@@ -59,7 +60,9 @@ const handleReplace = async (
 
 /** enhanced address label */
 const genEnhancedLabels = async (chain: string) => {
-  const addressTags = $(TABLE_LIST_ADDRESS_SELECTORS_V2).toArray()
+  const addressTags = $(
+    `${TABLE_LIST_ADDRESS_SELECTORS_V2}, ${TR_CONTRACT_ADDRESS_SELECTORS_V2}`
+  ).toArray()
   const iframes = document.querySelectorAll('iframe')
 
   function handleCollectReplaceTarget(nodeList: HTMLElement[]) {

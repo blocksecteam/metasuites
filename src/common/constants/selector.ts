@@ -6,10 +6,18 @@ export const TABLE_LIST_ADDRESS_SELECTORS =
 export const TABLE_LIST_METHOD_SELECTORS =
   '.card tbody .u-label.u-label--info, maindiv tbody .u-label.u-label--info'
 
-/** *scans address v2 */
+/** etherscan address */
 export const TABLE_LIST_ADDRESS_SELECTORS_V2 =
   ".card tbody *:has(+ a.js-clipboard[aria-label='Copy Address'])"
 
-/** *scans methods v2 */
+/** etherscan methods */
 export const TABLE_LIST_METHOD_SELECTORS_V2 =
   '.table-responsive table tbody span.d-block.badge.text-truncate'
+
+/** *scans address */
+export const TR_CONTRACT_ADDRESS_SELECTORS =
+  "#ContentPlaceHolder1_trContract a.hash-tag[href*='/address/']"
+
+/** etherscan address */
+export const TR_CONTRACT_ADDRESS_SELECTORS_V2 =
+  "#ContentPlaceHolder1_trContract a[href*='/address/']"

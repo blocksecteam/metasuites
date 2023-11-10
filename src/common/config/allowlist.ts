@@ -1,10 +1,10 @@
 export default {
   ETHERSCAN_V1_MATCHES: [
-    '*://mumbai.polygonscan.com/*',
+    '*://zkevm.polygonscan.com/*',
     '*://*.snowtrace.io/*',
     '*://optimistic.etherscan.io/*',
     '*://*.arbiscan.io/*',
-    '*://*.ftmscan.com/*',
+    '*://testnet.ftmscan.com/*',
     '*://cronoscan.com/*',
     '*://*.moonscan.io/*',
     '*://*.basescan.org/*',
@@ -18,6 +18,7 @@ export default {
     '*://goerli-optimism.etherscan.io/*'
   ],
   ETHERSCAN_V2_MATCHES: [
+    '*://ftmscan.com/*',
     '*://cn.etherscan.com/*',
     '*://goto.etherscan.com/*',
     '*://sepolia.etherscan.io/*',
@@ -28,7 +29,8 @@ export default {
     '*://goto.bscscan.com/*',
     '*://www.bscscan.com/*',
     '*://testnet.bscscan.com/*',
-    '*://polygonscan.com/*'
+    '*://polygonscan.com/*',
+    '*://mumbai.polygonscan.com/*'
   ],
   BTC_EXPLORER_MATCHES: ['*://explorer.btc.com/*'],
   BLOCKSEC_MATCHES: ['*://*.blocksec.com/*'],
