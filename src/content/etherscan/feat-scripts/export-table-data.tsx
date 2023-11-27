@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 
 import { validOrigin } from '@common/utils'
-import { type SCAN_PAGE_NAMES, SCAN_PAGES } from '@common/constants'
+import { ETHERSCAN_PAGES } from '@common/constants'
 
 import { ExportTableDataBtn } from '../components'
 
@@ -26,12 +26,9 @@ const setBtn = async (
 }
 
 /** Show export data for a part of transactions */
-const genExportTableDataBtn = async (
-  chain: string,
-  pageName: (typeof SCAN_PAGE_NAMES)[number]
-) => {
+const genExportTableDataBtn = async (chain: string, pageName: string) => {
   switch (pageName) {
-    case SCAN_PAGES.ADDRESS.name:
+    case ETHERSCAN_PAGES.ADDRESS.name:
       {
         // Transactions
         const txContainerEl = document.querySelector<HTMLElement>(
@@ -84,7 +81,7 @@ const genExportTableDataBtn = async (
         }
       }
       break
-    case SCAN_PAGES.TOKEN.name:
+    case ETHERSCAN_PAGES.TOKEN.name:
       {
         const iframes = document.querySelectorAll<HTMLIFrameElement>('iframe')
         for (let i = 0; i < iframes.length; ++i) {
@@ -113,7 +110,7 @@ const genExportTableDataBtn = async (
         }
       }
       break
-    case SCAN_PAGES.TXS.name:
+    case ETHERSCAN_PAGES.TXS.name:
       {
         const containerEl = document.querySelector<HTMLElement>(
           '#ContentPlaceHolder1_divDataInfo nav'
@@ -125,8 +122,8 @@ const genExportTableDataBtn = async (
         }
       }
       break
-    case SCAN_PAGES.BLOCKS_FORKED.name:
-    case SCAN_PAGES.BLOCKS.name:
+    case ETHERSCAN_PAGES.BLOCKS_FORKED.name:
+    case ETHERSCAN_PAGES.BLOCKS.name:
       {
         const containerEl = document.querySelector<HTMLElement>('ul.pagination')
         const tableEl = document.querySelector<HTMLElement>('table')
@@ -136,7 +133,7 @@ const genExportTableDataBtn = async (
         }
       }
       break
-    case SCAN_PAGES.TOKENTXNS.name:
+    case ETHERSCAN_PAGES.TOKENTXNS.name:
       {
         const containerEl = document.querySelector<HTMLElement>(
           "nav[aria-label='table navigation']"
@@ -150,7 +147,7 @@ const genExportTableDataBtn = async (
         }
       }
       break
-    case SCAN_PAGES.ACCOUNTS.name:
+    case ETHERSCAN_PAGES.ACCOUNTS.name:
       {
         const containerEl = document.querySelector<HTMLElement>(
           '#ContentPlaceHolder1_topPageDiv'
@@ -164,7 +161,7 @@ const genExportTableDataBtn = async (
         }
       }
       break
-    case SCAN_PAGES.TXS_INTERNAL.name:
+    case ETHERSCAN_PAGES.TXS_INTERNAL.name:
       {
         const containerEl = document.querySelector<HTMLElement>(
           "#ContentPlaceHolder1_divTopPagination > nav[aria-label='page navigation']"
@@ -178,7 +175,7 @@ const genExportTableDataBtn = async (
         }
       }
       break
-    case SCAN_PAGES.NFT_TRANSFERS.name:
+    case ETHERSCAN_PAGES.NFT_TRANSFERS.name:
       {
         const containerEl = document.querySelector<HTMLElement>(
           '#datatable_wrapper > .topdivdt > div:last-child'

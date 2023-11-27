@@ -51,7 +51,9 @@ const genNode = (
               COLOR="#939393"
               FACE="Poppins-Regular"
               POINT-SIZE="12px"
-              >${address.slice(22, address.length)}</FONT></td></tr></table>>
+              >${
+                address.slice(22, address.length) || ' '
+              }</FONT></td></tr></table>>
         ]`
 }
 
@@ -123,9 +125,9 @@ const sort = (edges: FundFlowEdge[]) => {
 
 /**
  *
- * @param chain: determine if it's the same chain
- * @param mainAddress：determine whether the edge is input or output
- * @param fundFlow：data source
+ * @param chain
+ * @param mainAddress
+ * @param fundFlow
  */
 const genDotStr = (
   chain: string,

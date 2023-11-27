@@ -3,8 +3,7 @@ import $ from 'jquery'
 
 import { chromeEvent } from '@common/event'
 import {
-  type SCAN_PAGE_NAMES,
-  SCAN_PAGES,
+  ETHERSCAN_PAGES,
   GET_TOKEN_MARKETPLACES,
   TokenType
 } from '@common/constants'
@@ -13,10 +12,7 @@ import type { TokenMarketplacesRes } from '@common/api/types'
 
 import { TokenMarketplacesBtn } from '../components'
 
-const genTokenMarketplacesBtn = async (
-  chain: string,
-  pageName: (typeof SCAN_PAGE_NAMES)[number]
-) => {
+const genTokenMarketplacesBtn = async (chain: string, pageName: string) => {
   const mainAddress = pickAddress(window.location.pathname)
   if (!mainAddress) return
 
@@ -31,7 +27,7 @@ const genTokenMarketplacesBtn = async (
   if (res?.success && res.data) {
     const { tokenType, markets } = res.data
     const containerEl = $(
-      pageName === SCAN_PAGES.TOKEN.name
+      pageName === ETHERSCAN_PAGES.TOKEN.name
         ? tokenType === TokenType.ERC721
           ? '#ContentPlaceHolder1_tr_valuenft'
           : '#ContentPlaceHolder1_tr_valuepertoken'

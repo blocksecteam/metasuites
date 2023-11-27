@@ -7,7 +7,8 @@ import { isAddress } from 'ethers'
 import { chromeEvent } from '@common/event'
 import {
   QUERY_PRIVATE_VARIABLE,
-  ContractVariableMutability
+  ContractVariableMutability,
+  VARIABLE_LOG_SUPPORT_LIST
 } from '@common/constants'
 import type {
   PrivateVariableArgument,
@@ -38,6 +39,8 @@ const ReadContractAccordionItem: FC<Props> = ({
   const [formData, setFormData] = useState<Record<string, any>>({})
   const [queryResult, setQueryResult] = useState<PrivateVariableArgument>()
   const [options] = useStore('options')
+
+  const supportVariableLogs = VARIABLE_LOG_SUPPORT_LIST.includes(chain)
 
   const onQuery = async () => {
     const res = await chromeEvent.emit<
@@ -160,7 +163,7 @@ const ReadContractAccordionItem: FC<Props> = ({
                   >
                     Query
                   </button>
-                  {options.variableLogs && (
+                  {options.variableLogs && supportVariableLogs && (
                     <ContractVariableLogBtn
                       className="ml-2"
                       onClick={errorCallback => {
@@ -259,7 +262,7 @@ const ReadContractAccordionItem: FC<Props> = ({
                     {value?.type}
                   </span>
                 </i>
-                {options.variableLogs && (
+                {options.variableLogs && supportVariableLogs && (
                   <div className="mt-4">
                     <ContractVariableLogBtn
                       onClick={() => {

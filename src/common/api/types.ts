@@ -170,6 +170,7 @@ export interface ApprovalRisk {
   risk: number
   chain: string
   address: string
+  label?: string
 }
 
 export interface FortaAlertReq {

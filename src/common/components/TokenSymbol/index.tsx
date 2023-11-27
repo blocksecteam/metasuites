@@ -26,7 +26,8 @@ const TokenSymbol: FC<Props> = ({
       height: `${size}px`,
       marginRight: `${mr}px`,
       marginLeft: `${ml}px`,
-      verticalAlign: 'text-bottom'
+      verticalAlign: 'text-bottom',
+      flexShrink: 0
     },
     style
   )

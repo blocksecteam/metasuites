@@ -1,5 +1,5 @@
 import { store } from '@src/store'
-import { SCAN_PAGES } from '@common/constants'
+import { ETHERSCAN_PAGES } from '@common/constants'
 
 import {
   convertUTC2locale,
@@ -12,9 +12,9 @@ const initBlocksPageScript = async (chain: string) => {
     'options'
   )
 
-  if (utc2locale) convertUTC2locale(SCAN_PAGES.BLOCKS.name)
-  if (exportTableData) genExportTableDataBtn(chain, SCAN_PAGES.BLOCKS.name)
-  if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.BLOCKS.name)
+  if (utc2locale) convertUTC2locale(ETHERSCAN_PAGES.BLOCKS.name)
+  if (exportTableData) genExportTableDataBtn(chain, ETHERSCAN_PAGES.BLOCKS.name)
+  if (showCopyIcon) genCopyIconBtn(ETHERSCAN_PAGES.BLOCKS.name)
 }
 
 export default initBlocksPageScript

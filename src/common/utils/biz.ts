@@ -2,7 +2,8 @@ import $ from 'jquery'
 
 import {
   EXT_SUPPORT_WEB_LIST,
-  SCAN_PAGES,
+  ETHERSCAN_PAGES,
+  TRONSCAN_PAGES,
   OPENSEA_PAGES,
   PHALCON_SUPPORT_LIST
 } from '@common/constants'
@@ -18,7 +19,8 @@ export const getPageName = (
 ): string => {
   const PAGES: Record<string, object> = {
     OPENSEA_PAGES,
-    SCAN_PAGES
+    ETHERSCAN_PAGES,
+    TRONSCAN_PAGES
   }
   const siteName = EXT_SUPPORT_WEB_LIST.flatMap(item => [
     item,

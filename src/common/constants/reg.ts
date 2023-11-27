@@ -24,3 +24,9 @@ export const PATTERN_BTC_ADDRESS_EXAC =
 export const PATTERN_ENS = /\.(eth)$/
 
 export const PATTERN_INPUT_DATA = /^0[x|X][A-Fa-f0-9]*$/
+
+export const PATTERN_TRX_ADDRESS_EXAC = /^T[a-zA-Z0-9]{33}$/
+
+export const PATTERN_TRX_ADDRESS_LOOSE = /T[a-zA-Z0-9]{33}/
+
+export const PATTERN_TRX_TX_HASH = /[a-fA-F0-9]{64}/g

@@ -2,20 +2,13 @@ import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 
 import { chromeEvent } from '@common/event'
-import {
-  type SCAN_PAGE_NAMES,
-  SCAN_PAGES,
-  GET_TOKEN_MARKETPLACES
-} from '@common/constants'
+import { ETHERSCAN_PAGES, GET_TOKEN_MARKETPLACES } from '@common/constants'
 import { pickAddress } from '@common/utils'
 import type { TokenMarketplacesRes } from '@common/api/types'
 
 import { TokenMarketplacesBtn } from '../components'
 
-const genTokenMarketplacesBtn = async (
-  chain: string,
-  pageName: (typeof SCAN_PAGE_NAMES)[number]
-) => {
+const genTokenMarketplacesBtn = async (chain: string, pageName: string) => {
   const mainAddress = pickAddress(window.location.pathname)
   if (!mainAddress) return
 
@@ -30,7 +23,7 @@ const genTokenMarketplacesBtn = async (
   if (res?.success && res.data) {
     const { markets } = res.data
     const containerEl = $(
-      pageName === SCAN_PAGES.ADDRESS.name
+      pageName === ETHERSCAN_PAGES.ADDRESS.name
         ? '#ContentPlaceHolder1_tr_tokeninfo > div > div:last-child'
         : '#ContentPlaceHolder1_tr_valuepertoken > div > div:first-child > span'
     )

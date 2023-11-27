@@ -1,15 +1,18 @@
 import { isMatchURL } from '@common/utils'
 import allowlist from '@common/config/allowlist'
-import { initBlocksec } from '@src/content/blocksec'
+import { initBlockSec } from '@src/content/blocksec'
 import { initOpensea } from '@src/content/opensea'
 import { initBTCExplorer } from '@src/content/btc'
+import { initTronscan } from '@src/content/tronscan'
 
 const currentUrl = window.location.href
 
 if (isMatchURL(currentUrl, allowlist.BTC_EXPLORER_MATCHES)) {
   initBTCExplorer()
 } else if (isMatchURL(currentUrl, allowlist.BLOCKSEC_MATCHES)) {
-  initBlocksec()
+  initBlockSec()
 } else if (isMatchURL(currentUrl, allowlist.OPENSEA_MATCHES)) {
   initOpensea()
+} else if (isMatchURL(currentUrl, allowlist.TRONSCAN_MATCHES)) {
+  initTronscan()
 }

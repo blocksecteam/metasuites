@@ -1,14 +1,15 @@
 import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 
-import { pickAddress, getImageUrl } from '@common/utils'
+import { pickAddress } from '@common/utils'
 import { ModalContractVariableLogs } from '@common/components'
 import { store } from '@src/store'
 import { chromeEvent } from '@common/event'
 import {
   GET_CONTRACT_VARIABLE_LIST,
   ContractVariableVisibility,
-  ContractVariableMutability
+  ContractVariableMutability,
+  VARIABLE_LOG_SUPPORT_LIST
 } from '@common/constants'
 import type { ContractVariableListItem } from '@common/api/types'
 
@@ -54,6 +55,8 @@ export const renderModalVariableLogs = async ({
 }
 
 export const genContractVariableLogsBtn = async (chain: string) => {
+  if (!VARIABLE_LOG_SUPPORT_LIST.includes(chain)) return
+
   const address = pickAddress(window.location.pathname)
   if (!address) return
 

@@ -1,4 +1,4 @@
-import { SCAN_PAGES } from '@common/constants'
+import { ETHERSCAN_PAGES } from '@common/constants'
 import { store } from '@src/store'
 import { isSupportSimulator } from '@common/utils'
 
@@ -42,15 +42,15 @@ const initTokenPageScript = async (chain: string) => {
     variableLogs,
     dedaubStorage
   } = await store.get('options')
-  if (showCopyIcon) genCopyIconBtn(SCAN_PAGES.TOKEN.name)
+  if (showCopyIcon) genCopyIconBtn(ETHERSCAN_PAGES.TOKEN.name)
   if (enhancedLabels) genEnhancedLabels(chain)
-  if (utc2locale) convertUTC2locale(SCAN_PAGES.TOKEN.name)
+  if (utc2locale) convertUTC2locale(ETHERSCAN_PAGES.TOKEN.name)
   if (enhancedSignatures) genEnhancedSignatures(chain)
   if (contractSourcecode) genDownloadSourceCodeBtn(chain)
   if (dethCode) genQuickViewSourceCodeBtn(chain)
   if (nftFloorPrice) displayTokenPrice()
-  if (exportTableData) genExportTableDataBtn(chain, SCAN_PAGES.TOKEN.name)
-  if (txnFortaAlert) scanTxnFortaAlert(chain, SCAN_PAGES.TOKEN.name)
+  if (exportTableData) genExportTableDataBtn(chain, ETHERSCAN_PAGES.TOKEN.name)
+  if (txnFortaAlert) scanTxnFortaAlert(chain, ETHERSCAN_PAGES.TOKEN.name)
   if (privateVariables) genContractPrivateVariables(chain)
   if (formatContractParams) formatWriteContractParams()
   if (decompileInDedaub) genDecompileInDedaubBtn(chain)

@@ -1,8 +1,7 @@
 import { createRoot } from 'react-dom/client'
 
 import {
-  SCAN_PAGES,
-  type SCAN_PAGE_NAMES,
+  ETHERSCAN_PAGES,
   ALTERNATIVE_BLOCK_EXPLORES_SUPPORT_LIST
 } from '@common/constants'
 
@@ -18,12 +17,12 @@ const setBtn = (containerEl: HTMLElement, block: string) => {
 
 /** Show alternative block explorers */
 const genAlternativeBlockExplorersBtn = async (
-  pageName: (typeof SCAN_PAGE_NAMES)[number],
+  pageName: string,
   chain: string
 ) => {
   if (!ALTERNATIVE_BLOCK_EXPLORES_SUPPORT_LIST.includes(chain)) return
   switch (pageName) {
-    case SCAN_PAGES.BLOCK.name:
+    case ETHERSCAN_PAGES.BLOCK.name:
       {
         const containerEl = document.querySelector<HTMLElement>(
           '#ContentPlaceHolder1_maintable div.row:first-child > div:last-child'
@@ -37,7 +36,7 @@ const genAlternativeBlockExplorersBtn = async (
         }
       }
       break
-    case SCAN_PAGES.TX.name:
+    case ETHERSCAN_PAGES.TX.name:
       {
         const containerEl = document
           .querySelector<HTMLElement>('#ContentPlaceHolder1_divTimeStamp')

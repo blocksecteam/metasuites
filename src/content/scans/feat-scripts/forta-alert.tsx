@@ -2,11 +2,7 @@ import { createRoot } from 'react-dom/client'
 
 import { chromeEvent } from '@common/event'
 import type { FortaAlertRes, FortaAlertReq } from '@common/api/types'
-import {
-  GET_FORTA_ALERT,
-  type SCAN_PAGE_NAMES,
-  SCAN_PAGES
-} from '@common/constants'
+import { GET_FORTA_ALERT, ETHERSCAN_PAGES } from '@common/constants'
 import { validOrigin, getNodeValue } from '@common/utils'
 
 import {
@@ -116,13 +112,10 @@ const handleAlerts = async (
   })
 }
 
-export const scanTxnFortaAlert = async (
-  chain: string,
-  pageName: (typeof SCAN_PAGE_NAMES)[number]
-) => {
+export const scanTxnFortaAlert = async (chain: string, pageName: string) => {
   const txnTags: HTMLElement[] = []
   switch (pageName) {
-    case SCAN_PAGES.TOKEN.name: {
+    case ETHERSCAN_PAGES.TOKEN.name: {
       txnTags.push(
         ...document.querySelectorAll<HTMLElement>(
           '#maindiv table tbody tr td:nth-of-type(1) .hash-tag > a'
@@ -145,7 +138,7 @@ export const scanTxnFortaAlert = async (
       )
       break
     }
-    case SCAN_PAGES.ADDRESS.name: {
+    case ETHERSCAN_PAGES.ADDRESS.name: {
       const transactionsTags = document.querySelectorAll<HTMLElement>(
         '.card table tbody a.myFnExpandBox_searchVal'
       )
@@ -174,8 +167,8 @@ export const scanTxnFortaAlert = async (
       }
       break
     }
-    case SCAN_PAGES.TXS.name:
-    case SCAN_PAGES.TOKENTXNS.name: {
+    case ETHERSCAN_PAGES.TXS.name:
+    case ETHERSCAN_PAGES.TOKENTXNS.name: {
       txnTags.push(
         ...document.querySelectorAll<HTMLElement>(
           '.card table tbody a.myFnExpandBox_searchVal'

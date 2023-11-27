@@ -1,0 +1,6 @@
+export { default as initAddressPageScript } from './address'
+export { default as initTxPageScript } from './tx'
+export { default as initContractPageScript } from './contract'
+export { default as initBlockPageScript } from './block'
+export { default as initTokenPageScript } from './token'
+export { default as initAdvancedFilterPageScript } from './advancedfilter'

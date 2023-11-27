@@ -1,4 +1,4 @@
-export const SCAN_PAGE_NAMES = [
+export const ETHERSCAN_PAGE_NAMES = [
   'TXS',
   'BLOCK',
   'ADDRESS',
@@ -13,12 +13,22 @@ export const SCAN_PAGE_NAMES = [
   'BLOCKS_FORKED'
 ] as const
 
-interface ScanPage {
-  pattern: RegExp
-  name: (typeof SCAN_PAGE_NAMES)[number]
-}
+export const TRONSCAN_PAGE_NAMES = [
+  'BLOCK',
+  'ADDRESS',
+  'TX',
+  'TOKEN',
+  'CONTRACT',
+  'ADVANCED_FILTER'
+] as const
 
-export const SCAN_PAGES: Record<(typeof SCAN_PAGE_NAMES)[number], ScanPage> = {
+export const ETHERSCAN_PAGES: Record<
+  (typeof ETHERSCAN_PAGE_NAMES)[number],
+  {
+    pattern: RegExp
+    name: (typeof ETHERSCAN_PAGE_NAMES)[number]
+  }
+> = {
   TXS_INTERNAL: {
     name: 'TXS_INTERNAL',
     pattern: /^\/txsInternal.?/
@@ -66,5 +76,42 @@ export const SCAN_PAGES: Record<(typeof SCAN_PAGE_NAMES)[number], ScanPage> = {
   NFT_TRANSFERS: {
     name: 'NFT_TRANSFERS',
     pattern: /^\/nft-transfers.?/
+  }
+}
+
+export const TRONSCAN_PAGES: Record<
+  (typeof TRONSCAN_PAGE_NAMES)[number],
+  {
+    pattern: RegExp
+    name: (typeof TRONSCAN_PAGE_NAMES)[number]
+  }
+> = {
+  ADDRESS: {
+    name: 'ADDRESS',
+    pattern: /^\/address\/.+/
+  },
+  TX: {
+    name: 'TX',
+    pattern: /^\/transaction\/.+/
+  },
+  CONTRACT: {
+    name: 'CONTRACT',
+    pattern: /^\/contract\/.+/
+  },
+  BLOCK: {
+    name: 'BLOCK',
+    pattern: /^\/block\/.+/
+  },
+  TOKEN: {
+    name: 'TOKEN',
+    /**
+     *  token20: 'https://tronscan.org/#/token20',
+     *  token10: 'https://tronscan.org/#/token/$token10/transfers',
+     */
+    pattern: /^\/token20\/|\/token\//
+  },
+  ADVANCED_FILTER: {
+    name: 'ADVANCED_FILTER',
+    pattern: /\/tools\/advanced-filter(\?[\w%=&]*)?/
   }
 }

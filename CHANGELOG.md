@@ -1,3 +1,9 @@
+### v4.2.0
+
+- [feat] Adaptation to Tronscan implemented
+- [perf] UI interactions beautified and improved
+- [fix] Various bugs fixed
+
 ### v4.1.1
 
 - [feat] Adapt Mumbai and Fantom's new look

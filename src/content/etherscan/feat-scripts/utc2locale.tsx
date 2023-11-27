@@ -3,11 +3,7 @@ import utc from 'dayjs/plugin/utc'
 import $ from 'jquery'
 
 import { convertUTCDateToLocalDate, validOrigin } from '@common/utils'
-import {
-  SCAN_PAGES,
-  DATE_STANDARD_FORMAT_REG,
-  type SCAN_PAGE_NAMES
-} from '@common/constants'
+import { ETHERSCAN_PAGES, DATE_STANDARD_FORMAT_REG } from '@common/constants'
 import { widthScanV2Tooltip } from '@common/hoc'
 
 dayjs.extend(utc)
@@ -77,10 +73,10 @@ const replaceDateElsContent = (dateEls?: NodeListOf<HTMLElement>) => {
 }
 
 /** UTC date to local date */
-const convertUTC2locale = (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
+const convertUTC2locale = (pageName: string) => {
   switch (pageName) {
-    case SCAN_PAGES.TX.name:
-    case SCAN_PAGES.BLOCK.name: {
+    case ETHERSCAN_PAGES.TX.name:
+    case ETHERSCAN_PAGES.BLOCK.name: {
       const timestampEl = $('#showUtcLocalDate')
       const timestamp = timestampEl.attr('data-timestamp')
       try {
@@ -93,7 +89,7 @@ const convertUTC2locale = (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       }
       break
     }
-    case SCAN_PAGES.ADDRESS.name: {
+    case ETHERSCAN_PAGES.ADDRESS.name: {
       const lnkAgeDateTimeEls = document.querySelectorAll<HTMLElement>(
         '#lnkTxAgeDateTime, #lnkIntAgeDateTime, #lnkMinBlkAgeDateTime'
       )
@@ -125,8 +121,8 @@ const convertUTC2locale = (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       }
       break
     }
-    case SCAN_PAGES.TOKENTXNS.name:
-    case SCAN_PAGES.TXS.name: {
+    case ETHERSCAN_PAGES.TOKENTXNS.name:
+    case ETHERSCAN_PAGES.TXS.name: {
       const lnkAgeDateTimeEl = document.querySelector<HTMLElement>(
         '.age-datetime-with-tooltip'
       )
@@ -135,7 +131,7 @@ const convertUTC2locale = (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       replaceDateElsContent()
       break
     }
-    case SCAN_PAGES.BLOCKS.name: {
+    case ETHERSCAN_PAGES.BLOCKS.name: {
       const lnkAgeDateTimeEl =
         document.querySelector<HTMLElement>('#lnkAgeDateTimeV2')
       replaceInkTxAgeDateTime(lnkAgeDateTimeEl ? [lnkAgeDateTimeEl] : [])
@@ -143,7 +139,7 @@ const convertUTC2locale = (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       replaceDateElsContent()
       break
     }
-    case SCAN_PAGES.BLOCKS_FORKED.name: {
+    case ETHERSCAN_PAGES.BLOCKS_FORKED.name: {
       const lnkAgeDateTimeEl =
         document.querySelector<HTMLElement>('#lnkAgeDateTime')
       replaceInkTxAgeDateTime(lnkAgeDateTimeEl ? [lnkAgeDateTimeEl] : [])
@@ -151,7 +147,7 @@ const convertUTC2locale = (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       replaceDateElsContent()
       break
     }
-    case SCAN_PAGES.TOKEN.name: {
+    case ETHERSCAN_PAGES.TOKEN.name: {
       const lnkAgeDateTimeEl = document.querySelector<HTMLElement>(
         '#lnkTokenTxnsAgeDateTime'
       )
@@ -160,7 +156,7 @@ const convertUTC2locale = (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       replaceDateElsContent()
       break
     }
-    case SCAN_PAGES.TXS_INTERNAL.name: {
+    case ETHERSCAN_PAGES.TXS_INTERNAL.name: {
       const lnkAgeDateTimeEl =
         document.querySelector<HTMLElement>('#lnkAgeDateTime')
       replaceInkTxAgeDateTime(lnkAgeDateTimeEl ? [lnkAgeDateTimeEl] : [])
@@ -168,7 +164,7 @@ const convertUTC2locale = (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       replaceDateElsContent()
       break
     }
-    case SCAN_PAGES.NFT_TRANSFERS.name: {
+    case ETHERSCAN_PAGES.NFT_TRANSFERS.name: {
       // TODO: lost data-bs-title attr
       const lnkAgeDateTimeEl =
         document.querySelector<HTMLElement>('#lnkAgeDateTimeV2')

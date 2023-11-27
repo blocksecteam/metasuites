@@ -20,7 +20,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['explorer.btc.com'],
     href: 'https://explorer.btc.com/btc',
     chain: 'btc',
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1671685360787-5.png'
   },
   {
@@ -28,7 +28,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['etherscan.io', 'cn.etherscan.com', 'goto.etherscan.com'],
     chainID: 1,
     chain: 'eth',
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1671685360787-7.png',
     testNets: [
       {
@@ -36,7 +36,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         domains: ['sepolia.etherscan.io'],
         chainID: 11_155_111,
         chain: 'sepolia.eth',
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1671685360787-7.png'
       },
       {
@@ -44,7 +44,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         domains: ['goerli.etherscan.io'],
         chainID: 5,
         chain: 'gor.eth',
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1671685360787-7.png'
       }
     ]
@@ -54,7 +54,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 56,
     domains: ['bscscan.com', 'www.bscscan.com', 'goto.bscscan.com'],
     chain: 'bsc',
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1671685360787-4.png',
     testNets: [
       {
@@ -62,7 +62,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chainID: 97,
         domains: ['testnet.bscscan.com'],
         chain: 'test.bsc',
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1671685360787-4.png'
       },
       {
@@ -70,7 +70,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chainID: 5611,
         domains: ['opbnb-testnet.bscscan.com'],
         chain: 'test.op',
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1671685360787-4.png'
       }
     ]
@@ -80,7 +80,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 137,
     chain: 'polygon',
     domains: ['polygonscan.com'],
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1671685360787-12.png',
     testNets: [
       {
@@ -88,7 +88,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chainID: 80_001,
         chain: 'mumbai.polygon',
         domains: ['mumbai.polygonscan.com'],
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1671685360787-12.png'
       }
     ]
@@ -98,7 +98,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['ftmscan.com'],
     chain: 'fantom',
     chainID: 250,
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1671685360787-8.png',
     testNets: [
       {
@@ -106,7 +106,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         domains: ['testnet.ftmscan.com'],
         chain: 'test.fantom',
         chainID: 4_002,
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1671685360787-8.png'
       }
     ]
@@ -116,7 +116,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['arbiscan.io'],
     chain: 'arbitrum',
     chainID: 42_161,
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1671685360787-2.png',
     testNets: [
       {
@@ -124,7 +124,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         domains: ['testnet.arbiscan.io'],
         chain: 'gor.arbitrum',
         chainID: 421_613,
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1671685360787-2.png'
       }
     ]
@@ -134,7 +134,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 25,
     domains: ['cronoscan.com'],
     chain: 'cronos',
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1671685360787-6.png'
   },
   {
@@ -142,7 +142,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 1284,
     chain: 'moonbeam',
     domains: ['moonscan.io', 'www.moonscan.io', 'moonbeam.moonscan.io'],
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1671685360787-9.png',
     testNets: [
       {
@@ -150,7 +150,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chainID: 1287,
         chain: 'moonbase',
         domains: ['moonbase.moonscan.io'],
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1671685360787-9.png'
       }
     ]
@@ -160,7 +160,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 43114,
     chain: 'avalanche',
     domains: ['snowtrace.io'],
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1671777583236-3.png',
     testNets: [
       {
@@ -168,7 +168,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chainID: 43_113,
         chain: 'fuji.avalanche',
         domains: ['testnet.snowtrace.io'],
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1671777583236-3.png'
       }
     ]
@@ -178,7 +178,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 10,
     chain: 'optimism',
     domains: ['optimistic.etherscan.io'],
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1671777583236-2.png',
     testNets: [
       {
@@ -186,7 +186,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chainID: 420,
         chain: 'gor.optimism',
         domains: ['goerli-optimism.etherscan.io'],
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1671777583236-2.png'
       }
     ]
@@ -196,7 +196,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['nova.arbiscan.io'],
     chain: 'nova.arbitrum',
     chainID: 42_170,
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1695376609975-2.png'
   },
   {
@@ -204,7 +204,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 1285,
     chain: 'moonriver',
     domains: ['moonriver.moonscan.io'],
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1695197156966-2.png'
   },
   {
@@ -212,7 +212,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 199,
     chain: 'btt',
     domains: ['bttcscan.com'],
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1695197176921-2.png',
     testNets: [
       {
@@ -220,7 +220,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chainID: 1028,
         chain: 'test.btt',
         domains: ['testnet.bttcscan.com'],
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1695197176921-2.png'
       }
     ]
@@ -230,7 +230,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 42_220,
     chain: 'celo',
     domains: ['celoscan.io'],
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1695197240068-2.png',
     testNets: [
       {
@@ -238,7 +238,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chainID: 44_787,
         chain: 'alfa.celo',
         domains: ['alfajores.celoscan.io'],
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1695197240068-2.png'
       }
     ]
@@ -248,7 +248,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 100,
     chain: 'gnosis',
     domains: ['gnosisscan.io'],
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1695197286815-3.png'
   },
   {
@@ -256,7 +256,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 8453,
     chain: 'base',
     domains: ['basescan.org'],
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1695197286815-2.png',
     testNets: [
       {
@@ -264,7 +264,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chainID: 84531,
         chain: 'gor.base',
         domains: ['goerli.basescan.org'],
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1695197286815-2.png'
       }
     ]
@@ -274,7 +274,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 1101,
     chain: 'zkevm',
     domains: ['zkevm.polygonscan.com'],
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1695197286815-5.png',
     testNets: [
       {
@@ -282,7 +282,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chainID: 1442,
         chain: 'test.zkevm',
         domains: ['testnet-zkevm.polygonscan.com'],
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1695197286815-5.png'
       }
     ]
@@ -292,7 +292,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 59_144,
     chain: 'linea',
     domains: ['lineascan.build'],
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1695197286815-4.png',
     testNets: [
       {
@@ -300,7 +300,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chainID: 59_140,
         chain: 'test.linea',
         domains: ['goerli.lineascan.build'],
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1695197286815-4.png'
       }
     ]
@@ -310,7 +310,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 1111,
     chain: 'wemix',
     domains: ['wemixscan.com', 'www.wemixscan.com'],
-    siteName: 'SCAN',
+    siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1695197286815-6.png',
     testNets: [
       {
@@ -318,7 +318,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chainID: 1112,
         chain: 'test.wemix',
         domains: ['testnet.wemixscan.com'],
-        siteName: 'SCAN',
+        siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1695197286815-6.png'
       }
     ]
@@ -328,6 +328,13 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['opensea.io'],
     siteName: 'OPENSEA',
     logo: 'https://assets.blocksec.com/image/1695197676298-2.png'
+  },
+  {
+    name: 'TRON',
+    chain: 'tron',
+    domains: ['tronscan.org'],
+    siteName: 'TRONSCAN',
+    logo: 'https://assets.blocksec.com/image/1677553092680-4.jpg'
   }
 ]
 
@@ -342,7 +349,8 @@ export const SLEUTH_SUPPORT_LIST = [
   'avalanche',
   'optimism',
   'linea',
-  'base'
+  'base',
+  'tron'
 ]
 
 export const ALTERNATIVE_BLOCK_EXPLORES_SUPPORT_LIST = ['eth']
@@ -391,6 +399,16 @@ export const PHALCON_SUPPORT_LIST = [
   {
     pathname: 'ftm',
     chain: 'fantom',
+    supportSimulator: false
+  },
+  {
+    pathname: 'linea-mainnet',
+    chain: 'linea',
+    supportSimulator: false
+  },
+  {
+    pathname: 'base',
+    chain: 'base',
     supportSimulator: false
   }
 ]
@@ -582,6 +600,10 @@ export const ETHERVM_SUPPORT_DIRECT_LIST = [
   {
     chain: 'sepolia.eth',
     url: 'https://ethervm.io/decompile/sepolia'
+  },
+  {
+    chain: 'tron',
+    url: 'https://ethervm.io/decompile/tron'
   }
 ]
 
@@ -643,7 +665,14 @@ export const SIMULATE_SUPPORT_LIST = [
   }
 ]
 
-export const TX_EXPLAIN_SUPPORT_LIST = ['eth']
+export const TX_EXPLAIN_SUPPORT_LIST = [
+  'eth'
+  // 'bsc',
+  // 'polygon',
+  // 'fantom',
+  // 'avalanche',
+  // 'optimism'
+]
 
 export const EVM_STORAGE_SUPPORT_LIST = ['eth']
 
@@ -680,6 +709,15 @@ export const PROXY_LOG_SUPPORT_LIST = [
   'moonbeam',
   'avalanche',
   'optimism'
+]
+
+export const VARIABLE_LOG_SUPPORT_LIST = [
+  'eth',
+  'bsc',
+  'arbitrum',
+  'optimism',
+  'polygon',
+  'avalanche'
 ]
 
 export const DEBANK_SUPPORT_LIST = [
@@ -720,5 +758,6 @@ export const APPROVAL_DIAGNOSIS_SUPPORT_LIST = [
   'base',
   'zkevm',
   'linea',
-  'wemix'
+  'wemix',
+  'tron'
 ]

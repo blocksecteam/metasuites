@@ -1,0 +1,138 @@
+@import '@common/styles/common.less';
+
+.transactionExplanation {
+  border-radius: 0.375rem;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+  position: relative;
+  &.hidden {
+    display: none;
+  }
+
+  .message {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    position: absolute;
+    padding: 9px 12px;
+    //background: #ffffff;
+    border-radius: 8px;
+    //box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08),
+    //  0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-100%);
+    transition: all 0.3s ease;
+    opacity: 0;
+    color: #000000;
+    z-index: -1;
+
+    &.show {
+      z-index: 1;
+      opacity: 1;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+      margin-right: 10px;
+    }
+  }
+
+  .mdLogo {
+    transform: rotate(0deg);
+    transition: all 0.5s ease-in-out;
+    &.animation {
+      transform: rotate(360deg);
+    }
+  }
+
+  .closeBtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    background-color: #00a54c;
+    .pointer;
+  }
+  .content {
+    display: flex;
+    &.column {
+      flex-direction: column;
+    }
+    .contentWrap {
+      flex: 1;
+      span {
+        word-break: break-word;
+        &::after {
+          content: '';
+          margin-right: 28px;
+        }
+      }
+      .gptLogo {
+        &.animation {
+          transform: rotate(360deg);
+          animation: spin 0.25s linear infinite;
+        }
+      }
+      .btn {
+        width: 12px;
+        height: 12px;
+        vertical-align: baseline;
+        margin-right: 5px;
+        .pointer;
+
+        &.active {
+          animation: like-animation 0.3s ease;
+        }
+      }
+    }
+    .actionGroup {
+      .btn {
+        width: 12px;
+        height: 12px;
+        vertical-align: baseline;
+        margin-right: 5px;
+        .pointer;
+
+        &.active {
+          animation: like-animation 0.3s ease;
+        }
+      }
+    }
+  }
+}
+
+.dropdownItem {
+  color: #000000;
+  .align-center;
+  .pointer;
+  &:not(:first-of-type) {
+    margin-top: 10px;
+  }
+  img {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+  }
+}
+
+@keyframes like-animation {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

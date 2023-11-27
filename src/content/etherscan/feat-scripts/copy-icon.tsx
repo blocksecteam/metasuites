@@ -1,4 +1,4 @@
-import { SCAN_PAGES, type SCAN_PAGE_NAMES } from '@common/constants'
+import { ETHERSCAN_PAGES } from '@common/constants'
 import { validOrigin } from '@common/utils'
 import {
   handleBlockNodeListCopy,
@@ -6,16 +6,16 @@ import {
 } from '@common/scripts/copy-address'
 
 /** show copy icon */
-const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
+const genCopyIconBtn = async (pageName: string) => {
   switch (pageName) {
-    case SCAN_PAGES.TX.name: {
+    case ETHERSCAN_PAGES.TX.name: {
       const blockTags = document.querySelectorAll<HTMLElement>(
         "#ContentPlaceHolder1_maintable > div.card:first-child >.row:nth-of-type(3) a[href^='/block/']"
       )
       handleBlockNodeListCopy(blockTags)
       break
     }
-    case SCAN_PAGES.TXS.name: {
+    case ETHERSCAN_PAGES.TXS.name: {
       const blockTags = document.querySelectorAll<HTMLElement>(
         "#ContentPlaceHolder1_divTransactions table td a[href^='/block/']"
       )
@@ -26,8 +26,8 @@ const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       handleTxnNodeListCopy(txnTags)
       break
     }
-    case SCAN_PAGES.TOKEN.name:
-    case SCAN_PAGES.ADDRESS.name: {
+    case ETHERSCAN_PAGES.TOKEN.name:
+    case ETHERSCAN_PAGES.ADDRESS.name: {
       const blockTags = document.querySelectorAll<HTMLElement>(
         ".card tbody a[href^='/block/']"
       )
@@ -62,22 +62,22 @@ const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       }
       break
     }
-    case SCAN_PAGES.BLOCKS_FORKED.name:
-    case SCAN_PAGES.BLOCKS.name: {
+    case ETHERSCAN_PAGES.BLOCKS_FORKED.name:
+    case ETHERSCAN_PAGES.BLOCKS.name: {
       const blockTags = document.querySelectorAll<HTMLElement>(
         ".card tbody > tr > td > a[href^='/block/']"
       )
       handleBlockNodeListCopy(blockTags)
       break
     }
-    case SCAN_PAGES.TOKENTXNS.name: {
+    case ETHERSCAN_PAGES.TOKENTXNS.name: {
       const txnTags = document.querySelectorAll<HTMLElement>(
         ".table-responsive table tbody a.myFnExpandBox_searchVal, .table-responsive table tbody span.myFnExpandBox_searchVal > a[href*='tx/']"
       )
       handleTxnNodeListCopy(txnTags)
       break
     }
-    case SCAN_PAGES.TOKEN_APPROVAL_CHECKER.name: {
+    case ETHERSCAN_PAGES.TOKEN_APPROVAL_CHECKER.name: {
       const txnTags = document.querySelectorAll<HTMLElement>(
         'table.dataTable tbody tr td:nth-of-type(1) a.hash-tag'
       )
@@ -88,7 +88,7 @@ const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       handleBlockNodeListCopy(blockTags)
       break
     }
-    case SCAN_PAGES.TXS_INTERNAL.name: {
+    case ETHERSCAN_PAGES.TXS_INTERNAL.name: {
       const blockTags = document.querySelectorAll<HTMLElement>(
         ".table-responsive table td a[href^='/block/']"
       )
@@ -99,7 +99,7 @@ const genCopyIconBtn = async (pageName: (typeof SCAN_PAGE_NAMES)[number]) => {
       handleTxnNodeListCopy(txnTags, 'self')
       break
     }
-    case SCAN_PAGES.NFT_TRANSFERS.name: {
+    case ETHERSCAN_PAGES.NFT_TRANSFERS.name: {
       const txnTags = document.querySelectorAll<HTMLElement>(
         "table#datatable tbody a.myFnExpandBox_searchVal, table#datatable tbody span.myFnExpandBox_searchVal > a[href*='tx/']"
       )

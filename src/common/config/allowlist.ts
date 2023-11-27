@@ -34,5 +34,6 @@ export default {
   ],
   BTC_EXPLORER_MATCHES: ['*://explorer.btc.com/*'],
   BLOCKSEC_MATCHES: ['*://*.blocksec.com/*'],
-  OPENSEA_MATCHES: ['*://*.opensea.io/*']
+  OPENSEA_MATCHES: ['*://*.opensea.io/*'],
+  TRONSCAN_MATCHES: ['*://*.tronscan.org/*']
 }

@@ -1,7 +1,7 @@
 import { debounce } from 'lodash-es'
 
 import '@common/styles/inject.common'
-import { store, type OptWebsite } from '@src/store'
+import { store } from '@src/store'
 import { isAllowed, getChainSimpleName } from '@common/utils'
 
 import {

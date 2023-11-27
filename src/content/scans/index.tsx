@@ -1,7 +1,7 @@
 import '@common/styles/inject.common'
 import { store } from '@src/store'
 import { isAllowed, getChainSimpleName, getPageName } from '@common/utils'
-import { SCAN_PAGES } from '@common/constants'
+import { ETHERSCAN_PAGES } from '@common/constants'
 
 import {
   initAddressPageScript,
@@ -35,37 +35,37 @@ export const initEtherscanV1 = async () => {
 
   const pageName = getPageName()
   switch (pageName) {
-    case SCAN_PAGES.ADDRESS.name:
+    case ETHERSCAN_PAGES.ADDRESS.name:
       initAddressPageScript(chain)
       break
-    case SCAN_PAGES.TX.name:
+    case ETHERSCAN_PAGES.TX.name:
       initTxPageScript(chain)
       break
-    case SCAN_PAGES.TXS.name:
+    case ETHERSCAN_PAGES.TXS.name:
       initTxsPageScript(chain)
       break
-    case SCAN_PAGES.BLOCK.name:
+    case ETHERSCAN_PAGES.BLOCK.name:
       initBlockPageScript(chain)
       break
-    case SCAN_PAGES.ACCOUNTS.name:
+    case ETHERSCAN_PAGES.ACCOUNTS.name:
       initAccountsPageScript(chain)
       break
-    case SCAN_PAGES.TOKEN.name:
+    case ETHERSCAN_PAGES.TOKEN.name:
       initTokenPageScript(chain)
       break
-    case SCAN_PAGES.TOKENTXNS.name:
+    case ETHERSCAN_PAGES.TOKENTXNS.name:
       initTokentxnsPageScript(chain)
       break
-    case SCAN_PAGES.BLOCKS.name:
+    case ETHERSCAN_PAGES.BLOCKS.name:
       initBlocksPageScript(chain)
       break
-    case SCAN_PAGES.TOKEN_APPROVAL_CHECKER.name:
+    case ETHERSCAN_PAGES.TOKEN_APPROVAL_CHECKER.name:
       initTokenApprovalCheckerPageScript(chain)
       break
-    case SCAN_PAGES.TXS_INTERNAL.name:
+    case ETHERSCAN_PAGES.TXS_INTERNAL.name:
       initTxsInternalPageScript(chain)
       break
-    case SCAN_PAGES.BLOCKS_FORKED.name:
+    case ETHERSCAN_PAGES.BLOCKS_FORKED.name:
       initBlocksForkedPageScript(chain)
       break
   }

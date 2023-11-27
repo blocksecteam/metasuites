@@ -1,6 +1,6 @@
 {
   "name": "metadock",
-  "version": "4.1.1",
+  "version": "4.2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/blocksecteam/metadock.git"
@@ -21,7 +21,7 @@
     "lint": "eslint 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
-    "antd": "^5.3.1",
+    "antd": "^5.11.2",
     "big.js": "^6.2.1",
     "blockies-ts": "^1.0.0",
     "buffer": "^6.0.3",

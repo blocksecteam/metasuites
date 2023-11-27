@@ -258,298 +258,307 @@ const ModalFundFlowGraph: FC<Props> = ({
   }, [tokenSelectorVisible])
 
   return ReactDOM.createPortal(
-    <div className={cls(styles.modalFundFlow, { [styles.show]: visible })}>
-      <div className={styles.container}>
-        <header className={styles.header}>
-          <ConfigProvider
-            theme={{
-              token: {
-                colorPrimary: '#00A54C',
-                controlOutlineWidth: 0
-              }
-            }}
-          >
-            <div className={styles.basicInfo}>
-              <img
-                className={styles.tokenLogo}
-                src={ChainUtils.getChainLogo(chain)}
-                alt=""
-              />
-              <div className={styles.mainAddress} title={mainAddress}>
-                {mainAddress}
-              </div>
-              <div className={styles.tipContainer}>
+    <ConfigProvider
+      prefixCls="metadock"
+      theme={{
+        token: {
+          colorPrimary: '#00A54C'
+        }
+      }}
+    >
+      <div className={cls(styles.modalFundFlow, { [styles.show]: visible })}>
+        <div className={styles.container}>
+          <header className={styles.header}>
+            <ConfigProvider
+              theme={{
+                token: {
+                  colorPrimary: '#00A54C',
+                  controlOutlineWidth: 0
+                }
+              }}
+            >
+              <div className={styles.basicInfo}>
                 <img
-                  className={styles.iconImg}
-                  src={getImageUrl('info')}
+                  className={styles.tokenLogo}
+                  src={ChainUtils.getChainLogo(chain)}
                   alt=""
                 />
-                <div className={styles.content}>
-                  This chart provides the most valuable relevant transactions
-                  and addresses for analysis (not all), and the results are for
-                  reference only. For a detailed fund flow map, click &ldquo;Try
-                  Enhanced Version&rdquo;, or go to MetaSleuth.
+                <div className={styles.mainAddress} title={mainAddress}>
+                  {mainAddress}
                 </div>
-              </div>
-              {SLEUTH_SUPPORT_LIST.includes(chain) && (
-                <Button
-                  className="align-center"
-                  type="primary"
-                  onClick={() =>
-                    window.open(
-                      `${SLEUTH_DOMAIN}/result/${chain}/${mainAddress}`
-                    )
-                  }
-                >
+                <div className={styles.tipContainer}>
                   <img
-                    className="mr-1"
-                    style={{ width: '18px' }}
-                    src="https://assets.blocksec.com/image/1677135239463-4.png"
+                    className={styles.iconImg}
+                    src={getImageUrl('info')}
                     alt=""
                   />
-                  Try Enhanced Version
-                </Button>
-              )}
-            </div>
-            <div
-              id="__metadock-fundflow-options-wrapper__"
-              className="align-center"
-            >
-              {fundFlow?.nodes && (
-                <Select
-                  open={!!addressSelectorVisible}
-                  placement="bottomRight"
-                  className={styles.selector}
-                  getPopupContainer={() =>
-                    document.getElementById(
-                      '__metadock-fundflow-options-wrapper__'
-                    )!
-                  }
-                  popupMatchSelectWidth={false}
-                  dropdownStyle={{ width: 249, padding: '10px 0 0' }}
-                  placeholder="Address / Entity"
-                  onDropdownVisibleChange={(visible: boolean) => {
-                    setAddressSelectorVisible(visible)
-                  }}
-                  dropdownRender={() => (
-                    <div className={styles.dropdownWrapper}>
-                      <Input
-                        className={styles.input}
-                        suffix={
-                          <img
-                            style={{ width: 14 }}
-                            src={getImageUrl('search')}
-                          />
-                        }
-                        placeholder="Address / Entity"
-                        onChange={onAddressKeywordsChange}
-                      />
-                      <div className={styles.addressList}>
-                        {displayAddressOptions.map(node => (
-                          <p key={node.id}>
-                            <Checkbox
-                              disabled={
-                                mainAddress.toLowerCase() ===
-                                  node.address.toLowerCase() &&
-                                chain === node.chain
-                              }
-                              checked={node.selected}
-                              onChange={(e: CheckboxChangeEvent) =>
-                                onAddressFilter(node, e.target.checked)
-                              }
-                            >
-                              {`${node.index} ${
-                                chain !== node.chain ? `${node.chain} ` : ''
-                              }${
-                                !node.label
-                                  ? getSubStr(node.address, [9, 6])
-                                  : node.label
-                              }`}
-                            </Checkbox>
-                          </p>
-                        ))}
-                      </div>
-                      <div className={styles.dropdownFooter}>
-                        <Checkbox
-                          defaultChecked={true}
-                          onChange={(e: CheckboxChangeEvent) =>
-                            onSelectAll(e.target.checked)
-                          }
-                        >
-                          All
-                        </Checkbox>
-                        <Button
-                          type="primary"
-                          className={styles.confirmBtn}
-                          onClick={onConfirmFilter}
-                        >
-                          Confirm
-                        </Button>
-                      </div>
-                    </div>
-                  )}
-                />
-              )}
-
-              {fundFlow?.edges && (
-                <Select
-                  open={tokenSelectorVisible}
-                  placement="bottomRight"
-                  className={styles.selector}
-                  getPopupContainer={() =>
-                    document.getElementById(
-                      '__metadock-fundflow-options-wrapper__'
-                    )!
-                  }
-                  popupMatchSelectWidth={false}
-                  dropdownStyle={{ width: 296, padding: '10px 0 0' }}
-                  placeholder="Token"
-                  onDropdownVisibleChange={(visible: boolean) => {
-                    setTokenSelectorVisible(visible)
-                  }}
-                  dropdownRender={() => (
-                    <div className={styles.dropdownWrapper}>
-                      <Input
-                        className={styles.input}
-                        suffix={
-                          <img
-                            style={{ width: 14 }}
-                            src={getImageUrl('search')}
-                          />
-                        }
-                        placeholder="Token"
-                        onChange={onTokenKeywordsChange}
-                      />
-                      <div className={styles.addressList}>
-                        {displayTokenOptions.map(edge => (
-                          <p key={edge.token}>
-                            <Checkbox
-                              checked={edge.selected}
-                              onChange={(e: CheckboxChangeEvent) =>
-                                onTokenFilter(edge.token, e.target.checked)
-                              }
-                            >{`${edge.tokenLabel}(${getSubStr(
-                              edge.token,
-                              [9, 6]
-                            )})`}</Checkbox>
-                          </p>
-                        ))}
-                      </div>
-                      <div className={styles.dropdownFooter}>
-                        <Checkbox
-                          defaultChecked={true}
-                          onChange={(e: CheckboxChangeEvent) =>
-                            onSelectAll(e.target.checked, true)
-                          }
-                        >
-                          All
-                        </Checkbox>
-                        <Button
-                          type="primary"
-                          className={styles.confirmBtn}
-                          onClick={onConfirmFilter}
-                        >
-                          Confirm
-                        </Button>
-                      </div>
-                    </div>
-                  )}
-                />
-              )}
-              <div className={styles.watermarkSwitchContainer}>
-                Watermark
-                <Switch
-                  checked={enableWatermark}
-                  onChange={enable => setEnableWatermark(enable)}
-                />
-              </div>
-              <Tooltip
-                getPopupContainer={() =>
-                  document.getElementById(
-                    '__metadock-fundflow-options-wrapper__'
-                  )!
-                }
-                color="#fff"
-                placement="bottom"
-                title={
-                  <div className={styles.downloadPopoverContainer}>
-                    <p
-                      onClick={() =>
-                        onDownload('png', mainAddress, enableWatermark)
-                      }
-                    >
-                      PNG
-                    </p>
-                    <p
-                      onClick={() =>
-                        onDownload('svg', mainAddress, enableWatermark)
-                      }
-                    >
-                      SVG
-                    </p>
+                  <div className={styles.content}>
+                    This chart provides the most valuable relevant transactions
+                    and addresses for analysis (not all), and the results are
+                    for reference only. For a detailed fund flow map, click
+                    &ldquo;Try Enhanced Version&rdquo;, or go to MetaSleuth.
                   </div>
-                }
-              >
-                <div className={cls(styles.btn, styles.download)}>
-                  <IconDownload />
                 </div>
-              </Tooltip>
-              <div className={styles.btn} onClick={onClose}>
-                <IconClose />
+                {SLEUTH_SUPPORT_LIST.includes(chain) && (
+                  <Button
+                    className={styles.msButton}
+                    type="primary"
+                    onClick={() =>
+                      window.open(
+                        `${SLEUTH_DOMAIN}/result/${chain}/${mainAddress}`
+                      )
+                    }
+                  >
+                    <img
+                      className="mr-1"
+                      style={{ width: '18px' }}
+                      src="https://assets.blocksec.com/image/1677135239463-4.png"
+                      alt=""
+                    />
+                    Try Enhanced Version
+                  </Button>
+                )}
               </div>
-            </div>
-          </ConfigProvider>
-        </header>
-        <div className={styles.body}>
-          {loading && (
-            <div className={styles.loading}>
-              <IconMetaDock className={styles.iconMetaDock} />
-            </div>
-          )}
-          {error && (
-            <div className={styles.errorBoundary}>
-              <img src={getImageUrl('oops-service-error')} alt="" />
-              <p>Something went wrong. Please try again later.</p>
-              <div className={styles.tryBtn} onClick={getFundFlow}>
-                Try Again
-              </div>
-            </div>
-          )}
-          {!loading && !error ? (
-            fundFlow?.edges.length ? (
               <div
-                id="graph"
-                ref={graphContainerRef}
-                className={styles.graphContainer}
-              />
-            ) : (
-              <div className={styles.errorBoundary}>
-                <img src={getImageUrl('oops-no-txn')} alt="" />
-                <p>No relevant transactions were found!</p>
-                <div>
-                  This chart provides the relevant transactions and addresses
-                  for analysis (not all of them), and the results are for
-                  reference only.
+                id="__metadock-fundflow-options-wrapper__"
+                className="align-center"
+              >
+                {fundFlow?.nodes && (
+                  <Select
+                    open={!!addressSelectorVisible}
+                    placement="bottomRight"
+                    className={styles.selector}
+                    getPopupContainer={() =>
+                      document.getElementById(
+                        '__metadock-fundflow-options-wrapper__'
+                      )!
+                    }
+                    popupMatchSelectWidth={false}
+                    dropdownStyle={{ width: 249, padding: '10px 0 0' }}
+                    placeholder="Address / Entity"
+                    onDropdownVisibleChange={(visible: boolean) => {
+                      setAddressSelectorVisible(visible)
+                    }}
+                    dropdownRender={() => (
+                      <div className={styles.dropdownWrapper}>
+                        <Input
+                          className={styles.input}
+                          suffix={
+                            <img
+                              style={{ width: 14 }}
+                              src={getImageUrl('search')}
+                            />
+                          }
+                          placeholder="Address / Entity"
+                          onChange={onAddressKeywordsChange}
+                        />
+                        <div className={styles.addressList}>
+                          {displayAddressOptions.map(node => (
+                            <p key={node.id}>
+                              <Checkbox
+                                disabled={
+                                  mainAddress.toLowerCase() ===
+                                    node.address.toLowerCase() &&
+                                  chain === node.chain
+                                }
+                                checked={node.selected}
+                                onChange={(e: CheckboxChangeEvent) =>
+                                  onAddressFilter(node, e.target.checked)
+                                }
+                              >
+                                {`${node.index} ${
+                                  chain !== node.chain ? `${node.chain} ` : ''
+                                }${
+                                  !node.label
+                                    ? getSubStr(node.address, [9, 6])
+                                    : node.label
+                                }`}
+                              </Checkbox>
+                            </p>
+                          ))}
+                        </div>
+                        <div className={styles.dropdownFooter}>
+                          <Checkbox
+                            defaultChecked={true}
+                            onChange={(e: CheckboxChangeEvent) =>
+                              onSelectAll(e.target.checked)
+                            }
+                          >
+                            All
+                          </Checkbox>
+                          <Button
+                            type="primary"
+                            className={styles.confirmBtn}
+                            onClick={onConfirmFilter}
+                          >
+                            Confirm
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                  />
+                )}
+
+                {fundFlow?.edges && (
+                  <Select
+                    open={tokenSelectorVisible}
+                    placement="bottomRight"
+                    className={styles.selector}
+                    getPopupContainer={() =>
+                      document.getElementById(
+                        '__metadock-fundflow-options-wrapper__'
+                      )!
+                    }
+                    popupMatchSelectWidth={false}
+                    dropdownStyle={{ width: 296, padding: '10px 0 0' }}
+                    placeholder="Token"
+                    onDropdownVisibleChange={(visible: boolean) => {
+                      setTokenSelectorVisible(visible)
+                    }}
+                    dropdownRender={() => (
+                      <div className={styles.dropdownWrapper}>
+                        <Input
+                          className={styles.input}
+                          suffix={
+                            <img
+                              style={{ width: 14 }}
+                              src={getImageUrl('search')}
+                            />
+                          }
+                          placeholder="Token"
+                          onChange={onTokenKeywordsChange}
+                        />
+                        <div className={styles.addressList}>
+                          {displayTokenOptions.map(edge => (
+                            <p key={edge.token}>
+                              <Checkbox
+                                checked={edge.selected}
+                                onChange={(e: CheckboxChangeEvent) =>
+                                  onTokenFilter(edge.token, e.target.checked)
+                                }
+                              >{`${edge.tokenLabel}(${getSubStr(
+                                edge.token,
+                                [9, 6]
+                              )})`}</Checkbox>
+                            </p>
+                          ))}
+                        </div>
+                        <div className={styles.dropdownFooter}>
+                          <Checkbox
+                            defaultChecked={true}
+                            onChange={(e: CheckboxChangeEvent) =>
+                              onSelectAll(e.target.checked, true)
+                            }
+                          >
+                            All
+                          </Checkbox>
+                          <Button
+                            type="primary"
+                            className={styles.confirmBtn}
+                            onClick={onConfirmFilter}
+                          >
+                            Confirm
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                  />
+                )}
+                <div className={styles.watermarkSwitchContainer}>
+                  Watermark
+                  <Switch
+                    checked={enableWatermark}
+                    onChange={enable => setEnableWatermark(enable)}
+                  />
+                </div>
+                <Tooltip
+                  getPopupContainer={() =>
+                    document.getElementById(
+                      '__metadock-fundflow-options-wrapper__'
+                    )!
+                  }
+                  color="#fff"
+                  placement="bottom"
+                  title={
+                    <div className={styles.downloadPopoverContainer}>
+                      <p
+                        onClick={() =>
+                          onDownload('png', mainAddress, enableWatermark)
+                        }
+                      >
+                        PNG
+                      </p>
+                      <p
+                        onClick={() =>
+                          onDownload('svg', mainAddress, enableWatermark)
+                        }
+                      >
+                        SVG
+                      </p>
+                    </div>
+                  }
+                >
+                  <div className={cls(styles.btn, styles.download)}>
+                    <IconDownload />
+                  </div>
+                </Tooltip>
+                <div className={styles.btn} onClick={onClose}>
+                  <IconClose />
                 </div>
               </div>
-            )
-          ) : null}
-          {enableWatermark && (
-            <a
-              className={styles.watermark}
-              href="https://blocksec.com/metadock"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img
-                src="https://assets.blocksec.com/image/1692101500475-4.png"
-                alt=""
-              />
-            </a>
-          )}
+            </ConfigProvider>
+          </header>
+          <div className={styles.body}>
+            {loading && (
+              <div className={styles.loading}>
+                <IconMetaDock className={styles.iconMetaDock} />
+              </div>
+            )}
+            {error && (
+              <div className={styles.errorBoundary}>
+                <img src={getImageUrl('oops-service-error')} alt="" />
+                <p>Something went wrong. Please try again later.</p>
+                <div className={styles.tryBtn} onClick={getFundFlow}>
+                  Try Again
+                </div>
+              </div>
+            )}
+            {!loading && !error ? (
+              fundFlow?.edges.length ? (
+                <div
+                  id="graph"
+                  ref={graphContainerRef}
+                  className={styles.graphContainer}
+                />
+              ) : (
+                <div className={styles.errorBoundary}>
+                  <img src={getImageUrl('oops-no-txn')} alt="" />
+                  <p>No relevant transactions were found!</p>
+                  <div>
+                    This chart provides the relevant transactions and addresses
+                    for analysis (not all of them), and the results are for
+                    reference only.
+                  </div>
+                </div>
+              )
+            ) : null}
+            {enableWatermark && (
+              <a
+                className={styles.watermark}
+                href="https://blocksec.com/metadock"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src="https://assets.blocksec.com/image/1692101500475-4.png"
+                  alt=""
+                />
+              </a>
+            )}
+          </div>
         </div>
       </div>
-    </div>,
+    </ConfigProvider>,
     document.body
   )
 }
