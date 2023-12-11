@@ -35,7 +35,7 @@ const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
         .then((response) => response.text())
         .then((data) => {
           console.log("Success:", data);
-          window.open('https://library.dedaub.com/decompile' + data.replace(/"/g, ""));
+          window.open('https://library.dedaub.com/decompile?md5=' + data.replace(/"/g, ""));
         })
         .catch((error) => {
           console.error("Error:", error);
