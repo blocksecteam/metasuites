@@ -19,7 +19,28 @@ const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
         `https://library.dedaub.com/${item.pathname}/address/${mainAddress}/decompiled`
       )
     } else {
-      window.open('https://library.dedaub.com/decompile')
+      const url = "https://api.dedaub.com/api/on_demand/";
+      let bytecode = document.getElementById("dividcode").innerText;
+      let data = {
+        "hex_bytecode": bytecode,
+      };
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+        mode: "cors",
+      })
+        .then((response) => response.text())
+        .then((data) => {
+          console.log("Success:", data);
+          window.open('https://library.dedaub.com/decompile' + data.replace(/"/g, ""));
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          window.open('https://library.dedaub.com/decompile')
+        });
     }
   }
 
