@@ -13,34 +13,42 @@ interface Props {
 const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
   const toDedaub = () => {
     const item = DEDAUB_SUPPORT_DIRECT_LIST.find(item => item.chain === chain)
-
     if (item) {
       window.open(
         `https://library.dedaub.com/${item.pathname}/address/${mainAddress}/decompiled`
       )
     } else {
-      const url = "https://api.dedaub.com/api/on_demand/";
-      let bytecode = document.getElementById("dividcode").innerText;
-      let data = {
-        "hex_bytecode": bytecode,
-      };
+      const url = 'https://api.dedaub.com/api/on_demand/'
+      const bytecode = document.getElementById('dividcode')
+      if (bytecode == null) {
+        window.open('https://library.dedaub.com/decompile')
+        return
+      }
+      const data = {
+        hex_bytecode: bytecode.innerText
+      }
       fetch(url, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
+          authority: 'api.dedaub.com',
+          origin: 'https://library.dedaub.com',
+          referer: 'https://library.dedaub.com/'
         },
         body: JSON.stringify(data),
-        mode: "cors",
+        mode: 'cors'
       })
-        .then((response) => response.text())
-        .then((data) => {
-          console.log("Success:", data);
-          window.open('https://library.dedaub.com/decompile?md5=' + data.replace(/"/g, ""));
+        .then(response => response.text())
+        .then(data => {
+          console.log('Success:', data)
+          window.open(
+            'https://library.dedaub.com/decompile?md5=' + data.replace(/"/g, '')
+          )
         })
-        .catch((error) => {
-          console.error("Error:", error);
+        .catch(error => {
+          console.error('Error:', error)
           window.open('https://library.dedaub.com/decompile')
-        });
+        })
     }
   }
 
