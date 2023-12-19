@@ -18,7 +18,7 @@ const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
         `https://library.dedaub.com/${item.pathname}/address/${mainAddress}/decompiled`
       )
     } else {
-      const url = 'https://api.dedaub.com/api/on_demand/'
+      const url = 'https://library.dedaub.com/api/on_demand'
       const bytecode = document.getElementById('dividcode')
       if (bytecode == null) {
         window.open('https://library.dedaub.com/decompile')
