@@ -184,5 +184,11 @@ export default {
       .post('api/v1/variable/list', {
         json: params
       })
-      .json<BscResponse<ContractVariableListItem[]>>()
+      .json<BscResponse<ContractVariableListItem[]>>(),
+  getSourceCodeMD5: (code: string) =>
+    request
+      .post('api/v1/source-code/hash', {
+        json: { code }
+      })
+      .json<BscResponse<string>>()
 }

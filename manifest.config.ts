@@ -9,7 +9,7 @@ export default defineManifest((env: ConfigEnv) => {
   return {
     name: "MetaDock - Builders' Swiss Army Knife",
     description:
-      'Improve the usability of blockchain explorers, including BTC.com, Etherscan, BscScan, and *scans of most EVM-compatible chains.',
+      'Integrating 30+ popular Web3 and AI Tools, 300M+ Address Labels, and the Fund Flow Map into a single extension.',
     version: version,
     manifest_version: 3,
     icons: {
@@ -27,7 +27,6 @@ export default defineManifest((env: ConfigEnv) => {
               '*://*.etherscan.com/*',
               '*://*.bscscan.com/*',
               '*://*.polygonscan.com/*',
-              '*://*.snowtrace.io/*',
               '*://optimistic.etherscan.io/*',
               '*://*.arbiscan.io/*',
               '*://*.ftmscan.com/*',
@@ -49,7 +48,8 @@ export default defineManifest((env: ConfigEnv) => {
           ? [
               '*://explorer.btc.com/*',
               '*://*.opensea.io/*',
-              '*://*.tronscan.org/*'
+              '*://*.tronscan.org/*',
+              '*://*.snowtrace.io/*'
             ]
           : ['<all_urls>'],
         js: ['src/content/index.ts'],

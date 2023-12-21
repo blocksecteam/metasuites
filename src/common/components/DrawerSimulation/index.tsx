@@ -617,7 +617,6 @@ const DrawerSimulation: FC<Props> = ({
                                     }}
                                   >
                                     <CopyButton
-                                      theme="#1677ff"
                                       text={() =>
                                         form.getFieldValue([
                                           'parameters',
@@ -631,7 +630,6 @@ const DrawerSimulation: FC<Props> = ({
                             }
                           )}
                           <CopyButton
-                            theme="#1677ff"
                             ml={4}
                             className={styles.copyCallDataBtn}
                             text={() =>

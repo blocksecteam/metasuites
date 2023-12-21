@@ -7,10 +7,10 @@ import {
   EXECUTE_BTC_CONTENT_SCRIPT,
   GET_TOKEN_APPROVAL_DATATABLE,
   GET_TOKEN_APPROVAL_ERC20_FILTER,
-  EXECUTE_TRON_CONTENT_SCRIPT,
   TRONSCAN_TABS_CHANGED,
   LOAD_TRON_APPROVALS,
-  TRONSCAN_MULTI_SEARCH
+  TRONSCAN_MULTI_SEARCH,
+  URL_UPDATED
 } from '@common/constants'
 
 import { initBackgroundRequest } from './listeners'
@@ -18,6 +18,15 @@ import { initBackgroundRequest } from './listeners'
 /** refresh current page (usually user change the settings) */
 chromeEvent.on(REFRESH, () => {
   reloadCurrentTab()
+})
+
+/** url updated (spa) */
+browser.tabs.onUpdated.addListener(function (tabId, changeInfo) {
+  if (changeInfo.url) {
+    if (tabId) {
+      browser.tabs.sendMessage(tabId, URL_UPDATED).catch(() => void 0)
+    }
+  }
 })
 
 /** reload BTC content script  */
@@ -76,16 +85,6 @@ browser.webRequest.onCompleted.addListener(
     urls: ['https://*/tokenapprovalchecker.aspx/GetERC20TokenApprovalForFilter']
   }
 )
-
-browser.tabs.onUpdated.addListener(function (tabId, changeInfo) {
-  if (changeInfo.url) {
-    if (tabId) {
-      browser.tabs
-        .sendMessage(tabId, EXECUTE_TRON_CONTENT_SCRIPT)
-        .catch(() => void 0)
-    }
-  }
-})
 
 browser.webRequest.onCompleted.addListener(
   async details => {

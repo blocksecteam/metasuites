@@ -161,17 +161,17 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chain: 'avalanche',
     domains: ['snowtrace.io'],
     siteName: 'ETHERSCAN',
-    logo: 'https://assets.blocksec.com/image/1671777583236-3.png',
-    testNets: [
-      {
-        name: 'Avalanche Fuji',
-        chainID: 43_113,
-        chain: 'fuji.avalanche',
-        domains: ['testnet.snowtrace.io'],
-        siteName: 'ETHERSCAN',
-        logo: 'https://assets.blocksec.com/image/1671777583236-3.png'
-      }
-    ]
+    logo: 'https://assets.blocksec.com/image/1671777583236-3.png'
+    // testNets: [
+    //   {
+    //     name: 'Avalanche Fuji',
+    //     chainID: 43_113,
+    //     chain: 'fuji.avalanche',
+    //     domains: ['testnet.snowtrace.io'],
+    //     siteName: 'ETHERSCAN',
+    //     logo: 'https://assets.blocksec.com/image/1671777583236-3.png'
+    //   }
+    // ]
   },
   {
     name: 'Optimism',

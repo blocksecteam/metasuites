@@ -1,3 +1,9 @@
+### v4.3.0
+
+- [feat] Integrated selected functionalities with Snowtrace.io
+- [update] Set transaction explanation feature to be off by default
+- [feat] Enabled support for decompilation via bytecode MD5 in Dedaub
+
 ### v4.2.0
 
 - [feat] Adaptation to Tronscan implemented

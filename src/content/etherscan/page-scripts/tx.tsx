@@ -8,7 +8,7 @@ import {
   genTxFortaAlertTip,
   genCopyIconBtn,
   genTxPageAddressLabels,
-  genTransactionExplanation
+  genTransactionExplanationBtn
 } from '../feat-scripts'
 
 const initTxPageScript = async (chain: string) => {
@@ -29,7 +29,7 @@ const initTxPageScript = async (chain: string) => {
   if (txnFortaAlert) genTxFortaAlertTip(chain)
   if (showCopyIcon) genCopyIconBtn(ETHERSCAN_PAGES.TX.name)
   if (enhancedLabels) genTxPageAddressLabels(chain)
-  if (txSummary) genTransactionExplanation(chain)
+  if (txSummary) genTransactionExplanationBtn(chain)
 }
 
 export default initTxPageScript

@@ -12,7 +12,7 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 
 ## Building
 
-- Install [Node.js](https://nodejs.org) version 16 or later
+- Install [Node.js](https://nodejs.org) version 18.12.0 or later
   - If you are using [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) (recommended) running `nvm use` will automatically choose the right node version for you.
 - Install [Yarn](https://yarnpkg.com/en/docs/install)
 - Xcode (for building the Safari package)
@@ -107,8 +107,6 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - [x] Show evm.storage shortcut
 - [x] Show transaction simulator
 - [x] Show Variable Logs
-- [ ] Show token marketplaces
-- [ ] Sandwich Attack Risk Detection
 
 ## Supported Websites List
 
@@ -123,6 +121,7 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - snowtrace.io
 - optimistic.etherscan.io
 - opensea.io
+- tronscan.org
 
 ## Changelog
 

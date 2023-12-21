@@ -1,0 +1,24 @@
+@import '@common/styles/common.less';
+
+.complianceScoreLabel {
+  width: fit-content;
+  color: #de4337;
+  border-radius: 6px;
+  background: rgba(222, 67, 55, 0.3);
+  padding: 0 0.6rem;
+  height: 30px;
+  font-size: 14px;
+  border: 1px solid transparent;
+  .align-center;
+
+  &.lowRisk {
+    color: #00a54c;
+    background: rgba(0, 165, 76, 0.3);
+  }
+
+  .iconRisk {
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -174,12 +174,7 @@ const TransactionExplanation: FC<Props> = props => {
               <div className={styles.actionGroup}>
                 <div className="align-center">
                   {!errorOccur && (
-                    <CopyButton
-                      theme="#adb5bd"
-                      size={14}
-                      mr={5}
-                      text={result?.content ?? ''}
-                    />
+                    <CopyButton size={14} mr={5} text={result?.content ?? ''} />
                   )}
                   {!disliked && (
                     <img

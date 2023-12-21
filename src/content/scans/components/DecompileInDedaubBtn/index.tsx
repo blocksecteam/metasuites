@@ -1,7 +1,9 @@
-import { type FC } from 'react'
+import { type FC, useState } from 'react'
+import $ from 'jquery'
 
 import { DEDAUB_SUPPORT_DIRECT_LIST } from '@common/constants'
 import { getImageUrl } from '@common/utils'
+import { LoadingOutlined } from '@common/components'
 
 import Button from '../Button'
 
@@ -11,6 +13,8 @@ interface Props {
 }
 
 const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
+  const [loading, setLoading] = useState(false)
+
   const toDedaub = () => {
     const item = DEDAUB_SUPPORT_DIRECT_LIST.find(item => item.chain === chain)
     if (item) {
@@ -19,14 +23,15 @@ const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
       )
     } else {
       const url = 'https://library.dedaub.com/api/on_demand'
-      const bytecode = document.getElementById('dividcode')
-      if (bytecode == null) {
+      const bytecode = $('#dividcode').text().trim()
+      if (!bytecode) {
         window.open('https://library.dedaub.com/decompile')
         return
       }
       const data = {
-        hex_bytecode: bytecode.innerText
+        hex_bytecode: bytecode
       }
+      setLoading(true)
       fetch(url, {
         method: 'POST',
         headers: {
@@ -40,14 +45,15 @@ const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
       })
         .then(response => response.text())
         .then(data => {
-          console.log('Success:', data)
           window.open(
             'https://library.dedaub.com/decompile?md5=' + data.replace(/"/g, '')
           )
         })
-        .catch(error => {
-          console.error('Error:', error)
+        .catch(() => {
           window.open('https://library.dedaub.com/decompile')
+        })
+        .finally(() => {
+          setLoading(false)
         })
     }
   }
@@ -57,7 +63,13 @@ const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
       style={{ width: 'fit-content' }}
       theme="#EFE6DA"
       fontColor="#000"
-      icon={<img src={getImageUrl('dedaub')} alt="" />}
+      icon={
+        loading ? (
+          <LoadingOutlined />
+        ) : (
+          <img src={getImageUrl('dedaub')} alt="" />
+        )
+      }
       onClick={toDedaub}
     >
       Decompile in Dedaub

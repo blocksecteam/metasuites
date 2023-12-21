@@ -1,7 +1,7 @@
 import browser from 'webextension-polyfill'
 
 import '@common/styles/inject.common'
-import { EXECUTE_TRON_CONTENT_SCRIPT } from '@common/constants'
+import { URL_UPDATED } from '@common/constants'
 import { getPageName } from '@common/utils'
 
 import runScript from './main'
@@ -12,7 +12,7 @@ export const initTronscan = async () => {
   let pageName = getPageName(window.location.hash.substring(1))
   let originURL = window.location.href
   browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
-    if (message === EXECUTE_TRON_CONTENT_SCRIPT) {
+    if (message === URL_UPDATED) {
       const newPageName = getPageName(window.location.hash.substring(1))
       if (newPageName !== pageName) {
         runScript()

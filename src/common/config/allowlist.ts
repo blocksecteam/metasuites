@@ -1,7 +1,6 @@
 export default {
   ETHERSCAN_V1_MATCHES: [
     '*://zkevm.polygonscan.com/*',
-    '*://*.snowtrace.io/*',
     '*://optimistic.etherscan.io/*',
     '*://*.arbiscan.io/*',
     '*://testnet.ftmscan.com/*',
@@ -35,5 +34,6 @@ export default {
   BTC_EXPLORER_MATCHES: ['*://explorer.btc.com/*'],
   BLOCKSEC_MATCHES: ['*://*.blocksec.com/*'],
   OPENSEA_MATCHES: ['*://*.opensea.io/*'],
-  TRONSCAN_MATCHES: ['*://*.tronscan.org/*']
+  TRONSCAN_MATCHES: ['*://*.tronscan.org/*'],
+  SNOWTRACE_MATCHES: ['*://*.snowtrace.io/*']
 }
