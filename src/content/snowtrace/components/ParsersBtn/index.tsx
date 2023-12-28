@@ -6,7 +6,8 @@ import {
   PHALCON_SUPPORT_LIST,
   TENDERLY_SUPPORT_LIST,
   OPENCHAIN_SUPPORT_LIST,
-  TransactionParsers
+  TransactionParsers,
+  SENTIO_SUPPORT_LIST
 } from '@common/constants'
 import { useStore } from '@common/hooks'
 
@@ -30,6 +31,9 @@ const ParsersBtn: FC<Props> = ({ chain, txHash }) => {
     item => item.chain === chain
   )?.pathname
   const tenderlyPathname = TENDERLY_SUPPORT_LIST.find(
+    item => item.chain === chain
+  )?.pathname
+  const sentioPathname = SENTIO_SUPPORT_LIST.find(
     item => item.chain === chain
   )?.pathname
 
@@ -77,6 +81,16 @@ const ParsersBtn: FC<Props> = ({ chain, txHash }) => {
               className="text-primary link"
             >
               Dedaub
+            </a>
+          )}
+        {sentioPathname &&
+          alternativeParsers[TransactionParsers.SENTIO.value()] && (
+            <a
+              href={`https://app.sentio.xyz/tx/${sentioPathname}/${txHash}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Sentio
             </a>
           )}
       </Space>

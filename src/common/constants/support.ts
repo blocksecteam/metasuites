@@ -548,6 +548,37 @@ export const DEDAUB_SUPPORT_DIRECT_LIST = [
   }
 ]
 
+export const SENTIO_SUPPORT_LIST = [
+  {
+    chain: 'eth',
+    pathname: '1'
+  },
+  {
+    chain: 'polygon',
+    pathname: '137'
+  },
+  {
+    chain: 'bsc',
+    pathname: '56'
+  },
+  {
+    chain: 'moonbeam',
+    pathname: '1284'
+  },
+  {
+    chain: 'linea',
+    pathname: '59144'
+  },
+  {
+    chain: 'gor.eth',
+    pathname: '5'
+  },
+  {
+    chain: 'sepolia.eth',
+    pathname: '11155111'
+  }
+]
+
 export const ETHERSCAN_DETH_SUPPORT_LIST = [
   {
     chain: 'eth',
@@ -697,6 +728,7 @@ export class TransactionParsers extends BaseConstant {
     'dedaub',
     'https://library.dedaub.com'
   )
+  static SENTIO = new BaseConstant('sentio', 'sentio', 'https://app.sentio.xyz')
 }
 
 export const PROXY_LOG_SUPPORT_LIST = [
