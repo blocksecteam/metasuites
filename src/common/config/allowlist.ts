@@ -5,7 +5,6 @@ export default {
     '*://*.arbiscan.io/*',
     '*://testnet.ftmscan.com/*',
     '*://cronoscan.com/*',
-    '*://*.moonscan.io/*',
     '*://*.basescan.org/*',
     '*://*.lineascan.build/*',
     '*://*.wemixscan.com/*',
@@ -29,7 +28,8 @@ export default {
     '*://www.bscscan.com/*',
     '*://testnet.bscscan.com/*',
     '*://polygonscan.com/*',
-    '*://mumbai.polygonscan.com/*'
+    '*://mumbai.polygonscan.com/*',
+    '*://*.moonscan.io/*'
   ],
   BTC_EXPLORER_MATCHES: ['*://explorer.btc.com/*'],
   BLOCKSEC_MATCHES: ['*://*.blocksec.com/*'],

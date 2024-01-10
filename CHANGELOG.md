@@ -1,3 +1,7 @@
+### v4.4.0
+
+- [feat] Adapt to the new template of Moonscan
+
 ### v4.3.0
 
 - [feat] Integrated selected functionalities with Snowtrace.io
