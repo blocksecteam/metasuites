@@ -1,3 +1,7 @@
+### v4.5.0
+
+- [feat] Adapt for zkSync Era network
+
 ### v4.4.0
 
 - [feat] Adapt to the new template of Moonscan

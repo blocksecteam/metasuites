@@ -335,6 +335,13 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['tronscan.org'],
     siteName: 'TRONSCAN',
     logo: 'https://assets.blocksec.com/image/1677553092680-4.jpg'
+  },
+  {
+    name: 'zkSync Era',
+    chain: 'era.zksync',
+    domains: ['era.zksync.network'],
+    siteName: 'ETHERSCAN',
+    logo: 'https://assets.blocksec.com/image/1704853828982-2.svg'
   }
 ]
 
@@ -409,6 +416,11 @@ export const PHALCON_SUPPORT_LIST = [
   {
     pathname: 'base',
     chain: 'base',
+    supportSimulator: false
+  },
+  {
+    pathname: 'zksync-era',
+    chain: 'era.zksync',
     supportSimulator: false
   }
 ]
@@ -680,7 +692,7 @@ export class TransactionParsers extends BaseConstant {
   static PHALCON = new BaseConstant(
     'phalcon',
     'phalcon',
-    'https://explorer.phalcon.xyz'
+    'https://phalcon.blocksec.com/explorer'
   )
   static TENDERLY = new BaseConstant(
     'tenderly',

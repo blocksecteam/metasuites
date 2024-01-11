@@ -306,7 +306,8 @@ const DrawerSimulation: FC<Props> = ({
 
   useEffect(() => {
     notification.config({
-      getContainer: () => document.querySelector(`.${styles.container}`)!
+      getContainer: () =>
+        document.querySelector(`.${styles.container}`) as HTMLElement
     })
     getContractByAddress()
     getLatestBlock()
@@ -421,7 +422,7 @@ const DrawerSimulation: FC<Props> = ({
                     recommend you visit the
                     <a
                       className="letter-space-lr-1"
-                      href="https://explorer.phalcon.xyz/"
+                      href="https://phalcon.blocksec.com/explorer"
                       target="_blank"
                       rel="noreferrer"
                     >
@@ -430,7 +431,7 @@ const DrawerSimulation: FC<Props> = ({
                     or
                     <a
                       className="letter-space-lr-1"
-                      href="https://dashboard.phalcon.xyz/"
+                      href="https://phalcon.blocksec.com"
                       target="_blank"
                       rel="noreferrer"
                     >

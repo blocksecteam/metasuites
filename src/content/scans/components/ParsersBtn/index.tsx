@@ -41,7 +41,7 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
       <Space split={'|'}>
         {phalconPathname && (
           <a
-            href={`https://explorer.phalcon.xyz/tx/${phalconPathname}/${txHash}`}
+            href={`https://phalcon.blocksec.com/explorer/tx/${phalconPathname}/${txHash}`}
             target="_blank"
             rel="noopener noreferrer"
           >

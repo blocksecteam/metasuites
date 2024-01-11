@@ -37,7 +37,8 @@ export default defineManifest((env: ConfigEnv) => {
               '*://*.wemixscan.com/*',
               '*://gnosisscan.io/*',
               '*://*.celoscan.io/*',
-              '*://*.bttcscan.com/*'
+              '*://*.bttcscan.com/*',
+              '*://era.zksync.network/*'
             ]
           : ['<all_urls>'],
         js: ['src/content/index.all_frames.ts'],

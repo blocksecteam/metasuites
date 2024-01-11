@@ -29,7 +29,8 @@ export default {
     '*://testnet.bscscan.com/*',
     '*://polygonscan.com/*',
     '*://mumbai.polygonscan.com/*',
-    '*://*.moonscan.io/*'
+    '*://*.moonscan.io/*',
+    '*://era.zksync.network/*'
   ],
   BTC_EXPLORER_MATCHES: ['*://explorer.btc.com/*'],
   BLOCKSEC_MATCHES: ['*://*.blocksec.com/*'],

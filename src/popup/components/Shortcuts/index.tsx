@@ -22,6 +22,7 @@ import type {
   SearchResultItemValue
 } from '@common/api/types'
 import commonApi from '@common/api'
+import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
 
 import styles from './index.module.less'
 
@@ -200,7 +201,7 @@ const Shortcuts: FC = () => {
       </div>
       <div className={styles.navbar}>
         <a
-          href="https://explorer.phalcon.xyz/"
+          href={PHALCON_EXPLORER_DOMAIN}
           target="_blank"
           rel="noopener noreferrer"
         >
