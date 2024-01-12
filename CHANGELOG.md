@@ -1,3 +1,8 @@
+### v4.5.1
+
+- [feat] Add support for ZkSync chain in Debank shortcut
+- [fix] Resolve bug in Lineascan transaction link redirection to Phalcon with incorrect path
+
 ### v4.5.0
 
 - [feat] Adapt for zkSync Era network

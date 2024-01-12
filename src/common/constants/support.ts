@@ -409,7 +409,7 @@ export const PHALCON_SUPPORT_LIST = [
     supportSimulator: false
   },
   {
-    pathname: 'linea-mainnet',
+    pathname: 'linea',
     chain: 'linea',
     supportSimulator: false
   },
@@ -750,7 +750,8 @@ export const DEBANK_SUPPORT_LIST = [
   'gnosis',
   'moonriver',
   'wemix',
-  'nova.arbitrum'
+  'nova.arbitrum',
+  'era.zksync'
 ]
 
 export const APPROVAL_DIAGNOSIS_SUPPORT_LIST = [
