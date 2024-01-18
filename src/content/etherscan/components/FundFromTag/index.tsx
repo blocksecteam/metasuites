@@ -19,7 +19,6 @@ const FundFromTag: FC<Props> = ({ data: { risky, label, address } }) => {
         <a
           href={`/address/${address}`}
           target="_blank"
-          rel="noreferrer"
           className={cls({ [styles.risky]: risky })}
         >
           {label}

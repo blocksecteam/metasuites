@@ -40,7 +40,6 @@ const ParsersBtn: FC<Props> = ({ chain, txHash }) => {
           <a
             href={`https://phalcon.blocksec.com/explorer/tx/${phalconPathname}/${txHash}`}
             target="_blank"
-            rel="noopener noreferrer"
             className="text-primary link"
           >
             Phalcon
@@ -51,7 +50,6 @@ const ParsersBtn: FC<Props> = ({ chain, txHash }) => {
             <a
               href={`https://openchain.xyz/trace/${openchainPathname}/${txHash}`}
               target="_blank"
-              rel="noopener noreferrer"
               className="text-primary link"
             >
               OpenChain
@@ -62,7 +60,6 @@ const ParsersBtn: FC<Props> = ({ chain, txHash }) => {
             <a
               href={`https://dashboard.tenderly.co/tx/${tenderlyPathname}/${txHash}`}
               target="_blank"
-              rel="noopener noreferrer"
               className="text-primary link"
             >
               Tenderly
@@ -73,7 +70,6 @@ const ParsersBtn: FC<Props> = ({ chain, txHash }) => {
             <a
               href={`https://library.dedaub.com/${dedaubPathname}/tx/${txHash}`}
               target="_blank"
-              rel="noopener noreferrer"
               className="text-primary link"
             >
               Dedaub

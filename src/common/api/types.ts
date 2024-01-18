@@ -52,6 +52,7 @@ export interface AddressMethodsReq {
 
 export interface AddressRiskScoreReq extends PostAddressParams {
   addressLabel?: { labels?: string[]; nameTag?: string }
+  creator?: string
 }
 
 export interface FundFlowRes {

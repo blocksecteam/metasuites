@@ -4,7 +4,7 @@ import $ from 'jquery'
 import { chromeEvent } from '@common/event'
 import type { RiskScore } from '@common/api/types'
 import { GET_ADDRESS_RISK_SCORE } from '@common/constants'
-import { getAnyScanNameTag } from '@common/utils'
+import { getAnyScanNameTag, pickAddress } from '@common/utils'
 
 import { ComplianceScoreLabel } from '../components'
 
@@ -31,6 +31,12 @@ const genComplianceScoresBtn = async (chain: string) => {
     '#content > div.container'
   )
 
+  const creator = pickAddress(
+    $('#ContentPlaceHolder1_trContract > .row > div:last-of-type > a').attr(
+      'href'
+    ) ?? ''
+  )
+
   const rootEl = document.createElement('div')
   rootEl.style.display = 'inline-block'
   txHashEl?.appendChild(rootEl)
@@ -43,7 +49,8 @@ const genComplianceScoresBtn = async (chain: string) => {
       addressLabel: {
         labels: getScanLabels(),
         nameTag: getAnyScanNameTag()
-      }
+      },
+      creator
     }
   )
   if (res?.success && res.data) {

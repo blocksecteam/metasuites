@@ -18,7 +18,6 @@ const MainAddressLabel: FC<Props> = ({
           <a
             href="https://docs.google.com/forms/d/e/1FAIpQLSfWk-74XOBL6sU7SgFRIuDzbFwaUt0wf7C4KE8U_E5FUcboog/viewform?usp=pp_url&entry.1591633300=Bug/Label+Reports"
             target="_blank"
-            rel="noreferrer"
           >
             Report
           </a>
@@ -28,11 +27,7 @@ const MainAddressLabel: FC<Props> = ({
           <TokenSymbol />
           {label}
           {implementLabel?.trim() && (
-            <a
-              href={`/address/${implementAddress}`}
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a href={`/address/${implementAddress}`} target="_blank">
               {` ( ->`} <TokenSymbol logo={implementLogo} /> {implementLabel} )
             </a>
           )}

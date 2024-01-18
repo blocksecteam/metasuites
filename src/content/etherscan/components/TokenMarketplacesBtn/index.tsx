@@ -38,7 +38,6 @@ const TokenMarketplacesBtn: FC<Props> = ({ tokenType, markets }) => {
               style={{ background: MARKET_OPTIONS[item.name]?.color }}
               href={item.url}
               target="_blank"
-              rel="noopener noreferrer"
             >
               <img src={MARKET_OPTIONS[item.name]?.logo} alt="" />
             </a>

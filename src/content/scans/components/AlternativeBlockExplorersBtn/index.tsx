@@ -20,7 +20,6 @@ const AlternativeBlockExplorersBtn: FC<Props> = ({ block }) => {
       <a
         href={`https://flashbots-explorer.marto.lol/?block=${block}`}
         target="_blank"
-        rel="noopener noreferrer"
       >
         Flashbots Explorer
       </a>

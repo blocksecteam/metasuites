@@ -13,11 +13,7 @@ const Footer: FC = () => {
           Privacy Policy
         </a>
         <div className={styles.divider} />
-        <a
-          href="https://forms.gle/7Q2E9KUhTG1xjS878"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://forms.gle/7Q2E9KUhTG1xjS878" target="_blank">
           Feedback
         </a>
       </div>

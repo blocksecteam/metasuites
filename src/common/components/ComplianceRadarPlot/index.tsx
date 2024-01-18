@@ -146,7 +146,6 @@ const ComplianceRadarPlot: FC<Props> = ({
       <a
         href="https://docs.blocksec.com/metadock/features/nft-comprehensive-risk-radar-chart"
         target="_blank"
-        rel="noreferrer"
         className={styles.desc}
       >
         By MetaDock &gt;

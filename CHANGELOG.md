@@ -1,3 +1,7 @@
+### v4.5.2
+
+- [fix] Resolve the issue of incorrect redirection of Phalcon links
+
 ### v4.5.1
 
 - [feat] Add support for ZkSync chain in Debank shortcut

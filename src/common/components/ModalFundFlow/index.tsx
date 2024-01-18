@@ -547,7 +547,6 @@ const ModalFundFlowGraph: FC<Props> = ({
                 className={styles.watermark}
                 href="https://blocksec.com/metadock"
                 target="_blank"
-                rel="noreferrer"
               >
                 <img
                   src="https://assets.blocksec.com/image/1692101500475-4.png"

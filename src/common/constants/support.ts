@@ -389,7 +389,7 @@ export const PHALCON_SUPPORT_LIST = [
     supportSimulator: true
   },
   {
-    pathname: 'avax',
+    pathname: 'avalanche',
     chain: 'avalanche',
     supportSimulator: true
   },
@@ -404,7 +404,7 @@ export const PHALCON_SUPPORT_LIST = [
     supportSimulator: true
   },
   {
-    pathname: 'ftm',
+    pathname: 'fantom',
     chain: 'fantom',
     supportSimulator: false
   },

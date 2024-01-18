@@ -53,7 +53,7 @@ const columns = (
           ''
         ) : (
           <CopyButton hover text={String(block)} ml={4}>
-            <a href={`/block/${block}`} target="_blank" rel="noreferrer">
+            <a href={`/block/${block}`} target="_blank">
               {block}
             </a>
           </CopyButton>
@@ -144,7 +144,7 @@ const columns = (
           ''
         ) : (
           <CopyButton hover text={txHash} ml={4}>
-            <a href={getExplorerURL(txHash)} target="_blank" rel="noreferrer">
+            <a href={getExplorerURL(txHash)} target="_blank">
               {getSubStr(txHash, [8])}
             </a>
           </CopyButton>

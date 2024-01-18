@@ -332,7 +332,6 @@ const DrawerSimulation: FC<Props> = ({
                 <a
                   href="https://docs.blocksec.com/phalcon-explorer/user-manual#transaction-simulation"
                   target="_blank"
-                  rel="noreferrer"
                 >
                   Manual
                 </a>
@@ -424,7 +423,6 @@ const DrawerSimulation: FC<Props> = ({
                       className="letter-space-lr-1"
                       href="https://phalcon.blocksec.com/explorer"
                       target="_blank"
-                      rel="noreferrer"
                     >
                       Phalcon Simulator
                     </a>
@@ -433,7 +431,6 @@ const DrawerSimulation: FC<Props> = ({
                       className="letter-space-lr-1"
                       href="https://phalcon.blocksec.com"
                       target="_blank"
-                      rel="noreferrer"
                     >
                       Phalcon Fork
                     </a>

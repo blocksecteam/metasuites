@@ -35,7 +35,6 @@ const RarityLabel: FC<Props> = ({ data: { rank, total } }) => {
             <a
               href="https://docs.blocksec.com/metadock/introduction"
               target="_blank"
-              rel="noreferrer"
               className={styles.desc}
             >
               By NFTGo <IconLeftOutlined rotate={180} scale={0.6} />

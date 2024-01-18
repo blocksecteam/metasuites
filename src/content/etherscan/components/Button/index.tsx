@@ -61,7 +61,6 @@ const Button: FC<PropsWithChildren<Props>> = props => {
           href={href}
           style={stylesheet}
           target="_blank"
-          rel="noopener noreferrer"
           onClick={onClick}
         >
           {icon && icon}

@@ -13,11 +13,7 @@ const columns: ColumnsType<ProxyContractLog> = [
     key: 'block',
     render: block => (
       <div className={styles.cell}>
-        <a
-          href={`${window.location.origin}/block/${block}`}
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href={`${window.location.origin}/block/${block}`} target="_blank">
           {block}
           <CopyButton className={styles.copyButton} text={block} />
         </a>
@@ -34,7 +30,6 @@ const columns: ColumnsType<ProxyContractLog> = [
         <a
           href={`${window.location.origin}/address/${currentImpl}`}
           target="_blank"
-          rel="noreferrer"
         >
           {currentImpl}
         </a>
@@ -48,11 +43,7 @@ const columns: ColumnsType<ProxyContractLog> = [
     key: 'tx',
     render: tx => (
       <div className={styles.cell}>
-        <a
-          href={`${window.location.origin}/tx/${tx}`}
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href={`${window.location.origin}/tx/${tx}`} target="_blank">
           {tx}
         </a>
         <CopyButton className={styles.copyButton} text={tx} />
@@ -73,7 +64,7 @@ const columns: ColumnsType<ProxyContractLog> = [
     dataIndex: 'hub',
     key: 'hub',
     render: hub => (
-      <a href={hub} target="_blank" rel="noreferrer">
+      <a href={hub} target="_blank">
         Diff
       </a>
     )
