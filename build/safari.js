@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 function defineSafariManifestV2(manifestPath) {
   const manifest = JSON.parse(fs.readFileSync(manifestPath))
-  manifest.name = 'MetaDock'
+  manifest.name = 'MetaSuites'
   manifest.manifest_version = 2
   manifest.background = {
     page: 'background.html'

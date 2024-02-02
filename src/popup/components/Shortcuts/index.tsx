@@ -22,6 +22,7 @@ import type {
   SearchResultItemValue
 } from '@common/api/types'
 import commonApi from '@common/api'
+import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
 
 import styles from './index.module.less'
 
@@ -199,11 +200,7 @@ const Shortcuts: FC = () => {
         </div>
       </div>
       <div className={styles.navbar}>
-        <a
-          href="https://explorer.phalcon.xyz/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href={PHALCON_EXPLORER_DOMAIN} target="_blank">
           <img src={getImageUrl('Phalcon')} alt="" />
         </a>
         {EXT_SUPPORT_WEB_LIST.filter(item => !!item.chain).map(item => (
@@ -211,7 +208,6 @@ const Shortcuts: FC = () => {
             key={item.name}
             href={`${item.href ? item.href : 'https://' + item.domains[0]}`}
             target="_blank"
-            rel="noopener noreferrer"
           >
             <img src={item.logo} alt="" />
           </a>

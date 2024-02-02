@@ -144,8 +144,7 @@ const TransactionExplanation: FC<Props> = props => {
           <div className="col-md-3 mb-md-0 text-dt">
             <a
               target="_blank"
-              rel="noreferrer"
-              href="https://blocksec.com/metadock"
+              href="https://blocksec.com/metasuites"
               style={{ display: 'contents' }}
             >
               <TokenSymbol

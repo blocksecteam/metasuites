@@ -335,6 +335,13 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['tronscan.org'],
     siteName: 'TRONSCAN',
     logo: 'https://assets.blocksec.com/image/1677553092680-4.jpg'
+  },
+  {
+    name: 'zkSync Era',
+    chain: 'era.zksync',
+    domains: ['era.zksync.network'],
+    siteName: 'ETHERSCAN',
+    logo: 'https://assets.blocksec.com/image/1704853828982-2.svg'
   }
 ]
 
@@ -382,7 +389,7 @@ export const PHALCON_SUPPORT_LIST = [
     supportSimulator: true
   },
   {
-    pathname: 'avax',
+    pathname: 'avalanche',
     chain: 'avalanche',
     supportSimulator: true
   },
@@ -397,18 +404,23 @@ export const PHALCON_SUPPORT_LIST = [
     supportSimulator: true
   },
   {
-    pathname: 'ftm',
+    pathname: 'fantom',
     chain: 'fantom',
     supportSimulator: false
   },
   {
-    pathname: 'linea-mainnet',
+    pathname: 'linea',
     chain: 'linea',
     supportSimulator: false
   },
   {
     pathname: 'base',
     chain: 'base',
+    supportSimulator: false
+  },
+  {
+    pathname: 'zksync-era',
+    chain: 'era.zksync',
     supportSimulator: false
   }
 ]
@@ -580,6 +592,10 @@ export const ETHERSCAN_DETH_SUPPORT_LIST = [
   {
     chain: 'cronos',
     url: 'https://cronoscan.deth.net/address'
+  },
+  {
+    chain: 'base',
+    url: 'https://basescan.deth.net/address'
   }
 ]
 
@@ -680,7 +696,7 @@ export class TransactionParsers extends BaseConstant {
   static PHALCON = new BaseConstant(
     'phalcon',
     'phalcon',
-    'https://explorer.phalcon.xyz'
+    'https://phalcon.blocksec.com/explorer'
   )
   static TENDERLY = new BaseConstant(
     'tenderly',
@@ -738,7 +754,8 @@ export const DEBANK_SUPPORT_LIST = [
   'gnosis',
   'moonriver',
   'wemix',
-  'nova.arbitrum'
+  'nova.arbitrum',
+  'era.zksync'
 ]
 
 export const APPROVAL_DIAGNOSIS_SUPPORT_LIST = [

@@ -36,12 +36,7 @@ const FortaAlertWarningSymbol: FC<Props> = ({ alertUrl }) => {
           <TokenSymbol style={{ marginRight: '6px' }} />
           <span>Forta Alert: This is a suspicious exploit transaction</span>
           {alertUrl && (
-            <a
-              className="ms-2"
-              href={alertUrl}
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a className="ms-2" href={alertUrl} target="_blank">
               Detail
             </a>
           )}

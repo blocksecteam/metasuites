@@ -1,14 +1,14 @@
-# MetaDock Browser Extension
+# MetaSuites Browser Extension
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Chrome Web Store](https://img.shields.io/chrome-web-store/stars/fkhgpeojcbhimodmppkbbliepkpcgcoo?label=MetaDock&style=flat&logo=google)](https://chrome.google.com/webstore/detail/metadock/fkhgpeojcbhimodmppkbbliepkpcgcoo) [![Firefox Web Store](https://img.shields.io/chrome-web-store/stars/fkhgpeojcbhimodmppkbbliepkpcgcoo?label=MetaDock&style=flat&logo=firefox)](https://addons.mozilla.org/firefox/addon/metadock/) [![Safari Apple Store](https://img.shields.io/chrome-web-store/stars/fkhgpeojcbhimodmppkbbliepkpcgcoo?label=MetaDock&style=flat&logo=apple)](https://apps.apple.com/app/metadock/id6448738932?l=en&mt=12) [![Twitter Follow](https://img.shields.io/twitter/follow/MetaDockTeam?style=social)](https://twitter.com/MetaDockTeam)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Chrome Web Store](https://img.shields.io/chrome-web-store/stars/fkhgpeojcbhimodmppkbbliepkpcgcoo?label=MetaSuites&style=flat&logo=google)](https://chrome.google.com/webstore/detail/metadock/fkhgpeojcbhimodmppkbbliepkpcgcoo) [![Firefox Web Store](https://img.shields.io/chrome-web-store/stars/fkhgpeojcbhimodmppkbbliepkpcgcoo?label=MetaSuites&style=flat&logo=firefox)](https://addons.mozilla.org/firefox/addon/metadock/) [![Safari Apple Store](https://img.shields.io/chrome-web-store/stars/fkhgpeojcbhimodmppkbbliepkpcgcoo?label=MetaSuites&style=flat&logo=apple)](https://apps.apple.com/app/metadock/id6448738932?l=en&mt=12) [![Twitter Follow](https://img.shields.io/twitter/follow/MetaDockTeam?style=social)](https://twitter.com/MetaDockTeam)
 
-<p align="center"><a href="https://chrome.google.com/webstore/detail/metadock/fkhgpeojcbhimodmppkbbliepkpcgcoo" target="_blank" rel="noreferrer noopener"><img width="500" alt="MetaDock" src="https://assets.blocksec.com/image/1670212325471-2.png"></a></p>
+<p align="center"><a href="https://chrome.google.com/webstore/detail/metadock/fkhgpeojcbhimodmppkbbliepkpcgcoo" target="_blank" rel="noreferrer noopener"><img width="500" alt="MetaSuites" src="https://assets.blocksec.com/image/1706770362900-5.png"></a></p>
 
-MetaDock is a powerful browser extension designed for the crypto community. It aims to deliver an enhanced user experience by seamlessly integrating various innovative features into the blockchain explorers.
+MetaSuites is a powerful browser extension designed for the crypto community. It aims to deliver an enhanced user experience by seamlessly integrating various innovative features into the blockchain explorers.
 
-MetaDock supports Google Chrome, Firefox and Safari. We recommend using the latest available browser version.
+MetaSuites supports Google Chrome, Firefox and Safari. We recommend using the latest available browser version.
 
-For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam) or [Medium](https://blocksecteam.medium.com/getting-started-with-metadock-5e3b3aeb64d4) pages.
+For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam) or [Medium](https://blocksecteam.medium.com/getting-started-with-metasuites-5e3b3aeb64d4) pages.
 
 ## Building
 
@@ -40,7 +40,7 @@ yarn build:prod
 yarn build-firefox:prod
 # safari
 yarn build-safari:prod
-xcrun safari-web-extension-converter --macos-only /path/to/metadock/dist/safari-extension
+xcrun safari-web-extension-converter --macos-only /path/to/metasuites/dist/safari-extension
 ```
 
 - Optionally, you may run `yarn dev` to run dev mode.
@@ -57,7 +57,7 @@ To build the extension for distribution, or to run it locally for testing purpos
 # step 1
 yarn build-safari:prod
 # step 2
-xcrun safari-web-extension-converter --macos-only /path/to/metadock/dist/safari-extension
+xcrun safari-web-extension-converter --macos-only /path/to/metasuites/dist/safari-extension
 ```
 
 For more information on building and debugging Safari extensions, see the [official documentation](https://developer.apple.com/documentation/safariservices/safari_web_extensions/).

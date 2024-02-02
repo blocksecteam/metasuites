@@ -37,12 +37,7 @@ const FortaAlertWarningSymbol: FC<Props> = ({ alertUrl, useAntd }) => {
               <TokenSymbol style={{ marginRight: '6px' }} />
               <span>Forta Alert: This is a suspicious exploit transaction</span>
               {alertUrl && (
-                <a
-                  className="ml-2"
-                  href={alertUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a className="ml-2" href={alertUrl} target="_blank">
                   Detail
                 </a>
               )}
@@ -65,12 +60,7 @@ const FortaAlertWarningSymbol: FC<Props> = ({ alertUrl, useAntd }) => {
               <TokenSymbol style={{ marginRight: '6px' }} />
               <span>Forta Alert: This is a suspicious exploit transaction</span>
               {alertUrl && (
-                <a
-                  className="ml-2"
-                  href={alertUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                >
+                <a className="ml-2" href={alertUrl} target="_blank">
                   Detail
                 </a>
               )}

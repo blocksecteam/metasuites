@@ -15,7 +15,6 @@ const TokenMarketplacesBtn: FC<Props> = ({ markets }) => {
         style={{ background: '#1FC7D4' }}
         href={markets.find(i => i.name === 'pancakeswap')?.url}
         target="_blank"
-        rel="noopener noreferrer"
       >
         <img
           src="https://assets.blocksec.com/image/1678691220594-2.png"

@@ -30,12 +30,7 @@ const FortaAlertLabel: FC<Props> = ({ label, alertUrl }) => {
             <TokenSymbol style={{ marginRight: '6px' }} />
             <span>This label is provided by Forta</span>
             {alertUrl && (
-              <a
-                className="ml-2"
-                href={alertUrl}
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a className="ml-2" href={alertUrl} target="_blank">
                 Detail
               </a>
             )}

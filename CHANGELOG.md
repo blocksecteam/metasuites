@@ -1,3 +1,25 @@
+### v4.6.0
+
+- [feat] Added support for basescan in deth
+- [chore] Changed the name of the extension from "MetaDock" to "MetaSuites"
+
+### v4.5.2
+
+- [fix] Resolve the issue of incorrect redirection of Phalcon links
+
+### v4.5.1
+
+- [feat] Add support for ZkSync chain in Debank shortcut
+- [fix] Resolve bug in Lineascan transaction link redirection to Phalcon with incorrect path
+
+### v4.5.0
+
+- [feat] Adapt for zkSync Era network
+
+### v4.4.0
+
+- [feat] Adapt to the new template of Moonscan
+
 ### v4.3.0
 
 - [feat] Integrated selected functionalities with Snowtrace.io
@@ -39,7 +61,7 @@
 
 ### v3.6.0
 
-- [feat] Improve MetaDock's Dedaub Support
+- [feat] Improve MetaSuites's Dedaub Support
 - [build] Configure GitHub Actions for automated workflows
 - [fix] Fix evm.storage to only support Ethereum chain
 - [fix] Fix the issue of the supported website list becoming invalid in the settings

@@ -306,7 +306,8 @@ const DrawerSimulation: FC<Props> = ({
 
   useEffect(() => {
     notification.config({
-      getContainer: () => document.querySelector(`.${styles.container}`)!
+      getContainer: () =>
+        document.querySelector(`.${styles.container}`) as HTMLElement
     })
     getContractByAddress()
     getLatestBlock()
@@ -331,7 +332,6 @@ const DrawerSimulation: FC<Props> = ({
                 <a
                   href="https://docs.blocksec.com/phalcon-explorer/user-manual#transaction-simulation"
                   target="_blank"
-                  rel="noreferrer"
                 >
                   Manual
                 </a>
@@ -421,18 +421,16 @@ const DrawerSimulation: FC<Props> = ({
                     recommend you visit the
                     <a
                       className="letter-space-lr-1"
-                      href="https://explorer.phalcon.xyz/"
+                      href="https://phalcon.blocksec.com/explorer"
                       target="_blank"
-                      rel="noreferrer"
                     >
                       Phalcon Simulator
                     </a>
                     or
                     <a
                       className="letter-space-lr-1"
-                      href="https://dashboard.phalcon.xyz/"
+                      href="https://phalcon.blocksec.com"
                       target="_blank"
-                      rel="noreferrer"
                     >
                       Phalcon Fork
                     </a>

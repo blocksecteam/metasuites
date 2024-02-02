@@ -1,9 +1,9 @@
 {
-  "name": "metadock",
-  "version": "4.3.0",
+  "name": "metasuites",
+  "version": "4.6.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/blocksecteam/metadock.git"
+    "url": "https://github.com/blocksecteam/metasuites.git"
   },
   "engines": {
     "node": ">=18.12.0"
