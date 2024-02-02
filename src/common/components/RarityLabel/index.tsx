@@ -33,7 +33,7 @@ const RarityLabel: FC<Props> = ({ data: { rank, total } }) => {
               ${numFormatter(total.toString())}`}
             </div>
             <a
-              href="https://docs.blocksec.com/metadock/introduction"
+              href="https://docs.blocksec.com/metasuites/introduction"
               target="_blank"
               className={styles.desc}
             >

@@ -592,6 +592,10 @@ export const ETHERSCAN_DETH_SUPPORT_LIST = [
   {
     chain: 'cronos',
     url: 'https://cronoscan.deth.net/address'
+  },
+  {
+    chain: 'base',
+    url: 'https://basescan.deth.net/address'
   }
 ]
 

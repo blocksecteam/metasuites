@@ -1,3 +1,8 @@
+### v4.6.0
+
+- [feat] Added support for basescan in deth
+- [chore] Changed the name of the extension from "MetaDock" to "MetaSuites"
+
 ### v4.5.2
 
 - [fix] Resolve the issue of incorrect redirection of Phalcon links
@@ -56,7 +61,7 @@
 
 ### v3.6.0
 
-- [feat] Improve MetaDock's Dedaub Support
+- [feat] Improve MetaSuites's Dedaub Support
 - [build] Configure GitHub Actions for automated workflows
 - [fix] Fix evm.storage to only support Ethereum chain
 - [fix] Fix the issue of the supported website list becoming invalid in the settings

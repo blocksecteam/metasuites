@@ -144,11 +144,11 @@ const ComplianceRadarPlot: FC<Props> = ({
         />
       </div>
       <a
-        href="https://docs.blocksec.com/metadock/features/nft-comprehensive-risk-radar-chart"
+        href="https://docs.blocksec.com/metasuites/features/nft-comprehensive-risk-radar-chart"
         target="_blank"
         className={styles.desc}
       >
-        By MetaDock &gt;
+        By MetaSuites &gt;
       </a>
     </div>
   )

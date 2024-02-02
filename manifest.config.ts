@@ -7,7 +7,7 @@ export default defineManifest((env: ConfigEnv) => {
   const isDev = env.mode === 'development'
 
   return {
-    name: "MetaDock - Builders' Swiss Army Knife",
+    name: "MetaSuites - Builders' Swiss Army Knife",
     description:
       'Integrating 30+ popular Web3 and AI Tools, 300M+ Address Labels, and the Fund Flow Map into a single extension.',
     version: version,
