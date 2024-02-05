@@ -50,6 +50,14 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     ]
   },
   {
+    name: 'Blockscout ETH',
+    domains: ['eth.blockscout.com'],
+    chainID: 1,
+    chain: 'eth',
+    siteName: 'BLOCKSCOUT',
+    logo: 'https://assets.blocksec.com/image/1671685360787-7.png'
+  },
+  {
     name: 'BSC',
     chainID: 56,
     domains: ['bscscan.com', 'www.bscscan.com', 'goto.bscscan.com'],
