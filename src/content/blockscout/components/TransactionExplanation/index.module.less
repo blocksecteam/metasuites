@@ -1,0 +1,145 @@
+@import '@common/styles/common.less';
+
+.transactionExplanation {
+  position: relative;
+
+  &.hidden {
+    display: none;
+  }
+
+  .message {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 16px;
+      height: 16px;
+      margin-right: 10px;
+    }
+  }
+
+  .mdLogo {
+    transform: rotate(0deg);
+    transition: all 0.5s ease-in-out;
+    &.animation {
+      transform: rotate(360deg);
+    }
+  }
+
+  .container {
+    display: flex;
+    width: 100%;
+    column-gap: 12px;
+  }
+
+  .label {
+    display: flex;
+    align-items: flex-start;
+    flex-shrink: 0;
+  }
+
+  .closeBtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    background-color: #00a54c;
+    .pointer;
+  }
+
+  .content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    column-gap: 36px;
+
+    &.column {
+      flex-direction: column;
+    }
+
+    .contentWrap {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+
+      span {
+        word-break: break-word;
+        &::after {
+          content: '';
+          margin-right: 28px;
+        }
+      }
+      .gptLogo {
+        &.animation {
+          transform: rotate(360deg);
+          animation: spin 0.25s linear infinite;
+        }
+      }
+      .btn {
+        width: 14px;
+        height: 14px;
+        vertical-align: baseline;
+        margin-right: 5px;
+        .pointer;
+
+        &.active {
+          animation: like-animation 0.3s ease;
+        }
+      }
+    }
+    .actionGroup {
+      flex-shrink: 0;
+
+      .btns {
+        display: flex;
+        align-items: center;
+        column-gap: 8px;
+      }
+
+      .btn {
+        width: 14px;
+        height: 14px;
+        vertical-align: baseline;
+        margin-right: 5px;
+        .pointer;
+
+        &.active {
+          animation: like-animation 0.3s ease;
+        }
+      }
+    }
+  }
+}
+
+.dropdownItem {
+  color: #000000;
+  .align-center;
+  .pointer;
+  &:not(:first-of-type) {
+    margin-top: 10px;
+  }
+  svg {
+    width: 14px;
+    height: 14px;
+    margin-right: 10px;
+  }
+}
+
+@keyframes like-animation {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
