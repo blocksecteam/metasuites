@@ -22,7 +22,7 @@ export const TRONSCAN_PAGE_NAMES = [
   'ADVANCED_FILTER'
 ] as const
 
-export const BLOCKSCOUT_PAGE_NAMES = ['TX'] as const
+export const BLOCKSCOUT_PAGE_NAMES = ['TX', 'ADDRESS'] as const
 
 export const ETHERSCAN_PAGES: Record<
   (typeof ETHERSCAN_PAGE_NAMES)[number],
@@ -128,5 +128,9 @@ export const BLOCKSCOUT_PAGES: Record<
   TX: {
     name: 'TX',
     pattern: /^\/tx\/.+/
+  },
+  ADDRESS: {
+    name: 'ADDRESS',
+    pattern: /^\/address\/.+/
   }
 }

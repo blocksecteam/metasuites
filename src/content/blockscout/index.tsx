@@ -1,7 +1,7 @@
 import { BLOCKSCOUT_PAGES } from '@common/constants'
 import { isAllowed, getChainSimpleName, getPageName } from '@common/utils'
 import { store } from '@src/store'
-import { initTxPageScript } from './page-scripts'
+import { initTxPageScript, initAddressPageScript } from './page-scripts'
 
 export const initBlockscout = async () => {
   if (window.self !== window.top) {
@@ -23,6 +23,9 @@ export const initBlockscout = async () => {
   switch (pageName) {
     case BLOCKSCOUT_PAGES.TX.name:
       initTxPageScript(chain)
+      break
+    case BLOCKSCOUT_PAGES.ADDRESS.name:
+      initAddressPageScript(chain)
       break
   }
 }
