@@ -1,10 +1,10 @@
-# MetaSuites Browser Extension
+# MetaSuites (Prev. MetaDock) Browser Extension
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Chrome Web Store](https://img.shields.io/chrome-web-store/stars/fkhgpeojcbhimodmppkbbliepkpcgcoo?label=MetaSuites&style=flat&logo=google)](https://chrome.google.com/webstore/detail/metadock/fkhgpeojcbhimodmppkbbliepkpcgcoo) [![Firefox Web Store](https://img.shields.io/chrome-web-store/stars/fkhgpeojcbhimodmppkbbliepkpcgcoo?label=MetaSuites&style=flat&logo=firefox)](https://addons.mozilla.org/firefox/addon/metadock/) [![Safari Apple Store](https://img.shields.io/chrome-web-store/stars/fkhgpeojcbhimodmppkbbliepkpcgcoo?label=MetaSuites&style=flat&logo=apple)](https://apps.apple.com/app/metadock/id6448738932?l=en&mt=12) [![Twitter Follow](https://img.shields.io/twitter/follow/MetaDockTeam?style=social)](https://twitter.com/MetaDockTeam)
 
 <p align="center"><a href="https://chrome.google.com/webstore/detail/metadock/fkhgpeojcbhimodmppkbbliepkpcgcoo" target="_blank" rel="noreferrer noopener"><img width="500" alt="MetaSuites" src="https://assets.blocksec.com/image/1706770362900-5.png"></a></p>
 
-MetaSuites is a powerful browser extension designed for the crypto community. It aims to deliver an enhanced user experience by seamlessly integrating various innovative features into the blockchain explorers.
+MetaSuites (Prev. MetaDock) is a powerful browser extension designed for the crypto community. It aims to deliver an enhanced user experience by seamlessly integrating various innovative features into the blockchain explorers.
 
 MetaSuites supports Google Chrome, Firefox and Safari. We recommend using the latest available browser version.
 
