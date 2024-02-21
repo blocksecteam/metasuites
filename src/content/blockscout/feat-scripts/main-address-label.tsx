@@ -8,23 +8,9 @@ import { GET_IMPL_LABELS } from '@common/constants'
 
 import { MainAddressLabel } from '../components'
 
-const getSiblingEl = () => {
-  const lastTag = $(
-    '[data-component="EntityTags"] [data-component="Tag"]:last-of-type'
-  )
-
-  if (lastTag.length > 0) {
-    return lastTag
-  }
-
-  const pageTitle = $('[data-component="PageTitle__title"]')
-
-  return pageTitle
-}
-
 /** enhanced address label */
 const genMainAddressLabel = async (chain: string) => {
-  const mainAddress = $('#meta-suites__main-address').text().trim()
+  const mainAddress = $('#meta-suites__address').data('hash')
 
   if (!mainAddress) return
 
@@ -32,13 +18,11 @@ const genMainAddressLabel = async (chain: string) => {
     .emit(GET_IMPL_LABELS, { chain: chain, addresses: [mainAddress] })
     .then((res: CallbackResponse<AddressLabel[]> | undefined) => {
       if (res?.success && res.data.length) {
-        const sibling = getSiblingEl()
-
         const label = res.data[0].label
         if (label) {
-          const labelRootEl = $('<div></div>')
-          sibling.after(labelRootEl)
-          createRoot(labelRootEl[0]).render(
+          const containerEl = $('#meta-suites__address-tag')
+          containerEl.css('display', 'block')
+          createRoot(containerEl[0]).render(
             <MainAddressLabel data={res.data[0]} />
           )
         }
