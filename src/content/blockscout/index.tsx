@@ -1,7 +1,9 @@
+import '@common/styles/inject.common'
 import { BLOCKSCOUT_PAGES } from '@common/constants'
 import { isAllowed, getChainSimpleName, getPageName } from '@common/utils'
 import { store } from '@src/store'
 import { initTxPageScript, initAddressPageScript } from './page-scripts'
+import './styles/index'
 
 export const initBlockscout = async () => {
   if (window.self !== window.top) {
@@ -15,6 +17,8 @@ export const initBlockscout = async () => {
 
   /** get the necessary parameters required by the extension */
   const chain: string | undefined = getChainSimpleName()
+
+  console.log('__>__', { supportWebList, allowed, chain })
 
   if (!allowed || !chain) return
 

@@ -22,7 +22,7 @@ const MainAddressLabel: FC<Props> = ({
   return (
     <Tooltip
       title={
-        <a href={BUG_REPORT_URL} target="_blank">
+        <a href={BUG_REPORT_URL} target="_blank" className={cls(styles.link)}>
           Report
         </a>
       }
@@ -38,7 +38,11 @@ const MainAddressLabel: FC<Props> = ({
                   logo={implementLogo}
                   color="var(--chakra-colors-gray-500)"
                 />
-                <a href={`/address/${implementAddress}`} target="_blank">
+                <a
+                  href={`/address/${implementAddress}`}
+                  target="_blank"
+                  className={cls(styles.link)}
+                >
                   {' '}
                   {implementLabel.startsWith('0x')
                     ? address.truncate(implementAddress)

@@ -9,8 +9,6 @@ const initAddressPageScript = async (chain: string) => {
 
   if (enhancedLabels) {
     genMainAddressLabel(chain)
-    // TODO @tom2drum add enhanced labels
-    // genEnhancedLabels(chain)
   }
 }
 
