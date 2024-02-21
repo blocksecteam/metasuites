@@ -8,11 +8,23 @@ import { GET_IMPL_LABELS } from '@common/constants'
 
 import { MainAddressLabel } from '../components'
 
+const getSiblingEl = () => {
+  const lastTag = $(
+    '[data-component="EntityTags"] [data-component="Tag"]:last-of-type'
+  )
+
+  if (lastTag.length > 0) {
+    return lastTag
+  }
+
+  const pageTitle = $('[data-component="PageTitle__title"]')
+
+  return pageTitle
+}
+
 /** enhanced address label */
 const genMainAddressLabel = async (chain: string) => {
-  const mainAddress = '0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045'
-  // const mainAddress = $('#mainaddress').text().trim()
-  // TODO @tom2drum get address from page
+  const mainAddress = $('#meta-suites__main-address').text().trim()
 
   if (!mainAddress) return
 
@@ -21,9 +33,8 @@ const genMainAddressLabel = async (chain: string) => {
     .then((res: CallbackResponse<AddressLabel[]> | undefined) => {
       console.log('__>__', res)
       if (res?.success && res.data.length) {
-        const containerEl = $(
-          'main > div:first-child > div:first-child > div:last-child'
-        )
+        const sibling = getSiblingEl()
+
         const label = res.data[0].label
         if (
           label
@@ -33,8 +44,8 @@ const genMainAddressLabel = async (chain: string) => {
           // label !== getEtherscanEnsName() &&
           // !getEtherscanTags().includes(label)
         ) {
-          const labelRootEl = $('<span></span>')
-          containerEl.append(labelRootEl)
+          const labelRootEl = $('<div></div>')
+          sibling.after(labelRootEl)
           createRoot(labelRootEl[0]).render(
             <MainAddressLabel data={res.data[0]} />
           )

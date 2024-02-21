@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  align-items: center;
+  font-size: var(--chakra-fontSizes-sm);
+  line-height: var(--chakra-lineHeights-5);
+  padding: 2px 8px;
+  border-radius: var(--chakra-radii-sm);
+  border: none;
+  margin: 0;
+}
+
+:global(.chakra-ui-dark) {
+  .container {
+    background-color: var(--chakra-colors-whiteAlpha-400);
+    color: var(--chakra-colors-gray-50);
+  }
+}
+
+:global(.chakra-ui-light) {
+  .container {
+    background-color: var(--chakra-colors-blackAlpha-100);
+    color: var(--chakra-colors-chakra-body-text);
+  }
+}

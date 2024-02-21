@@ -1,10 +1,16 @@
 import { type FC } from 'react'
-import { Tag, Tooltip } from 'antd'
+import { Tooltip } from 'antd'
 import cls from 'classnames'
 
 import type { AddressLabel } from '@common/api/types'
 import { TokenSymbol } from '@common/components'
 import styles from './index.module.less'
+
+import { Tag } from '../index'
+import { address } from '../../utils'
+
+const BUG_REPORT_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSfWk-74XOBL6sU7SgFRIuDzbFwaUt0wf7C4KE8U_E5FUcboog/viewform?usp=pp_url&entry.1591633300=Bug/Label+Reports'
 
 interface Props {
   data: AddressLabel
@@ -16,26 +22,33 @@ const MainAddressLabel: FC<Props> = ({
   return (
     <Tooltip
       title={
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSfWk-74XOBL6sU7SgFRIuDzbFwaUt0wf7C4KE8U_E5FUcboog/viewform?usp=pp_url&entry.1591633300=Bug/Label+Reports"
-          target="_blank"
-        >
+        <a href={BUG_REPORT_URL} target="_blank">
           Report
         </a>
       }
     >
-      <Tag
-        icon={<TokenSymbol />}
-        color="geekblue"
-        className={cls(styles.container)}
-      >
-        {label}
-        {implementLabel?.trim() && (
-          <a href={`/address/${implementAddress}`} target="_blank">
-            {` ( ->`} <TokenSymbol logo={implementLogo} /> {implementLabel} )
-          </a>
-        )}
-      </Tag>
+      <div>
+        <Tag icon={<TokenSymbol color="var(--chakra-colors-gray-500)" />}>
+          <div className={cls(styles.container)}>
+            {label.startsWith('0x') ? address.truncate(label) : label}
+            {implementLabel?.trim() && implementAddress && (
+              <div className={cls(styles.implementation)}>
+                <span className={cls(styles.direction)}>{'->'}</span>
+                <TokenSymbol
+                  logo={implementLogo}
+                  color="var(--chakra-colors-gray-500)"
+                />
+                <a href={`/address/${implementAddress}`} target="_blank">
+                  {' '}
+                  {implementLabel.startsWith('0x')
+                    ? address.truncate(implementAddress)
+                    : implementLabel}
+                </a>
+              </div>
+            )}
+          </div>
+        </Tag>
+      </div>
     </Tooltip>
   )
 }
