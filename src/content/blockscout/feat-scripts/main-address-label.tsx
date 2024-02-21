@@ -31,19 +31,11 @@ const genMainAddressLabel = async (chain: string) => {
   await chromeEvent
     .emit(GET_IMPL_LABELS, { chain: chain, addresses: [mainAddress] })
     .then((res: CallbackResponse<AddressLabel[]> | undefined) => {
-      console.log('__>__', res)
       if (res?.success && res.data.length) {
         const sibling = getSiblingEl()
 
         const label = res.data[0].label
-        if (
-          label
-          // TODO @tom2drum check if there is no similar tags
-          // &&
-          // label !== getEtherscanNameTag() &&
-          // label !== getEtherscanEnsName() &&
-          // !getEtherscanTags().includes(label)
-        ) {
+        if (label) {
           const labelRootEl = $('<div></div>')
           sibling.after(labelRootEl)
           createRoot(labelRootEl[0]).render(

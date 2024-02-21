@@ -1,46 +1,55 @@
 import $ from 'jquery'
 import { TX_EXPLAIN_SUPPORT_LIST } from '@common/constants'
+import type { Root } from 'react-dom/client'
 import { createRoot } from 'react-dom/client'
-import {
-  ExplainBtn,
-  TransactionExplanation
-} from '@src/content/blockscout/components'
+import { TransactionExplanation } from '@src/content/blockscout/components'
 import { isHexString } from 'ethers'
 
-const startUI = async (chain: string) => {
+const startUI = async (chain: string, valueRoot: Root) => {
   if (!TX_EXPLAIN_SUPPORT_LIST.includes(chain)) return
-  // const txHash = $('#spanTxHash').text()
-  // TODO @tom2drum get tx hash
-  const txHash =
-    '0xaa4d6f0c46cba75c83cb5ee1d8133cf92b4acff6be25f726a6d12beede4c220f'
+  const txInfoLabelEl = $('#meta-suites__tx-info-label')
+  const txInfoValueEl = $('#meta-suites__tx-info-value')
+  const txInfoDividerEl = $('#meta-suites__details-info-item-divider')
+
+  const txHash = txInfoLabelEl.data('hash')
 
   if (!isHexString(txHash, 32)) return
 
-  // TODO @tom2drum check tx status
-  // const status = $(
-  //   '#ContentPlaceHolder1_maintable .card .row:nth-child(2) .col:last-child'
-  // ).text()
-  // if (status === 'Pending') return
+  const onHide = () => {
+    txInfoLabelEl.css('display', 'none')
+    txInfoValueEl.css('display', 'none')
+    txInfoDividerEl.css('display', 'none')
+  }
 
-  const container = $('.metasuites')
-  const divider = $('<hr/>')
-  const rootEl = $('<div class="metasuites__tx-explaination"></div>')
-  container.prepend(divider)
-  container.prepend(rootEl)
-  createRoot(rootEl[0]).render(
-    <TransactionExplanation tx={txHash} chain={chain} />
+  valueRoot.render(
+    <TransactionExplanation.Message tx={txHash} chain={chain} onHide={onHide} />
   )
 }
 
 const genTransactionExplanationBtn = (chain: string) => {
   if (!TX_EXPLAIN_SUPPORT_LIST.includes(chain)) return
 
-  const container = $('main')
+  const txInfoLabelEl = $('#meta-suites__tx-info-label')
+  const txHash = txInfoLabelEl.data('hash')
+  const txStatus = txInfoLabelEl.data('status')
 
-  const rootEl = $('<div class="metasuites"></div>')
-  container.before(rootEl)
+  if (!txHash || !(txStatus === 'ok' || txStatus === 'error')) {
+    return
+  }
 
-  createRoot(rootEl[0]).render(<ExplainBtn onClick={() => startUI(chain)} />)
+  const txInfoValueEl = $('#meta-suites__tx-info-value')
+  const txInfoDividerEl = $('#meta-suites__details-info-item-divider')
+
+  txInfoLabelEl.css('display', 'block')
+  txInfoValueEl.css('display', 'block')
+  txInfoDividerEl.css('display', 'block')
+
+  createRoot(txInfoLabelEl[0]).render(<TransactionExplanation.Label />)
+
+  const valueRoot = createRoot(txInfoValueEl[0])
+  valueRoot.render(
+    <TransactionExplanation.Button onClick={() => startUI(chain, valueRoot)} />
+  )
 }
 
 export default genTransactionExplanationBtn

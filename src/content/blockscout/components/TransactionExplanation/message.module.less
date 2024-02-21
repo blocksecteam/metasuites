@@ -1,41 +1,28 @@
 @import '@common/styles/common.less';
 
-.transactionExplanation {
+.message {
   position: relative;
+  font-size: var(--chakra-fontSizes-md);
+  line-height: 20px;
+  padding: 8px 0;
+
+  @media screen and (max-width: 1000px) {
+    padding: 4px 0;
+  }
 
   &.hidden {
     display: none;
   }
 
-  .message {
-    display: flex;
-    align-items: center;
-
-    img {
-      width: 16px;
-      height: 16px;
-      margin-right: 10px;
-    }
-  }
-
-  .mdLogo {
-    transform: rotate(0deg);
-    transition: all 0.5s ease-in-out;
-    &.animation {
-      transform: rotate(360deg);
-    }
-  }
-
-  .container {
-    display: flex;
-    width: 100%;
-    column-gap: 12px;
-  }
-
-  .label {
+  .notice {
     display: flex;
     align-items: flex-start;
-    flex-shrink: 0;
+
+    img {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
   }
 
   .closeBtn {
@@ -54,7 +41,7 @@
     justify-content: space-between;
     column-gap: 36px;
 
-    &.column {
+    @media screen and (max-width: 1000px) {
       flex-direction: column;
     }
 
@@ -91,6 +78,11 @@
     .actionGroup {
       flex-shrink: 0;
 
+      @media screen and (max-width: 1000px) {
+        padding-left: 28px;
+        margin-top: 12px;
+      }
+
       .btns {
         display: flex;
         align-items: center;
@@ -113,7 +105,6 @@
 }
 
 .dropdownItem {
-  color: #000000;
   .align-center;
   .pointer;
   &:not(:first-of-type) {
