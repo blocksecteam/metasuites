@@ -3,6 +3,7 @@ import $ from 'jquery'
 
 import { ExplorerLink } from '@src/content/blockscout/components'
 import { PHALCON_SUPPORT_LIST } from '@common/constants'
+import { page } from '../utils'
 
 const genQuick2parsers = async (chain: string) => {
   const phalconPathname = PHALCON_SUPPORT_LIST.find(
@@ -12,6 +13,11 @@ const genQuick2parsers = async (chain: string) => {
   if (!phalconPathname) return
 
   const txInfoLabelEl = $('#meta-suites__tx-info-label')
+
+  const isDataLoaded = await page.waitUntilDataLoaded([txInfoLabelEl])
+
+  if (!isDataLoaded) return
+
   const txHash = txInfoLabelEl.data('hash')
 
   if (!txHash) return

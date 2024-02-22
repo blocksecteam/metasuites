@@ -4,6 +4,7 @@ import type { Root } from 'react-dom/client'
 import { createRoot } from 'react-dom/client'
 import { TransactionExplanation } from '@src/content/blockscout/components'
 import { isHexString } from 'ethers'
+import { page } from '../utils'
 
 const startUI = async (chain: string, valueRoot: Root) => {
   if (!TX_EXPLAIN_SUPPORT_LIST.includes(chain)) return
@@ -26,10 +27,15 @@ const startUI = async (chain: string, valueRoot: Root) => {
   )
 }
 
-const genTransactionExplanationBtn = (chain: string) => {
+const genTransactionExplanationBtn = async (chain: string) => {
   if (!TX_EXPLAIN_SUPPORT_LIST.includes(chain)) return
 
   const txInfoLabelEl = $('#meta-suites__tx-info-label')
+
+  const isDataLoaded = await page.waitUntilDataLoaded([txInfoLabelEl])
+
+  if (!isDataLoaded) return
+
   const txHash = txInfoLabelEl.data('hash')
   const txStatus = txInfoLabelEl.data('status')
 

@@ -7,15 +7,22 @@ import type { AddressLabel } from '@common/api/types'
 import { GET_IMPL_LABELS } from '@common/constants'
 
 import { MainAddressLabel } from '../components'
+import { page } from '../utils'
 
 /** enhanced address label */
 const genMainAddressLabel = async (chain: string) => {
-  const mainAddress = $('#meta-suites__address').data('hash')
+  const mainAddressEl = $('#meta-suites__address')
 
-  if (!mainAddress) return
+  const isDataLoaded = await page.waitUntilDataLoaded([mainAddressEl])
+
+  if (!isDataLoaded) return
+
+  const addressHash = mainAddressEl.data('hash')
+
+  if (!addressHash) return
 
   await chromeEvent
-    .emit(GET_IMPL_LABELS, { chain: chain, addresses: [mainAddress] })
+    .emit(GET_IMPL_LABELS, { chain: chain, addresses: [addressHash] })
     .then((res: CallbackResponse<AddressLabel[]> | undefined) => {
       if (res?.success && res.data.length) {
         const label = res.data[0].label
