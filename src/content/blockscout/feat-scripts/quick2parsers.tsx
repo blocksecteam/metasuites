@@ -16,22 +16,15 @@ const genQuick2parsers = async (chain: string) => {
 
   if (!txHash) return
 
-  const explorersLabelEl = $('#meta-suites__explorers-label')
-  const explorersLabelFullEl = $('#meta-suites__explorers-label_full')
-
-  let num = Number(explorersLabelEl.data('num'))
-
-  if (!Object.is(num, NaN)) {
-    num++
-    explorersLabelEl.text(num)
-    explorersLabelFullEl.text(`${num} Explorers`)
-  }
+  const separatorEl = $('#meta-suites__tx-explorer-separator')
+  const linkEl = $('#meta-suites__tx-explorer-link')
 
   const href = `https://phalcon.blocksec.com/explorer/tx/${phalconPathname}/${txHash}`
-  const containerEl = $('#meta-suites__explorer')
 
-  containerEl.css('display', 'block')
-  createRoot(containerEl[0]).render(
+  separatorEl.css('display', 'block')
+  linkEl.css('display', 'block')
+
+  createRoot(linkEl[0]).render(
     <ExplorerLink
       name="Phalcon"
       href={href}
