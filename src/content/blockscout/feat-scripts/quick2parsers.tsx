@@ -5,22 +5,18 @@ import { ExplorerLink } from '@src/content/blockscout/components'
 import { PHALCON_SUPPORT_LIST } from '@common/constants'
 import { page } from '../utils'
 
-const genQuick2parsers = async (chain: string) => {
+const genQuick2parsers = async (chain: string, txHash: string) => {
   const phalconPathname = PHALCON_SUPPORT_LIST.find(
     item => item.chain === chain
   )?.pathname
 
   if (!phalconPathname) return
 
-  const txInfoLabelEl = $('#meta-suites__tx-info-label')
-
-  const isDataLoaded = await page.waitUntilDataLoaded([txInfoLabelEl])
+  const isDataLoaded = await page.waitUntilDataLoaded([
+    '#meta-suites__tx-info-label'
+  ])
 
   if (!isDataLoaded) return
-
-  const txHash = txInfoLabelEl.data('hash')
-
-  if (!txHash) return
 
   const separatorEl = $('#meta-suites__tx-explorer-separator')
   const linkEl = $('#meta-suites__tx-explorer-link')

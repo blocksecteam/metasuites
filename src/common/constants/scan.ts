@@ -118,19 +118,26 @@ export const TRONSCAN_PAGES: Record<
   }
 }
 
+export type BlockscoutPageName = (typeof BLOCKSCOUT_PAGE_NAMES)[number]
+export const BLOCKSCOUT_ROUTER_EVENTS = ['PATHNAME_CHANGED', 'TAB_CHANGED']
+export type BlockscoutRouterEvent = (typeof BLOCKSCOUT_ROUTER_EVENTS)[number]
+
 export const BLOCKSCOUT_PAGES: Record<
   (typeof BLOCKSCOUT_PAGE_NAMES)[number],
   {
     pattern: RegExp
-    name: (typeof BLOCKSCOUT_PAGE_NAMES)[number]
+    name: BlockscoutPageName
+    routerEvents: Array<BlockscoutRouterEvent>
   }
 > = {
   TX: {
     name: 'TX',
-    pattern: /^\/tx\/.+/
+    pattern: /^\/tx\/(0x[a-fA-F\d]{64})/i,
+    routerEvents: ['PATHNAME_CHANGED', 'TAB_CHANGED']
   },
   ADDRESS: {
     name: 'ADDRESS',
-    pattern: /^\/address\/.+/
+    pattern: /^\/address\/(0x[a-fA-F\d]{40})/i,
+    routerEvents: ['PATHNAME_CHANGED']
   }
 }

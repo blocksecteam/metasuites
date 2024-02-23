@@ -27,19 +27,23 @@ const startUI = async (chain: string, valueRoot: Root) => {
   )
 }
 
-const genTransactionExplanationBtn = async (chain: string) => {
+const genTransactionExplanationBtn = async (chain: string, txHash: string) => {
   if (!TX_EXPLAIN_SUPPORT_LIST.includes(chain)) return
 
-  const txInfoLabelEl = $('#meta-suites__tx-info-label')
+  const isDataLoaded = await page.waitUntilDataLoaded([
+    '#meta-suites__tx-info-label'
+  ])
 
-  const isDataLoaded = await page.waitUntilDataLoaded([txInfoLabelEl])
+  console.log('__>__', { isDataLoaded })
 
   if (!isDataLoaded) return
 
-  const txHash = txInfoLabelEl.data('hash')
+  const txInfoLabelEl = $('#meta-suites__tx-info-label')
   const txStatus = txInfoLabelEl.data('status')
 
-  if (!txHash || !(txStatus === 'ok' || txStatus === 'error')) {
+  console.log('__>__', { txHash, txStatus })
+
+  if (!(txStatus === 'ok' || txStatus === 'error')) {
     return
   }
 

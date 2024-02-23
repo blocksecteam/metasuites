@@ -10,26 +10,33 @@ import { MainAddressLabel } from '../components'
 import { page } from '../utils'
 
 /** enhanced address label */
-const genMainAddressLabel = async (chain: string) => {
-  const mainAddressEl = $('#meta-suites__address')
+const genMainAddressLabel = async (chain: string, addressHash: string) => {
+  const addressTagEl = $('#meta-suites__address-tag')
+  addressTagEl.css('display', 'none')
 
-  const isDataLoaded = await page.waitUntilDataLoaded([mainAddressEl])
+  const isDataLoaded = await page.waitUntilDataLoaded([
+    '#meta-suites__address',
+    '#meta-suites__address-tag'
+  ])
+
+  console.log('__>__', { isDataLoaded })
 
   if (!isDataLoaded) return
 
-  const addressHash = mainAddressEl.data('hash')
-
-  if (!addressHash) return
+  console.log('__>__', { addressHash })
 
   await chromeEvent
     .emit(GET_IMPL_LABELS, { chain: chain, addresses: [addressHash] })
     .then((res: CallbackResponse<AddressLabel[]> | undefined) => {
+      console.log('__>__', { res })
       if (res?.success && res.data.length) {
         const label = res.data[0].label
         if (label) {
-          const containerEl = $('#meta-suites__address-tag')
-          containerEl.css('display', 'block')
-          createRoot(containerEl[0]).render(
+          const addressTagEl = $('#meta-suites__address-tag')
+
+          addressTagEl.css('display', 'block')
+
+          createRoot(addressTagEl[0]).render(
             <MainAddressLabel data={res.data[0]} />
           )
         }
