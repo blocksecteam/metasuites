@@ -1,7 +1,7 @@
 import '@common/styles/inject.common'
 import type { BlockscoutPageName } from '@common/constants'
 import { BLOCKSCOUT_PAGES } from '@common/constants'
-import { isAllowed, getChainSimpleName, getPageName } from '@common/utils'
+import { isAllowed, getChainSimpleName } from '@common/utils'
 import { store } from '@src/store'
 import { initTxPageScript, initAddressPageScript } from './page-scripts'
 import './styles/index'

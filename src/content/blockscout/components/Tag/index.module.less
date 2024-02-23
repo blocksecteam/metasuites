@@ -1,4 +1,4 @@
-.container {
+.container:global(.ant-tag):global(.ant-tag-borderless) {
   display: flex;
   align-items: center;
   font-size: var(--chakra-fontSizes-sm);
@@ -10,14 +10,14 @@
 }
 
 :global(.chakra-ui-dark) {
-  .container {
+  .container:global(.ant-tag):global(.ant-tag-borderless) {
     background-color: var(--chakra-colors-whiteAlpha-400);
     color: var(--chakra-colors-gray-50);
   }
 }
 
 :global(.chakra-ui-light) {
-  .container {
+  .container:global(.ant-tag):global(.ant-tag-borderless) {
     background-color: var(--chakra-colors-blackAlpha-100);
     color: var(--chakra-colors-chakra-body-text);
   }

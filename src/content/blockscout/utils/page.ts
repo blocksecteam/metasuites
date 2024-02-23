@@ -1,4 +1,3 @@
-import $ from 'jquery'
 import { getPageName } from '@common/utils'
 import type { BlockscoutPageName } from '@src/common/constants'
 import { BLOCKSCOUT_PAGES } from '@src/common/constants'
@@ -8,17 +7,11 @@ export const waitUntilDataLoaded = (
 ): Promise<boolean> => {
   return new Promise(resolve => {
     const intervalId = window.setInterval(() => {
-      const deps: Array<JQuery<HTMLElement>> = selectors.map(selector =>
-        $(selector)
-      )
-      const isAllDepsLoaded = deps.every(
-        dep => String(dep.data('ready')) === 'true'
-      )
-
-      console.log('__>__ status: ', isAllDepsLoaded)
-      console.log(
-        '__>__ flags: ',
-        deps.map(dep => dep.data('ready'))
+      const isAllDepsLoaded = selectors.every(
+        selector =>
+          window.document
+            .querySelector(selector)
+            ?.getAttribute('data-ready') === 'true'
       )
 
       if (isAllDepsLoaded) {

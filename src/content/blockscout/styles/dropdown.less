@@ -1,17 +1,25 @@
 .chakra-ui-light .ant-dropdown-menu {
-  background-color: var(--chakra-colors-white);
-  box-shadow: var(--chakra-shadows-2xl);
+  background-color: var(--chakra-colors-white) !important;
+  box-shadow: var(--chakra-shadows-2xl) !important;
 
   .ant-dropdown-menu-item {
-    color: var(--chakra-colors-black);
+    color: var(--chakra-colors-black) !important;
+
+    &:hover {
+      background-color: var(--chakra-colors-blue-50) !important;
+    }
   }
 }
 
 .chakra-ui-dark .ant-dropdown-menu {
-  background-color: var(--chakra-colors-gray-900);
-  box-shadow: var(--chakra-shadows-2xl);
+  background-color: var(--chakra-colors-gray-900) !important;
+  box-shadow: var(--chakra-shadows-2xl) !important;
 
   .ant-dropdown-menu-item {
-    color: var(--chakra-colors-white);
+    color: var(--chakra-colors-white) !important;
+
+    &:hover {
+      background-color: var(--chakra-colors-gray-800) !important;
+    }
   }
 }
