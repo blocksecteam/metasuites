@@ -46,7 +46,7 @@ const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
         .then(response => response.text())
         .then(data => {
           window.open(
-            'https://app.dedaub.com/decompile?md5=' + data.replace(/"/g, '')
+            `https://app.dedaub.com/decompile?md5=${data.replace(/"/g, '')}&chain=${chain}&address=${mainAddress}`
           )
         })
         .catch(() => {
