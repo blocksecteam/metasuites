@@ -540,7 +540,7 @@ export const TENDERLY_SUPPORT_LIST = [
   }
 ]
 
-/** https://library.dedaub.com/ */
+/** https://app.dedaub.com/ */
 export const DEDAUB_SUPPORT_DIRECT_LIST = [
   {
     chain: 'eth',
@@ -555,9 +555,21 @@ export const DEDAUB_SUPPORT_DIRECT_LIST = [
     pathname: 'arbitrum'
   },
   {
+    chain: 'optimism',
+    pathname: 'optimism'
+  },
+  {
+    chain: 'polygon',
+    pathname: 'polygon'
+  },
+  {
+    chain: 'avalanche',
+    pathname: 'avalanche'
+  },
+  {
     chain: 'base',
     pathname: 'base'
-  }
+  },
 ]
 
 export const ETHERSCAN_DETH_SUPPORT_LIST = [
@@ -711,7 +723,7 @@ export class TransactionParsers extends BaseConstant {
   static DEDAUB = new BaseConstant(
     'dedaub',
     'dedaub',
-    'https://library.dedaub.com'
+    'https://app.dedaub.com'
   )
 }
 
