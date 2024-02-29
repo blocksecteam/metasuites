@@ -19,13 +19,13 @@ const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
     const item = DEDAUB_SUPPORT_DIRECT_LIST.find(item => item.chain === chain)
     if (item) {
       window.open(
-        `https://library.dedaub.com/${item.pathname}/address/${mainAddress}/decompiled`
+        `https://app.dedaub.com/${item.pathname}/address/${mainAddress}/decompiled`
       )
     } else {
-      const url = 'https://library.dedaub.com/api/on_demand'
+      const url = 'https://app.dedaub.com/api/on_demand'
       const bytecode = $('#dividcode').text().trim()
       if (!bytecode) {
-        window.open('https://library.dedaub.com/decompile')
+        window.open('https://app.dedaub.com/decompile')
         return
       }
       const data = {
@@ -37,8 +37,8 @@ const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
         headers: {
           'Content-Type': 'application/json',
           authority: 'api.dedaub.com',
-          origin: 'https://library.dedaub.com',
-          referer: 'https://library.dedaub.com/'
+          origin: 'https://app.dedaub.com',
+          referer: 'https://app.dedaub.com/'
         },
         body: JSON.stringify(data),
         mode: 'cors'
@@ -46,11 +46,11 @@ const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
         .then(response => response.text())
         .then(data => {
           window.open(
-            'https://library.dedaub.com/decompile?md5=' + data.replace(/"/g, '')
+            'https://app.dedaub.com/decompile?md5=' + data.replace(/"/g, '')
           )
         })
         .catch(() => {
-          window.open('https://library.dedaub.com/decompile')
+          window.open('https://app.dedaub.com/decompile')
         })
         .finally(() => {
           setLoading(false)
