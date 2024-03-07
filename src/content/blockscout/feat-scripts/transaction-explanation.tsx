@@ -6,13 +6,11 @@ import { TransactionExplanation } from '@src/content/blockscout/components'
 import { isHexString } from 'ethers'
 import { page } from '../utils'
 
-const startUI = async (chain: string, valueRoot: Root) => {
+const startUI = async (chain: string, valueRoot: Root, txHash: string) => {
   if (!TX_EXPLAIN_SUPPORT_LIST.includes(chain)) return
   const txInfoLabelEl = $('#meta-suites__tx-info-label')
   const txInfoValueEl = $('#meta-suites__tx-info-value')
   const txInfoDividerEl = $('#meta-suites__details-info-item-divider')
-
-  const txHash = txInfoLabelEl.data('hash')
 
   if (!isHexString(txHash, 32)) return
 
@@ -58,7 +56,9 @@ const genTransactionExplanationBtn = async (chain: string, txHash: string) => {
 
   const valueRoot = createRoot(txInfoValueEl[0])
   valueRoot.render(
-    <TransactionExplanation.Button onClick={() => startUI(chain, valueRoot)} />
+    <TransactionExplanation.Button
+      onClick={() => startUI(chain, valueRoot, txHash)}
+    />
   )
 }
 

@@ -51,11 +51,15 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
   },
   {
     name: 'ETH (Blockscout)',
-    domains: ['eth.blockscout.com'],
+    domains: [
+      'eth.blockscout.com',
+      'localhost:3000',
+      'review-tom2drum-metasuites-placeholders.k8s-dev.blockscout.com'
+    ],
     chainID: 1,
     chain: 'eth',
     siteName: 'BLOCKSCOUT',
-    logo: 'https://assets.blocksec.com/image/1671685360787-7.png',
+    logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/ethereum.png',
     testNets: [
       {
         name: 'Sepolia (Blockscout)',
@@ -63,7 +67,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chainID: 11_155_111,
         chain: 'sepolia.eth',
         siteName: 'BLOCKSCOUT',
-        logo: 'https://assets.blocksec.com/image/1671685360787-7.png'
+        logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/ethereum.png'
       },
       {
         name: 'Goerli (Blockscout)',
@@ -71,7 +75,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chainID: 5,
         chain: 'gor.eth',
         siteName: 'BLOCKSCOUT',
-        logo: 'https://assets.blocksec.com/image/1671685360787-7.png'
+        logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/ethereum.png'
       }
     ]
   },
@@ -118,6 +122,14 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         logo: 'https://assets.blocksec.com/image/1671685360787-12.png'
       }
     ]
+  },
+  {
+    name: 'Polygon (Blockscout)',
+    chainID: 137,
+    chain: 'polygon',
+    domains: ['polygon.blockscout.com'],
+    siteName: 'BLOCKSCOUT',
+    logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/polygon.png'
   },
   {
     name: 'Fantom',
@@ -223,7 +235,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chain: 'optimism',
     domains: ['optimism.blockscout.com'],
     siteName: 'BLOCKSCOUT',
-    logo: 'https://assets.blocksec.com/image/1671777583236-2.png',
+    logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/optimism.png',
     testNets: [
       {
         name: 'Optimism Goerli (Blockscout)',
@@ -231,7 +243,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chain: 'gor.optimism',
         domains: ['optimism-goerli.blockscout.com'],
         siteName: 'BLOCKSCOUT',
-        logo: 'https://assets.blocksec.com/image/1671777583236-2.png'
+        logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/optimism.png'
       }
     ]
   },
@@ -301,7 +313,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chain: 'gnosis',
     domains: ['gnosis.blockscout.com'],
     siteName: 'BLOCKSCOUT',
-    logo: 'https://assets.blocksec.com/image/1695197286815-3.png'
+    logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/gnosis.png'
   },
   {
     name: 'Base',
@@ -327,7 +339,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chain: 'base',
     domains: ['base.blockscout.com'],
     siteName: 'BLOCKSCOUT',
-    logo: 'https://assets.blocksec.com/image/1695197286815-2.png'
+    logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/base.png'
   },
   {
     name: 'Polygon zkEVM',
@@ -353,7 +365,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chain: 'zkevm',
     domains: ['zkevm.blockscout.com'],
     siteName: 'BLOCKSCOUT',
-    logo: 'https://assets.blocksec.com/image/1695197286815-5.png'
+    logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/polygon_zk-evm.png'
   },
   {
     name: 'Linea',
