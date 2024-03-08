@@ -33,7 +33,9 @@ const MainAddressLabel: FC<Props> = ({
             {label.startsWith('0x') ? address.truncate(label) : label}
             {implementLabel?.trim() && implementAddress && (
               <div className={cls(styles.implementation)}>
-                <span className={cls(styles.direction)}>{'->'}</span>
+                <svg className={styles.arrow}>
+                  <use href="/icons/sprite.svg#arrows/east-mini"></use>
+                </svg>
                 <TokenSymbol
                   logo={implementLogo}
                   color="var(--chakra-colors-gray-500)"
