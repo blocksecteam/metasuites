@@ -37,5 +37,5 @@ export default {
   OPENSEA_MATCHES: ['*://*.opensea.io/*'],
   TRONSCAN_MATCHES: ['*://*.tronscan.org/*'],
   SNOWTRACE_MATCHES: ['*://*.snowtrace.io/*'],
-  BLOCKSCOUT_MATCHES: ['*://*.blockscout.com/*']
+  BLOCKSCOUT_MATCHES: ['*://*.blockscout.com/*', '*://localhost:3000/*']
 }

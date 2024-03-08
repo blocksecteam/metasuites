@@ -51,11 +51,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
   },
   {
     name: 'ETH (Blockscout)',
-    domains: [
-      'eth.blockscout.com',
-      'localhost:3000',
-      'review-tom2drum-metasuites-placeholders.k8s-dev.blockscout.com'
-    ],
+    domains: ['eth.blockscout.com'],
     chainID: 1,
     chain: 'eth',
     siteName: 'BLOCKSCOUT',

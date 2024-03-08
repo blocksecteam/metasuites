@@ -19,16 +19,11 @@ const genMainAddressLabel = async (chain: string, addressHash: string) => {
     '#meta-suites__address-tag'
   ])
 
-  console.log('__>__', { isDataLoaded })
-
   if (!isDataLoaded) return
-
-  console.log('__>__', { addressHash })
 
   await chromeEvent
     .emit(GET_IMPL_LABELS, { chain: chain, addresses: [addressHash] })
     .then((res: CallbackResponse<AddressLabel[]> | undefined) => {
-      console.log('__>__', { res })
       if (res?.success && res.data.length) {
         const label = res.data[0].label
         if (label) {

@@ -20,13 +20,9 @@ export const initBlockscout = async () => {
   /** get the necessary parameters required by the extension */
   const chain: string | undefined = getChainSimpleName()
 
-  console.log('__>__', { supportWebList, allowed, chain })
-
   if (!allowed || !chain) return
 
   page.runScript((pageName: string) => {
-    console.log('__>__', { pageName })
-
     switch (pageName) {
       case BLOCKSCOUT_PAGES.TX.name: {
         const { pattern } = BLOCKSCOUT_PAGES[pageName as BlockscoutPageName]

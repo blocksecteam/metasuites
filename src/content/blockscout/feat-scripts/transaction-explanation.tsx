@@ -32,14 +32,10 @@ const genTransactionExplanationBtn = async (chain: string, txHash: string) => {
     '#meta-suites__tx-info-label'
   ])
 
-  console.log('__>__', { isDataLoaded })
-
   if (!isDataLoaded) return
 
   const txInfoLabelEl = $('#meta-suites__tx-info-label')
   const txStatus = txInfoLabelEl.data('status')
-
-  console.log('__>__', { txHash, txStatus })
 
   if (!(txStatus === 'ok' || txStatus === 'error')) {
     return
