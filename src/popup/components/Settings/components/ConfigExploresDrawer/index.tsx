@@ -187,6 +187,20 @@ const ConfigExploresDrawer: FC<Props> = ({
                       }
                     />
                   </Space>
+                  <Space>
+                    <span style={{ fontSize: 'inherit' }}>Sentio</span>
+                    <Checkbox
+                      checked={
+                        alternativeParsers[TransactionParsers.SENTIO.value()]
+                      }
+                      onChange={e =>
+                        onAlternativeParsersChange(
+                          TransactionParsers.SENTIO.value(),
+                          e.target.checked
+                        )
+                      }
+                    />
+                  </Space>
                 </div>
               }
             />
