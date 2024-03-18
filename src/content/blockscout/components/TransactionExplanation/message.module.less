@@ -1,0 +1,136 @@
+@import '@common/styles/common.less';
+
+.message {
+  position: relative;
+  font-size: var(--chakra-fontSizes-md);
+  line-height: 20px;
+  padding: 8px 0;
+
+  @media screen and (max-width: 1000px) {
+    padding: 4px 0;
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  .notice {
+    display: flex;
+    align-items: flex-start;
+
+    img {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+    }
+  }
+
+  .closeBtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    background-color: #00a54c;
+    .pointer;
+  }
+
+  .content {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    column-gap: 36px;
+
+    @media screen and (max-width: 1000px) {
+      flex-direction: column;
+    }
+
+    .contentWrap {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+
+      span {
+        word-break: break-word;
+        &::after {
+          content: '';
+          margin-right: 28px;
+        }
+      }
+      .gptLogo {
+        &.animation {
+          transform: rotate(360deg);
+          animation: spin 0.25s linear infinite;
+        }
+      }
+      .btn {
+        width: 14px;
+        height: 14px;
+        vertical-align: baseline;
+        margin-right: 5px;
+        .pointer;
+
+        &.active {
+          animation: like-animation 0.3s ease;
+        }
+      }
+    }
+    .actionGroup {
+      flex-shrink: 0;
+
+      @media screen and (max-width: 1000px) {
+        padding-left: 28px;
+        margin-top: 12px;
+      }
+
+      .btns {
+        display: flex;
+        align-items: center;
+        column-gap: 8px;
+      }
+
+      .btn {
+        width: 14px;
+        height: 14px;
+        vertical-align: baseline;
+        margin-right: 5px;
+        .pointer;
+
+        &.active {
+          animation: like-animation 0.3s ease;
+        }
+      }
+    }
+  }
+}
+
+.dropdownItem {
+  .align-center;
+  .pointer;
+  &:not(:first-of-type) {
+    margin-top: 10px;
+  }
+  svg {
+    width: 14px;
+    height: 14px;
+    margin-right: 10px;
+  }
+}
+
+@keyframes like-animation {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
