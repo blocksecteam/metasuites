@@ -22,7 +22,7 @@ const DedaubStorageShortcut: FC<Props> = ({ chain, address }) => {
           className="nav-item snap-align-start pointer"
           onClick={() => {
             window.open(
-              `https://library.dedaub.com/${pathname}/address/${address}/source?storage=true`,
+              `https://app.dedaub.com/${pathname}/address/${address}/source?storage=true`,
               '_blank'
             )
           }}

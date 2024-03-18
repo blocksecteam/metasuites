@@ -32,7 +32,7 @@ const setBtns = (
   createRoot(copyBtnRootEl).render(<CopyByteCodeBtn />)
 }
 
-/** decompile by library.dedaub.com */
+/** decompile by app.dedaub.com */
 const genDecompileInDedaubBtn = (chain: string) => {
   const contractCodeEl = document.querySelector<HTMLElement>(
     '#ContentPlaceHolder1_contractCodeDiv'

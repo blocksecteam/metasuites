@@ -68,7 +68,7 @@ const ParsersBtn: FC<Props> = ({ chain, txHash }) => {
         {dedaubPathname &&
           alternativeParsers[TransactionParsers.DEDAUB.value()] && (
             <a
-              href={`https://library.dedaub.com/${dedaubPathname}/tx/${txHash}`}
+              href={`https://app.dedaub.com/${dedaubPathname}/tx/${txHash}`}
               target="_blank"
               className="text-primary link"
             >
