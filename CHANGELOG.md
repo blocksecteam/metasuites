@@ -1,3 +1,9 @@
+### v4.7.0
+
+- [feat] Integration with Blockscout explorer
+- [update] Update dedaub decompile functionality
+- [fix] Fix the styling issue of the "Download Contract Source Code" button on zkevm.polygonscan.com
+
 ### v4.6.0
 
 - [feat] Added support for basescan in deth

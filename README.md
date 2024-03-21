@@ -10,72 +10,6 @@ MetaSuites supports Google Chrome, Firefox and Safari. We recommend using the la
 
 For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam) or [Medium](https://blocksecteam.medium.com/getting-started-with-metasuites-5e3b3aeb64d4) pages.
 
-## Building
-
-- Install [Node.js](https://nodejs.org) version 18.12.0 or later
-  - If you are using [nvm](https://github.com/nvm-sh/nvm#installing-and-updating) (recommended) running `nvm use` will automatically choose the right node version for you.
-- Install [Yarn](https://yarnpkg.com/en/docs/install)
-- Xcode (for building the Safari package)
-
-```shell
-npm install -g yarn
-```
-
-- Install dependencies: `yarn install` or `yarn`
-
-```shell
-yarn install
-# or
-yarn
-```
-
-### Chrome and Firefox
-
-- Build the project to the `/dist/*` folder with `yarn build:prod` or `yarn build-firefox:prod`.
-
-```shell
-# chrome
-yarn build:prod
-# firefox
-yarn build-firefox:prod
-# safari
-yarn build-safari:prod
-xcrun safari-web-extension-converter --macos-only /path/to/metasuites/dist/safari-extension
-```
-
-- Optionally, you may run `yarn dev` to run dev mode.
-
-```shell
-yarn dev
-```
-
-### Safari
-
-To build the extension for distribution, or to run it locally for testing purposes, follow these steps:
-
-```shell
-# step 1
-yarn build-safari:prod
-# step 2
-xcrun safari-web-extension-converter --macos-only /path/to/metasuites/dist/safari-extension
-```
-
-For more information on building and debugging Safari extensions, see the [official documentation](https://developer.apple.com/documentation/safariservices/safari_web_extensions/).
-
-## Contributing
-
-### Development builds
-
-To start a development build (e.g. with logging and file watching) run `yarn dev`.
-
-### Running Linting
-
-You can run the linter by itself with `yarn lint`.
-
-### Changing dependencies
-
-Whenever you change dependencies (adding, removing, or updating, either in `package.json` or `yarn.lock`), `yarn.lock` must be kept up-to-date.
-
 ## Features
 
 - [x] Show the fund flow chart
@@ -120,8 +54,21 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 - moonscan.io
 - snowtrace.io
 - optimistic.etherscan.io
+- nova.arbiscan.io
+- bttcscan.com
+- celoscan.io
+- gnosisscan.io
+- basescan.org
+- lineascan.build
+- wemixscan.com
 - opensea.io
 - tronscan.org
+- era.zksync.network
+- blockscout.com
+
+## Contributing
+
+If you're interested in contributing, please read the [Contributing Guide](https://github.com/blocksecteam/metasuites/blob/main/CONTRIBUTING.md) before submitting a pull request.
 
 ## Changelog
 

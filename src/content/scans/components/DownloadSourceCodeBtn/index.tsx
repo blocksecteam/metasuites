@@ -16,7 +16,7 @@ const DownloadSourceCodeBtn: FC<PostAddressParams> = ({ chain, address }) => {
         new URLSearchParams({ chain, address })
       }
       type="secondary"
-      icon={<IconDownload mr={4} color="#fff" />}
+      icon={<IconDownload mr={4} color="var(--bs-btn-color, white)" />}
     >
       Download as Zip
     </Button>

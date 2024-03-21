@@ -34,7 +34,13 @@ const Button: FC<PropsWithChildren<Props>> = props => {
     onClick
   } = props
 
-  const classNames = cls(styles.btn, `btn-${type}`, `btn-${size}`, className)
+  const classNames = cls(
+    styles.btn,
+    'btn',
+    `btn-${type}`,
+    `btn-${size}`,
+    className
+  )
 
   const stylesheet = Object.assign(
     {

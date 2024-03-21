@@ -1,16 +1,17 @@
 {
   "name": "metasuites",
-  "version": "4.6.0",
+  "version": "4.7.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/blocksecteam/metasuites.git"
   },
   "engines": {
-    "node": ">=18.12.0"
+    "node": ">=18.17.0"
   },
   "type": "module",
   "scripts": {
     "dev": "vite --mode development",
+    "start": "vite --mode production",
     "build:prod": "vite build --mode production --outDir dist/chrome-extension",
     "build:test": "vite build --mode test --outDir dist/chrome-extension",
     "build-firefox:prod": "vite build --mode production --outDir dist/firefox-extension && node build/firefox.js",

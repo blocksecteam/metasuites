@@ -13,8 +13,10 @@ import { GET_ADDRESS_LABELS, GET_IMPL_LABELS } from '@common/constants'
 import { TokenSymbol } from '@common/components'
 
 const isFromToAddress = (el: HTMLElement) => {
-  return !!$(el).parent().siblings("a.js-clipboard[aria-label='Copy Address']")
-    .length
+  return !!$(el)
+    .parent()
+    .siblings("a.js-clipboard[aria-label='Copy Address']")
+    .find("i[id^='linkIcon-']").length
 }
 
 const getAddressTag = (

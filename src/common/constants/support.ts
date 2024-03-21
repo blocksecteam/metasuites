@@ -645,7 +645,7 @@ export const DEDAUB_SUPPORT_DIRECT_LIST = [
   {
     chain: 'base',
     pathname: 'base'
-  },
+  }
 ]
 
 export const ETHERSCAN_DETH_SUPPORT_LIST = [
@@ -796,11 +796,7 @@ export class TransactionParsers extends BaseConstant {
     'openchain',
     'https://openchain.xyz/trace'
   )
-  static DEDAUB = new BaseConstant(
-    'dedaub',
-    'dedaub',
-    'https://app.dedaub.com'
-  )
+  static DEDAUB = new BaseConstant('dedaub', 'dedaub', 'https://app.dedaub.com')
 }
 
 export const PROXY_LOG_SUPPORT_LIST = [
