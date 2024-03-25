@@ -418,6 +418,13 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['era.zksync.network'],
     siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1704853828982-2.svg'
+  },
+  {
+    name: 'zkSync Era (Blockscout)',
+    chain: 'era.zksync',
+    domains: ['zksync.blockscout.com'],
+    siteName: 'BLOCKSCOUT',
+    logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/zk-sync.png'
   }
 ]
 
