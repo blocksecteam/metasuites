@@ -32,7 +32,7 @@ const DecompileInEthervmBtn: FC<Props> = ({ mainAddress }) => {
       <Button
         size="small"
         type="primary"
-        className="align-center"
+        className="items-center"
         icon={<Image src={getImageUrl('ethervm')} width={16} />}
         onClick={toEthervm}
       >

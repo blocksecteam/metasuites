@@ -119,7 +119,7 @@ const ExportTableDataBtn: FC<Props> = ({ chain, table }) => {
         <Button
           size="small"
           type="primary"
-          className="align-center"
+          className="items-center"
           icon={<IconDownload size={12} color="#fff" />}
         >
           <Space>

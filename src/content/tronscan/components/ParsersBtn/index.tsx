@@ -21,7 +21,7 @@ const ParsersBtn: FC<Props> = ({ txHash }) => {
       >
         <Button
           type="primary"
-          className="align-center"
+          className="items-center"
           icon={
             <img
               className="mr-1"

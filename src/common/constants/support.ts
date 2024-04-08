@@ -1,3 +1,5 @@
+import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
+
 import BaseConstant from './abstract/BaseConstants'
 
 export const SCOPE = 'metaDockChromeExt'
@@ -193,19 +195,9 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     name: 'Avalanche',
     chainID: 43114,
     chain: 'avalanche',
-    domains: ['snowtrace.io'],
+    domains: ['snowscan.xyz'],
     siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1671777583236-3.png'
-    // testNets: [
-    //   {
-    //     name: 'Avalanche Fuji',
-    //     chainID: 43_113,
-    //     chain: 'fuji.avalanche',
-    //     domains: ['testnet.snowtrace.io'],
-    //     siteName: 'ETHERSCAN',
-    //     logo: 'https://assets.blocksec.com/image/1671777583236-3.png'
-    //   }
-    // ]
   },
   {
     name: 'Optimism',
@@ -418,6 +410,13 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['era.zksync.network'],
     siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1704853828982-2.svg'
+  },
+  {
+    name: 'zkSync Era (Blockscout)',
+    chain: 'era.zksync',
+    domains: ['zksync.blockscout.com'],
+    siteName: 'BLOCKSCOUT',
+    logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/zk-sync.png'
   }
 ]
 
@@ -784,7 +783,7 @@ export class TransactionParsers extends BaseConstant {
   static PHALCON = new BaseConstant(
     'phalcon',
     'phalcon',
-    'https://phalcon.blocksec.com/explorer'
+    PHALCON_EXPLORER_DOMAIN
   )
   static TENDERLY = new BaseConstant(
     'tenderly',

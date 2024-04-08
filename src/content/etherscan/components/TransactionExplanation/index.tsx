@@ -188,7 +188,7 @@ const TransactionExplanation: FC<Props> = props => {
           </div>
           {!loading && (
             <div className={styles.actionGroup}>
-              <div className="align-center">
+              <div className="items-center">
                 {!errorOccur && (
                   <CopyButton size={14} mr={5} text={result?.content ?? ''} />
                 )}

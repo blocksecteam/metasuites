@@ -66,7 +66,7 @@ const ModalProxyLog: FC<Props> = ({ visible, onClose, chain, address }) => {
       destroyOnClose
       title={
         <div className={cls(styles.title, { [styles.column]: isMobile() })}>
-          <div className="align-center">
+          <div className="items-center">
             <TokenSymbol />
             Proxy Upgrade Log
           </div>

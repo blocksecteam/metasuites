@@ -38,7 +38,8 @@ export default defineManifest((env: ConfigEnv) => {
               '*://gnosisscan.io/*',
               '*://*.celoscan.io/*',
               '*://*.bttcscan.com/*',
-              '*://era.zksync.network/*'
+              '*://era.zksync.network/*',
+              '*://snowscan.xyz/*'
             ]
           : ['<all_urls>'],
         js: ['src/content/index.all_frames.ts'],
@@ -49,8 +50,7 @@ export default defineManifest((env: ConfigEnv) => {
           ? [
               '*://explorer.btc.com/*',
               '*://*.opensea.io/*',
-              '*://*.tronscan.org/*',
-              '*://*.snowtrace.io/*'
+              '*://*.tronscan.org/*'
             ]
           : ['<all_urls>'],
         js: ['src/content/index.ts'],

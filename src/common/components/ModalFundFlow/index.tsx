@@ -23,6 +23,7 @@ import {
   IconClose,
   IconMetaDock
 } from '@common/components'
+import { IconMetaSleuth } from '@common/components/icon'
 import { SLEUTH_DOMAIN } from '@common/config/uri'
 
 import styles from './index.module.less'
@@ -300,28 +301,31 @@ const ModalFundFlowGraph: FC<Props> = ({
                   </div>
                 </div>
                 {SLEUTH_SUPPORT_LIST.includes(chain) && (
-                  <Button
-                    className={styles.msButton}
-                    type="primary"
-                    onClick={() =>
-                      window.open(
-                        `${SLEUTH_DOMAIN}/result/${chain}/${mainAddress}`
-                      )
-                    }
+                  <ConfigProvider
+                    theme={{
+                      token: {
+                        colorPrimary: '#bd7c40'
+                      }
+                    }}
                   >
-                    <img
-                      className="mr-1"
-                      style={{ width: '18px' }}
-                      src="https://assets.blocksec.com/image/1677135239463-4.png"
-                      alt=""
-                    />
-                    Try Enhanced Version
-                  </Button>
+                    <Button
+                      className={styles.msButton}
+                      type="primary"
+                      onClick={() =>
+                        window.open(
+                          `${SLEUTH_DOMAIN}/result/${chain}/${mainAddress}`
+                        )
+                      }
+                    >
+                      <IconMetaSleuth color="#FFFFFF" size={20} />
+                      Deep Dive with MetaSleuth
+                    </Button>
+                  </ConfigProvider>
                 )}
               </div>
               <div
                 id="__metadock-fundflow-options-wrapper__"
-                className="align-center"
+                className="items-center"
               >
                 {fundFlow?.nodes && (
                   <Select

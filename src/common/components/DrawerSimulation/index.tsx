@@ -34,7 +34,10 @@ import type {
   Arguments,
   SimulateTxParams
 } from '@common/api/types'
-import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
+import {
+  PHALCON_EXPLORER_DOMAIN,
+  PHALCON_FORK_DOMAIN
+} from '@common/config/uri'
 
 import styles from './index.module.less'
 import type {
@@ -321,7 +324,7 @@ const DrawerSimulation: FC<Props> = ({
       width={isMobile() ? '100%' : 530}
       closable={false}
       title={
-        <div className="align-center">
+        <div className="items-center">
           <IconClose mr={16} onClick={() => setVisible(false)} />
           <span>Simulator</span>
           <Tooltip
@@ -354,7 +357,7 @@ const DrawerSimulation: FC<Props> = ({
       destroyOnClose
       extra={
         <Button
-          className="align-center"
+          className="items-center"
           type="primary"
           onClick={() => window.open(PHALCON_EXPLORER_DOMAIN)}
         >
@@ -388,7 +391,7 @@ const DrawerSimulation: FC<Props> = ({
             >
               {SIMULATE_SUPPORT_LIST.map(item => (
                 <Select.Option key={item.chain} value={item.chain}>
-                  <div className="align-center" style={{ fontSize: 12 }}>
+                  <div className="items-center" style={{ fontSize: 12 }}>
                     <TokenSymbol logo={item.logo} mr={4} size={14} />
                     {item.name}
                   </div>
@@ -421,7 +424,7 @@ const DrawerSimulation: FC<Props> = ({
                     recommend you visit the
                     <a
                       className="letter-space-lr-1"
-                      href="https://phalcon.blocksec.com/explorer"
+                      href={PHALCON_EXPLORER_DOMAIN}
                       target="_blank"
                     >
                       Phalcon Simulator
@@ -429,7 +432,7 @@ const DrawerSimulation: FC<Props> = ({
                     or
                     <a
                       className="letter-space-lr-1"
-                      href="https://phalcon.blocksec.com"
+                      href={PHALCON_FORK_DOMAIN}
                       target="_blank"
                     >
                       Phalcon Fork
@@ -555,7 +558,7 @@ const DrawerSimulation: FC<Props> = ({
                               return (
                                 <div
                                   key={index}
-                                  className="justify-between align-center"
+                                  className="justify-between items-center"
                                   style={{ marginLeft: 30 }}
                                 >
                                   <span

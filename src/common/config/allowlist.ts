@@ -30,12 +30,12 @@ export default {
     '*://polygonscan.com/*',
     '*://mumbai.polygonscan.com/*',
     '*://*.moonscan.io/*',
-    '*://era.zksync.network/*'
+    '*://era.zksync.network/*',
+    '*://snowscan.xyz/*'
   ],
   BTC_EXPLORER_MATCHES: ['*://explorer.btc.com/*'],
   BLOCKSEC_MATCHES: ['*://*.blocksec.com/*'],
   OPENSEA_MATCHES: ['*://*.opensea.io/*'],
   TRONSCAN_MATCHES: ['*://*.tronscan.org/*'],
-  SNOWTRACE_MATCHES: ['*://*.snowtrace.io/*'],
   BLOCKSCOUT_MATCHES: ['*://*.blockscout.com/*']
 }

@@ -111,7 +111,7 @@ const ReadContractAccordionItem: FC<Props> = ({
           aria-controls={id}
           onClick={resizeIframe}
         >
-          <div className="align-center">
+          <div className="items-center">
             <span>
               {id.split('-')[1]}. {name} ({' '}
             </span>
@@ -214,7 +214,7 @@ const ReadContractAccordionItem: FC<Props> = ({
                     {errorMsg ? (
                       errorMsg
                     ) : queryResult ? (
-                      <div className="align-center">
+                      <div className="items-center">
                         <br />
                         {typeof queryResult.value === 'string' ? (
                           <div>

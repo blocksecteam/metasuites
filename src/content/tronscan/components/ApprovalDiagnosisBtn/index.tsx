@@ -38,7 +38,7 @@ const ApprovalDiagnosisBtn: FC = () => {
     >
       <Button
         type="primary"
-        className="align-center"
+        className="items-center"
         onClick={activeApprovalChecker}
         icon={<Image src={getImageUrl('approval-diagnosis')} width={16} />}
       >

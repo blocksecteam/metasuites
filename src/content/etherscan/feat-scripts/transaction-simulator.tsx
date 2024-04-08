@@ -153,7 +153,7 @@ const renderUnverifiedSimulateButton = (chain: string, address: string) => {
   root.insertBefore(dividcode)
   createRoot(root[0]).render(
     <SimulateBtn
-      className="align-center"
+      className="items-center"
       style={{ boxShadow: 'none' }}
       onClick={() => {
         renderDrawer({ chain, address })

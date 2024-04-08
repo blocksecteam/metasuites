@@ -10,6 +10,7 @@ import {
 } from '@common/constants'
 import { useStore } from '@common/hooks'
 import { getNodeValue } from '@common/utils'
+import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
 
 import styles from './index.module.less'
 
@@ -41,7 +42,7 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
       <Space split={'|'}>
         {phalconPathname && (
           <a
-            href={`https://phalcon.blocksec.com/explorer/tx/${phalconPathname}/${txHash}`}
+            href={`${PHALCON_EXPLORER_DOMAIN}/tx/${phalconPathname}/${txHash}`}
             target="_blank"
           >
             Phalcon

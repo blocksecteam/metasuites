@@ -161,7 +161,7 @@ const ModalContractVariableLogs: FC<Props> = ({
       }
       footer={
         list.length > 0 ? (
-          <div className="justify-end align-center">
+          <div className="justify-end items-center">
             <Button
               type="primary"
               className="md-btn-primary"

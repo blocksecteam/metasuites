@@ -52,7 +52,7 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 - arbiscan.io
 - cronoscan.com
 - moonscan.io
-- snowtrace.io
+- snowscan.xyz
 - optimistic.etherscan.io
 - nova.arbiscan.io
 - bttcscan.com
