@@ -324,7 +324,7 @@ const DrawerSimulation: FC<Props> = ({
       width={isMobile() ? '100%' : 530}
       closable={false}
       title={
-        <div className="items-center">
+        <div className="items-center flex">
           <IconClose mr={16} onClick={() => setVisible(false)} />
           <span>Simulator</span>
           <Tooltip
@@ -357,7 +357,7 @@ const DrawerSimulation: FC<Props> = ({
       destroyOnClose
       extra={
         <Button
-          className="items-center"
+          className="items-center flex"
           type="primary"
           onClick={() => window.open(PHALCON_EXPLORER_DOMAIN)}
         >
@@ -391,7 +391,7 @@ const DrawerSimulation: FC<Props> = ({
             >
               {SIMULATE_SUPPORT_LIST.map(item => (
                 <Select.Option key={item.chain} value={item.chain}>
-                  <div className="items-center" style={{ fontSize: 12 }}>
+                  <div className="items-center flex" style={{ fontSize: 12 }}>
                     <TokenSymbol logo={item.logo} mr={4} size={14} />
                     {item.name}
                   </div>
@@ -480,7 +480,7 @@ const DrawerSimulation: FC<Props> = ({
                   <Form.Item
                     label={<span className={styles.labelIcon}>Function</span>}
                   >
-                    <div className="justify-between">
+                    <div className="justify-between flex">
                       {renderRadioGroup()}
                       <div>
                         <Form.Item
@@ -558,7 +558,7 @@ const DrawerSimulation: FC<Props> = ({
                               return (
                                 <div
                                   key={index}
-                                  className="justify-between items-center"
+                                  className="justify-between items-center flex"
                                   style={{ marginLeft: 30 }}
                                 >
                                   <span

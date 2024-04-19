@@ -91,12 +91,12 @@ const genEnhancedLabels = (page?: string) => {
               <Tooltip
                 overlayInnerStyle={{ width: 288 }}
                 title={
-                  <div className="flex-column items-center">
+                  <div className="flex-column items-center flex">
                     <div>{match.label}</div>
                     <div>{match.address}</div>
                   </div>
                 }
-                className="items-center"
+                className="items-center flex"
               >
                 <TokenSymbol logo={match.logo} />
                 <span className="flex1">{getSubStr(match.label, [6])}</span>

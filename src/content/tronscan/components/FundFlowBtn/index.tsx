@@ -27,7 +27,7 @@ const FundFlowBtn: FC<Props> = ({ mainAddress }) => {
         <Button
           type="primary"
           icon={<Image src={getImageUrl('fundflow')} width={16} />}
-          className="items-center"
+          className="items-center flex"
           onClick={() => setVisible(true)}
         >
           Fund Flow

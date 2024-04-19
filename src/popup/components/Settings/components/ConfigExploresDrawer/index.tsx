@@ -144,7 +144,7 @@ const ConfigExploresDrawer: FC<Props> = ({
               style={{ paddingTop: 0 }}
               action={null}
               title={
-                <div className="justify-between">
+                <div className="justify-between flex">
                   <Space>
                     <span style={{ fontSize: 'inherit' }}>Openchain</span>
                     <Checkbox

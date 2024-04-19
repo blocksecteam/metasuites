@@ -1,5 +1,9 @@
 ### v4.8.0
 
+- [fix] Fix bug causing style conflicts
+
+### v4.8.0
+
 - [update] Update the domain for Phalcon Explorer
 - [feat] Added support for zkSync on Blockscout
 - [feat] Adapted to snowscan.xyz as a replacement for the previous snowtrace.io

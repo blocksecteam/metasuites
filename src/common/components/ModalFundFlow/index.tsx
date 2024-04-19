@@ -325,7 +325,7 @@ const ModalFundFlowGraph: FC<Props> = ({
               </div>
               <div
                 id="__metadock-fundflow-options-wrapper__"
-                className="items-center"
+                className="items-center flex"
               >
                 {fundFlow?.nodes && (
                   <Select

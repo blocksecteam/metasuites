@@ -103,7 +103,7 @@ const Shortcuts: FC = () => {
         const image =
           item.image || blockies.create({ seed: item.name }).toDataURL()
         return (
-          <div className={cls(styles.content, 'items-center')}>
+          <div className={cls(styles.content, 'items-center flex')}>
             <img className={styles.iconImg} src={image} alt="" loading="lazy" />
             <div className={cls('flex1')} style={{ overflow: 'hidden' }}>
               <div className={styles.title}>{item.name ?? item.address}</div>
