@@ -12,11 +12,9 @@ import {
   initAdvancedFilterPageScript
 } from './page-scripts'
 
-const runScript = async () => {
-  /** get user options */
+const execute = async () => {
   const supportWebList = await store.get('supportWebList')
 
-  /** check whether the script is allowed to run on the current page  */
   const allowed = isAllowed(Object.values(supportWebList))
 
   if (!allowed) return
@@ -44,4 +42,4 @@ const runScript = async () => {
   }
 }
 
-export default runScript
+export default execute

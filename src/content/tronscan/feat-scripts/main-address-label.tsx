@@ -28,10 +28,10 @@ const genMainAddressLabel = async () => {
           })
           .get()
         if (!oLabels.includes(res.data[0].label)) {
-          const labelRootEl = $('<div></div>')
+          const labelRootEl = $('<div class="flex-center"></div>')
           containerEl.prepend(labelRootEl)
           if (!labelRootEl.next().hasClass('address-divider')) {
-            labelRootEl.css({ marginRight: 12 })
+            labelRootEl.css({ marginRight: 12, gap: 12 })
           }
           createRoot(labelRootEl[0]).render(
             <MainAddressLabel data={res.data[0]} />

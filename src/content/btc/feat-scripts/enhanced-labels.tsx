@@ -1,9 +1,9 @@
 import $ from 'jquery'
 
-import { pickAddress } from '@common/utils'
+import { pickAddress, mergeAddressLabels } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
-import { GET_ADDRESS_LABELS } from '@common/constants'
+import { GET_ADDRESS_LABELS, ChainType } from '@common/constants'
 
 const handleReplace = async (
   chain: string,
@@ -18,8 +18,11 @@ const handleReplace = async (
     }
   )
 
-  if (res?.success && res?.data?.length) {
-    const resultLabels: AddressLabel[] = res.data
+  if (res?.success) {
+    const resultLabels: AddressLabel[] = await mergeAddressLabels(
+      ChainType.BTC,
+      res.data
+    )
     for (let i = 0; i < elements.length; ++i) {
       const el = elements[i]
       const innerText = el.innerText

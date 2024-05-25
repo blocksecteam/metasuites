@@ -2,20 +2,19 @@ import browser from 'webextension-polyfill'
 
 import '@common/styles/inject.common'
 import { URL_UPDATED } from '@common/constants'
-import { getPageName } from '@common/utils'
+import { getPageName, isHashItemsSimilar } from '@common/utils'
 
-import runScript from './main'
-import { isHashItemsSimilar } from './helper'
+import execute from './main'
 
 export const initTronscan = async () => {
-  runScript()
+  execute()
   let pageName = getPageName(window.location.hash.substring(1))
   let originURL = window.location.href
   browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     if (message === URL_UPDATED) {
       const newPageName = getPageName(window.location.hash.substring(1))
       if (newPageName !== pageName) {
-        runScript()
+        execute()
       } else {
         const isSimilar = isHashItemsSimilar(
           new URL(originURL).hash,
@@ -23,7 +22,7 @@ export const initTronscan = async () => {
           3
         )
         if (!isSimilar) {
-          runScript()
+          execute()
         }
       }
       originURL = window.location.href

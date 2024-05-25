@@ -3,13 +3,16 @@ import { Tooltip, ConfigProvider } from 'antd'
 
 import type { AddressLabel } from '@common/api/types'
 import { TokenSymbol } from '@common/components'
+import { ChainType } from '@common/constants'
+
+import { MainPrivateLabel } from '../../components'
 
 interface Props {
   data: AddressLabel
 }
 
 const MainAddressLabel: FC<Props> = ({
-  data: { label, implementLabel, implementAddress, implementLogo }
+  data: { label, address, implementLabel, implementAddress, implementLogo }
 }) => {
   return (
     <ConfigProvider prefixCls="metadock">
@@ -33,6 +36,7 @@ const MainAddressLabel: FC<Props> = ({
           )}
         </div>
       </Tooltip>
+      <MainPrivateLabel chainType={ChainType.TRON} address={address} />
     </ConfigProvider>
   )
 }

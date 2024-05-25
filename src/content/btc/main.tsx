@@ -10,7 +10,7 @@ import {
   genCopyAddressBtn
 } from './feat-scripts'
 
-const runScript = debounce(async () => {
+const execute = debounce(async () => {
   /** get user options */
   const { enhancedLabels, showCopyIcon } = await store.get('options')
   const supportWebList = await store.get('supportWebList')
@@ -33,4 +33,4 @@ const runScript = debounce(async () => {
   if (showCopyIcon) genCopyAddressBtn()
 }, 300)
 
-export default runScript
+export default execute

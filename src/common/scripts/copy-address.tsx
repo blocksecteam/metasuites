@@ -1,11 +1,35 @@
 import { createRoot } from 'react-dom/client'
 import isMobile from 'is-mobile'
+import React, { type FC, type ReactNode } from 'react'
 
-import { CopyButton } from '@common/components'
-import { pickAddress, getHrefQueryVariable } from '@common/utils'
+import { CopyButton, IconPhalcon } from '@common/components'
+import {
+  pickAddress,
+  getHrefQueryVariable,
+  getChainSimpleName
+} from '@common/utils'
 import { PATTERN_EVM_TX_HASH } from '@common/constants'
+import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
 
-const handleTargetElCopy = (el: HTMLElement, text: string) => {
+const PhalconExplorerButton: FC<{ hash: string }> = ({ hash }) => {
+  const chain = getChainSimpleName()
+
+  const handleClick = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+    e.preventDefault()
+    window.open(`${PHALCON_EXPLORER_DOMAIN}/tx/${chain}/${hash}`, '_blank')
+  }
+
+  if (!chain) return null
+  return (
+    <IconPhalcon
+      mode="dark"
+      style={{ verticalAlign: 'middle' }}
+      onClick={handleClick}
+    />
+  )
+}
+
+const appendIconToElement = (el: HTMLElement, reactNode: ReactNode) => {
   if (!isMobile()) {
     el.onmouseover = () => {
       const btnEl = el.querySelector<HTMLElement>(
@@ -29,7 +53,7 @@ const handleTargetElCopy = (el: HTMLElement, text: string) => {
     `position:absolute;right:0;display:${isMobile() ? 'inline-block' : 'none'}`
   )
   el?.appendChild(rootEl)
-  createRoot(rootEl).render(<CopyButton text={text} />)
+  createRoot(rootEl).render(reactNode)
 }
 
 export const handleAddressNodeListCopy = (
@@ -51,7 +75,7 @@ export const handleAddressNodeListCopy = (
     } else {
       address = pickAddress(el.innerText)
     }
-    if (address) handleTargetElCopy(el, address)
+    if (address) appendIconToElement(el, <CopyButton text={address} />)
   }
 }
 
@@ -61,7 +85,7 @@ export const handleTokenNodeListCopy = (tokenTags: NodeListOf<HTMLElement>) => {
     const href = el.getAttribute('href')
     if (!href) continue
     const address = getHrefQueryVariable(href, 'a') ?? pickAddress(href)
-    if (address) handleTargetElCopy(el, address)
+    if (address) appendIconToElement(el, <CopyButton text={address} />)
   }
 }
 
@@ -76,7 +100,7 @@ export const handleTxnNodeListCopy = (
     const txnHash = href.match(PATTERN_EVM_TX_HASH)?.[0]
     const hashTagEl = targetPosition === 'parent' ? el.parentElement : el
     if (hashTagEl && txnHash) {
-      handleTargetElCopy(hashTagEl, txnHash)
+      appendIconToElement(hashTagEl, <PhalconExplorerButton hash={txnHash} />)
     }
   }
 }
@@ -87,6 +111,6 @@ export const handleBlockNodeListCopy = (blockTags: NodeListOf<HTMLElement>) => {
     const href = el.getAttribute('href')
     if (!href) continue
     const block = el.innerText.trim()
-    handleTargetElCopy(el, block)
+    appendIconToElement(el, <CopyButton text={block} />)
   }
 }

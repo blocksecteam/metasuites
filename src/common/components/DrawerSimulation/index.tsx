@@ -11,7 +11,7 @@ import {
   notification
 } from 'antd'
 import cls from 'classnames'
-import { debounce, isObject } from 'lodash-es'
+import { debounce, isObject, intersection } from 'lodash-es'
 import isMobile from 'is-mobile'
 import { ethers } from 'ethers'
 import { QuestionCircleOutlined } from '@ant-design/icons'
@@ -25,7 +25,8 @@ import {
   GET_CONTRACT_BY_ADDRESS,
   GET_CONTRACT_BY_ABI,
   GET_LATEST_BLOCK,
-  SIMULATE_TRANSACTION
+  SIMULATE_TRANSACTION,
+  GET_SIMULATION_FEES
 } from '@common/constants'
 import { CopyButton, IconClose } from '@common/components'
 import { chromeEvent } from '@common/event'
@@ -86,6 +87,7 @@ const DrawerSimulation: FC<Props> = ({
     SIMULATE_SUPPORT_LIST.find(i => i.chain === chain)?.nativeCurrency.name
   )
   const [latestBlockNum, setLatestBlockNum] = useState(123455)
+  const [baseFee, setBaseFee] = useState('')
   const [formattedContractData, setFormattedContractData] =
     useState<FormattedContractData>({
       methodsOptions: [],
@@ -96,10 +98,6 @@ const DrawerSimulation: FC<Props> = ({
       }
     })
 
-  const estimatedGas = Number.isNaN(gasPrice)
-    ? '100'
-    : Math.ceil(Number(gasPrice) * (1 + 0.2)).toString()
-
   const handleOk = debounce(() => {
     form.validateFields().then(values => {
       const params: SimulateTxParams = {
@@ -109,7 +107,7 @@ const DrawerSimulation: FC<Props> = ({
         inputData: values.inputData,
         value: values.value || '0',
         gasLimit: Number(values.gasLimit) || 1000000,
-        gasPrice: values.gasPrice || estimatedGas,
+        gasPrice: values.gasPrice || baseFee,
         receiver: values.receiver || ''
       }
       if (!values.isPrerun) {
@@ -143,6 +141,12 @@ const DrawerSimulation: FC<Props> = ({
     }
     if (Object.keys(changedValues).includes('function')) {
       form.resetFields(['parameters'])
+    }
+    if (
+      intersection(Object.keys(changedValues), ['isPrerun', 'blockNumber'])
+        .length
+    ) {
+      getSimulationFees(values.isPrerun, values.blockNumber || latestBlockNum)
     }
   }, 300)
 
@@ -180,6 +184,26 @@ const DrawerSimulation: FC<Props> = ({
     >(GET_LATEST_BLOCK, chain)
     if (res?.success) {
       setLatestBlockNum(res.data.latestBlockNumber ?? 0)
+    }
+  }
+
+  const getSimulationFees = async (isPrerun = true, blockNumber?: number) => {
+    const res = await chromeEvent.emit<
+      typeof GET_SIMULATION_FEES,
+      { baseFee: string }
+    >(GET_SIMULATION_FEES, {
+      chain,
+      isPrerun,
+      blockNumber
+    })
+    if (res?.success) {
+      setBaseFee(ethers.formatUnits(res.data.baseFee, 'gwei'))
+    } else {
+      setBaseFee(
+        Number.isNaN(gasPrice)
+          ? '100'
+          : Math.ceil(Number(gasPrice) * (1 + 0.2)).toString()
+      )
     }
   }
 
@@ -314,6 +338,7 @@ const DrawerSimulation: FC<Props> = ({
     })
     getContractByAddress()
     getLatestBlock()
+    getSimulationFees()
   }, [])
 
   return (
@@ -324,7 +349,7 @@ const DrawerSimulation: FC<Props> = ({
       width={isMobile() ? '100%' : 530}
       closable={false}
       title={
-        <div className="items-center flex">
+        <div className="items-center md-flex">
           <IconClose mr={16} onClick={() => setVisible(false)} />
           <span>Simulator</span>
           <Tooltip
@@ -357,7 +382,7 @@ const DrawerSimulation: FC<Props> = ({
       destroyOnClose
       extra={
         <Button
-          className="items-center flex"
+          className="items-center md-flex"
           type="primary"
           onClick={() => window.open(PHALCON_EXPLORER_DOMAIN)}
         >
@@ -391,7 +416,10 @@ const DrawerSimulation: FC<Props> = ({
             >
               {SIMULATE_SUPPORT_LIST.map(item => (
                 <Select.Option key={item.chain} value={item.chain}>
-                  <div className="items-center flex" style={{ fontSize: 12 }}>
+                  <div
+                    className="items-center md-flex"
+                    style={{ fontSize: 12 }}
+                  >
                     <TokenSymbol logo={item.logo} mr={4} size={14} />
                     {item.name}
                   </div>
@@ -480,7 +508,7 @@ const DrawerSimulation: FC<Props> = ({
                   <Form.Item
                     label={<span className={styles.labelIcon}>Function</span>}
                   >
-                    <div className="justify-between flex">
+                    <div className="justify-between md-flex">
                       {renderRadioGroup()}
                       <div>
                         <Form.Item
@@ -558,7 +586,7 @@ const DrawerSimulation: FC<Props> = ({
                               return (
                                 <div
                                   key={index}
-                                  className="justify-between items-center flex"
+                                  className="justify-between items-center md-flex"
                                   style={{ marginLeft: 30 }}
                                 >
                                   <span
@@ -774,7 +802,7 @@ const DrawerSimulation: FC<Props> = ({
               return value.replace(/[^\d{1,}\\.\d{1,}|\d{1,}]/g, '')
             }}
           >
-            <Input suffix="Gwei" placeholder={`Default is ${estimatedGas}`} />
+            <Input suffix="Gwei" placeholder={`Default is ${baseFee}`} />
           </Form.Item>
         </Form>
         <Button

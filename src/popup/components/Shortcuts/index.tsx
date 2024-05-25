@@ -12,9 +12,9 @@ import { Input } from 'antd'
 import * as blockies from 'blockies-ts'
 import { debounce } from 'lodash-es'
 import cls from 'classnames'
+import { SearchOutlined } from '@ant-design/icons'
 
 import { getImageUrl, createTab } from '@common/utils'
-import { EXT_SUPPORT_WEB_LIST } from '@common/constants'
 import { LoadingOutlined, IconClose } from '@common/components'
 import type {
   SearchResultType,
@@ -22,7 +22,6 @@ import type {
   SearchResultItemValue
 } from '@common/api/types'
 import commonApi from '@common/api'
-import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
 
 import styles from './index.module.less'
 
@@ -103,7 +102,7 @@ const Shortcuts: FC = () => {
         const image =
           item.image || blockies.create({ seed: item.name }).toDataURL()
         return (
-          <div className={cls(styles.content, 'items-center flex')}>
+          <div className={cls(styles.content, 'items-center md-flex')}>
             <img className={styles.iconImg} src={image} alt="" loading="lazy" />
             <div className={cls('flex1')} style={{ overflow: 'hidden' }}>
               <div className={styles.title}>{item.name ?? item.address}</div>
@@ -160,6 +159,7 @@ const Shortcuts: FC = () => {
       <div className={styles.searchBarContainer}>
         <Input
           value={value}
+          prefix={<SearchOutlined />}
           className={styles.input}
           placeholder="Search in Web3"
           onChange={onValueChange}
@@ -198,20 +198,6 @@ const Shortcuts: FC = () => {
             </div>
           ))}
         </div>
-      </div>
-      <div className={styles.navbar}>
-        <a href={PHALCON_EXPLORER_DOMAIN} target="_blank">
-          <img src={getImageUrl('Phalcon')} alt="" />
-        </a>
-        {EXT_SUPPORT_WEB_LIST.filter(item => !!item.chain).map(item => (
-          <a
-            key={item.name}
-            href={`${item.href ? item.href : 'https://' + item.domains[0]}`}
-            target="_blank"
-          >
-            <img src={item.logo} alt="" />
-          </a>
-        ))}
       </div>
     </div>
   )

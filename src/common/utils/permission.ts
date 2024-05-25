@@ -8,6 +8,7 @@ import {
 } from '@common/constants'
 import { uniq } from 'lodash-es'
 
+// TODO: Exclude the effect of the link in the parameters
 export const isMatchURL = (url: string, patternList: string[]) => {
   function toRegex(input: string) {
     input = input.replace('*://', '(.*)://')
@@ -15,6 +16,7 @@ export const isMatchURL = (url: string, patternList: string[]) => {
     input = input.replace('/*', '(.*)?')
     return input
   }
+
   try {
     return patternList.some(pattern => {
       return new RegExp(toRegex(pattern)).test(url)

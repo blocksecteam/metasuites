@@ -1,0 +1,52 @@
+@import '@common/styles/common.less';
+
+.container {
+  &:not(:first-child) {
+    margin-top: 24px;
+  }
+  .md-flex;
+  .items-center;
+  .justify-between;
+  .content {
+    gap: 4px;
+    .md-flex;
+    .flex-column;
+    .label {
+      font-size: 12px;
+      line-height: 16px;
+      font-family: OpenSauceOne-Medium, sans-serif;
+      border-radius: 9999px;
+      border-width: 1px;
+      width: fit-content;
+      height: 24px;
+      padding: 0 8px;
+      gap: 4px;
+      font-weight: 500;
+      .md-flex;
+      .items-center;
+      .dot {
+        border-radius: 50%;
+        height: 6px;
+        width: 6px;
+        display: block;
+      }
+    }
+    .addressWrapper {
+      gap: 4px;
+      .md-flex;
+      .items-center;
+      .type {
+        border-radius: 4px;
+        background: #f9fafb;
+        box-shadow: 0 0 0 0 #fff inset, 0 0 0 1px rgba(107, 114, 128, 0.1) inset;
+        padding: 0 4px;
+        font-size: 12px;
+        line-height: 20px;
+        user-select: none;
+      }
+      .address {
+        color: #6b7280;
+      }
+    }
+  }
+}

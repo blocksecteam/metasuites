@@ -71,7 +71,7 @@ const genExportTableDataBtn = async (chain: string, pageName: string) => {
                   )
                   containerEl?.setAttribute(
                     'class',
-                    'justify-between w100 flex'
+                    'justify-between w100 md-flex'
                   )
                   const tableEl = _document.querySelector<HTMLElement>('table')
                   if (containerEl && tableEl)

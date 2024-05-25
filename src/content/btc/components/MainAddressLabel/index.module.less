@@ -1,10 +1,15 @@
 @import '@common/styles/common.less';
 
 .container {
-  width: fit-content;
-  background-color: rgba(26, 126, 227, 0.16);
-  color: #1a7ee3;
-  padding: 0 20px;
-  border-radius: 16px;
-  .flex-center;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  .label {
+    width: fit-content;
+    background-color: rgba(26, 126, 227, 0.16);
+    color: #1a7ee3;
+    padding: 0 20px;
+    border-radius: 16px;
+    .flex-center;
+  }
 }

@@ -4,7 +4,12 @@ import Big from 'big.js'
 import * as d3 from 'd3'
 
 import type { FundFlowNode, FundFlowRes } from '@common/api/types'
-import { getImageUrl, saveAsSvg, saveSvgAsPng } from '@common/utils'
+import {
+  getImageUrl,
+  saveAsSvg,
+  saveSvgAsPng,
+  getContrastColor
+} from '@common/utils'
 import { SLEUTH_DOMAIN } from '@common/config/uri'
 import {
   EXT_SUPPORT_WEB_LIST,
@@ -12,7 +17,9 @@ import {
   SLEUTH_SUPPORT_LIST
 } from '@common/constants'
 
-const analyzeLogo = getImageUrl('analyze')
+const analyzeButtonImage = getImageUrl('analyze')
+const editButtonImage = getImageUrl('edit-private-label-button')
+const editButtonFullImage = getImageUrl('edit-private-label-button-full')
 
 export const GRAPH_TEMP = 'GRAPH_TEMP'
 const NODE_HOVER_HEIGHT = 32
@@ -24,7 +31,8 @@ export const formatLabel = (label: string) => {
 export const nodeHover = (
   ele: Selection<BaseType, unknown, null, undefined>,
   key: string,
-  nodeData: FundFlowNode
+  nodeData: FundFlowNode,
+  onEditPrivateLabel: (node: FundFlowNode) => void
 ) => {
   const isSupportChain =
     SLEUTH_SUPPORT_LIST.findIndex(chain => chain === key.split('-')[0]) !== -1
@@ -72,6 +80,10 @@ export const nodeHover = (
     analyze: {
       x: '',
       y: ''
+    },
+    edit: {
+      x: '',
+      y: ''
     }
   }
 
@@ -91,31 +103,48 @@ export const nodeHover = (
 
     if (pathList?.length === 25) {
       // common nodes
-      isSupportChain &&
-        pathList.forEach((v, i) => {
-          // extended bottom
-          if (i >= 8 && i <= 19) {
-            v[1] = `${Number(v[1]) + NODE_HOVER_HEIGHT}`
-          }
-        })
 
-      imgPosition.analyze.x = `${Number(pathList[8][0]) + 12}`
-      imgPosition.analyze.y = `${Number(pathList[8][1]) - 30}`
+      pathList.forEach((v, i) => {
+        // extended bottom
+        if (i >= 8 && i <= 19) {
+          v[1] = `${Number(v[1]) + NODE_HOVER_HEIGHT}`
+        }
+      })
+
+      if (isSupportChain) {
+        imgPosition.analyze.x = `${Number(pathList[8][0]) + 11}`
+        imgPosition.analyze.y = `${Number(pathList[8][1]) - 23}`
+
+        imgPosition.edit.x = `${Number(pathList[8][0]) + 177}`
+        imgPosition.edit.y = `${Number(pathList[8][1]) - 23}`
+      } else {
+        imgPosition.edit.x = `${Number(pathList[8][0]) + 11}`
+        imgPosition.edit.y = `${Number(pathList[8][1]) - 28}`
+      }
     }
 
     if (pathList?.length === 49) {
       // cross chain nodes
       const _y = Number(pathList[0][1]) - Number(dom.attr('stroke-width'))
-      isSupportChain &&
-        pathList.forEach((v, i) => {
-          // extended bottom
-          if (i >= 25 || i === 1 || i === 0) {
-            v[1] = `${Number(_y) + NODE_HOVER_HEIGHT * 2}`
-          }
-        })
 
-      imgPosition.analyze.x = `${Number(pathList[25][0]) + 15}`
-      imgPosition.analyze.y = `${Number(pathList[25][1]) - 45}`
+      pathList.forEach((v, i) => {
+        // extended bottom
+        if (i >= 25 || i === 1 || i === 0) {
+          v[1] = `${Number(_y) + NODE_HOVER_HEIGHT * 2}`
+        }
+      })
+
+      // TODO cross chain edit buttons
+      if (isSupportChain) {
+        imgPosition.analyze.x = `${Number(pathList[25][0]) + 17}`
+        imgPosition.analyze.y = `${Number(pathList[25][1]) - 38}`
+
+        imgPosition.edit.x = `${Number(pathList[25][0]) + 180}`
+        imgPosition.edit.y = `${Number(pathList[25][1]) - 38}`
+      } else {
+        imgPosition.edit.x = `${Number(pathList[25][0]) + 17}`
+        imgPosition.edit.y = `${Number(pathList[25][1]) - 42}`
+      }
     }
 
     dom.attr(
@@ -137,20 +166,45 @@ export const nodeHover = (
 
   nodeAClone.classed(GRAPH_TEMP, true)
 
-  isSupportChain &&
+  if (isSupportChain) {
     nodeAClone
       .append('image')
-      .attr('href', `${analyzeLogo}`)
+      .attr('href', `${analyzeButtonImage}`)
       .attr('x', imgPosition.analyze.x)
       .attr('y', imgPosition.analyze.y)
-      .attr('width', '190px')
-      .attr('height', '40px')
+      .attr('width', '159px')
+      .attr('height', '24px')
       .on('click', function () {
         d3.event.stopPropagation()
         window.open(
           `${SLEUTH_DOMAIN}/result/${nodeData.chain}/${nodeData.address}`
         )
       })
+
+    nodeAClone
+      .append('image')
+      .attr('href', `${editButtonImage}`)
+      .attr('x', imgPosition.edit.x)
+      .attr('y', imgPosition.edit.y)
+      .attr('width', '24px')
+      .attr('height', '24px')
+      .on('click', function () {
+        d3.event.stopPropagation()
+        onEditPrivateLabel(nodeData)
+      })
+  } else {
+    nodeAClone
+      .append('image')
+      .attr('href', `${editButtonFullImage}`)
+      .attr('x', imgPosition.edit.x)
+      .attr('y', imgPosition.edit.y)
+      .attr('width', '192px')
+      .attr('height', '33px')
+      .on('click', function () {
+        d3.event.stopPropagation()
+        onEditPrivateLabel(nodeData)
+      })
+  }
 
   select('#graph0')?.append(() => {
     return nodeAClone.node()
@@ -182,13 +236,17 @@ export const clearGraphTemp = () => {
   })
 }
 
-export const initNodes = (fundFlow: FundFlowRes) => {
+export const initNodes = (
+  fundFlow: FundFlowRes,
+  onEditPrivateLabel: (node: FundFlowNode) => void
+) => {
   const nodes = selectAll('#graph0  .node')
 
   nodes.each(function (d3Ele: any) {
     const node = select(this)
+    const item = fundFlow.nodes.find(v => v.id === d3Ele.key)!
 
-    node.select('path').attr('fill', '#f8f8f8')
+    node.select('path').attr('fill', item.color)
 
     // Initializes the position of the image
     const _image = node.select('image')
@@ -197,21 +255,25 @@ export const initNodes = (fundFlow: FundFlowRes) => {
       _image?.attr('x', `${Number(_x) - IMAGE_CENTER_TO_LEFT_PX}`)
     }
 
-    // Initializes the position of the text
-    node.selectAll('text').each(function () {
+    // Initializes the position and color of the text
+    node.selectAll('text').each(function (_, index: number) {
       select(this).attr('x', Number(select(this).attr('x')) - 48)
+      if (item.address.length < 22) {
+        select(this).attr('y', Number(select(this).attr('y')) + 5)
+      }
+      if (!item.label || (item.label && !!index)) {
+        select(this).attr('fill', `${getContrastColor(item.color)}90`)
+      }
     })
 
     node.on('mouseenter', () => {
-      const item = fundFlow.nodes.find(v => v.id === d3Ele.key)!
-
       nodeStrokeWidthChange(node, '#00a54c', '3')
 
-      nodeHover(node, d3Ele.key, item)
+      nodeHover(node, d3Ele.key, item, onEditPrivateLabel)
     })
 
     node.on('mouseleave', () => {
-      nodeStrokeWidthChange(node, '#f8f8f8', '1')
+      nodeStrokeWidthChange(node, item.color, '1')
     })
   })
 }

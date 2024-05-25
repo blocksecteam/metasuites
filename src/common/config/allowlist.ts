@@ -1,18 +1,10 @@
 export default {
   ETHERSCAN_V1_MATCHES: [
-    '*://zkevm.polygonscan.com/*',
-    '*://optimistic.etherscan.io/*',
     '*://*.arbiscan.io/*',
-    '*://testnet.ftmscan.com/*',
     '*://cronoscan.com/*',
     '*://*.basescan.org/*',
-    '*://*.lineascan.build/*',
-    '*://*.wemixscan.com/*',
     '*://gnosisscan.io/*',
-    '*://*.celoscan.io/*',
-    '*://*.bttcscan.com/*',
     '*://opbnb-testnet.bscscan.com/*',
-    '*://optimistic.etherscan.io/*',
     '*://goerli-optimism.etherscan.io/*'
   ],
   ETHERSCAN_V2_MATCHES: [
@@ -31,11 +23,26 @@ export default {
     '*://mumbai.polygonscan.com/*',
     '*://*.moonscan.io/*',
     '*://era.zksync.network/*',
-    '*://snowscan.xyz/*'
+    '*://snowscan.xyz/*',
+    '*://optimistic.etherscan.io/*',
+    '*://*.bttcscan.com/*',
+    '*://*.celoscan.io/*',
+    '*://zkevm.polygonscan.com/*',
+    '*://*.lineascan.build/*',
+    '*://*.wemixscan.com/*',
+    '*://testnet.ftmscan.com/*'
   ],
-  BTC_EXPLORER_MATCHES: ['*://explorer.btc.com/*'],
+  BTC_EXPLORER_MATCHES: ['*://*.btc.com/*'],
   BLOCKSEC_MATCHES: ['*://*.blocksec.com/*'],
   OPENSEA_MATCHES: ['*://*.opensea.io/*'],
   TRONSCAN_MATCHES: ['*://*.tronscan.org/*'],
-  BLOCKSCOUT_MATCHES: ['*://*.blockscout.com/*']
+  BLOCKSCOUT_MATCHES: ['*://*.blockscout.com/*'],
+  MERLIN_SCAN_MATCHES: ['*://scan.merlinchain.io/*'],
+  SOLSCAN_MATCHES: ['*://solscan.io/*'],
+  SOLANAFM_MATCHES: ['*://solana.fm/*'],
+  SOLANA_EXPLORER_MATCHES: ['*://explorer.solana.com/*'],
+  MS_MATCHES: ['*://*.metasleuth.io/*'],
+  DEBANK_MATCHES: ['*://debank.com/*'],
+  ARKHAM_MATCHES: ['*://platform.arkhamintelligence.com/*'],
+  DEX_MATCHES: ['*://dexscreener.com/*']
 }

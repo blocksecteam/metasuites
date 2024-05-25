@@ -8,10 +8,11 @@ import { GET_IMPL_LABELS } from '@common/constants'
 import {
   getEtherscanNameTag,
   getEtherscanTags,
-  getEtherscanEnsName
+  getEtherscanEnsName,
+  classifyByChain
 } from '@common/utils'
 
-import { MainAddressLabel } from '../components'
+import { MainAddressLabel, MainPrivateLabel } from '../components'
 
 /** enhanced address label */
 const genMainAddressLabel = async (chain: string) => {
@@ -22,10 +23,11 @@ const genMainAddressLabel = async (chain: string) => {
   await chromeEvent
     .emit(GET_IMPL_LABELS, { chain: chain, addresses: [mainAddress] })
     .then((res: CallbackResponse<AddressLabel[]> | undefined) => {
+      const containerEl = $(
+        '#ContentPlaceHolder1_divSummary > div:first-child > div:first-child'
+      )
+      $('#ContentPlaceHolder1_divSummary > div').removeAttr('style')
       if (res?.success && res.data.length) {
-        const containerEl = $(
-          '#ContentPlaceHolder1_divSummary > div:first-child > div:first-child'
-        )
         const label = res.data[0].label
         if (
           label &&
@@ -33,7 +35,6 @@ const genMainAddressLabel = async (chain: string) => {
           label !== getEtherscanEnsName() &&
           !getEtherscanTags().includes(label)
         ) {
-          $('#ContentPlaceHolder1_divSummary > div').removeAttr('style')
           const labelRootEl = $('<span></span>')
           containerEl.append(labelRootEl)
           createRoot(labelRootEl[0]).render(
@@ -41,6 +42,14 @@ const genMainAddressLabel = async (chain: string) => {
           )
         }
       }
+      const localLabelEl = $('<span></span>')
+      containerEl.append(localLabelEl)
+      createRoot(localLabelEl[0]).render(
+        <MainPrivateLabel
+          chainType={classifyByChain(chain)}
+          address={mainAddress}
+        />
+      )
     })
 }
 

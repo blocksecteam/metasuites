@@ -1,3 +1,12 @@
+### v5.0.0
+
+- [feat] Supports Solana scans
+- [feat] Added local label functionality
+- [feat] Supports Arkham local label functionality and Phalcon quick link, Debank local label functionality
+- [feat] Supports Merlin Scan
+- [feat] BTC Explorer supports local label functionality
+- [feat] Etherscan supports quick opening of transaction lists in the Phalcon explorer
+
 ### v4.8.0
 
 - [fix] Fix bug causing style conflicts

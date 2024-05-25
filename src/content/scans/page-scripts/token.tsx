@@ -19,7 +19,8 @@ import {
   genProxyContractLog,
   genSimulateBtn,
   genContractVariableLogsBtn,
-  genDedaubStorageShortcut
+  genDedaubStorageShortcut,
+  genTransactionHashPhalconLink
 } from '../feat-scripts'
 
 const initTokenPageScript = async (chain: string) => {
@@ -40,7 +41,8 @@ const initTokenPageScript = async (chain: string) => {
     proxyLogs,
     txSimulator,
     variableLogs,
-    dedaubStorage
+    dedaubStorage,
+    quick2Parsers
   } = await store.get('options')
   if (showCopyIcon) genCopyIconBtn(ETHERSCAN_PAGES.TOKEN.name)
   if (enhancedLabels) genEnhancedLabels(chain)
@@ -59,6 +61,7 @@ const initTokenPageScript = async (chain: string) => {
   if (dedaubStorage) genDedaubStorageShortcut(chain)
   if (txSimulator && isSupportSimulator(chain)) genSimulateBtn(chain)
   if (variableLogs) genContractVariableLogsBtn(chain)
+  if (quick2Parsers) genTransactionHashPhalconLink(ETHERSCAN_PAGES.TOKEN.name)
 }
 
 export default initTokenPageScript

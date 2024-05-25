@@ -1,6 +1,6 @@
 {
   "name": "metasuites",
-  "version": "4.8.1",
+  "version": "5.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/blocksecteam/metasuites.git"
@@ -31,6 +31,7 @@
     "buffer": "^6.0.3",
     "chrome-extension-core": "0.1.8",
     "classnames": "^2.3.2",
+    "colorjs.io": "^0.5.0",
     "copy-to-clipboard": "^3.3.3",
     "d3": "^5.0.0",
     "d3-graphviz": "2.6.1",
@@ -45,6 +46,8 @@
     "ky": "^0.33.3",
     "lodash-es": "^4.17.21",
     "normalize.css": "^8.0.1",
+    "papaparse": "^5.4.1",
+    "qs": "^6.12.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "save-svg-as-png": "^1.4.17",
@@ -62,6 +65,8 @@
     "@types/json-bigint": "^1.0.1",
     "@types/lodash-es": "^4.17.6",
     "@types/node": "^18.11.8",
+    "@types/papaparse": "^5.3.14",
+    "@types/qs": "^6.9.15",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "@types/webextension-polyfill": "^0.10.0",

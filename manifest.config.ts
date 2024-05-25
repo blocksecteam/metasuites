@@ -48,9 +48,16 @@ export default defineManifest((env: ConfigEnv) => {
       {
         matches: isDev
           ? [
-              '*://explorer.btc.com/*',
+              '*://*.btc.com/*',
               '*://*.opensea.io/*',
-              '*://*.tronscan.org/*'
+              '*://*.tronscan.org/*',
+              '*://scan.merlinchain.io/*',
+              '*://solscan.io/*',
+              '*://*.solana.fm/*',
+              '*://*.metasleuth.io/*',
+              '*://explorer.solana.com/*',
+              '*://debank.com/*',
+              '*://platform.arkhamintelligence.com/*'
             ]
           : ['<all_urls>'],
         js: ['src/content/index.ts'],

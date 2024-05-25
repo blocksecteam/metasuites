@@ -81,7 +81,7 @@ const setupInputData = (container?: JQuery<HTMLElement>) => {
             cur.value.endsWith(']')
           let value = ''
           try {
-            isArray ? JSON.parse(cur.value) : cur.value
+            value = isArray ? JSON.parse(cur.value) : cur.value
           } catch (e) {
             value = ''
           }

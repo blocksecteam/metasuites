@@ -28,6 +28,10 @@ export interface PostAddressParams {
   address: string
 }
 
+export interface FundFlowParams extends PostAddressParams {
+  token?: string
+}
+
 export interface PostPrivateVariablesParams extends PostAddressParams {
   implAddress?: string
 }
@@ -39,6 +43,9 @@ export interface AddressLabel {
   implementAddress?: string
   implementLabel?: string
   implementLogo?: string
+  chain: string
+  chainId: number
+  isLocal?: boolean
 }
 
 export interface MethodLabel {
@@ -58,6 +65,8 @@ export interface AddressRiskScoreReq extends PostAddressParams {
 export interface FundFlowRes {
   nodes: FundFlowNode[]
   edges: FundFlowEdge[]
+  code?: number
+  message?: string
 }
 export interface FundFlowNode extends Record<string, unknown> {
   id: string
@@ -67,6 +76,7 @@ export interface FundFlowNode extends Record<string, unknown> {
   type: number
   isContract: boolean
   url: string
+  color: string
   /** used for filter */
   selected?: boolean
   index?: number
@@ -204,7 +214,7 @@ export interface PrivateVariableArgument {
 
 export interface PrivateVariable {
   name: string
-  inputs: { name: string; type: string }[]
+  inputs: { name: string; type: string; id: number }[]
   outputs: { name: string; type: string }[]
   value?: PrivateVariableArgument
   mutability: ContractVariableMutability
@@ -363,4 +373,10 @@ export interface ContractVariableListItem {
   name: string
   mutability: ContractVariableMutability
   visibility: ContractVariableVisibility
+}
+
+export interface SimulationFeesParams {
+  chain: string
+  blockNumber?: number
+  isPrerun: boolean
 }

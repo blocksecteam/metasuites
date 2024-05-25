@@ -10,7 +10,12 @@ import {
   TRONSCAN_TABS_CHANGED,
   LOAD_TRON_APPROVALS,
   TRONSCAN_MULTI_SEARCH,
-  URL_UPDATED
+  URL_UPDATED,
+  GET_SOLSCAN_ACCOUNT_INFO,
+  GET_SOLANAFM_ACCOUNT_INFO,
+  GET_SOLANAFM_ACCOUNT_TRANSFERS,
+  GET_SOLSCAN_ACCOUNT_TAB_DATA,
+  GET_SOLSCAN_TRANSACTION
 } from '@common/constants'
 
 import { initBackgroundRequest } from './listeners'
@@ -129,6 +134,84 @@ browser.webRequest.onCompleted.addListener(
   },
   {
     urls: ['https://apilist.tronscanapi.com/api/multi/search?*']
+  }
+)
+
+browser.webRequest.onCompleted.addListener(
+  async details => {
+    const { tabId, method } = details
+    if (tabId && method === 'GET') {
+      browser.tabs
+        .sendMessage(tabId, GET_SOLSCAN_ACCOUNT_INFO)
+        .catch(() => void 0)
+    }
+  },
+  {
+    urls: ['https://api.solscan.io/v2/account?*']
+  }
+)
+
+browser.webRequest.onCompleted.addListener(
+  async details => {
+    const { tabId, method } = details
+    if (tabId && method === 'GET') {
+      browser.tabs
+        .sendMessage(tabId, GET_SOLSCAN_ACCOUNT_TAB_DATA)
+        .catch(() => void 0)
+    }
+  },
+  {
+    urls: [
+      'https://api.solscan.io/v2/account/soltransfer/txs?*',
+      'https://api.solscan.io/v2/account/transaction?*',
+      'https://api.solscan.io/v2/account/v2/tokenaccounts?*',
+      'https://api.solscan.io/v2/account/stake?*',
+      'https://api-v2.solscan.io/v2/account/activity/dextrading?*'
+    ]
+  }
+)
+
+browser.webRequest.onCompleted.addListener(
+  async details => {
+    const { tabId, method } = details
+    if (tabId && method === 'GET') {
+      browser.tabs
+        .sendMessage(tabId, GET_SOLSCAN_TRANSACTION)
+        .catch(() => void 0)
+    }
+  },
+  {
+    urls: ['https://api.solscan.io/v2/transaction-v2?tx=*']
+  }
+)
+
+browser.webRequest.onCompleted.addListener(
+  async details => {
+    const { tabId, method } = details
+    if (tabId && method === 'GET') {
+      browser.tabs
+        .sendMessage(tabId, GET_SOLANAFM_ACCOUNT_INFO)
+        .catch(() => void 0)
+    }
+  },
+  {
+    urls: ['https://api.solana.fm/v0/accounts/*']
+  }
+)
+
+browser.webRequest.onCompleted.addListener(
+  async details => {
+    const { tabId, method } = details
+    if (tabId && method === 'GET') {
+      browser.tabs
+        .sendMessage(tabId, GET_SOLANAFM_ACCOUNT_TRANSFERS)
+        .catch(() => void 0)
+    }
+  },
+  {
+    urls: [
+      'https://api.solana.fm/v0/accounts/BNLtpXLqsjDGxzB1Mmcv3NmEiQhSSWFq8JViKrrrQ8Do/transfers?*'
+    ]
   }
 )
 

@@ -1,13 +1,14 @@
-import React, { type FC } from 'react'
+import React, { type FC, type PropsWithChildren } from 'react'
 
 import { openInternalPage } from '@common/utils'
 
 import styles from './index.module.less'
 import { version } from '../../../../package.json'
 
-const Footer: FC = () => {
+const Brand: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className={styles.container}>
+      <div>{children}</div>
       <div className={styles.policy}>
         <a href="#" onClick={() => openInternalPage('PrivacyPolicy')}>
           Privacy Policy
@@ -27,4 +28,4 @@ const Footer: FC = () => {
   )
 }
 
-export default Footer
+export default Brand

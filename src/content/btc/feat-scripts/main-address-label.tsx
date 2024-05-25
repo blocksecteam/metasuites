@@ -19,24 +19,25 @@ const genMainAddressLabel = async (chain: string) => {
   await chromeEvent
     .emit(GET_ADDRESS_LABELS, { chain: chain, addresses: [mainAddress] })
     .then((res: CallbackResponse<AddressLabel[]> | undefined) => {
-      if (res?.success && res.data.length) {
-        const containerEl = $(
-          '#__next > div:first-of-type > div:nth-of-type(2) > div:nth-of-type(2)'
+      const containerEl = $(
+        '#__next > div:first-of-type > div:nth-of-type(2) > div:nth-of-type(2) > div:first-of-type'
+      )
+      if (res?.success) {
+        const mainAddressLabelEl = document.querySelector<HTMLElement>(
+          '#__BTC_main_address_label__'
         )
-        const label = res.data[0].label
-        if (label && containerEl) {
-          const mainAddressLabelEl = document.querySelector<HTMLElement>(
-            '#__BTC_main_address_label__'
-          )
-          if (mainAddressLabelEl?.innerText === label) return
-          mainAddressLabelEl?.remove()
-          const labelRootEl = $('<div />')
-          labelRootEl.css('display', 'inline-block')
-          labelRootEl.css('margin', '0 0 0 10px')
-          labelRootEl.attr('id', '__BTC_main_address_label__')
-          containerEl.append(labelRootEl)
-          createRoot(labelRootEl[0]).render(<MainAddressLabel label={label} />)
-        }
+        mainAddressLabelEl?.remove()
+        const labelRootEl = $('<div></div>')
+        labelRootEl.css({
+          display: 'inline-flex',
+          margin: '0 0 0 10px',
+          verticalAlign: 'middle'
+        })
+        labelRootEl.attr('id', '__BTC_main_address_label__')
+        containerEl.append(labelRootEl)
+        createRoot(labelRootEl[0]).render(
+          <MainAddressLabel label={res.data[0]} address={mainAddress} />
+        )
       }
     })
 }

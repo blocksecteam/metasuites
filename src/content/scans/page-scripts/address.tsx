@@ -27,7 +27,8 @@ import {
   formatWriteContractParams,
   genProxyContractLog,
   genSimulateBtn,
-  genContractVariableLogsBtn
+  genContractVariableLogsBtn,
+  genTransactionHashPhalconLink
 } from '../feat-scripts'
 
 const initAddressPageScript = async (chain: string) => {
@@ -55,7 +56,8 @@ const initAddressPageScript = async (chain: string) => {
     formatContractParams,
     proxyLogs,
     txSimulator,
-    variableLogs
+    variableLogs,
+    quick2Parsers
   } = await store.get('options')
 
   if (enhancedSignatures) genEnhancedSignatures(chain)
@@ -86,6 +88,7 @@ const initAddressPageScript = async (chain: string) => {
   if (dedaubStorage) genDedaubStorageShortcut(chain)
   if (txSimulator && isSupportSimulator(chain)) genSimulateBtn(chain)
   if (variableLogs) genContractVariableLogsBtn(chain)
+  if (quick2Parsers) genTransactionHashPhalconLink(ETHERSCAN_PAGES.ADDRESS.name)
 }
 
 export default initAddressPageScript

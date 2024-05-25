@@ -3,14 +3,15 @@ import $ from 'jquery'
 import browser from 'webextension-polyfill'
 import { Tooltip, ConfigProvider } from 'antd'
 
-import { isTrxAddress, getSubStr } from '@common/utils'
+import { isTrxAddress, getSubStr, mergeAddressLabels } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import {
   GET_ADDRESS_LABELS,
   TRONSCAN_TABS_CHANGED,
   TRONSCAN_PAGES,
-  TRONSCAN_MULTI_SEARCH
+  TRONSCAN_MULTI_SEARCH,
+  ChainType
 } from '@common/constants'
 import { TokenSymbol } from '@common/components'
 
@@ -67,8 +68,11 @@ const genEnhancedLabels = (page?: string) => {
       addresses: Array.from(new Set(addresses))
     })
 
-    if (res?.success && res?.data?.length) {
-      const resultLabels: AddressLabel[] = res.data
+    if (res?.success) {
+      const resultLabels: AddressLabel[] = await mergeAddressLabels(
+        ChainType.TRON,
+        res.data
+      )
       filteredElements.each(function () {
         const address = $(this).text().trim()
         const match = resultLabels.find((item: AddressLabel) => {
@@ -96,7 +100,7 @@ const genEnhancedLabels = (page?: string) => {
                     <div>{match.address}</div>
                   </div>
                 }
-                className="items-center flex"
+                className="items-center md-flex"
               >
                 <TokenSymbol logo={match.logo} />
                 <span className="flex1">{getSubStr(match.label, [6])}</span>

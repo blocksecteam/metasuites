@@ -28,7 +28,7 @@
       0 9px 28px 0 rgba(0, 0, 0, 0.05), 0 6px 16px -8px rgba(0, 0, 0, 0.08);
     background-color: #ffffff;
     .flex-column;
-    .flex;
+    .md-flex;
 
     .header {
       justify-content: space-between;
@@ -39,12 +39,12 @@
       padding-left: 22px;
       border-bottom: 1px solid #f0f0f0;
       .items-center;
-      .flex;
+      .md-flex;
 
       .basicInfo {
         min-width: 300px;
         .items-center;
-        .flex;
+        .md-flex;
 
         .tokenLogo {
           width: 26px;
@@ -60,7 +60,7 @@
 
       .msButton {
         .items-center;
-        .flex;
+        .md-flex;
 
         gap: 4px;
       }
@@ -78,7 +78,7 @@
         font-size: 14px;
         color: rgba(0, 0, 0, 0.65);
         .items-center;
-        .flex;
+        .md-flex;
 
         label {
           margin: 0 0 0 5px;
@@ -106,7 +106,7 @@
         position: relative;
         margin-right: 10px;
         .items-center;
-        .flex;
+        .md-flex;
 
         &:hover {
           .content {
@@ -175,7 +175,7 @@
         overflow: hidden;
         max-height: 400px;
         .flex-column;
-        .flex;
+        .md-flex;
 
         .input {
           margin: 0 10px;
@@ -209,7 +209,7 @@
           box-shadow: 0 -4px 10px 0 rgba(0, 0, 0, 0.1);
           justify-content: space-between;
           .items-center;
-          .flex;
+          .md-flex;
         }
       }
     }
@@ -259,11 +259,9 @@
       .errorBoundary {
         height: 100%;
         width: 100%;
-        font-size: 14px;
-        color: #747478;
         line-height: 17px;
         .flex-column;
-        .flex;
+        .md-flex;
 
         align-items: center;
         .flex-center;
@@ -274,24 +272,11 @@
         }
 
         p {
-          font-weight: bold;
-          margin: 19px 0;
-        }
-
-        .tryBtn {
-          width: 128px;
-          height: 32px;
-          background-color: #00a54c;
-          border-radius: 2px;
-          transition: background-color 200ms ease-in-out;
-          color: #ffffff;
           font-size: 14px;
-          cursor: pointer;
-          .flex-center;
-
-          &:hover {
-            background-color: #017f3a;
-          }
+          color: #747478;
+          margin: 32px 0 56px;
+          max-width: 640px;
+          text-align: center;
         }
       }
     }

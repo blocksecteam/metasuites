@@ -22,12 +22,16 @@ const MainAddressLabel: FC<Props> = ({
         </a>
       }
     >
-      <div className="badge bg-success bg-opacity-10 border border-success border-opacity-25 text-green-600 text-nowrap rounded-pill py-1.5 px-2">
-        <TokenSymbol />
+      <div
+        style={{ height: 24.88 }}
+        className="badge bg-success bg-opacity-10 border border-success border-opacity-25 text-green-600 text-nowrap rounded-pill py-1.5 px-2"
+      >
+        <TokenSymbol size={10.88} />
         {label}
         {implementLabel?.trim() && (
           <a href={`/address/${implementAddress}`} target="_blank">
-            {` ( ->`} <TokenSymbol logo={implementLogo} /> {implementLabel} )
+            {` ( ->`} <TokenSymbol size={10.88} logo={implementLogo} />{' '}
+            {implementLabel} )
           </a>
         )}
       </div>

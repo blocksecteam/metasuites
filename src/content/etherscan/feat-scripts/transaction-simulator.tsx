@@ -81,7 +81,7 @@ const setupInputData = (container?: JQuery<HTMLElement>) => {
             cur.value.endsWith(']')
           let value = ''
           try {
-            isArray ? JSON.parse(cur.value) : cur.value
+            value = isArray ? JSON.parse(cur.value) : cur.value
           } catch (e) {
             value = ''
           }
@@ -153,7 +153,7 @@ const renderUnverifiedSimulateButton = (chain: string, address: string) => {
   root.insertBefore(dividcode)
   createRoot(root[0]).render(
     <SimulateBtn
-      className="items-center flex"
+      className="items-center md-flex"
       style={{ boxShadow: 'none' }}
       onClick={() => {
         renderDrawer({ chain, address })

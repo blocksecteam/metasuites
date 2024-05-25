@@ -28,7 +28,8 @@ import {
   genProxyContractLog,
   genEvmStorageShortcut,
   genSimulateBtn,
-  genContractVariableLogsBtn
+  genContractVariableLogsBtn,
+  genTransactionHashPhalconLink
 } from '../feat-scripts'
 
 const initAddressPageScript = async (chain: string) => {
@@ -58,7 +59,8 @@ const initAddressPageScript = async (chain: string) => {
     proxyLogs,
     evmStorage,
     txSimulator,
-    variableLogs
+    variableLogs,
+    quick2Parsers
   } = await store.get('options')
 
   if (enhancedSignatures) genEnhancedSignatures(chain)
@@ -92,6 +94,7 @@ const initAddressPageScript = async (chain: string) => {
   if (evmStorage) genEvmStorageShortcut(chain)
   if (txSimulator) genSimulateBtn(chain)
   if (variableLogs) genContractVariableLogsBtn(chain)
+  if (quick2Parsers) genTransactionHashPhalconLink(ETHERSCAN_PAGES.ADDRESS.name)
 }
 
 export default initAddressPageScript

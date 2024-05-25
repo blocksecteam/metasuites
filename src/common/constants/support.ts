@@ -19,7 +19,7 @@ export interface ExtSupportWebsite {
 export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
   {
     name: 'BTC',
-    domains: ['explorer.btc.com'],
+    domains: ['explorer.btc.com', 'btc.com'],
     href: 'https://explorer.btc.com/btc',
     chain: 'btc',
     siteName: 'ETHERSCAN',
@@ -31,7 +31,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 1,
     chain: 'eth',
     siteName: 'ETHERSCAN',
-    logo: 'https://assets.blocksec.com/image/1671685360787-7.png',
+    logo: 'https://assets.blocksec.com/image/1715761316111-2.svg',
     testNets: [
       {
         name: 'Sepolia',
@@ -417,6 +417,52 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['zksync.blockscout.com'],
     siteName: 'BLOCKSCOUT',
     logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/zk-sync.png'
+  },
+  {
+    name: 'MerlinScan',
+    chain: 'merlin',
+    domains: ['scan.merlinchain.io'],
+    siteName: 'MERLINSCAN',
+    logo: 'https://assets.blocksec.com/image/1711950037081-2.png'
+  },
+  {
+    name: 'Solscan',
+    chain: 'solana',
+    domains: ['solscan.io'],
+    siteName: 'SOLSCAN',
+    logo: 'https://assets.blocksec.com/image/1716447208502-2.svg'
+  },
+  {
+    name: 'SolanaFM',
+    chain: 'solana',
+    domains: ['solana.fm'],
+    siteName: 'SOLANAFM',
+    logo: 'https://assets.blocksec.com/image/1716447208502-2.svg'
+  },
+  {
+    name: 'Solana Explorer',
+    chain: 'solana',
+    domains: ['explorer.solana.com'],
+    siteName: 'SOLANAEXPL',
+    logo: 'https://assets.blocksec.com/image/1716447208502-2.svg'
+  },
+  {
+    name: 'Debank',
+    domains: ['debank.com'],
+    siteName: 'DEBANK',
+    logo: 'https://assets.blocksec.com/image/1716165286476-3.svg'
+  },
+  {
+    name: 'Arkham',
+    domains: ['platform.arkhamintelligence.com'],
+    siteName: 'ARKHAM',
+    logo: 'https://assets.blocksec.com/image/1716165286476-2.svg'
+  },
+  {
+    name: 'DEX Screener',
+    domains: ['dexscreener.com'],
+    siteName: 'DEX',
+    logo: 'https://assets.blocksec.com/image/1716165286476-4.svg'
   }
 ]
 
@@ -432,7 +478,8 @@ export const SLEUTH_SUPPORT_LIST = [
   'optimism',
   'linea',
   'base',
-  'tron'
+  'tron',
+  'solana'
 ]
 
 export const ALTERNATIVE_BLOCK_EXPLORES_SUPPORT_LIST = ['eth']
@@ -860,4 +907,32 @@ export const APPROVAL_DIAGNOSIS_SUPPORT_LIST = [
   'linea',
   'wemix',
   'tron'
+]
+
+export const ARKHAM_PHALCON_SUPPORTED_LIST = [
+  {
+    pathname: 'eth',
+    chain: 'eth',
+    name: 'ETHEREUM'
+  },
+  {
+    pathname: 'polygon',
+    chain: 'polygon',
+    name: 'POLYGON'
+  },
+  {
+    pathname: 'avalanche',
+    chain: 'avalanche',
+    name: 'AVALANCHE'
+  },
+  {
+    pathname: 'arbitrum',
+    chain: 'arbitrum',
+    name: 'ARBITRUM'
+  },
+  {
+    pathname: 'base',
+    chain: 'base',
+    name: 'BASE'
+  }
 ]

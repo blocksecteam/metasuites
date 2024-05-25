@@ -24,7 +24,8 @@ import {
   GET_LATEST_BLOCK,
   GET_CREATION_BLOCK,
   GET_CONTRACT_VARIABLE_LOGS,
-  GET_CONTRACT_VARIABLE_LIST
+  GET_CONTRACT_VARIABLE_LIST,
+  GET_SIMULATION_FEES
 } from '@common/constants'
 import commonApi from '@common/api'
 
@@ -108,5 +109,8 @@ export default function initExploreRequest() {
   })
   chromeEvent.on(GET_CONTRACT_VARIABLE_LIST, async params => {
     return await commonApi.getContractVariableList(params)
+  })
+  chromeEvent.on(GET_SIMULATION_FEES, async params => {
+    return await commonApi.getSimulationFees(params)
   })
 }

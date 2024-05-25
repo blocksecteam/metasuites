@@ -7,7 +7,8 @@ import {
   convertUTC2locale,
   genExportTableDataBtn,
   genCopyIconBtn,
-  scanTxnFortaAlert
+  scanTxnFortaAlert,
+  genTransactionHashPhalconLink
 } from '../feat-scripts'
 
 const initTxsPageScript = async (chain: string) => {
@@ -17,7 +18,8 @@ const initTxsPageScript = async (chain: string) => {
     utc2locale,
     exportTableData,
     showCopyIcon,
-    txnFortaAlert
+    txnFortaAlert,
+    quick2Parsers
   } = await store.get('options')
 
   if (enhancedLabels) {
@@ -30,6 +32,7 @@ const initTxsPageScript = async (chain: string) => {
   if (exportTableData) genExportTableDataBtn(chain, ETHERSCAN_PAGES.TXS.name)
   if (showCopyIcon) genCopyIconBtn(ETHERSCAN_PAGES.TXS.name)
   if (txnFortaAlert) scanTxnFortaAlert(chain)
+  if (quick2Parsers) genTransactionHashPhalconLink(ETHERSCAN_PAGES.TXS.name)
 }
 
 export default initTxsPageScript

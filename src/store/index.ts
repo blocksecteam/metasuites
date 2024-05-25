@@ -4,7 +4,8 @@ import {
   SCOPE,
   EXT_SUPPORT_WEB_LIST,
   TransactionParsers,
-  type ExtSupportWebsite
+  type ExtSupportWebsite,
+  type ChainType
 } from '@common/constants'
 
 /**
@@ -42,7 +43,8 @@ const OPTIONS = [
   'proxyLogs',
   'evmStorage',
   'txSimulator',
-  'variableLogs'
+  'variableLogs',
+  'enablePrivateLabels'
 ] as const
 
 export type OptKeys = (typeof OPTIONS)[number]
@@ -53,12 +55,21 @@ export type Options = {
 
 export type OptWebsite = ExtSupportWebsite & { enabled: boolean }
 
+export interface PrivateLabel {
+  address: string
+  label: string
+  color?: string
+  chainType: ChainType
+}
+
 export type StorageInfo = {
   supportWebList: {
     [key: ExtSupportWebsite['name']]: OptWebsite
   }
   options: Options
   alternativeParsers: Record<string, boolean>
+  privateLabels: Record<string, PrivateLabel>
+  token: string
 }
 
 export const defaultValue: StorageInfo = {
@@ -98,13 +109,16 @@ export const defaultValue: StorageInfo = {
     proxyLogs: true,
     evmStorage: true,
     txSimulator: true,
-    variableLogs: true
+    variableLogs: true,
+    enablePrivateLabels: true
   },
   alternativeParsers: {
     [TransactionParsers.OPENCHAIN.name()]: true,
     [TransactionParsers.TENDERLY.name()]: true,
     [TransactionParsers.DEDAUB.name()]: false
-  }
+  },
+  privateLabels: {},
+  token: ''
 }
 
 /**

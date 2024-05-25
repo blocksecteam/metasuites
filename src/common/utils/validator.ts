@@ -6,12 +6,16 @@ import {
   PATTERN_BTC_ADDRESS_EXAC,
   PATTERN_SELECTOR_LOOSE,
   PATTERN_TRX_ADDRESS_LOOSE,
-  PATTERN_TRX_ADDRESS_EXAC
+  PATTERN_TRX_ADDRESS_EXAC,
+  PATTERN_SOLANA_ADDRESS_EXAC
 } from '@common/constants'
 
 export const isAddress = (str: string): boolean => {
   return (
-    PATTERN_EVM_ADDRESS_EXAC.test(str) || PATTERN_BTC_ADDRESS_EXAC.test(str)
+    PATTERN_EVM_ADDRESS_EXAC.test(str) ||
+    PATTERN_BTC_ADDRESS_EXAC.test(str) ||
+    PATTERN_TRX_ADDRESS_EXAC.test(str) ||
+    PATTERN_SOLANA_ADDRESS_EXAC.test(str)
   )
 }
 

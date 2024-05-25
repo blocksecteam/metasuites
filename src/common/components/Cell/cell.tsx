@@ -38,7 +38,7 @@ const Cell: FC<CellProps> = props => {
       style={style}
       onClick={onClick}
     >
-      <div className="items-center flex1 flex">
+      <div className="items-center flex1 md-flex">
         {icon && <img className={styles.icon} src={icon} alt="" />}
         <div className={cls(styles.title, 'flex1')}>
           <span style={{ fontSize: desc ? '14px' : '12px' }}>{title}</span>

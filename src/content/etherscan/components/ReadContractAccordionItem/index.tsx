@@ -111,7 +111,7 @@ const ReadContractAccordionItem: FC<Props> = ({
           aria-controls={id}
           onClick={resizeIframe}
         >
-          <div className="items-center flex">
+          <div className="items-center md-flex">
             <span>
               {id.split('-')[1]}. {name} ({' '}
             </span>
@@ -148,7 +148,7 @@ const ReadContractAccordionItem: FC<Props> = ({
                           onChange={e =>
                             setFormData({
                               ...formData,
-                              [item.name]: e.target.value
+                              [item.id]: e.target.value
                             })
                           }
                         />
@@ -169,7 +169,7 @@ const ReadContractAccordionItem: FC<Props> = ({
                       onClick={errorCallback => {
                         const _inputs = inputs.map(i => ({
                           ...i,
-                          value: formData[i.name]
+                          value: formData[i.id]
                         }))
                         if (_inputs.findIndex(i => !i.value?.trim()) !== -1) {
                           return errorCallback()
@@ -214,7 +214,7 @@ const ReadContractAccordionItem: FC<Props> = ({
                     {errorMsg ? (
                       errorMsg
                     ) : queryResult ? (
-                      <div className="items-center flex">
+                      <div className="items-center md-flex">
                         <br />
                         {typeof queryResult.value === 'string' ? (
                           <div>

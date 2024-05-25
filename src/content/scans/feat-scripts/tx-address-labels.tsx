@@ -5,11 +5,16 @@ import { isAddress } from 'ethers'
 import {
   pickAddress,
   setDeepestChildText,
-  getHrefQueryVariable
+  getHrefQueryVariable,
+  mergeAddressLabels
 } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
-import { GET_ADDRESS_LABELS, GET_IMPL_LABELS } from '@common/constants'
+import {
+  GET_ADDRESS_LABELS,
+  GET_IMPL_LABELS,
+  ChainType
+} from '@common/constants'
 import { TokenSymbol } from '@common/components'
 
 const genImplAddressLabel = async (chain: string) => {
@@ -40,7 +45,12 @@ const genImplAddressLabel = async (chain: string) => {
     }
   )
 
-  if (res?.success && res?.data?.length) {
+  if (res?.success) {
+    const resultLabels: AddressLabel[] = await mergeAddressLabels(
+      ChainType.EVM,
+      res.data
+    )
+
     // Replace the tags added by Etherscan
     if (match) {
       $('#spanToAdd')
@@ -57,7 +67,7 @@ const genImplAddressLabel = async (chain: string) => {
       implementLogo,
       address,
       logo
-    } = res.data[0]
+    } = resultLabels[0]
     toAddress.text(address)
     const proxySymbolRootEl = $('<span></span>')
     const implSymbolRootEl = $('<span></span>')
@@ -146,8 +156,11 @@ const genNormalAddressLabels = async (chain: string) => {
     }
   )
 
-  if (res?.success && res?.data?.length) {
-    const resultLabels: AddressLabel[] = res.data
+  if (res?.success) {
+    const resultLabels: AddressLabel[] = await mergeAddressLabels(
+      ChainType.EVM,
+      res.data
+    )
     resultLabels.forEach(item => {
       tagList.forEach(el => {
         const href = el.getAttribute('href')?.toLowerCase() ?? ''

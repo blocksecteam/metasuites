@@ -1,17 +1,18 @@
 import type { FundFlowRes, FundFlowNode, FundFlowEdge } from '@common/api/types'
-import { swapItem, decodeUnicode, ChainUtils } from '@common/utils'
+import {
+  swapItem,
+  decodeUnicode,
+  ChainUtils,
+  getContrastColor
+} from '@common/utils'
 
 import { NodeType } from './enum'
 
 type FlowType = 'input' | 'output'
 
 type AddressMap = Map<string, FundFlowNode>
-const genNode = (
-  mainChain: string,
-  mainAddress: string,
-  node: FundFlowNode
-) => {
-  const { address, label, id, type, selected, logo, chain } = node
+const genNode = (node: FundFlowNode) => {
+  const { address, label, id, type, selected, logo, chain, color } = node
   if (!selected) return ''
 
   const decodedLabel = decodeUnicode(label)
@@ -20,7 +21,7 @@ const genNode = (
         [
           shape="${type === NodeType.CROSS_CHAIN ? 'doubleoctagon' : 'rect'}"
           style="rounded"
-          color="#f8f8f8"
+          color="${color}"
           fillcolor="#F9F9F9"
           fontcolor="#000"
           tooltip="${address}"
@@ -32,7 +33,7 @@ const genNode = (
           label=<<table border="0">${
             decodedLabel
               ? `<tr><td ALIGN="left" balign="left" FIXEDSIZE="true" width="40" height="15"><FONT
-                COLOR="#000000"
+                COLOR="${getContrastColor(color)}"
                 POINT-SIZE="12px"
               >${
                 decodedLabel.length > 20
@@ -125,15 +126,10 @@ const sort = (edges: FundFlowEdge[]) => {
 
 /**
  *
- * @param chain
  * @param mainAddress
  * @param fundFlow
  */
-const genDotStr = (
-  chain: string,
-  mainAddress: string,
-  fundFlow: FundFlowRes
-) => {
+const genDotStr = (mainAddress: string, fundFlow: FundFlowRes) => {
   const sortedEdges = sort(fundFlow.edges).filter(edge => edge.selected)
   const addressMap: AddressMap = new Map()
 
@@ -157,10 +153,10 @@ const genDotStr = (
     const fromNode: FundFlowNode = addressMap.get(item.from)!
     const toNode: FundFlowNode = addressMap.get(item.to)!
     if (dot.indexOf(`${fromNode.id}`) === -1) {
-      dot += genNode(chain, mainAddress, fromNode)
+      dot += genNode(fromNode)
     }
     if (dot.indexOf(`${toNode.id}`) === -1) {
-      dot += genNode(chain, mainAddress, toNode)
+      dot += genNode(toNode)
     }
   })
 

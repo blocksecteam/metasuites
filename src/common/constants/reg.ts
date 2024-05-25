@@ -30,3 +30,9 @@ export const PATTERN_TRX_ADDRESS_EXAC = /^T[a-zA-Z0-9]{33}$/
 export const PATTERN_TRX_ADDRESS_LOOSE = /T[a-zA-Z0-9]{33}/
 
 export const PATTERN_TRX_TX_HASH = /[a-fA-F0-9]{64}/g
+
+export const PATTERN_SOLANA_ADDRESS_LOOSE = /[1-9A-HJ-NP-Za-km-z]{32,44}/
+export const PATTERN_SOLANA_ADDRESS_EXAC = /^[1-9A-HJ-NP-Za-km-z]{32,44}$/
+
+// TODO: to be confirmed
+export const PATTERN_SOLANA_TX_HASH = /^[1-9A-Za-z]+$/

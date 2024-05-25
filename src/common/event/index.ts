@@ -19,7 +19,9 @@ import type {
   GetContractByABIReq,
   SimulateTxParams,
   PostSignatureReq,
-  PostContractVariableLogsReq
+  PostContractVariableLogsReq,
+  FundFlowParams,
+  SimulationFeesParams
 } from '@common/api/types'
 import type {
   REFRESH,
@@ -51,7 +53,8 @@ import type {
   GET_LATEST_BLOCK,
   GET_CONTRACT_VARIABLE_LOGS,
   GET_CREATION_BLOCK,
-  GET_CONTRACT_VARIABLE_LIST
+  GET_CONTRACT_VARIABLE_LIST,
+  GET_SIMULATION_FEES
 } from '@common/constants/event'
 
 export type EventInfo = {
@@ -61,7 +64,7 @@ export type EventInfo = {
   [GET_ADDRESS_RISK_SCORE]: AddressRiskScoreReq
   [GET_ADDRESS_LABELS]: PostAddressesParams
   [GET_ADDRESS_METHODS]: AddressMethodsReq
-  [GET_ADDRESS_FUND_FLOW]: PostAddressParams
+  [GET_ADDRESS_FUND_FLOW]: FundFlowParams
   [GET_NFT_RARITY_RANK]: NFTRarityRankReq
   [GET_NFT_RISK]: PostAddressParams
   [GET_NFT_USER_LABELS]: NFTUserLabelsReq
@@ -85,6 +88,7 @@ export type EventInfo = {
   [GET_CONTRACT_VARIABLE_LOGS]: PostContractVariableLogsReq
   [GET_CREATION_BLOCK]: PostAddressParams
   [GET_CONTRACT_VARIABLE_LIST]: PostPrivateVariablesParams
+  [GET_SIMULATION_FEES]: SimulationFeesParams
 }
 
 export const chromeEvent = new Event<EventInfo>(SCOPE)

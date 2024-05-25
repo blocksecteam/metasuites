@@ -1,13 +1,19 @@
 import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 
-import { validOrigin, isAddress, getSubStr } from '@common/utils'
+import {
+  validOrigin,
+  isAddress,
+  getSubStr,
+  mergeAddressLabels
+} from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import {
   GET_ADDRESS_LABELS,
   TABLE_LIST_ADDRESS_SELECTORS_V2,
-  TR_CONTRACT_ADDRESS_SELECTORS_V2
+  TR_CONTRACT_ADDRESS_SELECTORS_V2,
+  ChainType
 } from '@common/constants'
 import { widthScanV2Tooltip } from '@common/hoc'
 import { TokenSymbol } from '@common/components'
@@ -26,14 +32,20 @@ const handleReplace = async (
     }
   )
 
-  if (res?.success && res?.data?.length) {
-    const resultLabels: AddressLabel[] = res.data
+  if (res?.success) {
+    const resultLabels: AddressLabel[] = await mergeAddressLabels(
+      ChainType.EVM,
+      res.data
+    )
     resultLabels.forEach(item => {
       elements.forEach(el => {
         el = widthScanV2Tooltip(el)
         const address =
           el.nextElementSibling?.getAttribute('data-clipboard-text') ?? ''
-        if (item.address === address) {
+        if (
+          (el.innerText.startsWith('0x') || item.isLocal) &&
+          item.address.toLowerCase() === address.toLowerCase()
+        ) {
           el.innerHTML = `<a target="_parent" href="/address/${
             item.address
           }">${getSubStr(item.label, [8, 6])}</a>`
@@ -71,16 +83,13 @@ const genEnhancedLabels = async (chain: string) => {
 
     for (let i = 0; i < nodeList.length; ++i) {
       const el = nodeList[i]
-      const innerText = el.innerText
-      if (innerText.startsWith('0x')) {
-        const address =
-          el.nextElementSibling?.getAttribute('data-clipboard-text') ?? ''
-        if (isAddress(address)) {
-          if (!addressList.includes(address)) {
-            addressList.push(address)
-          }
-          tagsList.push(el)
+      const address =
+        el.nextElementSibling?.getAttribute('data-clipboard-text') ?? ''
+      if (isAddress(address)) {
+        if (!addressList.includes(address)) {
+          addressList.push(address)
         }
+        tagsList.push(el)
       }
     }
     return [tagsList, addressList] as const
@@ -95,7 +104,7 @@ const genEnhancedLabels = async (chain: string) => {
         if (_document) {
           const iframeAddressTags = $(_document)
             .find(
-              "a:has(+ a.js-clipboard[aria-label='Copy Address']), span:has(+ a.js-clipboard[aria-label='Copy Address'])"
+              "*:has(+ a[class*='js-clipboard'][aria-label='Copy Address'])"
             )
             .toArray()
 

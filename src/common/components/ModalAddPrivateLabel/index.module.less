@@ -1,0 +1,58 @@
+@import '@common/styles/common.less';
+
+.container {
+  .address {
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 0;
+  }
+  .input {
+    margin-top: 8px;
+  }
+  .label {
+    margin-top: 16px;
+    font-size: 14px;
+  }
+  .colors {
+    margin-top: 8px;
+    gap: 24px;
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+
+    .svg {
+      margin-bottom: 0 !important;
+      .pointer;
+    }
+    li {
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      list-style: none;
+      flex-shrink: 0;
+      .pointer;
+
+      &.active {
+        border: 2px solid #000;
+      }
+    }
+  }
+  .saveButton {
+    width: 100%;
+    background: #448c0c;
+    margin-top: 32px;
+  }
+  .notes {
+    color: #4b5563;
+    font-size: 14px;
+    line-height: 20px;
+    padding-left: 1rem;
+    margin-top: 16px;
+    li {
+      list-style: disc;
+      &:not(:first-child) {
+        margin-top: 8px;
+      }
+    }
+  }
+}

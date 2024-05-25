@@ -1,3 +1,5 @@
+import qs from 'qs'
+
 import request, { type BscResponse } from './request'
 import type {
   AddressMethodsReq,
@@ -39,7 +41,8 @@ import type {
   CreationBlock,
   PostContractVariableLogsReq,
   ContractVariableLog,
-  ContractVariableListItem
+  ContractVariableListItem,
+  SimulationFeesParams
 } from './types'
 
 export default {
@@ -190,5 +193,20 @@ export default {
       .post('api/v1/source-code/hash', {
         json: { code }
       })
-      .json<BscResponse<string>>()
+      .json<BscResponse<string>>(),
+  getSimulationFees: ({
+    chain,
+    isPrerun = true,
+    blockNumber
+  }: SimulationFeesParams) => {
+    const queryString = qs.stringify(
+      { isPrerun, blockNumber: isPrerun ? null : blockNumber },
+      {
+        skipNulls: true
+      }
+    )
+    return request
+      .get(`api/v1/simulation/${chain}/base-fee?${queryString}`)
+      .json<BscResponse<{ baseFee: string }>>()
+  }
 }

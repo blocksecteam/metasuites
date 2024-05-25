@@ -1,12 +1,18 @@
 import { createRoot } from 'react-dom/client'
 
-import { isAddress, validOrigin, getSubStr } from '@common/utils'
+import {
+  validOrigin,
+  getSubStr,
+  mergeAddressLabels,
+  pickAddress
+} from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import {
   GET_ADDRESS_LABELS,
   TABLE_LIST_ADDRESS_SELECTORS,
-  TR_CONTRACT_ADDRESS_SELECTORS
+  TR_CONTRACT_ADDRESS_SELECTORS,
+  ChainType
 } from '@common/constants'
 import { CopyButton, TokenSymbol } from '@common/components'
 
@@ -24,12 +30,20 @@ const handleReplace = async (
     }
   )
 
-  if (res?.success && res?.data?.length) {
-    const resultLabels: AddressLabel[] = res.data
+  if (res?.success) {
+    const resultLabels: AddressLabel[] = await mergeAddressLabels(
+      ChainType.EVM,
+      res.data
+    )
     resultLabels.forEach(item => {
       elements.forEach(el => {
-        const innerText = el.innerText
-        if (item.address === innerText) {
+        const title =
+          el.getAttribute('data-original-title') || el.getAttribute('title')
+        const address = pickAddress(title ?? '')
+        if (
+          (el.innerText.startsWith('0x') || item.isLocal) &&
+          item.address.toLowerCase() === address?.toLowerCase()
+        ) {
           el.innerHTML = `<a target="_parent" href="/address/${
             item.address
           }">${getSubStr(item.label, [8, 6])}</a>`
@@ -73,10 +87,13 @@ const genEnhancedLabels = async (chain: string) => {
 
     for (let i = 0; i < nodeList.length; ++i) {
       const el = nodeList[i]
-      const innerText = el.innerText
-      if (isAddress(innerText)) {
-        if (!addressList.includes(innerText)) {
-          addressList.push(innerText)
+      const title =
+        el.getAttribute('data-original-title') || el.getAttribute('title')
+      if (!title) continue
+      const address = pickAddress(title)
+      if (address) {
+        if (!addressList.includes(address)) {
+          addressList.push(address)
         }
         tagsList.push(el)
       }

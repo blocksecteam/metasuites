@@ -62,11 +62,11 @@ const ModalProxyLog: FC<Props> = ({ visible, onClose, chain, address }) => {
     <BscModal
       width={761}
       className={styles.modalProxyLog}
-      bodyStyle={{ padding: '10px 0 30px' }}
+      styles={{ body: { padding: '10px 0 30px' } }}
       destroyOnClose
       title={
         <div className={cls(styles.title, { [styles.column]: isMobile() })}>
-          <div className="items-center flex">
+          <div className="items-center md-flex">
             <TokenSymbol />
             Proxy Upgrade Log
           </div>

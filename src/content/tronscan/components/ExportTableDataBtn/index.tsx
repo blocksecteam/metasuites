@@ -79,9 +79,6 @@ const ExportTableDataBtn: FC<Props> = ({ chain, table }) => {
     })
     ;[headTitles, rows] = removeUselessRow(headTitles, rows)
 
-    console.log('====headTitles====', headTitles)
-    console.log('====rows====', rows)
-
     if (key === 'csv') {
       downloadCsv(`${chain}-${Date.now()}`, [headTitles, ...rows])
     }
@@ -119,12 +116,12 @@ const ExportTableDataBtn: FC<Props> = ({ chain, table }) => {
         <Button
           size="small"
           type="primary"
-          className="items-center flex"
-          icon={<IconDownload size={12} color="#fff" />}
+          className="items-center md-flex"
+          icon={<IconDownload size={14} color="#fff" />}
         >
           <Space>
             Export Current Page Data
-            <DownOutlined style={{ verticalAlign: 0 }} />
+            <DownOutlined />
           </Space>
         </Button>
       </Dropdown>

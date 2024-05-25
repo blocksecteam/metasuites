@@ -1,6 +1,7 @@
 import React, {
   type FC,
   type ChangeEvent,
+  type ReactNode,
   useEffect,
   useRef,
   useMemo,
@@ -16,15 +17,25 @@ import { debounce, isNil } from 'lodash-es'
 import { GET_ADDRESS_FUND_FLOW, SLEUTH_SUPPORT_LIST } from '@common/constants'
 import { chromeEvent } from '@common/event'
 import type { FundFlowRes, FundFlowEdge, FundFlowNode } from '@common/api/types'
-import { getImageUrl, getSubStr, unique, ChainUtils } from '@common/utils'
+import {
+  getImageUrl,
+  getSubStr,
+  unique,
+  ChainUtils,
+  classifyByChain,
+  formatAddress
+} from '@common/utils'
 import {
   IconDownload,
   Switch,
   IconClose,
-  IconMetaDock
+  IconMetaDock,
+  ModalAddPrivateLabel
 } from '@common/components'
 import { IconMetaSleuth } from '@common/components/icon'
 import { SLEUTH_DOMAIN } from '@common/config/uri'
+import { useStore } from '@common/hooks'
+import { store } from '@src/store'
 
 import styles from './index.module.less'
 import genDotStr from './dot'
@@ -34,6 +45,7 @@ import {
   toggleShowAddressIdx,
   getFundFlowImages
 } from './graph'
+import { ErrorType, ErrorCode, MetaSleuthPlan } from './enum'
 
 interface Props {
   visible: boolean
@@ -42,16 +54,23 @@ interface Props {
   onClose: () => void
 }
 
+interface Error {
+  type: ErrorType
+  message: ReactNode
+}
+
 const ModalFundFlowGraph: FC<Props> = ({
   visible,
   mainAddress,
   chain,
   onClose
 }) => {
+  const [token] = useStore('token')
+
   const graphvizRef = useRef<any>(null)
   const graphContainerRef = useRef<HTMLDivElement>(null)
   const [fundFlow, setFundFlow] = useState<FundFlowRes>()
-  const [error, setError] = useState(false)
+  const [error, setError] = useState<Error | null>(null)
   const [loading, setLoading] = useState(false)
   const [addressKeywords, setAddressKeywords] = useState('')
   const [tokenKeywords, setTokenKeywords] = useState('')
@@ -62,6 +81,9 @@ const ModalFundFlowGraph: FC<Props> = ({
   >()
   const [tokenSelectorVisible, setTokenSelectorVisible] = useState(false)
   const [enableWatermark, setEnableWatermark] = useState(true)
+  const [modeAddPrivateLabelVisible, setModeAddPrivateLabelVisible] =
+    useState(false)
+  const [editingNode, setEditingNode] = useState<FundFlowNode>()
 
   /** when the params.addrOpts is not empty, it is filtering */
   const getFundFlow = async () => {
@@ -71,20 +93,28 @@ const ModalFundFlowGraph: FC<Props> = ({
       FundFlowRes
     >(GET_ADDRESS_FUND_FLOW, {
       chain: chain,
-      address: mainAddress
+      address: mainAddress,
+      token
     })
+    const privateLabels = await store.get('privateLabels')
     setLoading(false)
     if (res?.success && res?.data) {
-      setError(false)
+      setError(null)
       const nodes =
         res.data?.nodes.map((node, index) => {
           const opt = addressOptions.find(item => item.id === node.id)
           let selected = true
           if (opt) selected = !!opt.selected
+          const local =
+            privateLabels[
+              `${classifyByChain(node.chain)}-${formatAddress(node.address)}`
+            ]
           return {
             ...node,
             index,
-            selected: selected
+            selected: selected,
+            label: local?.label || node.label,
+            color: local?.color ? local.color : '#f8f8f8'
           }
         }) ?? []
       setFundFlow({
@@ -115,7 +145,94 @@ const ModalFundFlowGraph: FC<Props> = ({
         )
       )
     } else {
-      setError(true)
+      if (
+        res?.data?.code === ErrorCode.ERR_NO_LOGIN ||
+        res?.data?.code === ErrorCode.ERR_LOGIN_EXPIRE
+      ) {
+        setError({
+          type: ErrorType.NO_LOGIN,
+          message: (
+            <div className={styles.errorBoundary}>
+              <img src={getImageUrl('oops-unauthorized-error')} alt="" />
+              <p>
+                Solana Fundflow is a feature exclusive to MetaSleuth Pro and
+                above members. Please sign in to MetaSleuth to unlock this
+                feature.
+              </p>
+              <ConfigProvider theme={{ token: { colorPrimary: '#bd7c40' } }}>
+                <Button
+                  type="primary"
+                  onClick={() =>
+                    window.open(
+                      `${SLEUTH_DOMAIN}/result/solana/${mainAddress}?referer=${encodeURIComponent(
+                        window.location.href
+                      )}&f=md&r=auth`
+                    )
+                  }
+                >
+                  Sign in
+                </Button>
+              </ConfigProvider>
+            </div>
+          )
+        })
+      } else if (res?.data?.code === ErrorCode.ERR_NO_AUTH) {
+        setError({
+          type: ErrorType.NO_PERMISSION,
+          message: (
+            <div className={styles.errorBoundary}>
+              <img src={getImageUrl('oops-no-auth')} alt="" />
+              <p>
+                Solana Fundflow is a feature exclusive to MetaSleuth Pro and
+                above members. Please upgrade your account or switch to a Pro
+                account to access this feature.
+              </p>
+              <ConfigProvider theme={{ token: { colorPrimary: '#bd7c40' } }}>
+                <div className="flex-center" style={{ gap: 24 }}>
+                  <Button
+                    ghost
+                    type="primary"
+                    onClick={() => {
+                      window.open(
+                        `${SLEUTH_DOMAIN}/result/solana/${mainAddress}?referer=${encodeURIComponent(
+                          window.location.href
+                        )}&f=md&r=auth`
+                      )
+                    }}
+                  >
+                    Switch Account
+                  </Button>
+                  <Button
+                    type="primary"
+                    onClick={() =>
+                      window.open(
+                        `${SLEUTH_DOMAIN}/plans?referer=${encodeURIComponent(
+                          window.location.href
+                        )}&f=md&r=upgrade&nextPlan=${MetaSleuthPlan.PRO}`
+                      )
+                    }
+                  >
+                    Upgrade
+                  </Button>
+                </div>
+              </ConfigProvider>
+            </div>
+          )
+        })
+      } else {
+        setError({
+          type: ErrorType.OTHER,
+          message: (
+            <div className={styles.errorBoundary}>
+              <img src={getImageUrl('oops-service-error')} alt="" />
+              <p>Something went wrong. Please try again later.</p>
+              <Button type="primary" onClick={getFundFlow}>
+                Try Again
+              </Button>
+            </div>
+          )
+        })
+      }
     }
   }
 
@@ -216,16 +333,19 @@ const ModalFundFlowGraph: FC<Props> = ({
           useWorker: false
         })
         .on('end', () => {
-          initNodes(fundFlow)
+          initNodes(fundFlow, (node: FundFlowNode) => {
+            setEditingNode(node)
+            setModeAddPrivateLabelVisible(true)
+          })
         })
 
       const imgList = getFundFlowImages(fundFlow)
       imgList.forEach(v => {
         graphvizRef.current.addImage(v, '32px', '32px')
       })
-      graphvizRef.current.renderDot(genDotStr(chain, mainAddress, fundFlow))
+      graphvizRef.current.renderDot(genDotStr(mainAddress, fundFlow))
     }
-  }, [fundFlow, chain, mainAddress])
+  }, [fundFlow, mainAddress])
 
   useEffect(() => {
     document.body.style.overflow = visible ? 'hidden' : 'unset'
@@ -267,7 +387,10 @@ const ModalFundFlowGraph: FC<Props> = ({
         }
       }}
     >
-      <div className={cls(styles.modalFundFlow, { [styles.show]: visible })}>
+      <div
+        id="__metadock-modal-fund-flow__"
+        className={cls(styles.modalFundFlow, { [styles.show]: visible })}
+      >
         <div className={styles.container}>
           <header className={styles.header}>
             <ConfigProvider
@@ -325,7 +448,7 @@ const ModalFundFlowGraph: FC<Props> = ({
               </div>
               <div
                 id="__metadock-fundflow-options-wrapper__"
-                className="items-center flex"
+                className="items-center md-flex"
               >
                 {fundFlow?.nodes && (
                   <Select
@@ -518,15 +641,7 @@ const ModalFundFlowGraph: FC<Props> = ({
                 <IconMetaDock className={styles.iconMetaDock} />
               </div>
             )}
-            {error && (
-              <div className={styles.errorBoundary}>
-                <img src={getImageUrl('oops-service-error')} alt="" />
-                <p>Something went wrong. Please try again later.</p>
-                <div className={styles.tryBtn} onClick={getFundFlow}>
-                  Try Again
-                </div>
-              </div>
-            )}
+            {error && error.message}
             {!loading && !error ? (
               fundFlow?.edges.length ? (
                 <div
@@ -561,6 +676,44 @@ const ModalFundFlowGraph: FC<Props> = ({
           </div>
         </div>
       </div>
+      {editingNode && (
+        <ModalAddPrivateLabel
+          refreshable={false}
+          chainType={classifyByChain(editingNode.chain)}
+          address={editingNode.address}
+          visible={modeAddPrivateLabelVisible}
+          onClose={() => setModeAddPrivateLabelVisible(false)}
+          onSuccess={(label, color) => {
+            if (label) {
+              const node = fundFlow?.nodes.find(
+                v =>
+                  v.chain === editingNode?.chain &&
+                  v.address === editingNode?.address
+              )
+              if (node) {
+                setFundFlow({
+                  ...fundFlow!,
+                  nodes: fundFlow!.nodes.map(v => {
+                    if (
+                      v.chain === editingNode?.chain &&
+                      v.address === editingNode?.address
+                    ) {
+                      return {
+                        ...v,
+                        label,
+                        color: color || v.color
+                      }
+                    }
+                    return v
+                  })
+                })
+              }
+            } else {
+              getFundFlow()
+            }
+          }}
+        />
+      )}
     </ConfigProvider>,
     document.body
   )

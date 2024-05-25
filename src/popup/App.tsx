@@ -1,13 +1,12 @@
-import React, { type FC, useState } from 'react'
-import { ConfigProvider } from 'antd'
+import React, { type FC } from 'react'
+import { ConfigProvider, Button } from 'antd'
+
+import { IconX } from '@common/components'
 
 import styles from './App.module.less'
-import { Tabs, Shortcuts, Brand, Settings } from './components'
-import { TabKeys } from './constants'
+import { Shortcuts, Brand, Settings } from './components'
 
 const App: FC = () => {
-  const [activeTab, setActiveTab] = useState(TabKeys.Shortcuts)
-
   return (
     <ConfigProvider
       theme={{
@@ -18,9 +17,31 @@ const App: FC = () => {
       }}
     >
       <div className={styles.container}>
-        <Tabs active={activeTab} onChange={key => setActiveTab(key)} />
-        {activeTab === TabKeys.Shortcuts ? <Shortcuts /> : <Settings />}
-        <Brand />
+        <Shortcuts />
+        <Settings />
+        <Brand>
+          <ConfigProvider
+            theme={{
+              token: {
+                colorPrimary: '#000',
+                borderRadiusSM: 9999
+              }
+            }}
+          >
+            <Button
+              ghost
+              size="small"
+              type="primary"
+              className="md-flex items-center"
+              onClick={() =>
+                window.open('https://twitter.com/MetaDockTeam', '_blank')
+              }
+            >
+              <IconX mr={4} />
+              Follow Us
+            </Button>
+          </ConfigProvider>
+        </Brand>
       </div>
     </ConfigProvider>
   )

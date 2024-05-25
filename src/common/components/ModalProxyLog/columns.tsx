@@ -52,7 +52,7 @@ const columns: ColumnsType<ProxyContractLog> = [
   },
   {
     title: (
-      <div className="items-center flex">
+      <div className="items-center md-flex">
         <img
           style={{ width: 16, height: 16, marginRight: 4 }}
           src="https://assets.blocksec.com/image/1681815761137-2.png"

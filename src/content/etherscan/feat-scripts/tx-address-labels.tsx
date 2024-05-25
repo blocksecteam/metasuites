@@ -5,11 +5,16 @@ import { isAddress } from 'ethers'
 import {
   pickAddress,
   setDeepestChildText,
-  getHrefQueryVariable
+  getHrefQueryVariable,
+  mergeAddressLabels
 } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
-import { GET_ADDRESS_LABELS, GET_IMPL_LABELS } from '@common/constants'
+import {
+  GET_ADDRESS_LABELS,
+  GET_IMPL_LABELS,
+  ChainType
+} from '@common/constants'
 import { TokenSymbol } from '@common/components'
 
 const isFromToAddress = (el: HTMLElement) => {
@@ -80,8 +85,11 @@ const genImplAddressLabels = async (chain: string) => {
     }
   )
 
-  if (res?.success && res?.data?.length) {
-    const resultLabels: AddressLabel[] = res.data
+  if (res?.success) {
+    const resultLabels: AddressLabel[] = await mergeAddressLabels(
+      ChainType.EVM,
+      res.data
+    )
     resultLabels.forEach(item => {
       tagList.forEach(el => {
         const href = el.getAttribute('href')?.toLowerCase() ?? ''
@@ -124,7 +132,7 @@ const genImplAddressLabels = async (chain: string) => {
             .append('(')
             .append(proxySymbolRootEl)
             .append(`<span>${label}</span>`)
-          if (implementLabel) {
+          if (implementAddress && implementLabel) {
             labelContainerEl
               .append(`<span style="padding: 0 4px;">(-></span>`)
               .append(implSymbolRootEl)
@@ -177,8 +185,11 @@ const genNormalAddressLabels = async (chain: string) => {
     }
   )
 
-  if (res?.success && res?.data?.length) {
-    const resultLabels: AddressLabel[] = res.data
+  if (res?.success) {
+    const resultLabels: AddressLabel[] = await mergeAddressLabels(
+      ChainType.EVM,
+      res.data
+    )
     resultLabels.forEach(item => {
       tagList.forEach(el => {
         const href = el.getAttribute('href')?.toLowerCase() ?? ''

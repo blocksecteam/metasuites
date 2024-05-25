@@ -144,7 +144,7 @@ const ConfigExploresDrawer: FC<Props> = ({
               style={{ paddingTop: 0 }}
               action={null}
               title={
-                <div className="justify-between flex">
+                <div className="justify-between md-flex">
                   <Space>
                     <span style={{ fontSize: 'inherit' }}>Openchain</span>
                     <Checkbox
@@ -364,13 +364,23 @@ const ConfigExploresDrawer: FC<Props> = ({
               }
             />
             <Cell
-              border={false}
               title="Show Variable Logs"
               action={
                 <Switch
                   size="small"
                   checked={options.variableLogs}
                   onChange={val => onSwitchChange('variableLogs', val)}
+                />
+              }
+            />
+            <Cell
+              border={false}
+              title="Show private local labels"
+              action={
+                <Switch
+                  size="small"
+                  checked={options.enablePrivateLabels}
+                  onChange={val => onSwitchChange('enablePrivateLabels', val)}
                 />
               }
             />
