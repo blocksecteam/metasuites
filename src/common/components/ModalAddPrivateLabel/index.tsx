@@ -22,7 +22,7 @@ interface Props {
   onSuccess?: (label?: string, color?: string) => void
 }
 
-const LABEL_COLORS = [
+export const LABEL_COLORS = [
   '#EF4444',
   '#FB923C',
   '#EAB308',
@@ -33,6 +33,8 @@ const LABEL_COLORS = [
   '#A855F7',
   '#BE185D'
 ]
+
+export const DEFAULT_LABEL_COLOR = '#D9D9D9'
 
 const ModalAddPrivateLabel: FC<Props> = ({
   visible,

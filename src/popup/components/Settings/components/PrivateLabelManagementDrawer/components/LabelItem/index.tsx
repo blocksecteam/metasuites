@@ -8,14 +8,13 @@ import type { PrivateLabel } from '@src/store'
 import { useStore } from '@common/hooks'
 import { chromeEvent } from '@common/event'
 import { REFRESH } from '@common/constants'
+import { DEFAULT_LABEL_COLOR } from '@common/components/ModalAddPrivateLabel'
 
 import styles from './index.module.less'
 
 interface Props {
   data: PrivateLabel
 }
-
-const DEFAULT_LABEL_COLOR = '#D9D9D9'
 
 const LabelItem: FC<Props> = ({
   data,

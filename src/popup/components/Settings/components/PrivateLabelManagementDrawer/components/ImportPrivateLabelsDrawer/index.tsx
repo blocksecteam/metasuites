@@ -4,8 +4,13 @@ import { parse } from 'papaparse'
 
 import { Drawer, IconImport } from '@common/components'
 import type { PrivateLabel } from '@src/store'
-import { EXT_SUPPORT_WEB_LIST } from '@common/constants'
+import { ChainType } from '@common/constants'
 import { useStore } from '@common/hooks'
+import { formatAddress } from '@common/utils'
+import {
+  LABEL_COLORS,
+  DEFAULT_LABEL_COLOR
+} from '@common/components/ModalAddPrivateLabel'
 
 import styles from './index.module.less'
 
@@ -24,13 +29,24 @@ const ImportPrivateLabelsDrawer: FC<Props> = ({ visible, onClose }) => {
     accept: '.csv',
     multiple: false,
     className: styles.upload,
+    beforeUpload: file => {
+      const isLt4M = file.size / 1024 / 1024 < 4
+      if (!isLt4M) {
+        message.error('File must smaller than 4MB')
+        return Upload.LIST_IGNORE
+      }
+      return true
+    },
     customRequest: async ({ file, onSuccess, onError }) => {
       parse(file as File, {
         complete: parsedData => {
           const [headerRow, ...dataRows] = parsedData.data as string[][]
           const jsonData = dataRows.map(row => {
             return headerRow.reduce((obj, header, index) => {
-              obj[header.toLowerCase()] = row[index]
+              obj[header] = row[index]
+              if (!LABEL_COLORS.includes(obj.color?.toUpperCase())) {
+                obj.color = DEFAULT_LABEL_COLOR
+              }
               return obj
             }, {} as Record<string, string>)
           })
@@ -44,22 +60,19 @@ const ImportPrivateLabelsDrawer: FC<Props> = ({ visible, onClose }) => {
     onChange: async info => {
       const { status, response } = info.file
       if (status === 'done') {
-        const chainList = EXT_SUPPORT_WEB_LIST.flatMap(item => [
-          item,
-          ...(item.testNets || [])
-        ])
-          .filter(item => item.chain)
-          .map(item => item.chain)
+        const supportedChainTypes = Object.values(ChainType).filter(
+          item => item !== 'unknown'
+        )
         const labels: PrivateLabel[] = response.filter((item: PrivateLabel) => {
           return (
             item.label &&
             item.address &&
-            chainList.includes(item.chain) &&
+            supportedChainTypes.includes(item.chainType) &&
             item.label.length <= 35
           )
         })
         const records = labels.reduce((obj, item) => {
-          obj[`${item.chain}-${item.address}`] = item
+          obj[`${item.chainType}-${formatAddress(item.address)}`] = item
           return obj
         }, {} as Record<string, PrivateLabel>)
         setPrivateLabels({ ...privateLabels, ...records })
@@ -79,8 +92,9 @@ const ImportPrivateLabelsDrawer: FC<Props> = ({ visible, onClose }) => {
             <IconImport size={40} />
           </p>
           <p className={styles.description}>
-            Support upload CSV files only, with a maximum file size of 1MB. Each
-            import can include up to 1,000 addresses (labels optional).
+            Only CSV format is supported for import, with a maximum file size of
+            4MB. Please refer to the exported CSV format for the correct import
+            format.
           </p>
         </Dragger>
       </div>

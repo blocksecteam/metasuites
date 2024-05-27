@@ -2,13 +2,14 @@ import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 
 import { ChainType } from '@common/constants'
+import { pickAddress } from '@common/utils'
 
 import { MainPrivateLabel } from '../components'
 
 const renderMainAddressLabel = async () => {
   const container = $('div[class^="Header_displayNameAddress"]:first')
 
-  const mainAddress = container.find('input').val()
+  const mainAddress = pickAddress(window.location.pathname)
 
   if (!mainAddress) return
 

@@ -53,7 +53,7 @@ const ComplianceRadarPlot: FC<Props> = ({
             backgroundColor: '#6a7985'
           }
         },
-        formatter: function (params: any, v: any) {
+        formatter: function (params: any) {
           const data = params.value
           function getRisk(value: number) {
             return Object.values(NFT_RISKS).find(

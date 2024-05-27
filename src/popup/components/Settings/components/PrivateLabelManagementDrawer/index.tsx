@@ -24,7 +24,10 @@ const PrivateLabelManagementDrawer: FC<Props> = ({ visible, onClose }) => {
   const labelList = useMemo(() => {
     return Object.values(privateLabels).filter(item => {
       if (keyword.trim()) {
-        return item.label.indexOf(keyword) > -1
+        return (
+          item.label.toLowerCase().indexOf(keyword.toLowerCase()) > -1 ||
+          item.address.toLowerCase().indexOf(keyword.toLowerCase()) > -1
+        )
       } else {
         return true
       }

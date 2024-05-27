@@ -1,3 +1,9 @@
+### v5.0.1
+
+- [perf] Search for private tags ignores case sensitivity
+- [fix] Fix the bug where saving local labels on the Arkham website fails
+- [dix] Fix the bug where importing local labels fails
+
 ### v5.0.0
 
 - [feat] Supports Solana scans

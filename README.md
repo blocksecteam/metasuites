@@ -41,7 +41,6 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 - [x] Show evm.storage shortcut
 - [x] Show transaction simulator
 - [x] Show Variable Logs
-- [x] Manage Local Private Labels
 
 ## Supported Websites List
 
@@ -66,12 +65,6 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 - tronscan.org
 - era.zksync.network
 - blockscout.com
-- debank.com
-- platform.arkhamintelligence.com
-- scan.merlinchain.io
-- solscan.io
-- solana.fm
-- explorer.solana.com
 
 ## Contributing
 
