@@ -1,6 +1,6 @@
 import $ from 'jquery'
 
-import { pickAddress, mergeAddressLabels } from '@common/utils'
+import { pickAddress, mergeAddressLabels, isAddress } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import { GET_ADDRESS_LABELS, ChainType } from '@common/constants'
@@ -42,7 +42,7 @@ const handleReplace = async (
 
 const genEnhancedLabels = async (chain: string) => {
   const addressTags = $(
-    "a[href*='/btc/address' i], a[href*='/btc/address' i] > div"
+    'a[href*=\'/btc/address\' i], ul[class*="TxListItem_list-items"] > li > div[class*="TxListItem_item"] > div:not(:has(*))'
   ).toArray()
 
   const addressList: string[] = []
@@ -50,11 +50,20 @@ const genEnhancedLabels = async (chain: string) => {
 
   for (let i = 0; i < addressTags.length; ++i) {
     const el = addressTags[i]
-    const href = el.getAttribute('href')
-    if (href && href.toLowerCase().indexOf('/btc/address/') !== -1) {
-      tagsList.push(el)
-      const address = pickAddress(href)
-      if (address && !addressList.includes(address)) addressList.push(address)
+    if (el instanceof HTMLAnchorElement) {
+      const href = el.getAttribute('href')
+      if (href && href.toLowerCase().indexOf('/btc/address/') !== -1) {
+        tagsList.push(el)
+        const address = pickAddress(href)
+        if (address && !addressList.includes(address)) addressList.push(address)
+      }
+    }
+    if (el instanceof HTMLDivElement) {
+      const innerText = el.innerText.trim()
+      if (isAddress(innerText)) {
+        tagsList.push(el)
+        if (!addressList.includes(innerText)) addressList.push(innerText)
+      }
     }
   }
 

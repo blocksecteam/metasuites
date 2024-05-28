@@ -1,3 +1,9 @@
+### v5.0.2
+
+- [fix] Fixed the bug where the to address on the transaction page might be incorrectly replaced
+- [fix] Fixed the bug where the current address is not being replaced in the BTC explorer
+- [fix] Fixed the bug where the CPU and memory usage increases in slow network conditions
+
 ### v5.0.1
 
 - [perf] Search for private tags ignores case sensitivity

@@ -48,8 +48,11 @@ const genImplAddressLabel = async (chain: string) => {
   if (res?.success) {
     const resultLabels: AddressLabel[] = await mergeAddressLabels(
       ChainType.EVM,
-      res.data
+      res.data,
+      value => value.address.toLowerCase() === text.toLowerCase()
     )
+
+    if (!resultLabels.length) return
 
     // Replace the tags added by Etherscan
     if (match) {
@@ -166,7 +169,7 @@ const genNormalAddressLabels = async (chain: string) => {
         const href = el.getAttribute('href')?.toLowerCase() ?? ''
         const address = getHrefQueryVariable(href, 'a') ?? pickAddress(href)
 
-        if (item.address === address) {
+        if (item.address.toLowerCase() === address?.toLowerCase()) {
           const id = el.getAttribute('id')
           if (id === 'addressCopy') {
             // from address

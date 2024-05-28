@@ -3,7 +3,7 @@ import $ from 'jquery'
 export const lazyLoad = (
   callback: () => void,
   inspector: string,
-  maxRetries = 50
+  maxRetries = 60
 ) => {
   const loading = !$(inspector).length
   if (loading) {

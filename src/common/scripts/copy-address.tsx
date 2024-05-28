@@ -8,15 +8,19 @@ import {
   getHrefQueryVariable,
   getChainSimpleName
 } from '@common/utils'
-import { PATTERN_EVM_TX_HASH } from '@common/constants'
+import { PATTERN_EVM_TX_HASH, PHALCON_SUPPORT_LIST } from '@common/constants'
 import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
 
 const PhalconExplorerButton: FC<{ hash: string }> = ({ hash }) => {
   const chain = getChainSimpleName()
 
+  const pathname = PHALCON_SUPPORT_LIST.find(
+    item => item.chain === chain
+  )?.pathname
+
   const handleClick = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     e.preventDefault()
-    window.open(`${PHALCON_EXPLORER_DOMAIN}/tx/${chain}/${hash}`, '_blank')
+    window.open(`${PHALCON_EXPLORER_DOMAIN}/tx/${pathname}/${hash}`, '_blank')
   }
 
   if (!chain) return null

@@ -94,7 +94,7 @@ const genImplAddressLabels = async (chain: string) => {
       tagList.forEach(el => {
         const href = el.getAttribute('href')?.toLowerCase() ?? ''
         const address = getHrefQueryVariable(href, 'a') ?? pickAddress(href)
-        if (item.address === address) {
+        if (item.address.toLowerCase() === address?.toLowerCase()) {
           const regex = /\((.*?)\)/
           const matchEthersTag = $(el).parent().text().match(regex)
           // Replace the tags added by Etherscan

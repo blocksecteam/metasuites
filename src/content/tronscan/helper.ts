@@ -2,20 +2,25 @@ import $ from 'jquery'
 
 export const lazyLoad = (
   callback: () => void,
-  inspector = '#mainContent #loadingVideo'
+  inspector = '#mainContent #loadingVideo',
+  maxRetries = 60
 ) => {
   const loadingDocument = !$('#mainContent').length
   if (loadingDocument) {
-    setTimeout(() => {
-      lazyLoad(callback)
-    }, 500)
+    if (maxRetries > 0) {
+      setTimeout(() => {
+        lazyLoad(callback, inspector, maxRetries - 1)
+      }, 500)
+    }
   } else {
     const loadingContent = !!$(inspector).length
 
     if (loadingContent) {
-      setTimeout(() => {
-        lazyLoad(callback)
-      }, 500)
+      if (maxRetries > 0) {
+        setTimeout(() => {
+          lazyLoad(callback, inspector, maxRetries - 1)
+        }, 500)
+      }
     } else {
       callback()
     }

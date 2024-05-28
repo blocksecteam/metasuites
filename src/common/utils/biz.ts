@@ -95,7 +95,12 @@ export const getPhalconSimulationURL = (
 
 export const mergeAddressLabels = async (
   chainType: ChainType,
-  addressLabels: AddressLabel[]
+  addressLabels: AddressLabel[],
+  predicate: (
+    value: AddressLabel,
+    index: number,
+    array: AddressLabel[]
+  ) => boolean = () => true
 ) => {
   const privateLabels = await store.get('privateLabels')
   const { enablePrivateLabels } = await store.get('options')
@@ -133,7 +138,10 @@ export const mergeAddressLabels = async (
         isLocal: true
       } as AddressLabel
     })
-  return uniqBy([...localAddressLabels, ...remoteAddressLabels], 'address')
+  return uniqBy(
+    [...localAddressLabels, ...remoteAddressLabels],
+    'address'
+  ).filter(predicate)
 }
 
 /**

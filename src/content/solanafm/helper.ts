@@ -1,18 +1,26 @@
 import $ from 'jquery'
 
-export const lazyLoad = (callback: () => void, inspector: string) => {
+export const lazyLoad = (
+  callback: () => void,
+  inspector: string,
+  maxRetries = 60
+) => {
   const loadingDocument = !$('#__next > main').length
   if (loadingDocument) {
-    setTimeout(() => {
-      lazyLoad(callback, inspector)
-    }, 500)
+    if (maxRetries > 0) {
+      setTimeout(() => {
+        lazyLoad(callback, inspector, maxRetries - 1)
+      }, 500)
+    }
   } else {
     const loadingContent = !!$(inspector).length
 
     if (loadingContent) {
-      setTimeout(() => {
-        lazyLoad(callback, inspector)
-      }, 500)
+      if (maxRetries > 0) {
+        setTimeout(() => {
+          lazyLoad(callback, inspector, maxRetries - 1)
+        }, 500)
+      }
     } else {
       setTimeout(() => {
         callback()
