@@ -1,3 +1,7 @@
+### v5.0.3
+
+- [fix] Restore the copy functionality for transaction hashes
+
 ### v5.0.2
 
 - [fix] Fixed the bug where the to address on the transaction page might be incorrectly replaced

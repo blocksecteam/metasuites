@@ -25,37 +25,70 @@ const PhalconExplorerButton: FC<{ hash: string }> = ({ hash }) => {
 
   if (!chain) return null
   return (
-    <IconPhalcon
-      mode="dark"
-      style={{ verticalAlign: 'middle' }}
-      onClick={handleClick}
-    />
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+      <CopyButton text={hash} style={{ color: '#ADB5BD' }} />
+      <IconPhalcon
+        mode="dark"
+        style={{ verticalAlign: 'middle' }}
+        onClick={handleClick}
+      />
+    </span>
   )
 }
 
-const appendIconToElement = (el: HTMLElement, reactNode: ReactNode) => {
+const appendIconToElement = (
+  el: HTMLElement,
+  reactNode: ReactNode,
+  isTxHash = false
+) => {
   if (!isMobile()) {
     el.onmouseover = () => {
-      const btnEl = el.querySelector<HTMLElement>(
+      const btnEls = el.querySelectorAll<HTMLElement>(
         '.__metadock-copy-address-btn__'
       )
-      if (btnEl) btnEl.style.display = 'inline-block'
+      if (btnEls.length) {
+        btnEls.forEach(btnEl => {
+          btnEl.style.display = 'inline-block'
+        })
+      }
     }
     el.onmouseout = () => {
-      const btnEl = el.querySelector<HTMLElement>(
+      const btnEls = el.querySelectorAll<HTMLElement>(
         '.__metadock-copy-address-btn__'
       )
-      if (btnEl) btnEl.style.display = 'none'
+      if (btnEls.length) {
+        btnEls.forEach(btnEl => {
+          btnEl.style.display = 'none'
+        })
+      }
     }
   }
 
-  el.setAttribute('style', 'padding-right:18px;position:relative')
+  if (isTxHash) {
+    el.setAttribute(
+      'style',
+      'padding-right:40px;position:relative;max-width:11rem;'
+    )
+  } else {
+    el.setAttribute('style', 'padding-right:18px;position:relative')
+  }
   const rootEl = document.createElement('span')
   rootEl.classList.add('__metadock-copy-address-btn__')
-  rootEl.setAttribute(
-    'style',
-    `position:absolute;right:0;display:${isMobile() ? 'inline-block' : 'none'}`
-  )
+  if (isTxHash) {
+    rootEl.setAttribute(
+      'style',
+      `position:absolute;right:0;display:${
+        isMobile() ? 'inline-block' : 'none'
+      };line-height:0;top: 50%;transform: translateY(-50%)`
+    )
+  } else {
+    rootEl.setAttribute(
+      'style',
+      `position:absolute;right:0;display:${
+        isMobile() ? 'inline-block' : 'none'
+      }`
+    )
+  }
   el?.appendChild(rootEl)
   createRoot(rootEl).render(reactNode)
 }
@@ -104,7 +137,11 @@ export const handleTxnNodeListCopy = (
     const txnHash = href.match(PATTERN_EVM_TX_HASH)?.[0]
     const hashTagEl = targetPosition === 'parent' ? el.parentElement : el
     if (hashTagEl && txnHash) {
-      appendIconToElement(hashTagEl, <PhalconExplorerButton hash={txnHash} />)
+      appendIconToElement(
+        hashTagEl,
+        <PhalconExplorerButton hash={txnHash} />,
+        true
+      )
     }
   }
 }
