@@ -23,10 +23,14 @@ const genMainAddressLabel = async (chain: string) => {
   await chromeEvent
     .emit(GET_IMPL_LABELS, { chain: chain, addresses: [mainAddress] })
     .then((res: CallbackResponse<AddressLabel[]> | undefined) => {
-      const containerEl = $(
-        '#ContentPlaceHolder1_divSummary > div:first-child > div:first-child'
+      const divSummaryEl = $('#ContentPlaceHolder1_divSummary')
+      const containerEl = divSummaryEl.find(
+        '> div:first-child > div:first-child'
       )
-      $('#ContentPlaceHolder1_divSummary > div').removeAttr('style')
+      divSummaryEl.find('> div').removeAttr('style')
+      if (!divSummaryEl.hasClass('pt-2')) {
+        divSummaryEl.addClass('pt-2')
+      }
       if (res?.success && res.data.length) {
         const label = res.data[0].label
         if (

@@ -1,3 +1,7 @@
+### v5.0.4
+
+- [feat] Enhance the address label functionality on the Solscan token page
+
 ### v5.0.3
 
 - [fix] Restore the copy functionality for transaction hashes

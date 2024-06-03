@@ -7,7 +7,8 @@ import {
   PATTERN_SELECTOR_LOOSE,
   PATTERN_TRX_ADDRESS_LOOSE,
   PATTERN_TRX_ADDRESS_EXAC,
-  PATTERN_SOLANA_ADDRESS_EXAC
+  PATTERN_SOLANA_ADDRESS_EXAC,
+  PATTERN_SOLANA_ADDRESS_LOOSE
 } from '@common/constants'
 
 export const isAddress = (str: string): boolean => {
@@ -37,6 +38,7 @@ export const pickAddress = (str: string): string | undefined => {
   return (
     str.match(PATTERN_EVM_ADDRESS_LOOSE)?.[0] ||
     str.match(PATTERN_BTC_ADDRESS_LOOSE)?.[0] ||
-    str.match(PATTERN_TRX_ADDRESS_LOOSE)?.[0]
+    str.match(PATTERN_TRX_ADDRESS_LOOSE)?.[0] ||
+    str.match(PATTERN_SOLANA_ADDRESS_LOOSE)?.[0]
   )
 }

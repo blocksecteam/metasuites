@@ -166,7 +166,11 @@ browser.webRequest.onCompleted.addListener(
       'https://api.solscan.io/v2/account/transaction?*',
       'https://api.solscan.io/v2/account/v2/tokenaccounts?*',
       'https://api.solscan.io/v2/account/stake?*',
-      'https://api-v2.solscan.io/v2/account/activity/dextrading?*'
+      'https://api-v2.solscan.io/v2/account/activity/dextrading?*',
+      'https://api-v2.solscan.io/v2/token/transfer?address=*',
+      'https://api.solscan.io/v2/account/transaction?address=*',
+      'https://api.solscan.io/v2/token/holders?token=*',
+      'https://api-v2.solscan.io/v2/token/activity/dextrading/total?address=*'
     ]
   }
 )
