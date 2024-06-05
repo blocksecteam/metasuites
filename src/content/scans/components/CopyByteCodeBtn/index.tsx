@@ -1,6 +1,6 @@
 import { type FC, useState } from 'react'
 import cls from 'classnames'
-import copy from 'copy-to-clipboard'
+import copy from 'clipboard-copy'
 
 import styles from './index.module.less'
 
