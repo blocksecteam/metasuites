@@ -1,17 +1,24 @@
 import { type FC, useState } from 'react'
 import { Button, ConfigProvider } from 'antd'
 import { StyleProvider } from '@ant-design/cssinjs'
+import cls from 'classnames'
 
 import { ModalFundFlow, IconFundflow } from '@common/components'
+import type { BaseComponent } from '@common/types'
 
 import styles from './index.module.less'
 
-interface Props {
+interface Props extends BaseComponent {
   chain: string
   mainAddress: string
 }
 
-const FundFlowButton: FC<Props> = ({ chain, mainAddress }) => {
+const FundFlowButton: FC<Props> = ({
+  chain,
+  mainAddress,
+  className,
+  style
+}) => {
   const [visible, setVisible] = useState(false)
 
   return (
@@ -23,7 +30,8 @@ const FundFlowButton: FC<Props> = ({ chain, mainAddress }) => {
         <Button
           type="primary"
           icon={<IconFundflow size={20} />}
-          className={styles.button}
+          style={style}
+          className={cls(styles.button, className)}
           onClick={() => setVisible(true)}
         >
           Fund Flow

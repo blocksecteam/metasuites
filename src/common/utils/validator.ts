@@ -37,8 +37,14 @@ export const isMethod = (str: string, isExact = true): boolean => {
 export const pickAddress = (str: string): string | undefined => {
   return (
     str.match(PATTERN_EVM_ADDRESS_LOOSE)?.[0] ||
-    str.match(PATTERN_BTC_ADDRESS_LOOSE)?.[0] ||
-    str.match(PATTERN_TRX_ADDRESS_LOOSE)?.[0] ||
-    str.match(PATTERN_SOLANA_ADDRESS_LOOSE)?.[0]
+    str.match(PATTERN_BTC_ADDRESS_LOOSE)?.[0]
   )
+}
+
+export const pickTrxAddress = (str: string): string | undefined => {
+  return str.match(PATTERN_TRX_ADDRESS_LOOSE)?.[0]
+}
+
+export const pickSolanaAddress = (str: string): string | undefined => {
+  return str.match(PATTERN_SOLANA_ADDRESS_LOOSE)?.[0]
 }

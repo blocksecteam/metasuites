@@ -1,13 +1,13 @@
 import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 
-import { pickAddress } from '@common/utils'
+import { pickTrxAddress } from '@common/utils'
 
 import { FundFlowBtn } from '../components'
 
 /** fund flow */
 const genFundFlowBtn = async (container: JQuery<HTMLElement>) => {
-  const mainAddress = pickAddress(window.location.hash)
+  const mainAddress = pickTrxAddress(window.location.hash)
 
   if (!mainAddress) return
 

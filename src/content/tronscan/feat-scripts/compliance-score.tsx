@@ -4,13 +4,13 @@ import $ from 'jquery'
 import { chromeEvent } from '@common/event'
 import type { RiskScore } from '@common/api/types'
 import { GET_ADDRESS_RISK_SCORE } from '@common/constants'
-import { pickAddress } from '@common/utils'
+import { pickTrxAddress } from '@common/utils'
 
 import { ComplianceScoreLabel } from '../components'
 
 /** address compliance score*/
 const genComplianceScoresBtn = async (container: JQuery<HTMLElement>) => {
-  const mainAddress = pickAddress(window.location.hash)
+  const mainAddress = pickTrxAddress(window.location.hash)
 
   if (!mainAddress) return
 

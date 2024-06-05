@@ -3,7 +3,7 @@ import { ConfigProvider, Dropdown, type MenuProps, Button, Space } from 'antd'
 import $ from 'jquery'
 import { DownOutlined } from '@ant-design/icons'
 
-import { pickAddress, downloadJson, downloadCsv } from '@common/utils'
+import { pickTrxAddress, downloadJson, downloadCsv } from '@common/utils'
 import { IconDownload } from '@common/components'
 
 import { getTextWithoutRemarkLabel } from '../../helper'
@@ -68,7 +68,7 @@ const ExportTableDataBtn: FC<Props> = ({ chain, table }) => {
 
         if (addressLinkEl.length && href) {
           const addr =
-            pickAddress(href) || pickAddress(window.location.hash) || text
+            pickTrxAddress(href) || pickTrxAddress(window.location.hash) || text
           const label = addressLinkEl.attr('data-label')
           row.push(`${addr}${label ? `(${label})` : ''}`)
         } else {

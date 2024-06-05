@@ -5,12 +5,12 @@ import $ from 'jquery'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
 import { GET_IMPL_LABELS } from '@common/constants'
-import { pickAddress } from '@common/utils'
+import { pickTrxAddress } from '@common/utils'
 
 import { MainAddressLabel } from '../components'
 
 const genMainAddressLabel = async () => {
-  const mainAddress = pickAddress(window.location.hash)
+  const mainAddress = pickTrxAddress(window.location.hash)
 
   if (!mainAddress) return
 

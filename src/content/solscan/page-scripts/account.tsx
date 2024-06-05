@@ -1,7 +1,7 @@
 import browser from 'webextension-polyfill'
 
 import { store } from '@src/store'
-import { GET_SOLSCAN_ACCOUNT_TAB_DATA } from '@common/constants'
+import { GET_SOLSCAN_ACCOUNT_TAB_DATA, SOLSCAN_PAGES } from '@common/constants'
 
 import {
   renderFundFlowButton,
@@ -14,7 +14,7 @@ const initAccountPageScript = async () => {
   const { fundFlow, enhancedLabels } = await store.get('options')
 
   lazyLoad(() => {
-    if (fundFlow) renderFundFlowButton()
+    if (fundFlow) renderFundFlowButton(SOLSCAN_PAGES.ACCOUNT.name)
     if (enhancedLabels) {
       renderMainAddressLabel()
       renderEnhancedLabels()

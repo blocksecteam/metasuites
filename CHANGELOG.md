@@ -1,3 +1,7 @@
+### v5.0.5
+
+- [fix] Fix the bug in the Fund Flow feature on the Solscan website that causes the current Solana address to be retrieved incorrectly
+
 ### v5.0.4
 
 - [feat] Enhance the address label functionality on the Solscan token page

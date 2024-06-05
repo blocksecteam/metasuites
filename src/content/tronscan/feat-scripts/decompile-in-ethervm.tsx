@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 import browser from 'webextension-polyfill'
 
-import { pickAddress } from '@common/utils'
+import { pickTrxAddress } from '@common/utils'
 import { TRONSCAN_TABS_CHANGED } from '@common/constants'
 
 import { DecompileInEthervmBtn } from '../components'
@@ -11,7 +11,7 @@ import { lazyLoad } from '../helper'
 const genDecompileInEthervmBtn = () => {
   const main = async () => {
     if ($('#decompile-btn').length) return
-    const mainAddress = pickAddress(window.location.hash)
+    const mainAddress = pickTrxAddress(window.location.hash)
 
     if (!mainAddress) return
 
