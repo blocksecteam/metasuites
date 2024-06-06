@@ -16,7 +16,7 @@ git clone https://github.com/blocksecteam/metasuites.git --recurse-submodules
 
 ## Installing Node.js
 
-You need to install Node.js v18.12.0 or higher. You can run the following commands in your terminal to check your local Node.js versions:
+You need to install Node.js v18.18.0. You can run the following commands in your terminal to check your local Node.js versions:
 
 ```shell
 node -v
