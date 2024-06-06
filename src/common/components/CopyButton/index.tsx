@@ -4,7 +4,7 @@ import React, {
   type PropsWithChildren,
   type CSSProperties
 } from 'react'
-import copy from 'copy-to-clipboard'
+import copy from 'clipboard-copy'
 import cls from 'classnames'
 
 import type { BaseComponent } from '@common/types'
