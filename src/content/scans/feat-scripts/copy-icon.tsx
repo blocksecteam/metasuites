@@ -1,20 +1,99 @@
-import {
-  handleAddressNodeListCopy,
-  handleTokenNodeListCopy,
-  handleBlockNodeListCopy
-} from '@common/scripts/copy-address'
+import React, { type ReactNode } from 'react'
+import isMobile from 'is-mobile'
+import { createRoot } from 'react-dom/client'
+
 import {
   ETHERSCAN_PAGES,
   TABLE_LIST_ADDRESS_SELECTORS
 } from '@common/constants'
-import { validOrigin } from '@common/utils'
+import { validOrigin, getHrefQueryVariable, pickAddress } from '@common/utils'
+import { CopyButton } from '@common/components'
+
+const appendIconToElement = (el: HTMLElement, reactNode: ReactNode) => {
+  if (!isMobile()) {
+    el.onmouseover = () => {
+      const btnEls = el.querySelectorAll<HTMLElement>(
+        '.__metadock-copy-address-btn__'
+      )
+      if (btnEls.length) {
+        btnEls.forEach(btnEl => {
+          btnEl.style.display = 'inline-block'
+        })
+      }
+    }
+    el.onmouseout = () => {
+      const btnEls = el.querySelectorAll<HTMLElement>(
+        '.__metadock-copy-address-btn__'
+      )
+      if (btnEls.length) {
+        btnEls.forEach(btnEl => {
+          btnEl.style.display = 'none'
+        })
+      }
+    }
+  }
+
+  el.setAttribute('style', 'padding-right:18px;position:relative')
+  const rootEl = document.createElement('span')
+  rootEl.classList.add('__metadock-copy-address-btn__')
+  rootEl.setAttribute(
+    'style',
+    `position:absolute;right:0;display:${isMobile() ? 'inline-block' : 'none'}`
+  )
+  el?.appendChild(rootEl)
+  createRoot(rootEl).render(reactNode)
+}
+
+const handleTokenNodeListCopy = (tokenTags: NodeListOf<HTMLElement>) => {
+  for (let i = 0; i < tokenTags.length; i++) {
+    const el = tokenTags[i]
+    const href = el.getAttribute('href')
+    if (!href) continue
+    const address = getHrefQueryVariable(href, 'a') ?? pickAddress(href)
+    if (address) appendIconToElement(el, <CopyButton text={address} />)
+  }
+}
+
+const handleAddressNodeListCopy = (
+  addressTags: NodeListOf<HTMLElement> | HTMLElement[]
+) => {
+  for (let i = 0; i < addressTags.length; i++) {
+    const el = addressTags[i]
+    let address: string | undefined
+    const href = el.getAttribute('href')
+    const dataOriginalTitle = el.getAttribute('data-original-title')
+    const title = el.getAttribute('title')
+    if (href) {
+      const tokenAddress = getHrefQueryVariable(href, 'a')
+      address = tokenAddress ?? pickAddress(href)
+    } else if (dataOriginalTitle) {
+      address = pickAddress(dataOriginalTitle)
+    } else if (title) {
+      address = pickAddress(title)
+    } else {
+      address = pickAddress(el.innerText)
+    }
+    if (address) appendIconToElement(el, <CopyButton text={address} />)
+  }
+}
+
+export const handleBlockNodeListCopy = (blockTags: NodeListOf<HTMLElement>) => {
+  for (let i = 0; i < blockTags.length; i++) {
+    const el = blockTags[i]
+    const href = el.getAttribute('href')
+    if (!href) continue
+    el.classList.remove('hash-tag')
+    const block = el.innerText.trim()
+    appendIconToElement(el, <CopyButton text={block} />)
+  }
+}
 
 /** show copy icon */
 const genCopyIconBtn = async (pageName: string) => {
   switch (pageName) {
     case ETHERSCAN_PAGES.TX.name: {
       const blockTags = document.querySelectorAll<HTMLElement>(
-        "#ContentPlaceHolder1_maintable > .row:nth-of-type(3) a[href^='/block/']"
+        "#ContentPlaceHolder1_maintable .row:nth-of-type(3) a[href^='/block/']"
       )
       handleBlockNodeListCopy(blockTags)
       break
@@ -42,6 +121,10 @@ const genCopyIconBtn = async (pageName: string) => {
               '#maindiv table tbody tr td a.hash-tag, #maindiv table tbody tr td span.hash-tag'
             )
             handleAddressNodeListCopy(iframeAddressTags)
+            const iframeBlockTags = _document.querySelectorAll<HTMLElement>(
+              "#maindiv table tbody tr td a[href^='/block/']"
+            )
+            handleBlockNodeListCopy(iframeBlockTags)
           }
         },
         true
@@ -87,11 +170,14 @@ const genCopyIconBtn = async (pageName: string) => {
                   _document.querySelectorAll<HTMLElement>(
                     "a.hash-tag[href^='/address/'], span.hash-tag"
                   )
+                handleAddressNodeListCopy(iframeAddressTags)
                 const iframeTokenTags = _document.querySelectorAll<HTMLElement>(
                   "a[href^='/token/0x' i][href*='a=0x' i]:not([data-original-title])"
                 )
-                handleAddressNodeListCopy(iframeAddressTags)
                 handleTokenNodeListCopy(iframeTokenTags)
+                const iframeBlockTags =
+                  _document.querySelectorAll<HTMLElement>("a[href^='/block/']")
+                handleBlockNodeListCopy(iframeBlockTags)
               }
             },
             true

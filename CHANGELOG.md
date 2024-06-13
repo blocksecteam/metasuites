@@ -1,3 +1,13 @@
+### v5.0.7
+
+- [fix] Remove the copy button for the new version of Etherscan transaction hash, and readapt some of the copy block buttons
+- [feat] Adapted to the new version of basescan
+
+### v5.0.6
+
+- [fix] Replace copy-to-clipboard with clipboard-copy package
+- [chore] Update node version requirement in CONTRIBUTING.md
+
 ### v5.0.5
 
 - [fix] Fix the bug in the Fund Flow feature on the Solscan website that causes the current Solana address to be retrieved incorrectly

@@ -1,5 +1,57 @@
+import React, { type ReactNode } from 'react'
+import isMobile from 'is-mobile'
+import { createRoot } from 'react-dom/client'
+
 import { ETHERSCAN_PAGES } from '@common/constants'
-import { handleBlockNodeListCopy } from '@common/scripts/copy-address'
+import { CopyButton } from '@common/components'
+import { validOrigin } from '@common/utils'
+
+const appendIconToElement = (el: HTMLElement, reactNode: ReactNode) => {
+  if (!isMobile()) {
+    el.onmouseover = () => {
+      const btnEls = el.querySelectorAll<HTMLElement>(
+        '.__metadock-copy-address-btn__'
+      )
+      if (btnEls.length) {
+        btnEls.forEach(btnEl => {
+          btnEl.style.display = 'inline-block'
+        })
+      }
+    }
+    el.onmouseout = () => {
+      const btnEls = el.querySelectorAll<HTMLElement>(
+        '.__metadock-copy-address-btn__'
+      )
+      if (btnEls.length) {
+        btnEls.forEach(btnEl => {
+          btnEl.style.display = 'none'
+        })
+      }
+    }
+  }
+
+  el.setAttribute('style', 'padding-right:18px;position:relative')
+
+  const rootEl = document.createElement('span')
+  rootEl.classList.add('__metadock-copy-address-btn__')
+  rootEl.setAttribute(
+    'style',
+    `position:absolute;right:0;display:${isMobile() ? 'inline-block' : 'none'}`
+  )
+  el?.appendChild(rootEl)
+  createRoot(rootEl).render(reactNode)
+}
+
+const handleBlockNodeListCopy = (blockTags: NodeListOf<HTMLElement>) => {
+  for (let i = 0; i < blockTags.length; i++) {
+    const el = blockTags[i]
+    const href = el.getAttribute('href')
+    if (!href) continue
+    el.classList.remove('hash-tag')
+    const block = el.innerText.trim()
+    appendIconToElement(el, <CopyButton text={block} />)
+  }
+}
 
 /** show copy icon */
 const genCopyIconBtn = async (pageName: string) => {
@@ -24,6 +76,25 @@ const genCopyIconBtn = async (pageName: string) => {
         ".card tbody a[href^='/block/']"
       )
       handleBlockNodeListCopy(blockTags)
+      const iframes = document.querySelectorAll('iframe')
+      for (let i = 0; i < iframes.length; ++i) {
+        const iframe = iframes[i]
+        if (validOrigin(iframe.src)) {
+          iframe.addEventListener(
+            'load',
+            function () {
+              const _document = iframe?.contentWindow?.document
+              if (_document) {
+                const iframeBlockTags = _document.querySelectorAll<HTMLElement>(
+                  ".table-responsive table tbody a[href^='/block/']"
+                )
+                handleBlockNodeListCopy(iframeBlockTags)
+              }
+            },
+            true
+          )
+        }
+      }
       break
     }
     case ETHERSCAN_PAGES.BLOCKS_FORKED.name:

@@ -1,9 +1,96 @@
+import React, { type ReactNode, type FC } from 'react'
+import isMobile from 'is-mobile'
+import { createRoot } from 'react-dom/client'
+
+import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
+import { CopyButton, IconPhalcon } from '@common/components'
 import {
-  handleAddressNodeListCopy,
-  handleTxnNodeListCopy
-} from '@common/scripts/copy-address'
-import { ETHERSCAN_PAGES } from '@common/constants'
-import { validOrigin } from '@common/utils'
+  ETHERSCAN_PAGES,
+  PATTERN_EVM_TX_HASH,
+  PHALCON_SUPPORT_LIST
+} from '@common/constants'
+import { validOrigin, getChainSimpleName } from '@common/utils'
+
+const PhalconExplorerButton: FC<{ hash: string }> = ({ hash }) => {
+  const chain = getChainSimpleName()
+
+  const pathname = PHALCON_SUPPORT_LIST.find(
+    item => item.chain === chain
+  )?.pathname
+
+  const handleClick = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
+    e.preventDefault()
+    window.open(`${PHALCON_EXPLORER_DOMAIN}/tx/${pathname}/${hash}`, '_blank')
+  }
+
+  if (!chain) return null
+  return (
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+      <CopyButton text={hash} style={{ color: '#ADB5BD' }} />
+      <IconPhalcon
+        mode="dark"
+        style={{ verticalAlign: 'middle' }}
+        onClick={handleClick}
+      />
+    </span>
+  )
+}
+
+const appendIconToElement = (el: HTMLElement, reactNode: ReactNode) => {
+  if (!isMobile()) {
+    el.onmouseover = () => {
+      const btnEls = el.querySelectorAll<HTMLElement>(
+        '.__metadock-copy-address-btn__'
+      )
+      if (btnEls.length) {
+        btnEls.forEach(btnEl => {
+          btnEl.style.display = 'inline-block'
+        })
+      }
+    }
+    el.onmouseout = () => {
+      const btnEls = el.querySelectorAll<HTMLElement>(
+        '.__metadock-copy-address-btn__'
+      )
+      if (btnEls.length) {
+        btnEls.forEach(btnEl => {
+          btnEl.style.display = 'none'
+        })
+      }
+    }
+  }
+
+  el.setAttribute(
+    'style',
+    'padding-right:40px;position:relative;max-width:11rem;'
+  )
+  const rootEl = document.createElement('span')
+  rootEl.classList.add('__metadock-copy-address-btn__')
+  rootEl.setAttribute(
+    'style',
+    `position:absolute;right:0;display:${
+      isMobile() ? 'inline-block' : 'none'
+    };line-height:0;top: 50%;transform: translateY(-50%)`
+  )
+  el?.appendChild(rootEl)
+  createRoot(rootEl).render(reactNode)
+}
+
+const handleTxnNodeListCopy = (
+  txnTags: NodeListOf<HTMLElement> | HTMLElement[],
+  targetPosition: 'self' | 'parent' = 'parent'
+) => {
+  for (let i = 0; i < txnTags.length; i++) {
+    const el = txnTags[i]
+    const href = el.getAttribute('href')
+    if (!href) continue
+    const txnHash = href.match(PATTERN_EVM_TX_HASH)?.[0]
+    const hashTagEl = targetPosition === 'parent' ? el.parentElement : el
+    if (hashTagEl && txnHash) {
+      appendIconToElement(hashTagEl, <PhalconExplorerButton hash={txnHash} />)
+    }
+  }
+}
 
 const genTransactionHashPhalconLink = async (pageName: string) => {
   switch (pageName) {
@@ -89,13 +176,6 @@ const genTransactionHashPhalconLink = async (pageName: string) => {
         '.card tbody a.myFnExpandBox_searchVal'
       )
       handleTxnNodeListCopy(txnTags)
-      break
-    }
-    case ETHERSCAN_PAGES.ACCOUNTS.name: {
-      const addressTags = document.querySelectorAll<HTMLElement>(
-        ".card tbody a[href^='/address/0x' i]"
-      )
-      handleAddressNodeListCopy(addressTags)
       break
     }
     case ETHERSCAN_PAGES.TOKEN_APPROVAL_CHECKER.name: {

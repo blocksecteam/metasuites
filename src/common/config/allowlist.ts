@@ -2,7 +2,6 @@ export default {
   ETHERSCAN_V1_MATCHES: [
     '*://*.arbiscan.io/*',
     '*://cronoscan.com/*',
-    '*://*.basescan.org/*',
     '*://gnosisscan.io/*',
     '*://opbnb-testnet.bscscan.com/*',
     '*://goerli-optimism.etherscan.io/*'
@@ -30,7 +29,8 @@ export default {
     '*://zkevm.polygonscan.com/*',
     '*://*.lineascan.build/*',
     '*://*.wemixscan.com/*',
-    '*://testnet.ftmscan.com/*'
+    '*://testnet.ftmscan.com/*',
+    '*://*.basescan.org/*'
   ],
   BTC_EXPLORER_MATCHES: ['*://*.btc.com/*'],
   BLOCKSEC_MATCHES: ['*://*.blocksec.com/*'],

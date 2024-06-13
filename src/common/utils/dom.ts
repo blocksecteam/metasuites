@@ -1,3 +1,5 @@
+import $ from 'jquery'
+
 export const getNodeValue = (content: HTMLElement | null): string | null => {
   if (!content) return null
   const arr = []
@@ -19,4 +21,9 @@ export const setDeepestChildText = (
   } else {
     setDeepestChildText(element.lastChild, text)
   }
+}
+
+export const hasSiblingWithClass = (el: HTMLElement, className: string) => {
+  if (!el) return false
+  return $(el).siblings(`.${className}`).length > 0
 }
