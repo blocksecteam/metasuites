@@ -1,12 +1,16 @@
 import { store } from '@src/store'
 
-import { renderTxPageAddressLabels } from '../feat-scripts'
+import {
+  renderTxPageAddressLabels,
+  renderAlternativeParsers
+} from '../feat-scripts'
 import { lazyLoad } from '../helper'
 
 const initTxPageScript = async () => {
-  const { enhancedLabels } = await store.get('options')
+  const { enhancedLabels, quick2Parsers } = await store.get('options')
   lazyLoad(() => {
     if (enhancedLabels) renderTxPageAddressLabels()
+    if (quick2Parsers) renderAlternativeParsers()
   }, '[data-testid="oval-loading"]')
 }
 

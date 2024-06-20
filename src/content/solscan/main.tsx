@@ -6,7 +6,8 @@ import { SOLSCAN_PAGES } from '@common/constants'
 import {
   initAccountPageScript,
   initTxPageScript,
-  initTokenPageScript
+  initTokenPageScript,
+  initBlockPageScript
 } from './page-scripts'
 
 const execute = async () => {
@@ -27,6 +28,9 @@ const execute = async () => {
       break
     case SOLSCAN_PAGES.TX.name:
       initTxPageScript()
+      break
+    case SOLSCAN_PAGES.BLOCK.name:
+      initBlockPageScript()
       break
   }
 }

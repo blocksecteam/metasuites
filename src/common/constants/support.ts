@@ -544,6 +544,11 @@ export const PHALCON_SUPPORT_LIST = [
     pathname: 'zksync-era',
     chain: 'era.zksync',
     supportSimulator: false
+  },
+  {
+    pathname: 'solana',
+    chain: 'solana',
+    supportSimulator: false
   }
 ]
 

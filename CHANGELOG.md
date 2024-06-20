@@ -1,7 +1,12 @@
+### v5.1.0
+
+- [feat] Add shortcut to navigate Solana transaction hashes to Phalcon Explorer
+- [fix] Fix extension functionality issue caused by solana.fm website update
+
 ### v5.0.7
 
-- [fix] Remove the copy button for the new version of Etherscan transaction hash, and readapt some of the copy block buttons
 - [feat] Adapted to the new version of basescan
+- [fix] Remove the copy button for the new version of Etherscan transaction hash, and readapt some of the copy block buttons
 
 ### v5.0.6
 

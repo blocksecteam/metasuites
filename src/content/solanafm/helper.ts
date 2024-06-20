@@ -5,7 +5,8 @@ export const lazyLoad = (
   inspector: string,
   maxRetries = 60
 ) => {
-  const loadingDocument = !$('#__next > main').length
+  const loadingDocument =
+    !$('#__next > main').length || !!$('[aria-label="toast-loading"]').length
   if (loadingDocument) {
     if (maxRetries > 0) {
       setTimeout(() => {
@@ -14,7 +15,6 @@ export const lazyLoad = (
     }
   } else {
     const loadingContent = !!$(inspector).length
-
     if (loadingContent) {
       if (maxRetries > 0) {
         setTimeout(() => {

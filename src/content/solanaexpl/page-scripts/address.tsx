@@ -3,7 +3,11 @@ import $ from 'jquery'
 import { store } from '@src/store'
 
 import { lazyLoad } from '../helper'
-import { renderFundFlowButton, renderMainAddressLabel } from '../feat-scripts'
+import {
+  renderFundFlowButton,
+  renderMainAddressLabel,
+  renderTransactionHashPhalconLink
+} from '../feat-scripts'
 
 const createAccountBox = () => {
   if ($('#md-account-box').length) return Promise.reject()
@@ -26,17 +30,16 @@ const createAccountBox = () => {
 }
 
 const initAddressPageScript = async () => {
-  const { fundFlow, enhancedLabels } = await store.get('options')
-  lazyLoad(
-    () =>
-      createAccountBox().then(() => {
-        if (fundFlow) renderFundFlowButton()
-        if (enhancedLabels) {
-          renderMainAddressLabel()
-        }
-      }),
-    `body > div.main-content > div:nth-of-type(3) > div:nth-of-type(2) > div > span[class*="spinner"]`
-  )
+  const { fundFlow, enhancedLabels, quick2Parsers } = await store.get('options')
+  lazyLoad(() => {
+    createAccountBox().then(() => {
+      if (fundFlow) renderFundFlowButton()
+      if (enhancedLabels) {
+        renderMainAddressLabel()
+      }
+    })
+    if (quick2Parsers) renderTransactionHashPhalconLink()
+  }, 'span[class*="spinner"]:not(td >*)')
 }
 
 export default initAddressPageScript

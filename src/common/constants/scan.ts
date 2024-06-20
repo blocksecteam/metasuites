@@ -24,7 +24,7 @@ export const TRONSCAN_PAGE_NAMES = [
 
 export const BLOCKSCOUT_PAGE_NAMES = ['TX', 'ADDRESS'] as const
 export const MERLINSCAN_PAGE_NAMES = ['TX'] as const
-export const SOLSCAN_PAGE_NAMES = ['ACCOUNT', 'TX', 'TOKEN'] as const
+export const SOLSCAN_PAGE_NAMES = ['ACCOUNT', 'TX', 'TOKEN', 'BLOCK'] as const
 export const SOLANAFM_PAGE_NAMES = ['ADDRESS', 'TX'] as const
 export const SOLANAEXPL_PAGE_NAMES = ['ADDRESS', 'TX'] as const
 export const ARKHAM_PAGE_NAMES = ['ADDRESS', 'TX'] as const
@@ -178,6 +178,10 @@ export const SOLSCAN_PAGES: Record<
   TX: {
     name: 'TX',
     pattern: /^\/tx\/([1-9A-Za-z]+)/i
+  },
+  BLOCK: {
+    name: 'BLOCK',
+    pattern: /^\/block\/.+/
   }
 }
 

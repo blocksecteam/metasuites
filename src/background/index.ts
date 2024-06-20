@@ -15,7 +15,8 @@ import {
   GET_SOLANAFM_ACCOUNT_INFO,
   GET_SOLANAFM_ACCOUNT_TRANSFERS,
   GET_SOLSCAN_ACCOUNT_TAB_DATA,
-  GET_SOLSCAN_TRANSACTION
+  GET_SOLSCAN_TRANSACTION,
+  GET_SOLSCAN_BLOCK_TXS
 } from '@common/constants'
 
 import { initBackgroundRequest } from './listeners'
@@ -168,9 +169,11 @@ browser.webRequest.onCompleted.addListener(
       'https://api.solscan.io/v2/account/stake?*',
       'https://api-v2.solscan.io/v2/account/activity/dextrading?*',
       'https://api-v2.solscan.io/v2/token/transfer?address=*',
+      'https://api-v2.solscan.io/v2/account/transfer?address=*',
       'https://api.solscan.io/v2/account/transaction?address=*',
       'https://api.solscan.io/v2/token/holders?token=*',
-      'https://api-v2.solscan.io/v2/token/activity/dextrading/total?address=*'
+      'https://api-v2.solscan.io/v2/token/activity/dextrading/total?address=*',
+      'https://api.solscan.io/v2/account/token/txs?address=*'
     ]
   }
 )
@@ -193,6 +196,18 @@ browser.webRequest.onCompleted.addListener(
   async details => {
     const { tabId, method } = details
     if (tabId && method === 'GET') {
+      browser.tabs.sendMessage(tabId, GET_SOLSCAN_BLOCK_TXS).catch(() => void 0)
+    }
+  },
+  {
+    urls: ['https://api.solscan.io/v2/block/txs?*']
+  }
+)
+
+browser.webRequest.onCompleted.addListener(
+  async details => {
+    const { tabId, method } = details
+    if (tabId && method === 'POST') {
       browser.tabs
         .sendMessage(tabId, GET_SOLANAFM_ACCOUNT_INFO)
         .catch(() => void 0)
@@ -213,9 +228,7 @@ browser.webRequest.onCompleted.addListener(
     }
   },
   {
-    urls: [
-      'https://api.solana.fm/v0/accounts/BNLtpXLqsjDGxzB1Mmcv3NmEiQhSSWFq8JViKrrrQ8Do/transfers?*'
-    ]
+    urls: ['https://api.solana.fm/v0/accounts/*/transfers?*']
   }
 )
 
