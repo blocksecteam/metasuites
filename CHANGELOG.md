@@ -1,3 +1,7 @@
+### v5.1.1
+
+- [style] Update the styles for the Phalcon shortcut link
+
 ### v5.1.0
 
 - [feat] Add shortcut to navigate Solana transaction hashes to Phalcon Explorer

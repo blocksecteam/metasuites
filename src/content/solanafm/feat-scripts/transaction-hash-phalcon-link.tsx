@@ -7,7 +7,7 @@ import { getChainSimpleName } from '@common/utils'
 import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
 import { IconPhalcon } from '@common/components'
 
-const PhalconExplorerButton: FC<{ hash: string }> = ({ hash }) => {
+const Icon: FC<{ hash: string }> = ({ hash }) => {
   const chain = getChainSimpleName()
 
   const pathname = PHALCON_SUPPORT_LIST.find(
@@ -75,7 +75,7 @@ const renderTransactionHashPhalconLink = async () => {
     if (!el.parentElement) return
     targetEl = el.parentElement.parentElement
     if (targetEl && txnHash) {
-      appendIconToElement(targetEl, <PhalconExplorerButton hash={txnHash} />)
+      appendIconToElement(targetEl, <Icon hash={txnHash} />)
     }
   }
 }

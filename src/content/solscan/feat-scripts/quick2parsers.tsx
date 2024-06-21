@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 
-import { ParsersButton } from '../components'
+import { PhalconExplorerButton } from '../components'
 
 const renderAlternativeParsers = async () => {
   if ($('#__metadock-alternative-parsers__').length) return
@@ -10,11 +10,11 @@ const renderAlternativeParsers = async () => {
   )
   const txHash = container.text().trim()
   const rootEl = $(
-    '<span id="__metadock-alternative-parsers__" class="inline-flex align-middle ml-1"></span>'
+    '<span id="__metadock-alternative-parsers__" class="inline-flex align-middle" style="margin-left: 8px"></span>'
   )
   container.append(rootEl)
 
-  createRoot(rootEl[0]).render(<ParsersButton txHash={txHash} />)
+  createRoot(rootEl[0]).render(<PhalconExplorerButton txHash={txHash} />)
 }
 
 export default renderAlternativeParsers
