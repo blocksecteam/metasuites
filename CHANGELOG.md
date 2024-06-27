@@ -1,3 +1,7 @@
+### v5.1.2
+
+- [fix] Fix the issue where the solscan tx page does not correctly display the Phalcon Explorer button
+
 ### v5.1.1
 
 - [style] Update the styles for the Phalcon shortcut link

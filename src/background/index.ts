@@ -188,7 +188,7 @@ browser.webRequest.onCompleted.addListener(
     }
   },
   {
-    urls: ['https://api.solscan.io/v2/transaction-v2?tx=*']
+    urls: ['https://api-v2.solscan.io/v2/transaction/detail?tx=*']
   }
 )
 
