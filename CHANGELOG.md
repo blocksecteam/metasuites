@@ -1,3 +1,8 @@
+### v5.2.0
+
+- [feat] Add a Phalcon Explorer entry on the explorer.jito.wtf bundle page
+- [feat] Adapt to the new versions of Gnosisscan, Cronoscan, and Arbiscan
+
 ### v5.1.2
 
 - [fix] Fix the issue where the solscan tx page does not correctly display the Phalcon Explorer button

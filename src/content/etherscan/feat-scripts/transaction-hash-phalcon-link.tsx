@@ -27,7 +27,7 @@ const PhalconExplorerButton: FC<{ hash: string }> = ({ hash }) => {
     window.open(`${PHALCON_EXPLORER_DOMAIN}/tx/${pathname}/${hash}`, '_blank')
   }
 
-  if (!chain) return null
+  if (!pathname) return null
   return (
     <IconPhalcon
       mode="dark"

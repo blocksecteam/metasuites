@@ -57,7 +57,8 @@ export default defineManifest((env: ConfigEnv) => {
               '*://*.metasleuth.io/*',
               '*://explorer.solana.com/*',
               '*://debank.com/*',
-              '*://platform.arkhamintelligence.com/*'
+              '*://platform.arkhamintelligence.com/*',
+              '*://explorer.jito.wtf/*'
             ]
           : ['<all_urls>'],
         js: ['src/content/index.ts'],

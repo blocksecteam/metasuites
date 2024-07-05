@@ -11,6 +11,7 @@ import { initSolanaExplorer } from '@src/content/solanaexpl'
 import { initMetaSleuth } from '@src/content/metasleuth'
 import { initDebank } from '@src/content/debank'
 import { initArkham } from '@src/content/arkham'
+import { initJito } from '@src/content/jito'
 
 const currentUrl = window.location.href
 
@@ -36,4 +37,6 @@ if (isMatchURL(currentUrl, allowlist.BTC_EXPLORER_MATCHES)) {
   initDebank()
 } else if (isMatchURL(currentUrl, allowlist.ARKHAM_MATCHES)) {
   initArkham()
+} else if (isMatchURL(currentUrl, allowlist.JITO_MATCHES)) {
+  initJito()
 }

@@ -163,17 +163,17 @@ browser.webRequest.onCompleted.addListener(
   },
   {
     urls: [
-      'https://api.solscan.io/v2/account/soltransfer/txs?*',
-      'https://api.solscan.io/v2/account/transaction?*',
-      'https://api.solscan.io/v2/account/v2/tokenaccounts?*',
-      'https://api.solscan.io/v2/account/stake?*',
+      'https://api-v2.solscan.io/v2/account/soltransfer/txs?*',
+      'https://api-v2.solscan.io/v2/account/transaction?*',
+      'https://api-v2.solscan.io/v2/account/v2/tokenaccounts?*',
+      'https://api-v2.solscan.io/v2/account/stake?*',
       'https://api-v2.solscan.io/v2/account/activity/dextrading?*',
       'https://api-v2.solscan.io/v2/token/transfer?address=*',
       'https://api-v2.solscan.io/v2/account/transfer?address=*',
-      'https://api.solscan.io/v2/account/transaction?address=*',
-      'https://api.solscan.io/v2/token/holders?token=*',
+      'https://api-v2.solscan.io/v2/account/transaction?address=*',
+      'https://api-v2.solscan.io/v2/token/holders?token=*',
       'https://api-v2.solscan.io/v2/token/activity/dextrading/total?address=*',
-      'https://api.solscan.io/v2/account/token/txs?address=*'
+      'https://api-v2.solscan.io/v2/account/token/txs?address=*'
     ]
   }
 )

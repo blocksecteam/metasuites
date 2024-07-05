@@ -10,7 +10,8 @@ interface Props {
 }
 
 const PhalconExplorerButton: FC<Props> = ({ txHash }) => {
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
     window.open(`${PHALCON_EXPLORER_DOMAIN}/tx/solana/${txHash}`, '_blank')
   }
 

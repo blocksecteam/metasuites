@@ -31,7 +31,7 @@ const PhalconExplorerButton: FC = () => {
           onClick={handleClick}
           className={styles.button}
         >
-          Open in Phalcon Explorer
+          Phalcon Explorer
         </Button>
       </ConfigProvider>
     </StyleProvider>

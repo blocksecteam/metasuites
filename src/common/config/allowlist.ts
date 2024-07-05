@@ -1,8 +1,5 @@
 export default {
   ETHERSCAN_V1_MATCHES: [
-    '*://*.arbiscan.io/*',
-    '*://cronoscan.com/*',
-    '*://gnosisscan.io/*',
     '*://opbnb-testnet.bscscan.com/*',
     '*://goerli-optimism.etherscan.io/*'
   ],
@@ -30,7 +27,10 @@ export default {
     '*://*.lineascan.build/*',
     '*://*.wemixscan.com/*',
     '*://testnet.ftmscan.com/*',
-    '*://*.basescan.org/*'
+    '*://*.basescan.org/*',
+    '*://cronoscan.com/*',
+    '*://gnosisscan.io/*',
+    '*://*.arbiscan.io/*'
   ],
   BTC_EXPLORER_MATCHES: ['*://*.btc.com/*'],
   BLOCKSEC_MATCHES: ['*://*.blocksec.com/*'],
@@ -44,5 +44,6 @@ export default {
   MS_MATCHES: ['*://*.metasleuth.io/*'],
   DEBANK_MATCHES: ['*://debank.com/*'],
   ARKHAM_MATCHES: ['*://platform.arkhamintelligence.com/*'],
-  DEX_MATCHES: ['*://dexscreener.com/*']
+  DEX_MATCHES: ['*://dexscreener.com/*'],
+  JITO_MATCHES: ['*://explorer.jito.wtf/bundle/*']
 }
