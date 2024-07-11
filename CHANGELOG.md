@@ -1,3 +1,7 @@
+### v5.2.1
+
+- [fix] Fix the issue with Phalcon Explorer button on Solscan Transaction Details page
+
 ### v5.2.0
 
 - [feat] Add a Phalcon Explorer entry on the explorer.jito.wtf bundle page

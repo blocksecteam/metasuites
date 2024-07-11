@@ -14,14 +14,10 @@ const initTxPageScript = async () => {
 
   browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
     if (message === GET_SOLSCAN_TRANSACTION) {
-      lazyLoad(
-        () => {
-          if (enhancedLabels) renderTxPageAddressLabels()
-          if (quick2Parsers) renderAlternativeParsers()
-        },
-        '.animate-pulse',
-        false
-      )
+      lazyLoad(() => {
+        if (enhancedLabels) renderTxPageAddressLabels()
+        if (quick2Parsers) renderAlternativeParsers()
+      }, 'div[data-state="active"]')
       sendResponse()
     }
   })
