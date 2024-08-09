@@ -35,7 +35,7 @@ export const downloadCsv = async (
   const isTwoDimensionalArray = json.length > 0 && Array.isArray(json[0])
   const jsonStr = isTwoDimensionalArray
     ? convertToCSV(json as string[][])
-    : await json2csv(json)
+    : json2csv(json, { excelBOM: true })
   const url = window.URL || window.webkitURL || window
   const blob = new Blob([jsonStr])
   const saveLink = document.createElementNS(

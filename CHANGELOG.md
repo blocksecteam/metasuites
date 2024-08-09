@@ -1,3 +1,7 @@
+### v5.2.2
+
+-[fix] Fix the issue of exporting CSV files causing character encoding problems
+
 ### v5.2.1
 
 - [fix] Fix the issue with Phalcon Explorer button on Solscan Transaction Details page

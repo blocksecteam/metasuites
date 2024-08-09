@@ -1,6 +1,6 @@
 {
   "name": "metasuites",
-  "version": "5.2.1",
+  "version": "5.2.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/blocksecteam/metasuites.git"
@@ -41,7 +41,7 @@
     "ethers": "^6.0.8",
     "is-mobile": "^4.0.0",
     "jquery": "^3.6.3",
-    "json-2-csv": "^4.0.0",
+    "json-2-csv": "^5.5.5",
     "json-bigint": "^1.0.0",
     "ky": "^0.33.3",
     "lodash-es": "^4.17.21",
