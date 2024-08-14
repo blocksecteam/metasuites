@@ -205,17 +205,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chain: 'optimism',
     domains: ['optimistic.etherscan.io'],
     siteName: 'ETHERSCAN',
-    logo: 'https://assets.blocksec.com/image/1671777583236-2.png',
-    testNets: [
-      {
-        name: 'Optimism Goerli',
-        chainID: 420,
-        chain: 'gor.optimism',
-        domains: ['goerli-optimism.etherscan.io'],
-        siteName: 'ETHERSCAN',
-        logo: 'https://assets.blocksec.com/image/1671777583236-2.png'
-      }
-    ]
+    logo: 'https://assets.blocksec.com/image/1671777583236-2.png'
   },
   {
     name: 'Optimism (Blockscout)',
@@ -503,7 +493,7 @@ export const PHALCON_SUPPORT_LIST = [
   {
     pathname: 'polygon',
     chain: 'polygon',
-    supportSimulator: true
+    supportSimulator: false
   },
   {
     pathname: 'bsc',

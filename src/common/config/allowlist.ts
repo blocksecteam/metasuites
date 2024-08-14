@@ -1,8 +1,5 @@
 export default {
-  ETHERSCAN_V1_MATCHES: [
-    '*://opbnb-testnet.bscscan.com/*',
-    '*://goerli-optimism.etherscan.io/*'
-  ],
+  ETHERSCAN_V1_MATCHES: ['*://opbnb-testnet.bscscan.com/*'],
   ETHERSCAN_V2_MATCHES: [
     '*://ftmscan.com/*',
     '*://cn.etherscan.com/*',

@@ -1,3 +1,12 @@
+### v5.3.0
+
+- [test] Add new test cases to ensure the functionality of the code is thoroughly tested
+- [feat] Link Solana Fundflow to the current blockchain explorer
+- [feat] Enhance domain name whitelist matching to support parameter-level and multi-level subdomain URL matching rules
+- [chore] Optimize content script code
+- [update] Phalcon Explorer Polygon will no longer support simulate functionality
+- [fix] Fix the issue of Phalcon Explorer button not working on Jito Explorer
+
 ### v5.2.2
 
 -[fix] Fix the issue of exporting CSV files causing character encoding problems

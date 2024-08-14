@@ -45,7 +45,18 @@ export const nodeHover = (
     ele.clone(true)
 
   nodeAClone.classed('pointer', true).on('click', function () {
-    window.open(nodeData.url)
+    const isSolana = nodeData.chain === 'solana'
+    if (isSolana) {
+      try {
+        const url = new URL(nodeData.url)
+        url.hostname = window.location.hostname
+        window.open(url.href)
+      } catch (e) {
+        window.open(nodeData.url)
+      }
+    } else {
+      window.open(nodeData.url)
+    }
   })
 
   nodeAClone.selectAll('text').each(function (_: any, index: number) {

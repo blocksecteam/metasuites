@@ -10,7 +10,7 @@ declare const ButtonTypes: [
   'secondary'
 ]
 
-export type ButtonType = typeof ButtonTypes[number]
+export type ButtonType = (typeof ButtonTypes)[number]
 
 export interface BaseComponent {
   style?: CSSProperties

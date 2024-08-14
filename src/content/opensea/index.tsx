@@ -4,6 +4,7 @@ import '@common/styles/inject.common'
 import { getPageName, isAllowed, insertScript } from '@common/utils'
 import { OPENSEA_PAGES, GraphqlEventIds } from '@common/constants'
 import { store } from '@src/store'
+import allowlist from '@common/config/allowlist'
 
 import {
   initCollectionPageScript,
@@ -88,10 +89,11 @@ const initObserver = () => {
   })
 }
 
-export const initOpensea = () => {
-  initObserver()
-
-  runContentScript()
-
-  insertScript('opensea-fetch-interceptor')
+export class OpenseaInitializer {
+  static matches = allowlist.OPENSEA_MATCHES
+  init() {
+    initObserver()
+    runContentScript()
+    insertScript('opensea-fetch-interceptor')
+  }
 }

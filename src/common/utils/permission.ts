@@ -1,3 +1,6 @@
+import { uniq } from 'lodash-es'
+import URLMatchPattern from '@remusao/url-match-patterns'
+
 import type { OptWebsite } from '@src/store'
 import {
   DEDAUB_SUPPORT_DIRECT_LIST,
@@ -6,24 +9,11 @@ import {
   OPENCHAIN_SUPPORT_LIST,
   ETHERVM_SUPPORT_DIRECT_LIST
 } from '@common/constants'
-import { uniq } from 'lodash-es'
 
-// TODO: Exclude the effect of the link in the parameters
 export const isMatchURL = (url: string, patternList: string[]) => {
-  function toRegex(input: string) {
-    input = input.replace('*://', '(.*)://')
-    input = input.replace('*.', '(.*\\.|)')
-    input = input.replace('/*', '(.*)?')
-    return input
-  }
-
-  try {
-    return patternList.some(pattern => {
-      return new RegExp(toRegex(pattern)).test(url)
-    })
-  } catch (e) {
-    return false
-  }
+  return patternList.some(pattern => {
+    return URLMatchPattern(pattern, url)
+  })
 }
 
 /** judge from supportWebList */
