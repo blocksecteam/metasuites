@@ -1,3 +1,7 @@
+/**
+ * TODO: Will be removed in the future, please use `FeatureActiveSupport`
+ */
+
 import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
 
 import BaseConstant from './abstract/BaseConstants'
@@ -416,6 +420,13 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     logo: 'https://assets.blocksec.com/image/1711950037081-2.png'
   },
   {
+    name: 'MantleScan',
+    chain: 'mantle',
+    domains: ['mantlescan.xyz'],
+    siteName: 'ETHERSCAN',
+    logo: 'https://assets.blocksec.com/image/1721387994429-2.svg'
+  },
+  {
     name: 'Solscan',
     chain: 'solana',
     domains: ['solscan.io'],
@@ -469,7 +480,8 @@ export const SLEUTH_SUPPORT_LIST = [
   'linea',
   'base',
   'tron',
-  'solana'
+  'solana',
+  'mantle'
 ]
 
 export const ALTERNATIVE_BLOCK_EXPLORES_SUPPORT_LIST = ['eth']
@@ -539,6 +551,11 @@ export const PHALCON_SUPPORT_LIST = [
     pathname: 'solana',
     chain: 'solana',
     supportSimulator: false
+  },
+  {
+    pathname: 'mantle',
+    chain: 'mantle',
+    supportSimulator: true
   }
 ]
 
@@ -654,6 +671,10 @@ export const TENDERLY_SUPPORT_LIST = [
   {
     pathname: 'arbitrum-nova',
     chain: 'nova.arbitrum'
+  },
+  {
+    pathname: 'mantle',
+    chain: 'mantle'
   }
 ]
 
@@ -687,6 +708,11 @@ export const DEDAUB_SUPPORT_DIRECT_LIST = [
     chain: 'base',
     pathname: 'base'
   }
+  // not fully supported
+  // {
+  //   chain: 'mantle',
+  //   pathname: 'mantle'
+  // }
 ]
 
 export const ETHERSCAN_DETH_SUPPORT_LIST = [
@@ -807,17 +833,20 @@ export const SIMULATE_SUPPORT_LIST = [
     chain: 'optimism',
     logo: 'https://assets.blocksec.com/image/1671777583236-2.png',
     nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 }
+  },
+  {
+    name: 'Mantle',
+    chain: 'mantle',
+    logo: 'https://assets.blocksec.com/image/1721387994429-2.svg',
+    nativeCurrency: {
+      decimals: 18,
+      name: 'MNT',
+      symbol: 'MNT'
+    }
   }
 ]
 
-export const TX_EXPLAIN_SUPPORT_LIST = [
-  'eth'
-  // 'bsc',
-  // 'polygon',
-  // 'fantom',
-  // 'avalanche',
-  // 'optimism'
-]
+export const TX_EXPLAIN_SUPPORT_LIST = ['eth']
 
 export const EVM_STORAGE_SUPPORT_LIST = ['eth']
 
@@ -880,7 +909,8 @@ export const DEBANK_SUPPORT_LIST = [
   'moonriver',
   'wemix',
   'nova.arbitrum',
-  'era.zksync'
+  'era.zksync',
+  'mantle'
 ]
 
 export const APPROVAL_DIAGNOSIS_SUPPORT_LIST = [
@@ -901,7 +931,8 @@ export const APPROVAL_DIAGNOSIS_SUPPORT_LIST = [
   'zkevm',
   'linea',
   'wemix',
-  'tron'
+  'tron',
+  'mantle'
 ]
 
 export const ARKHAM_PHALCON_SUPPORTED_LIST = [

@@ -1,3 +1,7 @@
+### v5.4.0
+
+- [feat] Adapt to MantleScan
+
 ### v5.3.0
 
 - [test] Add new test cases to ensure the functionality of the code is thoroughly tested

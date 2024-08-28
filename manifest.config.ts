@@ -39,7 +39,8 @@ export default defineManifest((env: ConfigEnv) => {
               '*://*.celoscan.io/*',
               '*://*.bttcscan.com/*',
               '*://era.zksync.network/*',
-              '*://snowscan.xyz/*'
+              '*://snowscan.xyz/*',
+              '*://mantlescan.xyz/*'
             ]
           : ['<all_urls>'],
         js: ['src/content/index.all_frames.ts'],
