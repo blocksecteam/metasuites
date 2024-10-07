@@ -1,3 +1,8 @@
+### v5.4.1
+
+- [fix] Corrected the issue with the Solscan link redirecting to the wrong Phalcon Explorer URL
+- [style] Updated the styling of the Solscan Fund Flow button
+
 ### v5.4.0
 
 - [feat] Adapt to MantleScan

@@ -26,7 +26,7 @@ const renderFundFlowButton = async (
     mainAddressEl.append(btnRootEl)
     const style: CSSProperties = {}
     if (isAccountPage) {
-      style.marginLeft = 16
+      style.marginLeft = 0
     } else {
       style.marginTop = 16
     }
