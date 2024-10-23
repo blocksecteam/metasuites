@@ -685,6 +685,10 @@ export const DEDAUB_SUPPORT_DIRECT_LIST = [
     pathname: 'ethereum'
   },
   {
+    chain: 'bsc',
+    pathname: 'binance'
+  },
+  {
     chain: 'fantom',
     pathname: 'fantom'
   },
