@@ -1,3 +1,9 @@
+### v5.4.3
+
+- [fix] Workaround for the issue with chrome.runtime.getURL introduced in Chrome 130 causing CSP rejecting script due to different origin (GUID instead of chrome extension id)
+- [feat] Fundflow supports partner-specific request parameters
+- [chore] Replace the ETH logo
+
 ### v5.4.1
 
 - [fix] Corrected the issue with the Solscan link redirecting to the wrong Phalcon Explorer URL

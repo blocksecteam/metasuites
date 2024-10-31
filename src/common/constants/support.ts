@@ -35,7 +35,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chainID: 1,
     chain: 'eth',
     siteName: 'ETHERSCAN',
-    logo: 'https://assets.blocksec.com/image/1715761316111-2.svg',
+    logo: 'https://assets.blocksec.com/image/1730112854227-2.svg',
     testNets: [
       {
         name: 'Sepolia',

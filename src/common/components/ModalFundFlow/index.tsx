@@ -16,7 +16,12 @@ import { debounce, isNil } from 'lodash-es'
 
 import { GET_ADDRESS_FUND_FLOW, SLEUTH_SUPPORT_LIST } from '@common/constants'
 import { chromeEvent } from '@common/event'
-import type { FundFlowRes, FundFlowEdge, FundFlowNode } from '@common/api/types'
+import type {
+  FundFlowRes,
+  FundFlowEdge,
+  FundFlowNode,
+  FundFlowParams
+} from '@common/api/types'
 import {
   getImageUrl,
   getSubStr,
@@ -85,17 +90,26 @@ const ModalFundFlowGraph: FC<Props> = ({
     useState(false)
   const [editingNode, setEditingNode] = useState<FundFlowNode>()
 
+  const generateFundflowParams = () => {
+    const params: FundFlowParams = {
+      chain,
+      address: mainAddress,
+      t: token
+    }
+    const host = window.location.host
+    if (host.endsWith('oklink.com') || host.endsWith('okx.com')) {
+      params.url = 'okx' // partner parameter
+    }
+    return params
+  }
+
   /** when the params.addrOpts is not empty, it is filtering */
   const getFundFlow = async () => {
     setLoading(true)
     const res = await chromeEvent.emit<
       typeof GET_ADDRESS_FUND_FLOW,
       FundFlowRes
-    >(GET_ADDRESS_FUND_FLOW, {
-      chain: chain,
-      address: mainAddress,
-      token
-    })
+    >(GET_ADDRESS_FUND_FLOW, generateFundflowParams())
     const privateLabels = await store.get('privateLabels')
     setLoading(false)
     if (res?.success && res?.data) {

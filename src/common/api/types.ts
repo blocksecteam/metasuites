@@ -29,7 +29,8 @@ export interface PostAddressParams {
 }
 
 export interface FundFlowParams extends PostAddressParams {
-  token?: string
+  t?: string
+  url?: string
 }
 
 export interface PostPrivateVariablesParams extends PostAddressParams {
