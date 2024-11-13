@@ -32,7 +32,8 @@ export const nodeHover = (
   ele: Selection<BaseType, unknown, null, undefined>,
   key: string,
   nodeData: FundFlowNode,
-  onEditPrivateLabel: (node: FundFlowNode) => void
+  onEditPrivateLabel: (node: FundFlowNode) => void,
+  formatNodeUrl?: (node: FundFlowNode) => string
 ) => {
   const isSupportChain =
     SLEUTH_SUPPORT_LIST.findIndex(chain => chain === key.split('-')[0]) !== -1
@@ -55,7 +56,8 @@ export const nodeHover = (
         window.open(nodeData.url)
       }
     } else {
-      window.open(nodeData.url)
+      const url = formatNodeUrl ? formatNodeUrl(nodeData) : nodeData.url
+      window.open(url)
     }
   })
 
@@ -249,7 +251,8 @@ export const clearGraphTemp = () => {
 
 export const initNodes = (
   fundFlow: FundFlowRes,
-  onEditPrivateLabel: (node: FundFlowNode) => void
+  onEditPrivateLabel: (node: FundFlowNode) => void,
+  formatNodeUrl?: (node: FundFlowNode) => string
 ) => {
   const nodes = selectAll('#graph0  .node')
 
@@ -280,7 +283,7 @@ export const initNodes = (
     node.on('mouseenter', () => {
       nodeStrokeWidthChange(node, '#00a54c', '3')
 
-      nodeHover(node, d3Ele.key, item, onEditPrivateLabel)
+      nodeHover(node, d3Ele.key, item, onEditPrivateLabel, formatNodeUrl)
     })
 
     node.on('mouseleave', () => {
