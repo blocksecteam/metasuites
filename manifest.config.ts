@@ -59,7 +59,8 @@ export default defineManifest((env: ConfigEnv) => {
               '*://explorer.solana.com/*',
               '*://debank.com/*',
               '*://platform.arkhamintelligence.com/*',
-              '*://explorer.jito.wtf/*'
+              '*://explorer.jito.wtf/*',
+              '*://*.oklink.com/*'
             ]
           : ['<all_urls>'],
         js: ['src/content/index.ts'],
