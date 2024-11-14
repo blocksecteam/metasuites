@@ -43,5 +43,6 @@ export default {
   DEBANK_MATCHES: ['*://debank.com/*'],
   ARKHAM_MATCHES: ['*://platform.arkhamintelligence.com/*'],
   DEX_MATCHES: ['*://dexscreener.com/*'],
-  JITO_MATCHES: ['*://explorer.jito.wtf/bundle/*']
+  JITO_MATCHES: ['*://explorer.jito.wtf/bundle/*'],
+  OKLINK_MATCHES: ['*://*.oklink.com/*', '*://*.okx.com/*web3/explorer/*']
 }

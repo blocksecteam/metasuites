@@ -57,6 +57,7 @@ interface Props {
   mainAddress: string
   chain: string
   onClose: () => void
+  formatNodeUrl?: (node: FundFlowNode) => string
 }
 
 interface Error {
@@ -68,7 +69,8 @@ const ModalFundFlowGraph: FC<Props> = ({
   visible,
   mainAddress,
   chain,
-  onClose
+  onClose,
+  formatNodeUrl
 }) => {
   const [token] = useStore('token')
 
@@ -347,10 +349,14 @@ const ModalFundFlowGraph: FC<Props> = ({
           useWorker: false
         })
         .on('end', () => {
-          initNodes(fundFlow, (node: FundFlowNode) => {
-            setEditingNode(node)
-            setModeAddPrivateLabelVisible(true)
-          })
+          initNodes(
+            fundFlow,
+            (node: FundFlowNode) => {
+              setEditingNode(node)
+              setModeAddPrivateLabelVisible(true)
+            },
+            formatNodeUrl
+          )
         })
 
       const imgList = getFundFlowImages(fundFlow)
