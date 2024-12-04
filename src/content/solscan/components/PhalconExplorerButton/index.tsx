@@ -19,7 +19,7 @@ const PhalconExplorerButton: FC<Props> = ({ txHash }) => {
       theme={{
         components: {
           Button: {
-            controlHeight: 34,
+            controlHeight: 28,
             borderRadius: 8,
             fontSize: 12
           }
