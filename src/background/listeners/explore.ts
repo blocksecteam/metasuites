@@ -25,7 +25,8 @@ import {
   GET_CREATION_BLOCK,
   GET_CONTRACT_VARIABLE_LOGS,
   GET_CONTRACT_VARIABLE_LIST,
-  GET_SIMULATION_FEES
+  GET_SIMULATION_FEES,
+  POST_ADDRESS_TAGS
 } from '@common/constants'
 import commonApi from '@common/api'
 
@@ -112,5 +113,8 @@ export default function initExploreRequest() {
   })
   chromeEvent.on(GET_SIMULATION_FEES, async params => {
     return await commonApi.getSimulationFees(params)
+  })
+  chromeEvent.on(POST_ADDRESS_TAGS, async params => {
+    return await commonApi.postAddressTags(params)
   })
 }

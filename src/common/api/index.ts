@@ -42,7 +42,8 @@ import type {
   PostContractVariableLogsReq,
   ContractVariableLog,
   ContractVariableListItem,
-  SimulationFeesParams
+  SimulationFeesParams,
+  PostAddressTagsReq
 } from './types'
 
 export default {
@@ -208,5 +209,9 @@ export default {
     return request
       .get(`api/v1/simulation/${chain}/base-fee?${queryString}`)
       .json<BscResponse<{ baseFee: string }>>()
-  }
+  },
+  postAddressTags: (params: PostAddressTagsReq) =>
+    request
+      .post('api/v1/address-tags', { json: params })
+      .json<BscResponse<void>>()
 }

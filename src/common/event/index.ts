@@ -21,7 +21,8 @@ import type {
   PostSignatureReq,
   PostContractVariableLogsReq,
   FundFlowParams,
-  SimulationFeesParams
+  SimulationFeesParams,
+  PostAddressTagsReq
 } from '@common/api/types'
 import type {
   REFRESH,
@@ -54,7 +55,8 @@ import type {
   GET_CONTRACT_VARIABLE_LOGS,
   GET_CREATION_BLOCK,
   GET_CONTRACT_VARIABLE_LIST,
-  GET_SIMULATION_FEES
+  GET_SIMULATION_FEES,
+  POST_ADDRESS_TAGS
 } from '@common/constants/event'
 
 export type EventInfo = {
@@ -89,6 +91,7 @@ export type EventInfo = {
   [GET_CREATION_BLOCK]: PostAddressParams
   [GET_CONTRACT_VARIABLE_LIST]: PostPrivateVariablesParams
   [GET_SIMULATION_FEES]: SimulationFeesParams
+  [POST_ADDRESS_TAGS]: PostAddressTagsReq
 }
 
 export const chromeEvent = new Event<EventInfo>(SCOPE)

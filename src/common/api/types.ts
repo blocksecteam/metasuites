@@ -381,3 +381,10 @@ export interface SimulationFeesParams {
   blockNumber?: number
   isPrerun: boolean
 }
+
+export interface PostAddressTagsReq {
+  chain: string
+  address: string
+  labels?: string[]
+  nameTag?: string
+}

@@ -1,3 +1,7 @@
+### v5.5.1
+
+- [fix] Fixed known issues
+
 ### v5.5.0
 
 - [feat] Adapt to OKX Explorer

@@ -4,7 +4,7 @@ import { store } from '@src/store'
 import { GET_SOLSCAN_ACCOUNT_TAB_DATA, SOLSCAN_PAGES } from '@common/constants'
 
 import { renderFundFlowButton, renderEnhancedLabels } from '../feat-scripts'
-import { lazyLoad } from '../helper'
+import { lazyLoad, trigger } from '../helper'
 
 const initTokenPageScript = async () => {
   const { fundFlow, enhancedLabels } = await store.get('options')
@@ -14,6 +14,7 @@ const initTokenPageScript = async () => {
     if (enhancedLabels) {
       renderEnhancedLabels()
     }
+    trigger()
   }, 'div[data-state="active"] table tbody tr:not(:has(div.animate-pulse))')
 
   browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {

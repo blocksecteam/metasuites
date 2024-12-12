@@ -9,7 +9,7 @@ import {
   renderEnhancedLabels,
   renderTransactionHashPhalconLink
 } from '../feat-scripts'
-import { lazyLoad } from '../helper'
+import { lazyLoad, trigger } from '../helper'
 
 const initAccountPageScript = async () => {
   const { fundFlow, enhancedLabels, quick2Parsers } = await store.get('options')
@@ -20,6 +20,7 @@ const initAccountPageScript = async () => {
       renderMainAddressLabel()
       renderEnhancedLabels()
     }
+    trigger()
   }, '#account-tabs')
 
   lazyLoad(
