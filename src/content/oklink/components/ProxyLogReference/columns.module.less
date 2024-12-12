@@ -1,0 +1,20 @@
+@import '@common/styles/common.less';
+
+.cell {
+  .items-center;
+  .md-flex;
+  a {
+    display: inline-block;
+    max-width: 160px;
+    .text-ellipsis;
+  }
+  &:hover {
+    .copyButton {
+      visibility: visible;
+    }
+  }
+  .copyButton {
+    visibility: hidden;
+    margin-left: 4px;
+  }
+}

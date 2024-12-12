@@ -1,0 +1,20 @@
+@import '@common/styles/common.less';
+
+
+.btn {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  &.active {
+    animation: like-animation 0.3s ease;
+  }
+}
+
+@keyframes like-animation {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

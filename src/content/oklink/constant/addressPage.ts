@@ -2,6 +2,7 @@ import { getRealPathnameArray } from '../utils'
 
 interface ADDRESS_PAGE {
   address: string
+  tab: string
 }
 
 const addressPage = {}
@@ -11,6 +12,12 @@ Object.defineProperties(addressPage, {
     get() {
       const address = getRealPathnameArray()[3]
       return address
+    }
+  },
+  tab: {
+    get() {
+      const tab = getRealPathnameArray()[4]
+      return tab
     }
   }
 })

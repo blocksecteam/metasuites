@@ -6,6 +6,7 @@ import { TokenSymbol } from '@common/components'
 
 import classNames from 'classnames'
 import styles from './index.module.less'
+import Link from '../Link'
 
 interface Props {
   label: string
@@ -22,13 +23,13 @@ const FortaAlertLabel: FC<Props> = ({ label, alertUrl }) => {
           <TokenSymbol style={{ marginRight: '6px' }} />
           <span>This label is provided by Forta</span>
           {alertUrl && (
-            <a
-              className={classNames(styles.link, 'ms-2')}
+            <Link
+              isBlack
+              className="ms-2"
               href={alertUrl}
-              target="_blank"
             >
               Detail
-            </a>
+            </Link>
           )}
         </div>
       }

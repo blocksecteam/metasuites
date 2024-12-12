@@ -12,6 +12,12 @@ Object.defineProperties(txPage, {
       const hash = getRealPathnameArray()[3]
       return hash
     }
+  },
+  tab: {
+    get() {
+      const tab = getRealPathnameArray()[4]
+      return tab
+    }
   }
 })
 

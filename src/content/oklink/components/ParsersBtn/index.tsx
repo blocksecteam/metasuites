@@ -9,6 +9,7 @@ import { useStore } from '@common/hooks'
 
 import styles from './index.module.less'
 import txPage from '../../constant/txPage'
+import Link from '../Link'
 
 interface Props {
   chain: string
@@ -59,9 +60,9 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
         return (
           <Fragment key={index}>
             <div className={styles.line} />
-            <a href={item.url} target="_blank" className={styles.link}>
+            <Link href={item.url} className={styles.link}>
               {item.text}
-            </a>
+            </Link>
           </Fragment>
         )
       })}

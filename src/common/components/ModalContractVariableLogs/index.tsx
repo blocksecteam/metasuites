@@ -34,6 +34,8 @@ interface Props {
   variableName: string
   returnType: string
   utc2locale: boolean
+  onClose?: () => void
+  formatUrl?: (url: string) => string;
 }
 
 const MAX_LOG_ITEMS = 300
@@ -45,7 +47,9 @@ const ModalContractVariableLogs: FC<Props> = ({
   implementation,
   variableName,
   returnType,
-  utc2locale
+  utc2locale,
+  onClose,
+  formatUrl,
 }) => {
   const [loading, setLoading] = useState(true)
   const [visible, setVisible] = useState(true)
@@ -173,7 +177,10 @@ const ModalContractVariableLogs: FC<Props> = ({
         ) : null
       }
       open={visible}
-      onCancel={() => setVisible(false)}
+      onCancel={() => {
+        setVisible(false)
+        onClose?.()
+      }}
     >
       <div className={styles.container}>
         <div
@@ -263,7 +270,7 @@ const ModalContractVariableLogs: FC<Props> = ({
           loading={loading}
           bordered={false}
           dataSource={list}
-          columns={columns(chain, utc2locale)}
+          columns={columns(chain, utc2locale, formatUrl)}
           pagination={false}
           scroll={{ x: 575, y: 500 }}
           rowKey="id"
