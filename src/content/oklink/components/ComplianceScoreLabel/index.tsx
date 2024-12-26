@@ -5,8 +5,10 @@ import { Tooltip } from 'antd'
 import { type AddressRiskLevel } from '@common/constants'
 
 import styles from './index.module.less'
-import { getOKLinkImage } from '../../utils'
 import { AddressRisk } from '../../constant/addressRisk'
+import OKLinkImage from '../OKLinkImage'
+import { getOKLinkImage } from '../../utils'
+import Link from '../Link'
 
 interface Props {
   risk: AddressRiskLevel
@@ -26,9 +28,9 @@ const ComplianceScoreLabel: FC<Props> = ({ risk }) => {
       overlayInnerStyle={{ width: 288 }}
       title={
         <div>
-          <a href={MAILTO_URL} target="_blank">
+          <Link href={MAILTO_URL}>
             Contact us{' '}
-          </a>
+          </Link>
           for any questions regarding compliance risk assessment by algorithm.
         </div>
       }
@@ -39,10 +41,9 @@ const ComplianceScoreLabel: FC<Props> = ({ risk }) => {
           styles[riskOpt.icon]
         )}
       >
-        <img
+        <OKLinkImage
           className={styles.iconRisk}
           src={getOKLinkImage(riskOpt.icon)}
-          alt=""
         />
         {riskOpt.label}
       </div>

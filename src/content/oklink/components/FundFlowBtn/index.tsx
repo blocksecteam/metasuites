@@ -4,6 +4,7 @@ import { ModalFundFlow } from '@common/components'
 import styles from './index.module.less'
 import { getOKLinkImage } from '../../utils'
 import GLOBAL from '../../constant/global'
+import OKLinkImage from '../OKLinkImage'
 
 interface Props {
   chain: string
@@ -17,7 +18,7 @@ const FundFlowBtn: FC<Props> = ({ chain, mainAddress }) => {
     <>
       <div className={styles.fundFlowBtn} onClick={() => setVisible(true)}>
         Fund Flow
-        <img className={styles.iconRisk} src={getOKLinkImage('graph')} alt="" />
+        <OKLinkImage className={styles.iconRisk} src={getOKLinkImage('graph')} />
       </div>
       <ModalFundFlow
         formatNodeUrl={node => {

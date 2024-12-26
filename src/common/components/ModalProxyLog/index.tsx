@@ -17,9 +17,10 @@ interface Props {
   address: string
   visible: boolean
   onClose: () => void
+  customColumns?: any[]
 }
 
-const ModalProxyLog: FC<Props> = ({ visible, onClose, chain, address }) => {
+const ModalProxyLog: FC<Props> = ({ visible, onClose, chain, address, customColumns }) => {
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const [dataList, setDataList] = useState<ProxyContractLog[]>([])
@@ -86,7 +87,7 @@ const ModalProxyLog: FC<Props> = ({ visible, onClose, chain, address }) => {
         loading={loading}
         className={styles.table}
         scroll={{ x: 575, y: 500 }}
-        columns={columns}
+        columns={customColumns || columns}
         dataSource={dataList}
         pagination={false}
         rowKey="id"

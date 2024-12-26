@@ -8,6 +8,7 @@ import styles from './index.module.less'
 import { ADDRESS_ATTR } from '../../constant/enum'
 import { getOKLinkImage } from '../../utils'
 import META_SUITES_CLASS from '../../constant/metaSuites'
+import OKLinkImage from '../OKLinkImage'
 
 interface Props {
   chain: string
@@ -133,10 +134,9 @@ const ExportTableDataBtn: FC<Props> = ({ chain, table }) => {
           style={{ marginRight: 0, verticalAlign: 'middle' }}
         />
         Download current page data
-        <img
+        <OKLinkImage
           className={styles.img}
           src={getOKLinkImage('arrow-down')}
-          alt="arrow"
         />
       </div>
     </Dropdown>

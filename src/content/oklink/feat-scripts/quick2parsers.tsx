@@ -15,7 +15,7 @@ const getTxHeaderLinkBox = () => {
   return dom
 }
 
-const genQuick2parsersBtn = async () => {
+const genQuick2parsersBtn = () => {
   if (!isSupportParsers(CHAIN.chain)) return
   createTimerFn(() => {
     const txHashEl = getTxHeaderLinkBox()

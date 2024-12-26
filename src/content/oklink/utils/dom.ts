@@ -58,3 +58,88 @@ export const getAddressToolsDom = () => {
   }, 100)
   return addressTools
 }
+
+export const getTxHashParentDomArr = (): HTMLElement[] => {
+  const parents = document.querySelectorAll(META_SUITES_CLASS.txHashParentOnce)
+  const result: HTMLElement[] = []
+  parents.forEach(item => {
+    const element = item as HTMLElement
+    item.classList.add(META_SUITES_DONE)
+    result.push(element)
+  })
+  return result
+}
+
+export const getTxTabsDom = () => {
+  const el = document.querySelector<HTMLElement>(
+    META_SUITES_CLASS.txTabs
+  )
+  el?.classList.add(META_SUITES_DONE);
+  return el;
+}
+
+export const getTxOverviewDom = () => {
+  const el = document.querySelector<HTMLElement>(
+    META_SUITES_CLASS.txOverview
+  )
+  el?.classList.add(META_SUITES_DONE);
+  return el;
+}
+
+export const getTxTipDom = () => {
+  const el = document.querySelector<HTMLElement>(
+    META_SUITES_CLASS.txTip
+  )
+  el?.classList.add(META_SUITES_DONE);
+  return el;
+}
+
+export const getContractTabsDom = () => {
+  const el = document.querySelector<HTMLElement>(
+    META_SUITES_CLASS.contractTabs
+  )
+  setTimeout(() => {
+    el?.classList.add(META_SUITES_DONE);
+  }, 100)
+  return el;
+}
+
+export const getReadContractBoxDom = () => {
+  const el = document.querySelector<HTMLElement>(
+    META_SUITES_CLASS.readContractBox
+  )
+  setTimeout(() => {
+    el?.classList.add(META_SUITES_DONE);
+  }, 100)
+  return el;
+}
+
+export const getContractVerifiedHeaderDom = () => {
+  const el = document.querySelector<HTMLElement>(
+    META_SUITES_CLASS.contractVerifiedHeader
+  )
+  el?.classList.add(META_SUITES_DONE);
+  return el;
+}
+
+export const getContractCodeHeaderDom = () => {
+  const el = document.querySelector<HTMLElement>(
+    META_SUITES_CLASS.contractCodeHeader
+  )
+  setTimeout(() => {
+    el?.classList.add(META_SUITES_DONE);
+  }, 100)
+ 
+  return el;
+}
+
+
+export const getMethodsDom = () => {
+  const els = document.querySelectorAll<HTMLElement>(
+    META_SUITES_CLASS.method
+  )
+  els?.forEach(item => {
+    item.classList.add(META_SUITES_DONE);
+  })
+  return els;
+}

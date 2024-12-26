@@ -26,18 +26,30 @@ export const getOKLinkImage = (name: string) => {
 
 export const createTimerFn = (fn: () => void, time = 1000) => {
   let timer: string | number | NodeJS.Timeout | undefined
-  return () => {
+  const clearTimer = () => {
     if (timer) {
       clearInterval(timer)
     }
+  }
+  return ({ clearFn = () => { return true } }: { clearFn?: () => boolean; } = {}) => {
+    clearTimer()
+    setTimeout(() => {
+      fn()
+    })
     timer = setInterval(() => {
       fn()
     }, time)
-    browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
-      if (message === URL_UPDATED) {
-        clearInterval(timer)
-        sendResponse()
+
+    const listener = (message: string, _sender: any, sendResponse: () => void) => {
+      if (message === URL_UPDATED){
+        if (clearFn()) {
+          clearTimer();
+          sendResponse();
+          browser.runtime.onMessage.removeListener(listener);
+        }
       }
-    })
+    }
+    browser.runtime.onMessage.addListener(listener);
+    return clearTimer;
   }
 }
