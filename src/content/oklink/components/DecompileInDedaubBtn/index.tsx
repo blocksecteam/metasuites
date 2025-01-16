@@ -3,9 +3,9 @@ import { memo, useMemo, type FC } from 'react'
 import { DEDAUB_SUPPORT_DIRECT_LIST } from '@common/constants'
 import { getImageUrl } from '@common/utils'
 
-import styles from './index.module.less';
+import styles from './index.module.less'
 import OKLinkImage from '../OKLinkImage'
-import META_SUITES_CLASS from '../../constant/metaSuites';
+import META_SUITES_CLASS from '../../constant/metaSuites'
 
 interface Props {
   mainAddress: string
@@ -14,7 +14,9 @@ interface Props {
 
 const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
   const bytecode = useMemo(() => {
-    return document.querySelector(META_SUITES_CLASS.contractCode)?.textContent?.trim()
+    return document
+      .querySelector(META_SUITES_CLASS.contractCode)
+      ?.textContent?.trim()
   }, [])
   const toDedaub = () => {
     const item = DEDAUB_SUPPORT_DIRECT_LIST.find(item => item.chain === chain)
@@ -58,14 +60,11 @@ const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
   }
 
   return (
-    <div
-      onClick={toDedaub}
-      className={styles.wrapper}
-    >
+    <div onClick={toDedaub} className={styles.wrapper}>
       <OKLinkImage className={styles.img} src={getImageUrl('dedaub')} />
       Decompile in Dedaub
     </div>
   )
 }
 
-export default memo(DecompileInDedaubBtn);
+export default memo(DecompileInDedaubBtn)

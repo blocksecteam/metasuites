@@ -22,7 +22,11 @@ const Edit: FC<Props> = ({ errorOccur, onHidden, ...props }) => {
     <div className={styles.box}>
       <div className={styles.edit}>
         {!errorOccur && (
-          <CopyButton className={styles.copy} size={14} text={props.result?.content ?? ''} />
+          <CopyButton
+            className={styles.copy}
+            size={14}
+            text={props.result?.content ?? ''}
+          />
         )}
         <Liked {...props} />
         <Hidden onHidden={onHidden} />

@@ -1,8 +1,8 @@
 import { memo, type FC } from 'react'
-import styles from './index.module.less';
+import styles from './index.module.less'
 
 interface Props {
-  onHidden?: () => void;
+  onHidden?: () => void
 }
 
 const Hidden: FC<Props> = ({ onHidden }) => {
@@ -28,4 +28,4 @@ const Hidden: FC<Props> = ({ onHidden }) => {
   )
 }
 
-export default memo(Hidden);
+export default memo(Hidden)

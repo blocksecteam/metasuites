@@ -20,10 +20,13 @@ const sharedOnCell = (record: ContractVariableLog) => {
 const columns = (
   chain: string,
   utc2locale: boolean,
-  formatUrl?: (url: string) => string,
+  formatUrl?: (url: string) => string
 ): ColumnsType<ContractVariableLog> => {
-
-  const getRealUrl = formatUrl ? formatUrl : (url: string) => { return url };
+  const getRealUrl = formatUrl
+    ? formatUrl
+    : (url: string) => {
+        return url
+      }
 
   const getExplorerURL = (txHash: string) => {
     const support = PHALCON_SUPPORT_LIST.find(i => i.chain === chain)
@@ -58,7 +61,11 @@ const columns = (
           ''
         ) : (
           <CopyButton hover text={String(block)} ml={4}>
-            <a className='f-filter' href={getRealUrl(`/block/${block}`)} target="_blank">
+            <a
+              className="f-filter"
+              href={getRealUrl(`/block/${block}`)}
+              target="_blank"
+            >
               {block}
             </a>
           </CopyButton>
@@ -115,7 +122,11 @@ const columns = (
                     })}
                   >
                     {v.type === 'address' ? (
-                      <a className='f-filter' href={getRealUrl(`/address/${v.value}`)} target="_blank">
+                      <a
+                        className="f-filter"
+                        href={getRealUrl(`/address/${v.value}`)}
+                        target="_blank"
+                      >
                         {v.value}
                       </a>
                     ) : (
@@ -149,7 +160,11 @@ const columns = (
           ''
         ) : (
           <CopyButton hover text={txHash} ml={4}>
-            <a className='f-filter' href={getExplorerURL(txHash)} target="_blank">
+            <a
+              className="f-filter"
+              href={getExplorerURL(txHash)}
+              target="_blank"
+            >
               {getSubStr(txHash, [8])}
             </a>
           </CopyButton>

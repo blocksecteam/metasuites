@@ -10,9 +10,11 @@ import { getContractTabsDom } from '../utils/dom'
 const genEvmStorageShortcut = (address: string) => {
   if (!EVM_STORAGE_SUPPORT_LIST.includes(CHAIN.chain)) return
   createTimerFn(() => {
-    const tabsEl = getContractTabsDom();
-    if (!tabsEl) { return };
-    const rootEl = document.createElement('div');
+    const tabsEl = getContractTabsDom()
+    if (!tabsEl) {
+      return
+    }
+    const rootEl = document.createElement('div')
     tabsEl.append(rootEl)
     createRoot(rootEl).render(
       <EvmStorageShortcut chain={CHAIN.chain} address={address} />

@@ -31,7 +31,11 @@ export const createTimerFn = (fn: () => void, time = 1000) => {
       clearInterval(timer)
     }
   }
-  return ({ clearFn = () => { return true } }: { clearFn?: () => boolean; } = {}) => {
+  return ({
+    clearFn = () => {
+      return true
+    }
+  }: { clearFn?: () => boolean } = {}) => {
     clearTimer()
     setTimeout(() => {
       fn()
@@ -40,16 +44,20 @@ export const createTimerFn = (fn: () => void, time = 1000) => {
       fn()
     }, time)
 
-    const listener = (message: string, _sender: any, sendResponse: () => void) => {
-      if (message === URL_UPDATED){
+    const listener = (
+      message: string,
+      _sender: any,
+      sendResponse: () => void
+    ) => {
+      if (message === URL_UPDATED) {
         if (clearFn()) {
-          clearTimer();
-          sendResponse();
-          browser.runtime.onMessage.removeListener(listener);
+          clearTimer()
+          sendResponse()
+          browser.runtime.onMessage.removeListener(listener)
         }
       }
     }
-    browser.runtime.onMessage.addListener(listener);
-    return clearTimer;
+    browser.runtime.onMessage.addListener(listener)
+    return clearTimer
   }
 }

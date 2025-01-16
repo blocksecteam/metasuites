@@ -15,10 +15,10 @@ import Label from './Label'
 interface Props {
   tx: string
   chain: string
-  clearTimer?: () => void;
+  clearTimer?: () => void
 }
 
-const TransactionExplanation: FC<Props> = ({ clearTimer, ...props}) => {
+const TransactionExplanation: FC<Props> = ({ clearTimer, ...props }) => {
   const [loading, setLoading] = useState(true)
   const [result, setResult] = useState<GptTxExplainRes>()
   const [mounted, setMounted] = useState(false)
@@ -60,14 +60,14 @@ const TransactionExplanation: FC<Props> = ({ clearTimer, ...props}) => {
       <Label mounted={mounted} />
       <div className={styles.content}>
         {/* <LoadingLogo loading={loading} /> */}
-        { <Result result={result} /> }
+        {<Result result={result} />}
       </div>
       {!loading && (
         <Edit
           result={result}
           errorOccur={errorOccur}
           onHidden={() => {
-            clearTimer?.();
+            clearTimer?.()
             setHidden(true)
           }}
           {...props}

@@ -7,23 +7,25 @@ import { getContractTabsDom } from '../utils/dom'
 
 /** Show proxy log */
 const genProxyContractLog = (address: string) => {
-  const chain = CHAIN.chain;
+  const chain = CHAIN.chain
   if (!PROXY_LOG_SUPPORT_LIST.includes(chain)) return
   createTimerFn(() => {
-    const tabsEl = getContractTabsDom();
-    if (!tabsEl) { return };
-    const aLinks = tabsEl?.querySelectorAll('a');
-    let flag = true;
+    const tabsEl = getContractTabsDom()
+    if (!tabsEl) {
+      return
+    }
+    const aLinks = tabsEl?.querySelectorAll('a')
+    let flag = true
     aLinks?.forEach(aLink => {
       if (aLink.href.includes('proxy')) {
-        flag = false;
+        flag = false
       }
     })
     if (flag) {
-      return;
+      return
     }
-   
-    const rootEl = document.createElement('div');
+
+    const rootEl = document.createElement('div')
     tabsEl.append(rootEl)
     createRoot(rootEl).render(
       <ProxyLogReference chain={chain} address={address} />

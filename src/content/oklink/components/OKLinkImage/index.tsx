@@ -1,15 +1,13 @@
 import { memo, type FC } from 'react'
 import classNames from 'classnames'
 
-
-import { Image } from '@src/common/components';
+import { Image } from '@src/common/components'
 
 interface Props {
-  src: string;
-  className?: string;
-  style?: object;
+  src: string
+  className?: string
+  style?: object
 }
-
 
 const OKLinkImage: FC<Props> = ({ src, className, style }) => {
   return (

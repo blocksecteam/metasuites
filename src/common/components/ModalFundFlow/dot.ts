@@ -3,7 +3,8 @@ import {
   swapItem,
   decodeUnicode,
   ChainUtils,
-  getContrastColor
+  getContrastColor,
+  codeHTMLEntities
 } from '@common/utils'
 
 import { NodeType } from './enum'
@@ -15,7 +16,7 @@ const genNode = (node: FundFlowNode) => {
   const { address, label, id, type, selected, logo, chain, color } = node
   if (!selected) return ''
 
-  const decodedLabel = decodeUnicode(label)
+  const decodedLabel = codeHTMLEntities(decodeUnicode(label))
 
   return `"${id}" 
         [

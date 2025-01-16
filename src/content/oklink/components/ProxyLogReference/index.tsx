@@ -1,8 +1,8 @@
 import { type FC, useState } from 'react'
 
 import { TokenSymbol, ModalProxyLog } from '@common/components'
-import styles from './index.module.less';
-import columns from './columns';
+import styles from './index.module.less'
+import columns from './columns'
 
 interface Props {
   chain: string
@@ -18,20 +18,19 @@ const ProxyLogReference: FC<Props> = ({ chain, address }) => {
 
   return (
     <>
-      <div
-        className={styles.wrapper}
-        onClick={onClick}
-      >
+      <div className={styles.wrapper} onClick={onClick}>
         <TokenSymbol color="#fff" mr={4} />
         <span>Proxy Upgrade Log</span>
       </div>
-      {visible && (<ModalProxyLog
-        chain={chain}
-        address={address.toLocaleLowerCase()}
-        visible={visible}
-        onClose={() => setVisible(v => !v)}
-        customColumns={columns}
-      />)}
+      {visible && (
+        <ModalProxyLog
+          chain={chain}
+          address={address.toLocaleLowerCase()}
+          visible={visible}
+          onClose={() => setVisible(v => !v)}
+          customColumns={columns}
+        />
+      )}
     </>
   )
 }

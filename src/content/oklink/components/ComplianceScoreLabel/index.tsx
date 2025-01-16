@@ -28,9 +28,7 @@ const ComplianceScoreLabel: FC<Props> = ({ risk }) => {
       overlayInnerStyle={{ width: 288 }}
       title={
         <div>
-          <Link href={MAILTO_URL}>
-            Contact us{' '}
-          </Link>
+          <Link href={MAILTO_URL}>Contact us </Link>
           for any questions regarding compliance risk assessment by algorithm.
         </div>
       }

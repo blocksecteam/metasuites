@@ -28,7 +28,7 @@ const EvmStorageShortcut: FC<Props> = ({ chain, address }) => {
   }, [])
 
   if (!blockHeight) {
-    return null;
+    return null
   }
 
   return (
@@ -37,7 +37,7 @@ const EvmStorageShortcut: FC<Props> = ({ chain, address }) => {
       href={`https://evm.storage/eth/${blockHeight}/${address}`}
     >
       <TokenSymbol mr={4} />
-      <span >View in evm.storage</span>
+      <span>View in evm.storage</span>
     </Link>
   )
 }

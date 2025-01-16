@@ -5,9 +5,8 @@ import { useStore } from '@common/hooks'
 import Message from './Message'
 import styles from './index.module.less'
 
-
 const Disable = () => {
-  const [options, setOptions] = useStore('options');
+  const [options, setOptions] = useStore('options')
   const [showMessage, setShowMessage] = useState(false)
   const onDisable = () => {
     setShowMessage(true)
@@ -43,4 +42,4 @@ const Disable = () => {
   )
 }
 
-export default memo(Disable);
+export default memo(Disable)

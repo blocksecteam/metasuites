@@ -46,12 +46,11 @@ export const genMainAddressFortaLabels = (mainAddress: string | undefined) => {
   }, 1000)()
 }
 
-
 export const genTxFortaAlertTip = async () => {
   createTimerFn(async () => {
-    const txHash = txPage.hash;
-    const rootEl = getTxTipDom();
-    if (!rootEl || !txHash) return;
+    const txHash = txPage.hash
+    const rootEl = getTxTipDom()
+    if (!rootEl || !txHash) return
     const res = await getFortaAlerts({
       chain: CHAIN.chain,
       txHashes: [txHash]

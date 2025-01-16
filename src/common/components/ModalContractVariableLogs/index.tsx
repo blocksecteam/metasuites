@@ -35,7 +35,7 @@ interface Props {
   returnType: string
   utc2locale: boolean
   onClose?: () => void
-  formatUrl?: (url: string) => string;
+  formatUrl?: (url: string) => string
 }
 
 const MAX_LOG_ITEMS = 300
@@ -49,7 +49,7 @@ const ModalContractVariableLogs: FC<Props> = ({
   returnType,
   utc2locale,
   onClose,
-  formatUrl,
+  formatUrl
 }) => {
   const [loading, setLoading] = useState(true)
   const [visible, setVisible] = useState(true)

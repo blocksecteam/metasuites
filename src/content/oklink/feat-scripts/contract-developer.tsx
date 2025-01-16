@@ -10,7 +10,7 @@ import genDecompileInDedaubBtn from './decompile-in-dedaub'
 import genDecompileInEthervmBtn from './decompile-in-ethervm'
 
 const getContractDeveloper = async (address: string) => {
-  if (!address) return;
+  if (!address) return
   const {
     dedaubStorage,
     evmStorage,
@@ -19,18 +19,17 @@ const getContractDeveloper = async (address: string) => {
     privateVariables,
     contractSourcecode,
     decompileInDedaub,
-    decompileInEthervm,
-  } = await store.get('options');
+    decompileInEthervm
+  } = await store.get('options')
 
-  if (proxyLogs) genProxyContractLog(address);
-  if (dedaubStorage) genDedaubStorageShortcut(address);
-  if (evmStorage) genEvmStorageShortcut(address);
-  if (variableLogs) genContractVariableLogsBtn(address);
+  if (proxyLogs) genProxyContractLog(address)
+  if (dedaubStorage) genDedaubStorageShortcut(address)
+  if (evmStorage) genEvmStorageShortcut(address)
+  if (variableLogs) genContractVariableLogsBtn(address)
   if (privateVariables) genContractPrivateVariables(address)
   if (contractSourcecode) genDownloadSourceCodeBtn(address)
   if (decompileInDedaub) genDecompileInDedaubBtn(address)
   if (decompileInEthervm) genDecompileInEthervmBtn(address)
-
 }
 
-export default getContractDeveloper;
+export default getContractDeveloper

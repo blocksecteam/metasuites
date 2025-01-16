@@ -8,9 +8,11 @@ import { getContractTabsDom } from '../utils/dom'
 /** Show Dedaub Storage shortcut */
 const genDedaubStorageShortcut = (address: string) => {
   createTimerFn(() => {
-    const tabsEl = getContractTabsDom();
-    if (!tabsEl) { return };
-    const rootEl = document.createElement('div');
+    const tabsEl = getContractTabsDom()
+    if (!tabsEl) {
+      return
+    }
+    const rootEl = document.createElement('div')
     tabsEl.append(rootEl)
     createRoot(rootEl).render(
       <DedaubStorageShortcut chain={CHAIN.chain} address={address} />

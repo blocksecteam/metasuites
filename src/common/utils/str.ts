@@ -19,3 +19,24 @@ export const decodeUnicode = (text: string) => {
       .textContent ?? ''
   )
 }
+
+export function codeHTMLEntities(str: string) {
+  return str.replace(/[&<>"'/]/g, function (match: string) {
+    switch (match) {
+      case '&':
+        return '&amp;'
+      case '<':
+        return '&lt;'
+      case '>':
+        return '&gt;'
+      case '"':
+        return '&quot;'
+      case "'":
+        return '&#39;'
+      case '/':
+        return '&#x2F;'
+      default:
+        return match
+    }
+  })
+}

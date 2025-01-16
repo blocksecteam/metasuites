@@ -2,18 +2,18 @@ import { ExplorerPath } from './enum'
 import { checkExplorer, getRealPathnameArray } from '../utils'
 
 interface Chain {
-  isETH: boolean;
-  isBSC: boolean;
-  isARBITRUM: boolean;
-  chain: string;
-  chainPath: string;
+  isETH: boolean
+  isBSC: boolean
+  isARBITRUM: boolean
+  chain: string
+  chainPath: string
 }
 
 // key is url path, value is chain name
 const chainMap = {
   eth: 'eth',
   bsc: 'bsc',
-  arbitrum: 'arbitrum',
+  arbitrum: 'arbitrum'
 }
 
 type ChainMap = typeof chainMap

@@ -5,9 +5,7 @@ import type { FortaAlertRes, FortaAlertReq } from '@common/api/types'
 import { GET_FORTA_ALERT } from '@common/constants'
 import { validOrigin, getNodeValue } from '@common/utils'
 
-import {
-  FortaAlertWarningSymbol
-} from '../components'
+import { FortaAlertWarningSymbol } from '../components'
 import { createTimerFn } from '../utils'
 import { getTxHashParentDomArr } from '../utils/dom'
 import { TX_HASH_ATTR } from '../constant/enum'
@@ -41,10 +39,10 @@ const handleAlerts = async (elements: HTMLElement[]) => {
   )
   res?.forEach(item => {
     elements.forEach(el => {
-      const txHash = el.getAttribute(TX_HASH_ATTR) || '';
+      const txHash = el.getAttribute(TX_HASH_ATTR) || ''
       if (item.txHash === txHash) {
         const warningRootEl = document.createElement('div')
-        el.prepend(warningRootEl);
+        el.prepend(warningRootEl)
         createRoot(warningRootEl).render(
           <FortaAlertWarningSymbol alertUrl={item.alertUrl} />
         )
@@ -61,4 +59,4 @@ const getTxnFortaAlert = async () => {
   })()
 }
 
-export default getTxnFortaAlert;
+export default getTxnFortaAlert

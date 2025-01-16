@@ -71,37 +71,29 @@ export const getTxHashParentDomArr = (): HTMLElement[] => {
 }
 
 export const getTxTabsDom = () => {
-  const el = document.querySelector<HTMLElement>(
-    META_SUITES_CLASS.txTabs
-  )
-  el?.classList.add(META_SUITES_DONE);
-  return el;
+  const el = document.querySelector<HTMLElement>(META_SUITES_CLASS.txTabs)
+  el?.classList.add(META_SUITES_DONE)
+  return el
 }
 
 export const getTxOverviewDom = () => {
-  const el = document.querySelector<HTMLElement>(
-    META_SUITES_CLASS.txOverview
-  )
-  el?.classList.add(META_SUITES_DONE);
-  return el;
+  const el = document.querySelector<HTMLElement>(META_SUITES_CLASS.txOverview)
+  el?.classList.add(META_SUITES_DONE)
+  return el
 }
 
 export const getTxTipDom = () => {
-  const el = document.querySelector<HTMLElement>(
-    META_SUITES_CLASS.txTip
-  )
-  el?.classList.add(META_SUITES_DONE);
-  return el;
+  const el = document.querySelector<HTMLElement>(META_SUITES_CLASS.txTip)
+  el?.classList.add(META_SUITES_DONE)
+  return el
 }
 
 export const getContractTabsDom = () => {
-  const el = document.querySelector<HTMLElement>(
-    META_SUITES_CLASS.contractTabs
-  )
+  const el = document.querySelector<HTMLElement>(META_SUITES_CLASS.contractTabs)
   setTimeout(() => {
-    el?.classList.add(META_SUITES_DONE);
+    el?.classList.add(META_SUITES_DONE)
   }, 100)
-  return el;
+  return el
 }
 
 export const getReadContractBoxDom = () => {
@@ -109,17 +101,17 @@ export const getReadContractBoxDom = () => {
     META_SUITES_CLASS.readContractBox
   )
   setTimeout(() => {
-    el?.classList.add(META_SUITES_DONE);
+    el?.classList.add(META_SUITES_DONE)
   }, 100)
-  return el;
+  return el
 }
 
 export const getContractVerifiedHeaderDom = () => {
   const el = document.querySelector<HTMLElement>(
     META_SUITES_CLASS.contractVerifiedHeader
   )
-  el?.classList.add(META_SUITES_DONE);
-  return el;
+  el?.classList.add(META_SUITES_DONE)
+  return el
 }
 
 export const getContractCodeHeaderDom = () => {
@@ -127,19 +119,16 @@ export const getContractCodeHeaderDom = () => {
     META_SUITES_CLASS.contractCodeHeader
   )
   setTimeout(() => {
-    el?.classList.add(META_SUITES_DONE);
+    el?.classList.add(META_SUITES_DONE)
   }, 100)
- 
-  return el;
+
+  return el
 }
 
-
 export const getMethodsDom = () => {
-  const els = document.querySelectorAll<HTMLElement>(
-    META_SUITES_CLASS.method
-  )
+  const els = document.querySelectorAll<HTMLElement>(META_SUITES_CLASS.method)
   els?.forEach(item => {
-    item.classList.add(META_SUITES_DONE);
+    item.classList.add(META_SUITES_DONE)
   })
-  return els;
+  return els
 }

@@ -1,6 +1,4 @@
-import {
-  getContractDeveloper
-} from '../feat-scripts'
+import { getContractDeveloper } from '../feat-scripts'
 import tokenPage from '../constant/tokenPage'
 
 const initTokenPageScript = () => {

@@ -21,10 +21,7 @@ const DecompileInEthervmBtn: FC<Props> = ({ mainAddress, chain }) => {
   }
 
   return (
-    <div
-      className={styles.wrapper}
-      onClick={toEthervm}
-    >
+    <div className={styles.wrapper} onClick={toEthervm}>
       <OKLinkImage className={styles.img} src={getImageUrl('ethervm')} />
       Decompile in ethervm.io
     </div>

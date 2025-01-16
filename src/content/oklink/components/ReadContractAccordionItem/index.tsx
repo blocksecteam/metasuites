@@ -1,8 +1,6 @@
 import { type FC, useRef, useState } from 'react'
 import { chromeEvent } from '@common/event'
-import {
-  QUERY_PRIVATE_VARIABLE,
-} from '@common/constants'
+import { QUERY_PRIVATE_VARIABLE } from '@common/constants'
 import type {
   PrivateVariableArgument,
   PrivateVariable
@@ -38,24 +36,28 @@ const ReadContractAccordionItem: FC<Props> = ({
 
   const getInputValue = () => {
     const inputs: string[] = []
-    let valid = true;
-    parentDomRef.current?.querySelectorAll(META_SUITES_CLASS.contractInput).forEach((inputEl) => {
-      const val = (inputEl as HTMLInputElement).value;
-      if (!val) {
-        valid = false;
-        return;
-      }
-      inputs.push(val)
-    });
-    return valid ? inputs : null;
-  };
+    let valid = true
+    parentDomRef.current
+      ?.querySelectorAll(META_SUITES_CLASS.contractInput)
+      .forEach(inputEl => {
+        const val = (inputEl as HTMLInputElement).value
+        if (!val) {
+          valid = false
+          return
+        }
+        inputs.push(val)
+      })
+    return valid ? inputs : null
+  }
 
   const onQuery = async () => {
-    setErrorMsg('');
-    const inputs = getInputValue();
+    setErrorMsg('')
+    const inputs = getInputValue()
     if (!inputs) {
-      setErrorMsg('Please complete all fields to see the logs of that variable.');
-      return;
+      setErrorMsg(
+        'Please complete all fields to see the logs of that variable.'
+      )
+      return
     }
     const res = await chromeEvent.emit<
       typeof QUERY_PRIVATE_VARIABLE,
@@ -77,7 +79,7 @@ const ReadContractAccordionItem: FC<Props> = ({
       <TitleBox id={id} data={data} />
       <div className={styles.children}>
         <Form data={data} />
-        { !data.inputs?.length && <Result data={data} /> }
+        {!data.inputs?.length && <Result data={data} />}
         <ButtonGroup
           data={data}
           onQuery={onQuery}
@@ -87,11 +89,13 @@ const ReadContractAccordionItem: FC<Props> = ({
           address={address}
           utc2locale={utc2locale}
         />
-        {errorMsg && <div className={styles.error}>{errorMsg}</div> }
-        {!!data.inputs?.length && queryResult && <Result data={data} queryResult={queryResult} />}
+        {errorMsg && <div className={styles.error}>{errorMsg}</div>}
+        {!!data.inputs?.length && queryResult && (
+          <Result data={data} queryResult={queryResult} />
+        )}
       </div>
     </div>
   )
 }
 
-export default ReadContractAccordionItem;
+export default ReadContractAccordionItem

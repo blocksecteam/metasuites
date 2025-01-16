@@ -16,21 +16,24 @@ interface Props {
 const FortaAlertWarningSymbol: FC<Props> = ({ alertUrl }) => {
   const title = useMemo(() => {
     return (
-        <div>
-          <TokenSymbol style={{ marginRight: '6px' }} />
-          <span>Forta Alert: This is a suspicious exploit transaction</span>
-          {alertUrl && (
-            <Link className="ms-2" href={alertUrl} isBlack>
-              Detail
-            </Link>
-          )}
-        </div>
-        )
+      <div>
+        <TokenSymbol style={{ marginRight: '6px' }} />
+        <span>Forta Alert: This is a suspicious exploit transaction</span>
+        {alertUrl && (
+          <Link className="ms-2" href={alertUrl} isBlack>
+            Detail
+          </Link>
+        )}
+      </div>
+    )
   }, [alertUrl])
   return (
     <Tooltip title={title}>
       <div className={styles.box}>
-        <OKLinkImage src={getOKLinkImage('warning')} className={styles.warning} />
+        <OKLinkImage
+          src={getOKLinkImage('warning')}
+          className={styles.warning}
+        />
       </div>
     </Tooltip>
   )

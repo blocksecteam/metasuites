@@ -29,9 +29,7 @@ const columns: ColumnsType<ProxyContractLog> = [
     width: 200,
     render: currentImpl => (
       <div className={styles.cell}>
-        <Link
-          href={getAddressUrl({ address: currentImpl })}
-        >
+        <Link href={getAddressUrl({ address: currentImpl })}>
           {currentImpl}
         </Link>
         <CopyButton className={styles.copyButton} text={currentImpl} />
@@ -44,9 +42,7 @@ const columns: ColumnsType<ProxyContractLog> = [
     key: 'tx',
     render: tx => (
       <div className={styles.cell}>
-        <Link href={getTxUrl({ hash: tx })}>
-          {tx}
-        </Link>
+        <Link href={getTxUrl({ hash: tx })}>{tx}</Link>
         <CopyButton className={styles.copyButton} text={tx} />
       </div>
     )
@@ -63,11 +59,7 @@ const columns: ColumnsType<ProxyContractLog> = [
     ),
     dataIndex: 'hub',
     key: 'hub',
-    render: hub => (
-      <Link href={hub}>
-        Diff
-      </Link>
-    )
+    render: hub => <Link href={hub}>Diff</Link>
   }
 ]
 

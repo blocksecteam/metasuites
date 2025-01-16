@@ -1,3 +1,7 @@
+### v5.6.1
+
+- [fix] Fixed known issues
+
 ### v5.6.0
 
 - [feat] OKX supports tx and developer tools

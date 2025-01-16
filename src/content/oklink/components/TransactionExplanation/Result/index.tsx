@@ -9,7 +9,6 @@ interface Props {
 const Result: FC<Props> = ({ result }) => {
   const [innerText, setInnerText] = useState('')
 
-
   useEffect(() => {
     if (result) {
       const chars = result.content.split('')
@@ -31,4 +30,4 @@ const Result: FC<Props> = ({ result }) => {
   return <span>{innerText}</span>
 }
 
-export default memo(Result);
+export default memo(Result)

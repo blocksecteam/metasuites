@@ -18,7 +18,10 @@ const FundFlowBtn: FC<Props> = ({ chain, mainAddress }) => {
     <>
       <div className={styles.fundFlowBtn} onClick={() => setVisible(true)}>
         Fund Flow
-        <OKLinkImage className={styles.iconRisk} src={getOKLinkImage('graph')} />
+        <OKLinkImage
+          className={styles.iconRisk}
+          src={getOKLinkImage('graph')}
+        />
       </div>
       <ModalFundFlow
         formatNodeUrl={node => {

@@ -26,7 +26,7 @@ const META_SUITES_CLASS = {
   contractCodeHeader: `.m__contractCodeHeader:not(.${META_SUITES_DONE})`,
   contractCode: '.m__contractCode',
   contractVerifiedHeader: `.m__contractVerifiedHeader:not(.${META_SUITES_DONE})`,
-  method: `.m__method:not(.${META_SUITES_DONE})`,
+  method: `.m__method:not(.${META_SUITES_DONE})`
 }
 
 export default META_SUITES_CLASS

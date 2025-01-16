@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import classNames from 'classnames';
-import { Tooltip } from 'antd';
-import styles from './index.module.less';
+import React, { useEffect, useRef, useState } from 'react'
+import classNames from 'classnames'
+import { Tooltip } from 'antd'
+import styles from './index.module.less'
 
 interface OverflowTipProps {
-  className?: string;
-  innerClassName?: string;
-  title?: React.ReactNode;
-  children: React.ReactNode;
+  className?: string
+  innerClassName?: string
+  title?: React.ReactNode
+  children: React.ReactNode
 }
 
 const OverflowTip: React.FC<OverflowTipProps> = ({
@@ -17,37 +17,36 @@ const OverflowTip: React.FC<OverflowTipProps> = ({
   children,
   ...restProps
 }) => {
-  const wrapperRef = useRef(null);
-  const [isShowTip, setIsShowTip] = useState(false);
-
+  const wrapperRef = useRef(null)
+  const [isShowTip, setIsShowTip] = useState(false)
 
   useEffect(() => {
-    const { current } = wrapperRef;
+    const { current } = wrapperRef
     if (current) {
-      const intersectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach((item) => {
-          const { intersectionRatio } = item;
+      const intersectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(item => {
+          const { intersectionRatio } = item
           if (intersectionRatio < 1) {
-            setIsShowTip(true);
+            setIsShowTip(true)
           } else {
-            setIsShowTip(false);
+            setIsShowTip(false)
           }
-        });
-      });
-      intersectionObserver.observe(current);
+        })
+      })
+      intersectionObserver.observe(current)
       return () => {
-        intersectionObserver.unobserve(current);
-      };
+        intersectionObserver.unobserve(current)
+      }
     }
-    return undefined;
-  }, []);
+    return undefined
+  }, [])
 
   const innerDom = (
     <div className={classNames('text-ellipsis', innerClassName, 'f-filter')}>
       {children}
       <span ref={wrapperRef} />
     </div>
-  );
+  )
   return (
     <Tooltip
       className={classNames(styles.wrapper, className)}
@@ -56,9 +55,9 @@ const OverflowTip: React.FC<OverflowTipProps> = ({
     >
       {innerDom}
     </Tooltip>
-  );
-};
+  )
+}
 
-Object.assign(OverflowTip, Tooltip);
+Object.assign(OverflowTip, Tooltip)
 
-export default OverflowTip as typeof Tooltip & React.FC<OverflowTipProps>;
+export default OverflowTip as typeof Tooltip & React.FC<OverflowTipProps>

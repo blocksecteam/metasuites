@@ -2,7 +2,10 @@ import { type FC, memo, useMemo } from 'react'
 
 import { TokenSymbol } from '@common/components'
 import type { ContractVariableListItem } from '@src/common/api/types'
-import { ContractVariableMutability, ContractVariableVisibility } from '@src/common/constants'
+import {
+  ContractVariableMutability,
+  ContractVariableVisibility
+} from '@src/common/constants'
 import styles from './index.module.less'
 
 interface Props {
@@ -12,19 +15,19 @@ interface Props {
 const ContractVariable: FC<Props> = ({ variable }) => {
   const visibilityText = useMemo(() => {
     return variable.visibility === ContractVariableVisibility.PRIVATE
-    ? 'Private'
-    : 'Public'
+      ? 'Private'
+      : 'Public'
   }, [])
   const mutabilityText = useMemo(() => {
-   return variable.mutability === ContractVariableMutability.IMMUTABLE
-   ? 'Immutable'
-   : ''
+    return variable.mutability === ContractVariableMutability.IMMUTABLE
+      ? 'Immutable'
+      : ''
   }, [])
-  
+
   return (
     <div className={styles.variable}>
       {'('}
-      <TokenSymbol size={14.4} mr={4}/>
+      <TokenSymbol size={14.4} mr={4} />
       {visibilityText}
       {mutabilityText}
       &nbsp;Variable
@@ -33,4 +36,4 @@ const ContractVariable: FC<Props> = ({ variable }) => {
   )
 }
 
-export default memo(ContractVariable);
+export default memo(ContractVariable)

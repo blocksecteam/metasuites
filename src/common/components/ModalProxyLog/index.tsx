@@ -20,7 +20,13 @@ interface Props {
   customColumns?: any[]
 }
 
-const ModalProxyLog: FC<Props> = ({ visible, onClose, chain, address, customColumns }) => {
+const ModalProxyLog: FC<Props> = ({
+  visible,
+  onClose,
+  chain,
+  address,
+  customColumns
+}) => {
   const [loading, setLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const [dataList, setDataList] = useState<ProxyContractLog[]>([])

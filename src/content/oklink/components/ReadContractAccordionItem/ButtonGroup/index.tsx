@@ -20,9 +20,9 @@ import { useStore } from '@common/hooks'
 import styles from './index.module.less'
 import ContractVariableLogBtn from '../../ContractVariableLogBtn'
 interface Props {
-  address: string;
-  variableName: string;
-  utc2locale: boolean;
+  address: string
+  variableName: string
+  utc2locale: boolean
   parentDomRef: React.RefObject<HTMLDivElement>
   implementation?: string
   onQuery: () => void
@@ -45,15 +45,20 @@ const ButtonGroup: FC<Props> = ({
 
   return (
     <div className={styles.buttonGroup}>
-      { !!data.inputs?.length && (
-        <button className={styles.button} onClick={onQuery} >
-        Query
+      {!!data.inputs?.length && (
+        <button className={styles.button} onClick={onQuery}>
+          Query
         </button>
-        )
-      }
-      <ContractVariableLogBtn implementation={implementation} variableName={variableName} utc2locale={utc2locale} address={address} itemBox={itemBox} />
+      )}
+      <ContractVariableLogBtn
+        implementation={implementation}
+        variableName={variableName}
+        utc2locale={utc2locale}
+        address={address}
+        itemBox={itemBox}
+      />
     </div>
   )
 }
 
-export default memo(ButtonGroup);
+export default memo(ButtonGroup)

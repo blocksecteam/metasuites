@@ -3,12 +3,12 @@ import { TokenSymbol } from '@common/components'
 import styles from './index.module.less'
 
 interface Props {
-  onClick: () => void;
+  onClick: () => void
 }
 
 const ExplainBtn: FC<Props> = ({ onClick }) => {
   const [visible, setVisible] = useState(true)
-  
+
   return (
     <button
       className={styles.btn}

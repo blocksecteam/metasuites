@@ -10,12 +10,8 @@ import addressPage from '../constant/addressPage'
 
 const initAddressPageScript = () => {
   requestIdleCallback(async () => {
-    const {
-      complianceScores,
-      fundFlow,
-      enhancedLabels,
-      enhancedFortaLabels,
-    } = await store.get('options')
+    const { complianceScores, fundFlow, enhancedLabels, enhancedFortaLabels } =
+      await store.get('options')
     if (complianceScores) genComplianceScoresBtn()
     if (fundFlow) genFundFlow()
     if (enhancedLabels) {

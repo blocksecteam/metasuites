@@ -8,7 +8,8 @@ import {
   getImageUrl,
   saveAsSvg,
   saveSvgAsPng,
-  getContrastColor
+  getContrastColor,
+  decodeUnicode
 } from '@common/utils'
 import { SLEUTH_DOMAIN } from '@common/config/uri'
 import {
@@ -25,7 +26,7 @@ export const GRAPH_TEMP = 'GRAPH_TEMP'
 const NODE_HOVER_HEIGHT = 32
 const IMAGE_CENTER_TO_LEFT_PX = 85
 export const formatLabel = (label: string) => {
-  return label.length > 20 ? `${label.slice(0, 20)}...` : label
+  return label.length > 20 ? `${label.slice(0, 20)}...` : decodeUnicode(label)
 }
 
 export const nodeHover = (

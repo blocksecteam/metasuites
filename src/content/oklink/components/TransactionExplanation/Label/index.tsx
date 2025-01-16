@@ -13,9 +13,7 @@ interface Props {
 const Label: FC<Props> = ({ mounted }) => {
   return (
     <div className={styles.labelBox}>
-      <Link
-        href="https://blocksec.com/metasuites"
-      >
+      <Link href="https://blocksec.com/metasuites">
         <TokenSymbol
           size={17}
           className={classNames(styles.mdLogo, { [styles.animation]: mounted })}
@@ -26,4 +24,4 @@ const Label: FC<Props> = ({ mounted }) => {
   )
 }
 
-export default memo(Label);
+export default memo(Label)

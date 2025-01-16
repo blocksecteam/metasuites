@@ -14,7 +14,9 @@ const FortaAlertTip: FC<Props> = ({ alertUrl, subscribeUrl }) => {
   return (
     <div className={styles.fortaAlertTip}>
       <OKLinkImage className={styles.logo} src={getOKLinkImage('warning')} />
-      <span className={styles.desc}>Forta Alert:This is a suspicious exploit transaction</span>
+      <span className={styles.desc}>
+        Forta Alert:This is a suspicious exploit transaction
+      </span>
       {alertUrl && (
         <Link className={styles.link} href={alertUrl}>
           Detail

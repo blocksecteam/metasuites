@@ -1,9 +1,7 @@
 import { isMethod } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { MethodLabel } from '@common/api/types'
-import {
-  GET_ADDRESS_METHODS,
-} from '@common/constants'
+import { GET_ADDRESS_METHODS } from '@common/constants'
 import { createRoot } from 'react-dom/client'
 import OverflowTip from '@src/common/components/OverflowTip'
 import { TokenSymbol } from '@src/common/components'
@@ -40,7 +38,7 @@ const handleReplace = async (
 }
 
 const genEnhancedSignatures = () => {
-  const chain = CHAIN.chain;
+  const chain = CHAIN.chain
   createTimerFn(() => {
     const methodsTags = getMethodsDom()
     if (!methodsTags?.length) return
@@ -52,11 +50,11 @@ const genEnhancedSignatures = () => {
         if (!methodList.includes(innerText)) {
           methodList.push(innerText)
         }
-        tagsList.push(el);
+        tagsList.push(el)
       }
     })
     if (methodList.length) {
-      handleReplace(chain, tagsList, methodList);
+      handleReplace(chain, tagsList, methodList)
     }
   })()
 }

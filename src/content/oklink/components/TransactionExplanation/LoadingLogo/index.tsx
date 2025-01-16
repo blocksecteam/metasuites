@@ -13,7 +13,9 @@ interface Props {
 const LoadingLogo: FC<Props> = ({ loading }) => {
   return (
     <TokenSymbol
-      className={classNames(styles.gptLogo, 'f-filter', { [styles.animation]: loading })}
+      className={classNames(styles.gptLogo, 'f-filter', {
+        [styles.animation]: loading
+      })}
       size={17}
       style={{ verticalAlign: 'sub' }}
       mr={6}
@@ -22,4 +24,4 @@ const LoadingLogo: FC<Props> = ({ loading }) => {
   )
 }
 
-export default memo(LoadingLogo);
+export default memo(LoadingLogo)
