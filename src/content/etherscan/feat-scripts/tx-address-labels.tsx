@@ -39,9 +39,11 @@ const getAddressTag = (
       const tooltip = el.find("*[data-bs-toggle='tooltip']")
       if (tooltip.length) {
         el.css({
-          display: 'flex',
           alignItems: 'center',
           justifyContent: 'center'
+        })
+        el.attr('style', function (i, style) {
+          return style + 'display: inline-flex !important'
         })
       }
 
