@@ -26,7 +26,6 @@ import {
   genTokenMarketplacesBtn,
   formatWriteContractParams,
   genProxyContractLog,
-  genEvmStorageShortcut,
   genSimulateBtn,
   genContractVariableLogsBtn,
   genTransactionHashPhalconLink
@@ -57,7 +56,6 @@ const initAddressPageScript = async (chain: string) => {
     formatContractParams,
     tokenMarketplaces,
     proxyLogs,
-    evmStorage,
     txSimulator,
     variableLogs,
     quick2Parsers
@@ -91,7 +89,6 @@ const initAddressPageScript = async (chain: string) => {
     genTokenMarketplacesBtn(chain, ETHERSCAN_PAGES.ADDRESS.name)
   if (proxyLogs) genProxyContractLog(chain)
   if (dedaubStorage) genDedaubStorageShortcut(chain)
-  if (evmStorage) genEvmStorageShortcut(chain)
   if (txSimulator) genSimulateBtn(chain)
   if (variableLogs) genContractVariableLogsBtn(chain)
   if (quick2Parsers) genTransactionHashPhalconLink(ETHERSCAN_PAGES.ADDRESS.name)

@@ -344,16 +344,6 @@ const ConfigExploresDrawer: FC<Props> = ({
               }
             />
             <Cell
-              title="Show evm.storage shortcut"
-              action={
-                <Switch
-                  size="small"
-                  checked={options.evmStorage}
-                  onChange={val => onSwitchChange('evmStorage', val)}
-                />
-              }
-            />
-            <Cell
               title="Show transaction simulator"
               action={
                 <Switch

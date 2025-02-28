@@ -38,7 +38,6 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 - [x] Show nft marketplaces
 - [x] Show proxy upgrade log
 - [x] Show transaction summary
-- [x] Show evm.storage shortcut
 - [x] Show transaction simulator
 - [x] Show Variable Logs
 - [x] Manage Local Private Labels

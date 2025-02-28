@@ -2,7 +2,6 @@ import { store } from '@src/store'
 
 import genProxyContractLog from './proxy-contract-log'
 import genDedaubStorageShortcut from './dedaub-storage'
-import genEvmStorageShortcut from './evm-storage'
 import genContractVariableLogsBtn from './contract-variable-logs'
 import genContractPrivateVariables from './contract-private-variables'
 import genDownloadSourceCodeBtn from './downlaod-contract-source-code'
@@ -13,7 +12,6 @@ const getContractDeveloper = async (address: string) => {
   if (!address) return
   const {
     dedaubStorage,
-    evmStorage,
     proxyLogs,
     variableLogs,
     privateVariables,
@@ -24,7 +22,6 @@ const getContractDeveloper = async (address: string) => {
 
   if (proxyLogs) genProxyContractLog(address)
   if (dedaubStorage) genDedaubStorageShortcut(address)
-  if (evmStorage) genEvmStorageShortcut(address)
   if (variableLogs) genContractVariableLogsBtn(address)
   if (privateVariables) genContractPrivateVariables(address)
   if (contractSourcecode) genDownloadSourceCodeBtn(address)

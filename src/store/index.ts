@@ -41,7 +41,6 @@ const OPTIONS = [
   'tokenMarketplaces',
   'txSummary',
   'proxyLogs',
-  'evmStorage',
   'txSimulator',
   'variableLogs',
   'enablePrivateLabels'
@@ -107,7 +106,6 @@ export const defaultValue: StorageInfo = {
     tokenMarketplaces: true,
     txSummary: true,
     proxyLogs: true,
-    evmStorage: true,
     txSimulator: true,
     variableLogs: true,
     enablePrivateLabels: true

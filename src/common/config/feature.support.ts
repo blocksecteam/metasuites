@@ -60,7 +60,6 @@ export class FeatureActiveSupport {
   static TRANSACTION_EXPLAIN = new BaseFeatureSupport('transaction-explain', [
     'eth'
   ])
-  static EVM_STORAGE = new BaseFeatureSupport('evm-storage', ['eth'])
   static TRANSACTION_SIMULATOR = new BaseFeatureSupport(
     'transaction-simulator',
     [
