@@ -14,7 +14,6 @@ import {
   genDecompileInDedaubBtn,
   genDedaubStorageShortcut,
   convertUTC2locale,
-  genNFTGoBtn,
   displayContractFundFrom,
   genDecompileInEthervmBtn,
   genExportTableDataBtn,
@@ -44,7 +43,6 @@ const initAddressPageScript = async (chain: string) => {
     dedaubStorage,
     utc2locale,
     dethCode,
-    quick2NFTGo,
     addressFunderLabel,
     decompileInEthervm,
     exportTableData,
@@ -74,7 +72,6 @@ const initAddressPageScript = async (chain: string) => {
   if (quick2debank) genDeBankBtn(chain)
   if (decompileInDedaub) genDecompileInDedaubBtn(chain)
   if (utc2locale) convertUTC2locale(ETHERSCAN_PAGES.ADDRESS.name)
-  if (quick2NFTGo) genNFTGoBtn()
   if (addressFunderLabel) displayContractFundFrom(chain)
   if (decompileInEthervm) genDecompileInEthervmBtn(chain)
   if (exportTableData)

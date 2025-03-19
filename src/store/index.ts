@@ -29,7 +29,6 @@ const OPTIONS = [
   'nftRarity',
   'nftFloorPrice',
   'addressFunderLabel',
-  'quick2NFTGo',
   'decompileInEthervm',
   'exportTableData',
   'alternativeBlockExplorers',
@@ -43,7 +42,8 @@ const OPTIONS = [
   'proxyLogs',
   'txSimulator',
   'variableLogs',
-  'enablePrivateLabels'
+  'enablePrivateLabels',
+  'syncPhalconLabels'
 ] as const
 
 export type OptKeys = (typeof OPTIONS)[number]
@@ -59,6 +59,8 @@ export interface PrivateLabel {
   label: string
   color?: string
   chainType: ChainType
+  deleted?: boolean
+  source?: string
 }
 
 export type StorageInfo = {
@@ -94,7 +96,6 @@ export const defaultValue: StorageInfo = {
     nftRarity: true,
     nftFloorPrice: true,
     addressFunderLabel: true,
-    quick2NFTGo: true,
     decompileInEthervm: true,
     exportTableData: true,
     alternativeBlockExplorers: true,
@@ -108,7 +109,8 @@ export const defaultValue: StorageInfo = {
     proxyLogs: true,
     txSimulator: true,
     variableLogs: true,
-    enablePrivateLabels: true
+    enablePrivateLabels: true,
+    syncPhalconLabels: false
   },
   alternativeParsers: {
     [TransactionParsers.OPENCHAIN.name()]: true,

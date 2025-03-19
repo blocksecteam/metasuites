@@ -3,7 +3,7 @@ import { Button, Input, Empty } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 
 import { Drawer, IconDownload, IconImport } from '@common/components'
-import { useStore } from '@common/hooks'
+import { usePrivateLabels } from '@common/hooks'
 import { downloadCsv } from '@common/utils'
 
 import styles from './index.module.less'
@@ -15,7 +15,7 @@ interface Props {
 }
 
 const PrivateLabelManagementDrawer: FC<Props> = ({ visible, onClose }) => {
-  const [privateLabels] = useStore('privateLabels')
+  const { privateLabels } = usePrivateLabels()
 
   const [keyword, setKeyword] = useState('')
 
@@ -51,9 +51,18 @@ const PrivateLabelManagementDrawer: FC<Props> = ({ visible, onClose }) => {
             ghost
             type="primary"
             className={styles.exportBtn}
-            onClick={() =>
-              downloadCsv('local-labels', Object.values(privateLabels))
-            }
+            onClick={() => {
+              const filteredLabels = Object.values(privateLabels).map(item => {
+                const { address, label, color, chainType } = item
+                return {
+                  address,
+                  label,
+                  color: color || '',
+                  chainType
+                }
+              })
+              downloadCsv('local-labels', filteredLabels)
+            }}
           >
             <IconDownload color="#00A54C" mr={4} size={20} />
             Export

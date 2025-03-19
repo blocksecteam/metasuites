@@ -97,12 +97,6 @@ export interface FundFlowEdge extends Record<string, unknown> {
   selected?: boolean
 }
 
-export interface NFTInfoRes {
-  chain: string
-  collectionName: string
-  nftGoUrl: string
-}
-
 export interface NFTPriceResponse {
   priceUSD: string
   price: string

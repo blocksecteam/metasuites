@@ -5,9 +5,8 @@ import { debounce } from 'lodash-es'
 
 import { BscModal, IconMetaDock } from '@common/components'
 import type { PrivateLabel } from '@src/store'
-import { useStore } from '@common/hooks'
+import { usePrivateLabels } from '@common/hooks'
 import type { ChainType } from '@common/constants'
-import { formatAddress } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import { REFRESH } from '@common/constants'
 
@@ -46,8 +45,8 @@ const ModalAddPrivateLabel: FC<Props> = ({
 }) => {
   const [form] = Form.useForm()
 
-  const [privateLabels, setPrivateLabels] = useStore('privateLabels')
-
+  const { getPrivateLabel, addPrivateLabel, deletePrivateLabel } =
+    usePrivateLabels()
   const [selectedColor, setSelectedColor] = useState<string>()
   const handleSave = debounce(async () => {
     form.validateFields().then(async (values: { label: string }) => {
@@ -58,19 +57,9 @@ const ModalAddPrivateLabel: FC<Props> = ({
           chainType,
           address
         }
-        setPrivateLabels({
-          ...privateLabels,
-          [`${chainType}-${formatAddress(address)}`]: privateLabel
-        })
+        addPrivateLabel(chainType, address, privateLabel)
       } else {
-        const labels = { ...privateLabels }
-        if (labels[`${chainType}-${formatAddress(address)}`]) {
-          delete labels[`${chainType}-${formatAddress(address)}`]
-          setPrivateLabels(labels)
-        } else {
-          onClose()
-          return
-        }
+        deletePrivateLabel(chainType, address)
       }
 
       onSuccess?.(values.label.trim(), selectedColor)
@@ -83,15 +72,16 @@ const ModalAddPrivateLabel: FC<Props> = ({
 
   useEffect(() => {
     if (visible) {
-      const label = privateLabels[`${chainType}-${formatAddress(address)}`]
+      const { privateLabel: label } = getPrivateLabel(chainType, address)
       if (label) {
         form.setFieldsValue({ label: label.label })
         setSelectedColor(label?.color)
       } else {
         form.resetFields()
+        setSelectedColor(undefined)
       }
     }
-  }, [visible, privateLabels, chainType, address])
+  }, [visible, chainType, address])
 
   return (
     <BscModal

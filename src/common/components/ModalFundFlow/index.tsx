@@ -27,8 +27,7 @@ import {
   getSubStr,
   unique,
   ChainUtils,
-  classifyByChain,
-  formatAddress
+  classifyByChain
 } from '@common/utils'
 import {
   IconDownload,
@@ -39,7 +38,7 @@ import {
 } from '@common/components'
 import { IconMetaSleuth } from '@common/components/icon'
 import { SLEUTH_DOMAIN } from '@common/config/uri'
-import { useStore } from '@common/hooks'
+import { useStore, usePrivateLabels } from '@common/hooks'
 import { store } from '@src/store'
 
 import styles from './index.module.less'
@@ -92,6 +91,8 @@ const ModalFundFlowGraph: FC<Props> = ({
     useState(false)
   const [editingNode, setEditingNode] = useState<FundFlowNode>()
 
+  const { getPrivateLabel } = usePrivateLabels()
+
   const generateFundflowParams = () => {
     const params: FundFlowParams = {
       chain,
@@ -112,7 +113,6 @@ const ModalFundFlowGraph: FC<Props> = ({
       typeof GET_ADDRESS_FUND_FLOW,
       FundFlowRes
     >(GET_ADDRESS_FUND_FLOW, generateFundflowParams())
-    const privateLabels = await store.get('privateLabels')
     setLoading(false)
     if (res?.success && res?.data) {
       setError(null)
@@ -121,16 +121,17 @@ const ModalFundFlowGraph: FC<Props> = ({
           const opt = addressOptions.find(item => item.id === node.id)
           let selected = true
           if (opt) selected = !!opt.selected
-          const local =
-            privateLabels[
-              `${classifyByChain(node.chain)}-${formatAddress(node.address)}`
-            ]
+          const { privateLabel: local, color } = getPrivateLabel(
+            classifyByChain(node.chain),
+            node.address,
+            '#f8f8f8'
+          )
           return {
             ...node,
             index,
             selected: selected,
             label: local?.label || node.label,
-            color: local?.color ? local.color : '#f8f8f8'
+            color
           }
         }) ?? []
       setFundFlow({

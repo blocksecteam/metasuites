@@ -1,10 +1,9 @@
 import { type FC, useState } from 'react'
 
 import { IconAdd, IconEdit, ModalAddPrivateLabel } from '@common/components'
-import { useStore } from '@common/hooks'
-import { hexToRgba, formatAddress } from '@common/utils'
+import { usePrivateLabels } from '@common/hooks'
+import { hexToRgba } from '@common/utils'
 import type { ChainType } from '@common/constants'
-import { DEFAULT_LABEL_COLOR } from '@common/components/ModalAddPrivateLabel'
 
 import styles from './index.module.less'
 
@@ -14,12 +13,10 @@ interface Props {
 }
 
 const MainPrivateLabel: FC<Props> = ({ address, chainType }) => {
-  const [privateLabels] = useStore('privateLabels')
+  const { getPrivateLabel } = usePrivateLabels()
 
   const [visible, setVisible] = useState(false)
-  const privateLabel = privateLabels[`${chainType}-${formatAddress(address)}`]
-
-  const color = privateLabel?.color || DEFAULT_LABEL_COLOR
+  const { privateLabel, color } = getPrivateLabel(chainType, address)
 
   return (
     <>

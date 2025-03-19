@@ -231,16 +231,6 @@ const ConfigExploresDrawer: FC<Props> = ({
               }
             />
             <Cell
-              title="Show quick open in NFTGo for NFT contracts"
-              action={
-                <Switch
-                  size="small"
-                  checked={options.quick2NFTGo}
-                  onChange={val => onSwitchChange('quick2NFTGo', val)}
-                />
-              }
-            />
-            <Cell
               title="Show export data for a part of transactions"
               action={
                 <Switch
@@ -364,13 +354,23 @@ const ConfigExploresDrawer: FC<Props> = ({
               }
             />
             <Cell
-              border={false}
               title="Show private local labels"
               action={
                 <Switch
                   size="small"
                   checked={options.enablePrivateLabels}
                   onChange={val => onSwitchChange('enablePrivateLabels', val)}
+                />
+              }
+            />
+            <Cell
+              border={false}
+              title="Sync local labels with Phalcon Explorer"
+              action={
+                <Switch
+                  size="small"
+                  checked={options.syncPhalconLabels}
+                  onChange={val => onSwitchChange('syncPhalconLabels', val)}
                 />
               }
             />

@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import { ethers } from 'ethers'
+import { uniqBy } from 'lodash-es'
 
 import {
   EXT_SUPPORT_WEB_LIST,
@@ -20,7 +21,6 @@ import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
 import { ChainUtils, classifyByChain } from '@common/utils/chain'
 import type { AddressLabel } from '@common/api/types'
 import { store } from '@src/store'
-import { uniqBy } from 'lodash-es'
 
 export const getChainSimpleName = (): string | undefined => {
   return ChainUtils.getCurrentChain()
@@ -110,7 +110,7 @@ export const mergeAddressLabels = async (
       privateLabels[
         `${classifyByChain(item.chain)}-${formatAddress(item.address)}`
       ]
-    if (proxyPrivateLabel) {
+    if (proxyPrivateLabel && !proxyPrivateLabel.deleted) {
       item.label = proxyPrivateLabel.label
     }
     if (item.implementAddress) {
@@ -120,7 +120,7 @@ export const mergeAddressLabels = async (
             item.implementAddress
           )}`
         ]
-      if (implementPrivateLabel) {
+      if (implementPrivateLabel && !implementPrivateLabel.deleted) {
         item.implementLabel = implementPrivateLabel.label
       }
     }
@@ -138,16 +138,18 @@ export const mergeAddressLabels = async (
         isLocal: true
       } as AddressLabel
     })
+    .filter(item => {
+      const key = `${classifyByChain(item.chain)}-${formatAddress(
+        item.address
+      )}`
+      return !privateLabels[key]?.deleted
+    })
   return uniqBy(
     [...localAddressLabels, ...remoteAddressLabels],
     'address'
   ).filter(predicate)
 }
 
-/**
- * When the address is evm address, it will be converted to checksum address, so that it can be used as a key
- * @param address
- */
 export const formatAddress = (address: string) => {
   return PATTERN_EVM_ADDRESS_EXAC.test(address)
     ? ethers.getAddress(address)

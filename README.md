@@ -25,7 +25,6 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 - [x] Show quick open in ethervm.io for unverified contracts
 - [x] Show NFT floor price in major markets
 - [x] Show the source of funding for contract deployers
-- [x] Show quick open in NFTGo for NFT contracts
 - [x] Show comprehensive risk graph of the collection
 - [x] Show owner's address label
 - [x] Show export data for a part of transactions

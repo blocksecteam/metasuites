@@ -2,10 +2,9 @@ import { type FC, useState } from 'react'
 import cls from 'classnames'
 
 import { IconAdd, IconEdit, ModalAddPrivateLabel } from '@common/components'
-import { useStore, useTheme } from '@common/hooks'
+import { useTheme, usePrivateLabels } from '@common/hooks'
 import { hexToRgba } from '@common/utils'
 import type { ChainType } from '@common/constants'
-import { DEFAULT_LABEL_COLOR } from '@common/components/ModalAddPrivateLabel'
 
 import styles from './index.module.less'
 
@@ -17,12 +16,10 @@ interface Props {
 const MainPrivateLabel: FC<Props> = ({ address, chainType }) => {
   const { isDarkMode } = useTheme()
 
-  const [privateLabels] = useStore('privateLabels')
+  const { getPrivateLabel } = usePrivateLabels()
 
   const [visible, setVisible] = useState(false)
-  const privateLabel = privateLabels[`${chainType}-${address}`]
-
-  const color = privateLabel?.color || DEFAULT_LABEL_COLOR
+  const { privateLabel, color } = getPrivateLabel(chainType, address)
 
   return (
     <>

@@ -9,7 +9,6 @@ import type {
   AddressLabel,
   MethodLabel,
   FundFlowRes,
-  NFTInfoRes,
   NFTPriceResponse,
   NFTRarityRankReq,
   NFTRarityRankRes,
@@ -65,12 +64,6 @@ export default {
         json: params
       })
       .json<BscResponse<FundFlowRes>>(),
-  getNFTInfo: (address: string) =>
-    request
-      .post('api/v1/nft-info', {
-        json: { address }
-      })
-      .json<BscResponse<NFTInfoRes>>(),
   getNFTPrice: (address: string) =>
     request
       .post('api/v1/nft-floor-price', {

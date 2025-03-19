@@ -60,7 +60,8 @@ export default defineManifest((env: ConfigEnv) => {
               '*://debank.com/*',
               '*://platform.arkhamintelligence.com/*',
               '*://explorer.jito.wtf/*',
-              '*://*.oklink.com/*'
+              '*://*.oklink.com/*',
+              '*://*.blocksec.com/*'
             ]
           : ['<all_urls>'],
         js: ['src/content/index.ts'],

@@ -4,7 +4,6 @@ import {
   GET_ADDRESS_LABELS,
   GET_ADDRESS_METHODS,
   GET_ADDRESS_FUND_FLOW,
-  GET_NFT_INFO,
   GET_NFT_PRICE,
   GET_ADDRESS_FUNDER_RISK,
   GET_APPROVAL_RISK,
@@ -45,10 +44,6 @@ export default function initExploreRequest() {
 
   chromeEvent.on(GET_ADDRESS_FUND_FLOW, async params => {
     return await commonApi.getAddressFundFlow(params)
-  })
-
-  chromeEvent.on(GET_NFT_INFO, async address => {
-    return await commonApi.getNFTInfo(address)
   })
 
   chromeEvent.on(GET_NFT_PRICE, async address => {

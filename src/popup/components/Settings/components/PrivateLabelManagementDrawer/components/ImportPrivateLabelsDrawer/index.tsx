@@ -5,8 +5,7 @@ import { parse } from 'papaparse'
 import { Drawer, IconImport } from '@common/components'
 import type { PrivateLabel } from '@src/store'
 import { ChainType } from '@common/constants'
-import { useStore } from '@common/hooks'
-import { formatAddress } from '@common/utils'
+import { usePrivateLabels } from '@common/hooks'
 import {
   LABEL_COLORS,
   DEFAULT_LABEL_COLOR
@@ -22,7 +21,7 @@ interface Props {
 const { Dragger } = Upload
 
 const ImportPrivateLabelsDrawer: FC<Props> = ({ visible, onClose }) => {
-  const [privateLabels, setPrivateLabels] = useStore('privateLabels')
+  const { privateLabels, setPrivateLabels } = usePrivateLabels(true)
 
   const uploadProps: UploadProps = {
     name: 'file',
@@ -72,7 +71,7 @@ const ImportPrivateLabelsDrawer: FC<Props> = ({ visible, onClose }) => {
           )
         })
         const records = labels.reduce((obj, item) => {
-          obj[`${item.chainType}-${formatAddress(item.address)}`] = item
+          obj[`${item.chainType}-${item.address}`] = item
           return obj
         }, {} as Record<string, PrivateLabel>)
         setPrivateLabels({ ...privateLabels, ...records })

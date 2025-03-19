@@ -3,9 +3,9 @@ import { Popconfirm, type PopconfirmProps } from 'antd'
 import { capitalize } from 'lodash-es'
 
 import { CopyButton, IconDelete } from '@common/components'
-import { getSubStr, hexToRgba, formatAddress } from '@common/utils'
+import { getSubStr, hexToRgba } from '@common/utils'
 import type { PrivateLabel } from '@src/store'
-import { useStore } from '@common/hooks'
+import { usePrivateLabels } from '@common/hooks'
 import { chromeEvent } from '@common/event'
 import { REFRESH } from '@common/constants'
 import { DEFAULT_LABEL_COLOR } from '@common/components/ModalAddPrivateLabel'
@@ -20,12 +20,10 @@ const LabelItem: FC<Props> = ({
   data,
   data: { chainType, address, label }
 }) => {
-  const [privateLabels, setPrivateLabels] = useStore('privateLabels')
+  const { deletePrivateLabel } = usePrivateLabels()
 
   const confirm: PopconfirmProps['onConfirm'] = () => {
-    const labels = { ...privateLabels }
-    delete labels[`${chainType}-${formatAddress(address)}`]
-    setPrivateLabels(labels)
+    deletePrivateLabel(chainType, address)
     chromeEvent.emit(REFRESH, true)
   }
 
@@ -42,7 +40,9 @@ const LabelItem: FC<Props> = ({
           }}
         >
           <span style={{ backgroundColor: color }} className={styles.dot} />
-          <span>{label}</span>
+          <span className={styles.labelText} title={label}>
+            {label}
+          </span>
         </div>
         <div className={styles.addressWrapper}>
           <span className={styles.type}>{capitalize(chainType)}</span>
