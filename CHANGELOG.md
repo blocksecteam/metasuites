@@ -1,3 +1,8 @@
+### v5.7.1
+
+- [update] Remove non-functional features
+- [perf] Optimize label synchronization functionality
+
 ### v5.7.0
 
 - [feat] Sync local labels with Phalcon Explorer

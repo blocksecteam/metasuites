@@ -476,15 +476,6 @@ export class FeatureActiveSupport {
     'solana',
     'mantle'
   ])
-  static FORTA_ALERT = new BaseFeatureSupport('forta-alert', [
-    'eth',
-    'bsc',
-    'polygon',
-    'fantom',
-    'arbitrum',
-    'avalanche',
-    'optimism'
-  ])
   static CONTRACT_PRIVATE_VARIABLES = new BaseFeatureSupport(
     'contract-private-variables',
     ['eth', 'bsc', 'polygon', 'arbitrum', 'avalanche', 'optimism']

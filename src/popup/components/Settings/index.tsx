@@ -8,7 +8,6 @@ import { chromeEvent } from '@common/event'
 
 import {
   SupportWebsiteDrawer,
-  ConfigNFTDrawer,
   ConfigExploresDrawer,
   PrivateLabelManagementDrawer
 } from './components'
@@ -22,7 +21,6 @@ const Settings: FC = () => {
 
   const [configSupportWebVisible, setConfigSupportWebVisible] = useState(false)
   const [configExploresVisible, setConfigExploresVisible] = useState(false)
-  const [configNFTVisible, setConfigNFTVisible] = useState(false)
   const [privateLabelManagementVisible, setPrivateLabelManagementVisible] =
     useState(false)
 
@@ -69,10 +67,6 @@ const Settings: FC = () => {
             onClick={() => setConfigExploresVisible(true)}
           />
           <Cell
-            title="Personalize your NFT marketplace upgrades"
-            onClick={() => setConfigNFTVisible(true)}
-          />
-          <Cell
             border={false}
             title="Local Private Label"
             onClick={() => setPrivateLabelManagementVisible(true)}
@@ -89,11 +83,6 @@ const Settings: FC = () => {
         onClose={() => setConfigExploresVisible(false)}
         onSwitchChange={onSwitchChange}
         onAlternativeParsersChange={onAlternativeParsersChange}
-      />
-      <ConfigNFTDrawer
-        visible={configNFTVisible}
-        onClose={() => setConfigNFTVisible(false)}
-        onSwitchChange={onSwitchChange}
       />
       <PrivateLabelManagementDrawer
         visible={privateLabelManagementVisible}

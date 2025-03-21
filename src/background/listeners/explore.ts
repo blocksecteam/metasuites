@@ -4,10 +4,8 @@ import {
   GET_ADDRESS_LABELS,
   GET_ADDRESS_METHODS,
   GET_ADDRESS_FUND_FLOW,
-  GET_NFT_PRICE,
   GET_ADDRESS_FUNDER_RISK,
   GET_APPROVAL_RISK,
-  GET_FORTA_ALERT,
   GET_PRIVATE_VARIABLES,
   QUERY_PRIVATE_VARIABLE,
   GET_TOKEN_MARKETPLACES,
@@ -45,18 +43,11 @@ export default function initExploreRequest() {
   chromeEvent.on(GET_ADDRESS_FUND_FLOW, async params => {
     return await commonApi.getAddressFundFlow(params)
   })
-
-  chromeEvent.on(GET_NFT_PRICE, async address => {
-    return await commonApi.getNFTPrice(address)
-  })
   chromeEvent.on(GET_ADDRESS_FUNDER_RISK, async params => {
     return await commonApi.getAddressFunderRisk(params)
   })
   chromeEvent.on(GET_APPROVAL_RISK, async params => {
     return await commonApi.getApprovalRisk(params)
-  })
-  chromeEvent.on(GET_FORTA_ALERT, async params => {
-    return await commonApi.getFortaAlert(params)
   })
   chromeEvent.on(GET_PRIVATE_VARIABLES, async params => {
     return await commonApi.getPrivateVariables(params)

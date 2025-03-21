@@ -25,7 +25,7 @@ export const initPrivateLabelsSync = async () => {
     }
 
     if (enabled) {
-      await syncPrivateLabelsToDb()
+      await syncToPe()
       await syncFromPe()
     } else {
       await removePrivateLabelsFromDb()
@@ -118,7 +118,7 @@ async function syncFromPe(): Promise<boolean> {
 
             const peDeletedAddresses = new Set<string>()
 
-            Object.entries(currentLabels).forEach(([_, item]) => {
+            Object.entries(currentLabels).forEach(([, item]) => {
               const address = item.address
               const addressKey = address.toLowerCase()
 
@@ -139,25 +139,6 @@ async function syncFromPe(): Promise<boolean> {
                 }
               }
             })
-
-            const addressesToRemove = new Set<string>()
-            extDeletedAddresses.forEach(address => {
-              if (peDeletedAddresses.has(address)) {
-                addressesToRemove.add(address)
-              }
-            })
-
-            if (addressesToRemove.size > 0) {
-              Object.keys(currentLabels).forEach(key => {
-                const address = currentLabels[key].address
-                const addressKey = address.toLowerCase()
-
-                if (addressesToRemove.has(addressKey)) {
-                  delete currentLabels[key]
-                  hasChanges = true
-                }
-              })
-            }
 
             const seenPeAddresses = new Set<string>()
 
@@ -180,6 +161,7 @@ async function syncFromPe(): Promise<boolean> {
 
                 if (
                   !existingLabel ||
+                  existingLabel.deleted ||
                   existingLabel.source === PrivateLabelSource.PE
                 ) {
                   if (item.label) {
@@ -191,14 +173,6 @@ async function syncFromPe(): Promise<boolean> {
                     }
                     hasChanges = true
                   }
-                } else if (!existingAddresses.has(addressKey) && item.label) {
-                  currentLabels[key] = {
-                    address: formattedAddress,
-                    label: item.label,
-                    chainType,
-                    source: PrivateLabelSource.PE
-                  }
-                  hasChanges = true
                 }
               }
             })
@@ -220,7 +194,7 @@ async function syncFromPe(): Promise<boolean> {
   }
 }
 
-async function syncPrivateLabelsToDb(): Promise<boolean> {
+async function syncToPe(): Promise<boolean> {
   if (!location.pathname.startsWith('/explorer')) {
     return false
   }
@@ -374,7 +348,7 @@ function setupEventListeners() {
             const options = await store.get('options')
             const { syncPhalconLabels: enabled } = options
             if (enabled) {
-              await syncPrivateLabelsToDb()
+              await syncToPe()
             } else {
               await removePrivateLabelsFromDb()
             }
@@ -401,7 +375,7 @@ function setupEventListeners() {
 
       if (enabled) {
         await syncFromPe()
-        await syncPrivateLabelsToDb()
+        await syncToPe()
       } else {
         await removePrivateLabelsFromDb()
       }

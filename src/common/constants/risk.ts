@@ -54,28 +54,6 @@ export const ADDRESS_RISK_OPTIONS: Record<
   }
 }
 
-export enum NFTRiskLevel {
-  LOW,
-  MEDIUM,
-  HIGH
-}
-
-export const NFT_RISKS: Record<string, { name: string; value: NFTRiskLevel }> =
-  {
-    LOW: {
-      name: 'low risk',
-      value: NFTRiskLevel.LOW
-    },
-    MEDIUM: {
-      name: 'medium risk',
-      value: NFTRiskLevel.MEDIUM
-    },
-    HIGH: {
-      name: 'high risk',
-      value: NFTRiskLevel.HIGH
-    }
-  }
-
 export enum ApprovalRiskLevel {
   NONE,
   MEDIUM,

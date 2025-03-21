@@ -1,21 +1,6 @@
-import cls from 'classnames'
 import { type FC, memo, useEffect, useState } from 'react'
-import $ from 'jquery'
-import Big from 'big.js'
-import { isAddress } from 'ethers'
 
-import { chromeEvent } from '@common/event'
-import {
-  QUERY_PRIVATE_VARIABLE,
-  ContractVariableMutability,
-  VARIABLE_LOG_SUPPORT_LIST
-} from '@common/constants'
-import type {
-  PrivateVariableArgument,
-  PrivateVariable
-} from '@common/api/types'
-import { TokenSymbol } from '@common/components'
-import { useStore } from '@common/hooks'
+import type { PrivateVariable } from '@common/api/types'
 
 import styles from './index.module.less'
 import ContractVariableLogBtn from '../../ContractVariableLogBtn'

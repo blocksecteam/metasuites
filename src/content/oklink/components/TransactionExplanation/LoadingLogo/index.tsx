@@ -1,9 +1,8 @@
 import classNames from 'classnames'
-import { type MenuProps } from 'antd'
-import { type FC, useState, useEffect, memo } from 'react'
+import { type FC, memo } from 'react'
 
 import { TokenSymbol } from '@common/components'
-import type { GptTxExplainRes } from '@common/api/types'
+
 import styles from './index.module.less'
 
 interface Props {

@@ -23,7 +23,6 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 - [x] Convert UTC to Local Time Zone
 - [x] Show copy icon for addresses
 - [x] Show quick open in ethervm.io for unverified contracts
-- [x] Show NFT floor price in major markets
 - [x] Show the source of funding for contract deployers
 - [x] Show comprehensive risk graph of the collection
 - [x] Show owner's address label
@@ -34,12 +33,12 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 - [x] Alert suspicious transactions by Forta
 - [x] Show private variables
 - [x] Quick format parameters
-- [x] Show nft marketplaces
 - [x] Show proxy upgrade log
 - [x] Show transaction summary
 - [x] Show transaction simulator
 - [x] Show Variable Logs
 - [x] Manage Local Private Labels
+- [x] Sync local labels with Phalcon Explorer
 
 ## Supported Websites List
 
@@ -60,7 +59,6 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 - basescan.org
 - lineascan.build
 - wemixscan.com
-- opensea.io
 - tronscan.org
 - era.zksync.network
 - blockscout.com

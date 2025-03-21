@@ -9,7 +9,6 @@ import { useStore } from '@common/hooks'
 import styles from './index.module.less'
 import Edit from './Edit'
 import Result from './Result'
-import LoadingLogo from './LoadingLogo'
 import Label from './Label'
 
 interface Props {

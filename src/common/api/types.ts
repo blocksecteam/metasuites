@@ -1,6 +1,5 @@
 import type {
   AddressRiskLevel,
-  NFTRiskLevel,
   TokenType,
   TransactionSummaryType,
   ContractVariableVisibility,
@@ -97,39 +96,6 @@ export interface FundFlowEdge extends Record<string, unknown> {
   selected?: boolean
 }
 
-export interface NFTPriceResponse {
-  priceUSD: string
-  price: string
-}
-
-export interface NFTRarityRankReq {
-  address: string
-  tokenIds: string[]
-}
-
-export interface NFTRarityRankResItem {
-  rank: number
-  total: number
-  score: number
-  tokenId: string
-}
-
-export type NFTRarityRankRes = NFTRarityRankResItem[]
-
-export interface NFTRiskRes {
-  onChain: NFTRiskLevel
-  offChain: NFTRiskLevel
-  market: NFTRiskLevel
-}
-
-export interface NFTUserLabelsReq {
-  addresses: string[]
-}
-
-export interface NFTUserLabelsRes {
-  labels: Record<string, string>
-}
-
 export interface AddressFunderRiskRes {
   label: string
   risky: boolean
@@ -178,20 +144,6 @@ export interface ApprovalRisk {
   address: string
   label?: string
 }
-
-export interface FortaAlertReq {
-  chain: string
-  address?: string
-  txHashes?: string[]
-  blockNumberRange?: { start: number; end: number }
-}
-
-export type FortaAlertRes = {
-  txHash?: string
-  alertUrl: string
-  label: string
-  subscribeUrl: string
-}[]
 
 export interface QueryPrivateVariableReq {
   chain: string

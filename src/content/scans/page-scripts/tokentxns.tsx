@@ -6,7 +6,6 @@ import {
   genEnhancedLabels,
   convertUTC2locale,
   genExportTableDataBtn,
-  scanTxnFortaAlert,
   genTransactionHashPhalconLink
 } from '../feat-scripts'
 
@@ -16,7 +15,6 @@ const initTokentxnsPageScript = async (chain: string) => {
     enhancedLabels,
     utc2locale,
     exportTableData,
-    txnFortaAlert,
     quick2Parsers
   } = await store.get('options')
   if (showCopyIcon) genCopyIconBtn(ETHERSCAN_PAGES.TOKENTXNS.name)
@@ -24,7 +22,6 @@ const initTokentxnsPageScript = async (chain: string) => {
   if (utc2locale) convertUTC2locale(ETHERSCAN_PAGES.TOKENTXNS.name)
   if (exportTableData)
     genExportTableDataBtn(chain, ETHERSCAN_PAGES.TOKENTXNS.name)
-  if (txnFortaAlert) scanTxnFortaAlert(chain, ETHERSCAN_PAGES.TOKENTXNS.name)
   if (quick2Parsers)
     genTransactionHashPhalconLink(ETHERSCAN_PAGES.TOKENTXNS.name)
 }

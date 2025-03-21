@@ -39,7 +39,6 @@ import {
 import { IconMetaSleuth } from '@common/components/icon'
 import { SLEUTH_DOMAIN } from '@common/config/uri'
 import { useStore, usePrivateLabels } from '@common/hooks'
-import { store } from '@src/store'
 
 import styles from './index.module.less'
 import genDotStr from './dot'

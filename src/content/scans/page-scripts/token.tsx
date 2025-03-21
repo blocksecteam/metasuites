@@ -9,9 +9,7 @@ import {
   genEnhancedSignatures,
   genDownloadSourceCodeBtn,
   genQuickViewSourceCodeBtn,
-  displayTokenPrice,
   genExportTableDataBtn,
-  scanTxnFortaAlert,
   genContractPrivateVariables,
   formatWriteContractParams,
   genDecompileInDedaubBtn,
@@ -31,9 +29,7 @@ const initTokenPageScript = async (chain: string) => {
     enhancedSignatures,
     contractSourcecode,
     dethCode,
-    nftFloorPrice,
     exportTableData,
-    txnFortaAlert,
     privateVariables,
     formatContractParams,
     decompileInDedaub,
@@ -50,9 +46,7 @@ const initTokenPageScript = async (chain: string) => {
   if (enhancedSignatures) genEnhancedSignatures(chain)
   if (contractSourcecode) genDownloadSourceCodeBtn(chain)
   if (dethCode) genQuickViewSourceCodeBtn(chain)
-  if (nftFloorPrice) displayTokenPrice()
   if (exportTableData) genExportTableDataBtn(chain, ETHERSCAN_PAGES.TOKEN.name)
-  if (txnFortaAlert) scanTxnFortaAlert(chain, ETHERSCAN_PAGES.TOKEN.name)
   if (privateVariables) genContractPrivateVariables(chain)
   if (formatContractParams) formatWriteContractParams()
   if (decompileInDedaub) genDecompileInDedaubBtn(chain)

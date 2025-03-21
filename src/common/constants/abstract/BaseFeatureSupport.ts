@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default class BaseFeatureSupport<V = any, T = any> {
   static getEnumMap<V = any, T = any>() {
     const prototypeMap = Object.getOwnPropertyDescriptors(this)

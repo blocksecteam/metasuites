@@ -4,7 +4,6 @@ import { EtherscanV2Initializer } from '@src/content/etherscan'
 import { BlockscoutInitializer } from '@src/content/blockscout'
 import { BTCInitializer } from '@src/content/btc'
 import { BlockSecInitializer } from '@src/content/blocksec'
-import { OpenseaInitializer } from '@src/content/opensea'
 import { TronscanInitializer } from '@src/content/tronscan'
 import { MerlinInitializer } from '@src/content/merlin'
 import { MetaSleuthInitializer } from '@src/content/metasleuth'
@@ -39,7 +38,6 @@ export const createInitializer = (url: string, all_frames = false) => {
     : [
         BTCInitializer,
         BlockSecInitializer,
-        OpenseaInitializer,
         TronscanInitializer,
         MerlinInitializer,
         MetaSleuthInitializer,

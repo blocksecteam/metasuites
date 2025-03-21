@@ -100,16 +100,6 @@ const ConfigExploresDrawer: FC<Props> = ({
               }
             />
             <Cell
-              title="Show NFT floor price in major markets"
-              action={
-                <Switch
-                  size="small"
-                  checked={options.nftFloorPrice}
-                  onChange={val => onSwitchChange('nftFloorPrice', val)}
-                />
-              }
-            />
-            <Cell
               title="Show the source of funding for contract deployers"
               action={
                 <Switch
@@ -259,26 +249,6 @@ const ConfigExploresDrawer: FC<Props> = ({
                   size="small"
                   checked={options.approvalDiagnosis}
                   onChange={val => onSwitchChange('approvalDiagnosis', val)}
-                />
-              }
-            />
-            <Cell
-              title="Show enhanced address labels by Forta"
-              action={
-                <Switch
-                  size="small"
-                  checked={options.enhancedFortaLabels}
-                  onChange={val => onSwitchChange('enhancedFortaLabels', val)}
-                />
-              }
-            />
-            <Cell
-              title="Alert suspicious transactions by Forta"
-              action={
-                <Switch
-                  size="small"
-                  checked={options.txnFortaAlert}
-                  onChange={val => onSwitchChange('txnFortaAlert', val)}
                 />
               }
             />

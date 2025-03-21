@@ -8,10 +8,8 @@ import {
   genEnhancedSignatures,
   genDownloadSourceCodeBtn,
   genQuickViewSourceCodeBtn,
-  displayTokenPrice,
   genExportTableDataBtn,
   genCopyIconBtn,
-  scanTxnFortaAlert,
   genContractPrivateVariables,
   formatWriteContractParams,
   genTokenMarketplacesBtn,
@@ -29,10 +27,8 @@ const initTokenPageScript = async (chain: string) => {
     enhancedSignatures,
     contractSourcecode,
     dethCode,
-    nftFloorPrice,
     exportTableData,
     showCopyIcon,
-    txnFortaAlert,
     privateVariables,
     formatContractParams,
     tokenMarketplaces,
@@ -48,10 +44,8 @@ const initTokenPageScript = async (chain: string) => {
   if (enhancedSignatures) genEnhancedSignatures(chain)
   if (contractSourcecode) genDownloadSourceCodeBtn(chain)
   if (dethCode) genQuickViewSourceCodeBtn(chain)
-  if (nftFloorPrice) displayTokenPrice()
   if (exportTableData) genExportTableDataBtn(chain, ETHERSCAN_PAGES.TOKEN.name)
   if (showCopyIcon) genCopyIconBtn(ETHERSCAN_PAGES.TOKEN.name)
-  if (txnFortaAlert) scanTxnFortaAlert(chain)
   if (privateVariables) genContractPrivateVariables(chain)
   if (formatContractParams) formatWriteContractParams()
   if (tokenMarketplaces)

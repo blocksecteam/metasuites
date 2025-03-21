@@ -19,8 +19,6 @@ import {
   genExportTableDataBtn,
   genCopyIconBtn,
   genApprovalDiagnosisBtn,
-  genMainAddressFortaLabels,
-  scanTxnFortaAlert,
   genContractPrivateVariables,
   genTokenMarketplacesBtn,
   formatWriteContractParams,
@@ -48,8 +46,6 @@ const initAddressPageScript = async (chain: string) => {
     exportTableData,
     showCopyIcon,
     approvalDiagnosis,
-    enhancedFortaLabels,
-    txnFortaAlert,
     privateVariables,
     formatContractParams,
     tokenMarketplaces,
@@ -78,8 +74,6 @@ const initAddressPageScript = async (chain: string) => {
     genExportTableDataBtn(chain, ETHERSCAN_PAGES.ADDRESS.name)
   if (showCopyIcon) genCopyIconBtn(ETHERSCAN_PAGES.ADDRESS.name)
   if (approvalDiagnosis) genApprovalDiagnosisBtn(chain)
-  if (enhancedFortaLabels) genMainAddressFortaLabels(chain)
-  if (txnFortaAlert) scanTxnFortaAlert(chain)
   if (privateVariables) genContractPrivateVariables(chain)
   if (formatContractParams) formatWriteContractParams()
   if (tokenMarketplaces)

@@ -20,8 +20,6 @@ import {
   genDecompileInEthervmBtn,
   genExportTableDataBtn,
   genApprovalDiagnosisBtn,
-  genMainAddressFortaLabels,
-  scanTxnFortaAlert,
   genContractPrivateVariables,
   formatWriteContractParams,
   genProxyContractLog,
@@ -48,8 +46,6 @@ const initAddressPageScript = async (chain: string) => {
     decompileInEthervm,
     exportTableData,
     approvalDiagnosis,
-    enhancedFortaLabels,
-    txnFortaAlert,
     privateVariables,
     formatContractParams,
     proxyLogs,
@@ -77,8 +73,6 @@ const initAddressPageScript = async (chain: string) => {
   if (exportTableData)
     genExportTableDataBtn(chain, ETHERSCAN_PAGES.ADDRESS.name)
   if (approvalDiagnosis) genApprovalDiagnosisBtn(chain)
-  if (enhancedFortaLabels) genMainAddressFortaLabels(chain)
-  if (txnFortaAlert) scanTxnFortaAlert(chain, ETHERSCAN_PAGES.ADDRESS.name)
   if (privateVariables) genContractPrivateVariables(chain)
   if (formatContractParams) formatWriteContractParams()
   if (proxyLogs) genProxyContractLog(chain)

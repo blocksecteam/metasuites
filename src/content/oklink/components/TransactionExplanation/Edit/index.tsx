@@ -2,12 +2,10 @@ import { type FC } from 'react'
 
 import { CopyButton } from '@common/components'
 import type { GptTxExplainRes } from '@common/api/types'
-import { getOKLinkImage } from '@src/content/oklink/utils'
 import styles from './index.module.less'
 import Liked from './Liked'
 import Hidden from './Hidden'
 import Disable from './Disable'
-import OKLinkImage from '../../OKLinkImage'
 
 interface Props {
   tx: string
