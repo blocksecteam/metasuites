@@ -1,5 +1,4 @@
 import { isMatchURL } from '@common/utils'
-import { EtherscanV1Initializer } from '@src/content/scans'
 import { EtherscanV2Initializer } from '@src/content/etherscan'
 import { BlockscoutInitializer } from '@src/content/blockscout'
 import { BTCInitializer } from '@src/content/btc'
@@ -34,7 +33,7 @@ const createInitializerFromMap = <T>(
 
 export const createInitializer = (url: string, all_frames = false) => {
   const initializers = all_frames
-    ? [EtherscanV1Initializer, EtherscanV2Initializer, BlockscoutInitializer]
+    ? [EtherscanV2Initializer, BlockscoutInitializer]
     : [
         BTCInitializer,
         BlockSecInitializer,

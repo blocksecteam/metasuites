@@ -7,7 +7,6 @@ import allowlist from '@common/config/allowlist'
 import {
   initAddressPageScript,
   initTxsPageScript,
-  initAccountsPageScript,
   initTxPageScript,
   initBlockPageScript,
   initTokenPageScript,
@@ -51,9 +50,6 @@ export class EtherscanV2Initializer {
       case ETHERSCAN_PAGES.BLOCK.name:
         initBlockPageScript(chain)
         break
-      case ETHERSCAN_PAGES.ACCOUNTS.name:
-        initAccountsPageScript(chain)
-        break
       case ETHERSCAN_PAGES.TOKEN.name:
         initTokenPageScript(chain)
         break
@@ -61,7 +57,7 @@ export class EtherscanV2Initializer {
         initTokentxnsPageScript(chain)
         break
       case ETHERSCAN_PAGES.BLOCKS.name:
-        initBlocksPageScript(chain)
+        initBlocksPageScript()
         break
       case ETHERSCAN_PAGES.TOKEN_APPROVAL_CHECKER.name:
         initTokenApprovalCheckerPageScript(chain)
@@ -73,7 +69,7 @@ export class EtherscanV2Initializer {
         initNftTransfersPageScript(chain)
         break
       case ETHERSCAN_PAGES.BLOCKS_FORKED.name:
-        initBlocksForkedPageScript(chain)
+        initBlocksForkedPageScript()
         break
     }
   }

@@ -5,7 +5,6 @@ import {
   genEnhancedLabels,
   genEnhancedSignatures,
   convertUTC2locale,
-  genExportTableDataBtn,
   genCopyIconBtn,
   genTransactionHashPhalconLink
 } from '../feat-scripts'
@@ -15,7 +14,6 @@ const initTxsPageScript = async (chain: string) => {
     enhancedLabels,
     enhancedSignatures,
     utc2locale,
-    exportTableData,
     showCopyIcon,
     quick2Parsers
   } = await store.get('options')
@@ -27,7 +25,6 @@ const initTxsPageScript = async (chain: string) => {
     genEnhancedSignatures(chain)
   }
   if (utc2locale) convertUTC2locale(ETHERSCAN_PAGES.TXS.name)
-  if (exportTableData) genExportTableDataBtn(chain, ETHERSCAN_PAGES.TXS.name)
   if (showCopyIcon) genCopyIconBtn(ETHERSCAN_PAGES.TXS.name)
   if (quick2Parsers) genTransactionHashPhalconLink(ETHERSCAN_PAGES.TXS.name)
 }

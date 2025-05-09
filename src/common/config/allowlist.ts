@@ -1,6 +1,6 @@
 export default {
-  ETHERSCAN_V1_MATCHES: ['*://opbnb-testnet.bscscan.com/*'],
   ETHERSCAN_V2_MATCHES: [
+    '*://opbnb-testnet.bscscan.com/*',
     '*://ftmscan.com/*',
     '*://cn.etherscan.com/*',
     '*://goto.etherscan.com/*',
@@ -30,7 +30,7 @@ export default {
     '*://*.arbiscan.io/*',
     '*://mantlescan.xyz/*'
   ],
-  BTC_EXPLORER_MATCHES: ['*://*.btc.com/*'],
+  BTC_EXPLORER_MATCHES: ['*://explorer.cloverpool.com/*'],
   BLOCKSEC_MATCHES: ['*://*.blocksec.com/*'],
   OPENSEA_MATCHES: ['*://*.opensea.io/*'],
   TRONSCAN_MATCHES: ['*://*.tronscan.org/*'],

@@ -23,8 +23,8 @@ export interface ExtSupportWebsite {
 export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
   {
     name: 'BTC',
-    domains: ['explorer.btc.com', 'btc.com'],
-    href: 'https://explorer.btc.com/btc',
+    domains: ['explorer.cloverpool.com'],
+    href: 'https://explorer.cloverpool.com/btc',
     chain: 'btc',
     siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1671685360787-5.png'
@@ -475,7 +475,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     name: 'OKX Explorer',
     domains: ['www.okx.com'],
     siteName: 'OKX',
-    logo: 'https://assets.blocksec.com/image/1729766376596-3.jpeg'
+    logo: 'https://assets.blocksec.com/image/1746754415992-2.png'
   }
 ]
 

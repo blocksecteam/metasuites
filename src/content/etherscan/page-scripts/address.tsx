@@ -16,7 +16,6 @@ import {
   convertUTC2locale,
   displayContractFundFrom,
   genDecompileInEthervmBtn,
-  genExportTableDataBtn,
   genCopyIconBtn,
   genApprovalDiagnosisBtn,
   genContractPrivateVariables,
@@ -25,7 +24,8 @@ import {
   genProxyContractLog,
   genSimulateBtn,
   genContractVariableLogsBtn,
-  genTransactionHashPhalconLink
+  genTransactionHashPhalconLink,
+  hideZeroValueTransfers
 } from '../feat-scripts'
 
 const initAddressPageScript = async (chain: string) => {
@@ -43,7 +43,6 @@ const initAddressPageScript = async (chain: string) => {
     dethCode,
     addressFunderLabel,
     decompileInEthervm,
-    exportTableData,
     showCopyIcon,
     approvalDiagnosis,
     privateVariables,
@@ -52,7 +51,8 @@ const initAddressPageScript = async (chain: string) => {
     proxyLogs,
     txSimulator,
     variableLogs,
-    quick2Parsers
+    quick2Parsers,
+    hideZeroValueTransfers: hideZeroValueEnabled
   } = await store.get('options')
 
   if (enhancedSignatures) genEnhancedSignatures(chain)
@@ -70,8 +70,6 @@ const initAddressPageScript = async (chain: string) => {
   if (utc2locale) convertUTC2locale(ETHERSCAN_PAGES.ADDRESS.name)
   if (addressFunderLabel) displayContractFundFrom(chain)
   if (decompileInEthervm) genDecompileInEthervmBtn(chain)
-  if (exportTableData)
-    genExportTableDataBtn(chain, ETHERSCAN_PAGES.ADDRESS.name)
   if (showCopyIcon) genCopyIconBtn(ETHERSCAN_PAGES.ADDRESS.name)
   if (approvalDiagnosis) genApprovalDiagnosisBtn(chain)
   if (privateVariables) genContractPrivateVariables(chain)
@@ -83,6 +81,7 @@ const initAddressPageScript = async (chain: string) => {
   if (txSimulator) genSimulateBtn(chain)
   if (variableLogs) genContractVariableLogsBtn(chain)
   if (quick2Parsers) genTransactionHashPhalconLink(ETHERSCAN_PAGES.ADDRESS.name)
+  if (hideZeroValueEnabled) hideZeroValueTransfers(ETHERSCAN_PAGES.ADDRESS.name)
 }
 
 export default initAddressPageScript

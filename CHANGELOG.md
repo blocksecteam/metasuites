@@ -1,3 +1,8 @@
+### v5.8.0
+
+- [feat] Adapt to explorer.cloverpool.com website
+- [feat] Hide zero-value transfers in token transfer tab
+
 ### v5.7.1
 
 - [update] Remove non-functional features

@@ -334,13 +334,25 @@ const ConfigExploresDrawer: FC<Props> = ({
               }
             />
             <Cell
-              border={false}
               title="Sync local labels with Phalcon Explorer"
               action={
                 <Switch
                   size="small"
                   checked={options.syncPhalconLabels}
                   onChange={val => onSwitchChange('syncPhalconLabels', val)}
+                />
+              }
+            />
+            <Cell
+              border={false}
+              title="Hide zero-amount token transfers"
+              action={
+                <Switch
+                  size="small"
+                  checked={options.hideZeroValueTransfers}
+                  onChange={val =>
+                    onSwitchChange('hideZeroValueTransfers', val)
+                  }
                 />
               }
             />

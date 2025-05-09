@@ -42,7 +42,7 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 
 ## Supported Websites List
 
-- btc.com
+- explorer.cloverpool.com
 - etherscan.io
 - bscscan.com
 - polygonscan.com

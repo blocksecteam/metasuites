@@ -9,7 +9,6 @@ import { GET_ADDRESS_LABELS, PATTERN_BTC_ADDRESS_EXAC } from '@common/constants'
 import { MainAddressLabel } from '../components'
 
 const genMainAddressLabel = async (chain: string) => {
-  $('#__BTC_main_address_label__').remove()
   const mainAddress = window.location.href.slice(
     window.location.href.lastIndexOf('/') + 1
   )
@@ -20,8 +19,9 @@ const genMainAddressLabel = async (chain: string) => {
     .emit(GET_ADDRESS_LABELS, { chain: chain, addresses: [mainAddress] })
     .then((res: CallbackResponse<AddressLabel[]> | undefined) => {
       const containerEl = $(
-        '#__next > div:first-of-type > div:nth-of-type(2) > div:nth-of-type(2) > div:first-of-type'
+        '#__next div[class^="Card_container"] [class^="Card_header"]'
       )
+      containerEl.css({ justifyContent: 'flex-start' })
       if (res?.success) {
         const mainAddressLabelEl = document.querySelector<HTMLElement>(
           '#__BTC_main_address_label__'

@@ -37,7 +37,8 @@ const OPTIONS = [
   'txSimulator',
   'variableLogs',
   'enablePrivateLabels',
-  'syncPhalconLabels'
+  'syncPhalconLabels',
+  'hideZeroValueTransfers'
 ] as const
 
 export type OptKeys = (typeof OPTIONS)[number]
@@ -98,7 +99,8 @@ export const defaultValue: StorageInfo = {
     txSimulator: true,
     variableLogs: true,
     enablePrivateLabels: true,
-    syncPhalconLabels: true
+    syncPhalconLabels: true,
+    hideZeroValueTransfers: true
   },
   alternativeParsers: {
     [TransactionParsers.OPENCHAIN.name()]: true,

@@ -40,7 +40,8 @@ export default defineManifest((env: ConfigEnv) => {
               '*://*.bttcscan.com/*',
               '*://era.zksync.network/*',
               '*://snowscan.xyz/*',
-              '*://mantlescan.xyz/*'
+              '*://mantlescan.xyz/*',
+              '*://opbnb-testnet.bscscan.com/*'
             ]
           : ['<all_urls>'],
         js: ['src/content/index.all_frames.ts'],
@@ -49,7 +50,7 @@ export default defineManifest((env: ConfigEnv) => {
       {
         matches: isDev
           ? [
-              '*://*.btc.com/*',
+              '*://explorer.cloverpool.com/*',
               '*://*.opensea.io/*',
               '*://*.tronscan.org/*',
               '*://scan.merlinchain.io/*',

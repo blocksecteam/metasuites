@@ -8,7 +8,6 @@ import {
   genEnhancedSignatures,
   genDownloadSourceCodeBtn,
   genQuickViewSourceCodeBtn,
-  genExportTableDataBtn,
   genCopyIconBtn,
   genContractPrivateVariables,
   formatWriteContractParams,
@@ -27,7 +26,6 @@ const initTokenPageScript = async (chain: string) => {
     enhancedSignatures,
     contractSourcecode,
     dethCode,
-    exportTableData,
     showCopyIcon,
     privateVariables,
     formatContractParams,
@@ -44,7 +42,6 @@ const initTokenPageScript = async (chain: string) => {
   if (enhancedSignatures) genEnhancedSignatures(chain)
   if (contractSourcecode) genDownloadSourceCodeBtn(chain)
   if (dethCode) genQuickViewSourceCodeBtn(chain)
-  if (exportTableData) genExportTableDataBtn(chain, ETHERSCAN_PAGES.TOKEN.name)
   if (showCopyIcon) genCopyIconBtn(ETHERSCAN_PAGES.TOKEN.name)
   if (privateVariables) genContractPrivateVariables(chain)
   if (formatContractParams) formatWriteContractParams()
