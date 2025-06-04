@@ -7,13 +7,14 @@ import { store } from '@src/store'
 import { chromeEvent } from '@common/event'
 import {
   GET_CONTRACT_VARIABLE_LIST,
-  ContractVariableVisibility,
-  ContractVariableMutability,
   VARIABLE_LOG_SUPPORT_LIST
 } from '@common/constants'
 import type { ContractVariableListItem } from '@common/api/types'
 
-import { ContractVariableLogBtn } from '../components'
+import {
+  ContractVariableLogBtn,
+  ContractVariableAttributes
+} from '../components'
 
 type Inputs = {
   name?: string
@@ -92,35 +93,28 @@ export const genContractVariableLogsBtn = async (chain: string) => {
           const variableNameEl = $(this).find(
             ".card-header > a[href^='#readCollapse'] > div:first-child"
           )
-          const variableName = variableNameEl.text().split('.')[1].trim()
-          // unsupported variable
+          const variableNameText = variableNameEl.text()
+          const match = variableNameText.match(/\d+\.\s+([^(]+)/)
+          const variableName = match ? match[1].trim() : variableNameText
+
           const variable = supportedVariableList.find(
             i => i.name === variableName
           )
-          if (!variable) {
-            return
-          }
-          variableNameEl.html(`
-            <div>
-              <span>
-                ${variableNameEl.text()}
-              </span> (<img style="width: 12px;height: 12px" src="https://assets.blocksec.com/image/1694169299939-2.svg" class="ml-1" alt="">
-              <span>
-                ${
-                  variable.visibility === ContractVariableVisibility.PRIVATE
-                    ? 'Private'
-                    : 'Public'
-                }
-                ${
-                  variable.mutability === ContractVariableMutability.IMMUTABLE
-                    ? 'Immutable'
-                    : ''
-                }
-                Variable
-              </span>
-              )
-            </div>
-          `)
+          if (!variable) return
+
+          // Create a container for the React component
+          const containerDiv = $('<div></div>')[0]
+          variableNameEl.empty().append(containerDiv)
+
+          // Render React component into the container
+          createRoot(containerDiv).render(
+            <ContractVariableAttributes
+              originalText={variableNameText}
+              visibility={variable.visibility}
+              mutability={variable.mutability}
+            />
+          )
+
           $(this)
             .find('.collapse .card-body > form')
             .each(function () {

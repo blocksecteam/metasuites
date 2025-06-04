@@ -1,3 +1,8 @@
+### v5.8.1
+
+- [perf] Optimize local label button rendering logic with asynchronous address labels
+- [feat] Fix contract Public variables display & replace jQuery html() DOM rendering method
+
 ### v5.8.0
 
 - [feat] Adapt to explorer.cloverpool.com website
