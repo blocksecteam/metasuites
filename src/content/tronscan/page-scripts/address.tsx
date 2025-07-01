@@ -1,6 +1,7 @@
 import $ from 'jquery'
 
 import { store } from '@src/store'
+import { waitForJQueryElement } from '@src/common/utils'
 
 import {
   genComplianceScoresBtn,
@@ -13,14 +14,15 @@ import {
 } from '../feat-scripts'
 import { lazyLoad } from '../helper'
 
-const createAccountBox = () => {
+const createAccountBox = async () => {
   if ($('#md-account-box').length) return Promise.reject()
-  const addressTagBox = $('#mainContent .address-tag-box')
+
+  const addressTagBox = await waitForJQueryElement('#address-tag-id', 15000)
+
   const accountBox = $(
-    '<div id="md-account-box" style="display: flex;align-items: center;gap: 14px;margin:14px 0"></div>'
+    '<div id="md-account-box" style="display: flex;align-items: center;gap: 14px;margin:14px 0 4px"></div>'
   )
   addressTagBox.before(accountBox)
-  return Promise.resolve()
 }
 
 const initAddressPageScript = async () => {

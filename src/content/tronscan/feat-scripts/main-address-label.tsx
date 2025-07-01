@@ -28,7 +28,9 @@ const genMainAddressLabel = async () => {
           })
           .get()
         if (!oLabels.includes(res.data[0].label)) {
-          const labelRootEl = $('<div class="flex-center"></div>')
+          const labelRootEl = $(
+            '<div class="flex-center" style="margin-top: 10px;"></div>'
+          )
           containerEl.prepend(labelRootEl)
           if (!labelRootEl.next().hasClass('address-divider')) {
             labelRootEl.css({ marginRight: 12, gap: 12 })

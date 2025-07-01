@@ -1,6 +1,7 @@
 import $ from 'jquery'
 
 import { store } from '@src/store'
+import { waitForJQueryElement } from '@common/utils'
 
 import {
   genDecompileInEthervmBtn,
@@ -14,24 +15,16 @@ import {
 } from '../feat-scripts'
 import { lazyLoad } from '../helper'
 
-const createAccountBox = () => {
+const createAccountBox = async () => {
   if ($('#md-account-box').length) return Promise.reject()
-  let addressTagBox = $('#mainContent .contract-name')
+  const addressTagBox = await waitForJQueryElement(
+    '#mainContent .contract-name',
+    15000
+  )
   const accountBox = $(
     '<div id="md-account-box" style="display: flex;align-items: center;gap: 14px; margin:14px 0"></div>'
   )
-  if (!addressTagBox.length) {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        addressTagBox = $('#mainContent .contract-name')
-        addressTagBox.before(accountBox)
-        resolve(true)
-      }, 3000)
-    })
-  } else {
-    addressTagBox.before(accountBox)
-    return Promise.resolve()
-  }
+  addressTagBox.before(accountBox)
 }
 
 const initContractPageScript = async () => {

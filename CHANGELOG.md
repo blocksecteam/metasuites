@@ -1,3 +1,7 @@
+### v5.8.2
+
+- [fix] Fix Tronscan compatibility
+
 ### v5.8.1
 
 - [perf] Optimize local label button rendering logic with asynchronous address labels

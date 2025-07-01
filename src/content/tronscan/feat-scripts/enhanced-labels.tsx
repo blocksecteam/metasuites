@@ -46,9 +46,7 @@ const genEnhancedLabels = (page?: string) => {
       break
   }
   const main = async () => {
-    const addressTags = $(
-      '#mainContent .ant-table-content .ant-table-cell .address-link-wrap .address-link'
-    )
+    const addressTags = $('.ant-table-cell .address-link-wrap .address-link')
 
     const filteredElements = addressTags.filter(function () {
       return isTrxAddress($(this).text().trim())
