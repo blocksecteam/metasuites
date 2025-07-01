@@ -19,7 +19,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-yarn.lock
-package-json.lock
+
 .husky/*
 *.zip
