@@ -139,9 +139,7 @@ export const mergeAddressLabels = async (
       } as AddressLabel
     })
     .filter(item => {
-      const key = `${classifyByChain(item.chain)}-${formatAddress(
-        item.address
-      )}`
+      const key = `${item.chain}-${formatAddress(item.address)}`
       return !privateLabels[key]?.deleted
     })
   return uniqBy(

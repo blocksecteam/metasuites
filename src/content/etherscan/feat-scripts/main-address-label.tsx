@@ -22,7 +22,6 @@ const genMainAddressLabel = async (chain: string) => {
 
   const divSummaryEl = $('#ContentPlaceHolder1_divSummary')
   const containerEl = $('#ContentPlaceHolder1_divLabels')
-  console.log('containerEl', containerEl[0])
   divSummaryEl.find('> div').removeAttr('style')
   if (!divSummaryEl.hasClass('pt-2')) {
     divSummaryEl.addClass('pt-2')

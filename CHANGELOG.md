@@ -1,3 +1,7 @@
+### v5.8.3
+
+- [fix] Fix local label deletion functionality
+
 ### v5.8.2
 
 - [fix] Fix Tronscan compatibility
