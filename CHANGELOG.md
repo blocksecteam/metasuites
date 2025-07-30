@@ -1,3 +1,7 @@
+### v5.8.4
+
+- [fix] Add text sanitization to prevent XSS attacks in address labels
+
 ### v5.8.3
 
 - [fix] Fix local label deletion functionality

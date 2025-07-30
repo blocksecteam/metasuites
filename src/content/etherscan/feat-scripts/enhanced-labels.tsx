@@ -5,7 +5,8 @@ import {
   validOrigin,
   isAddress,
   getSubStr,
-  mergeAddressLabels
+  mergeAddressLabels,
+  sanitizeText
 } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
@@ -48,13 +49,16 @@ const handleReplace = async (
         ) {
           el.innerHTML = `<a target="_parent" href="/address/${
             item.address
-          }">${getSubStr(item.label, [8, 6])}</a>`
+          }">${getSubStr(sanitizeText(item.label), [8, 6])}</a>`
           el.parentNode?.childNodes.forEach(item => {
             if (item.nodeName === 'I') {
               item.remove()
             }
           })
-          el.setAttribute('data-bs-title', `${item.label}\n(${item.address})`)
+          el.setAttribute(
+            'data-bs-title',
+            `${sanitizeText(item.label)}\n(${item.address})`
+          )
           const symbolRootEl = document.createElement('span')
           symbolRootEl.style.display = 'contents'
           el.prepend(symbolRootEl)

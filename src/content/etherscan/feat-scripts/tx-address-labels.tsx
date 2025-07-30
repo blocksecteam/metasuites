@@ -6,7 +6,8 @@ import {
   pickAddress,
   setDeepestChildText,
   getHrefQueryVariable,
-  mergeAddressLabels
+  mergeAddressLabels,
+  sanitizeText
 } from '@common/utils'
 import { chromeEvent } from '@common/event'
 import type { AddressLabel } from '@common/api/types'
@@ -133,13 +134,15 @@ const genImplAddressLabels = async (chain: string) => {
           labelContainerEl
             .append('(')
             .append(proxySymbolRootEl)
-            .append(`<span>${label}</span>`)
+            .append(`<span>${sanitizeText(label)}</span>`)
           if (implementAddress && implementLabel) {
             labelContainerEl
               .append(`<span style="padding: 0 4px;">(-></span>`)
               .append(implSymbolRootEl)
               .append(
-                `<a href="/address/${implementAddress}" target="_blank">${implementLabel}</a>`
+                `<a href="/address/${implementAddress}" target="_blank">${sanitizeText(
+                  implementLabel
+                )}</a>`
               )
               .append(')')
             createRoot(implSymbolRootEl[0]).render(
@@ -197,7 +200,7 @@ const genNormalAddressLabels = async (chain: string) => {
         const href = el.getAttribute('href')?.toLowerCase() ?? ''
         const address = getHrefQueryVariable(href, 'a') ?? pickAddress(href)
         if (item.address === address) {
-          setDeepestChildText(el, item.label)
+          setDeepestChildText(el, sanitizeText(item.label))
           const symbolRootEl = document.createElement('span')
           symbolRootEl.style.display = 'contents'
           el.prepend(symbolRootEl)
