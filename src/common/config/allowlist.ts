@@ -28,7 +28,8 @@ export default {
     '*://cronoscan.com/*',
     '*://gnosisscan.io/*',
     '*://*.arbiscan.io/*',
-    '*://mantlescan.xyz/*'
+    '*://mantlescan.xyz/*',
+    '*://sonicscan.org/*'
   ],
   BTC_EXPLORER_MATCHES: ['*://explorer.cloverpool.com/*'],
   BLOCKSEC_MATCHES: ['*://*.blocksec.com/*'],

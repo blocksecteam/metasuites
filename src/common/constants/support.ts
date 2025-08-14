@@ -427,6 +427,13 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     logo: 'https://assets.blocksec.com/image/1721387994429-2.svg'
   },
   {
+    name: 'SonicScan',
+    chain: 'sonic',
+    domains: ['sonicscan.org'],
+    siteName: 'ETHERSCAN',
+    logo: 'https://assets.blocksec.com/image/1741083037784-2.svg'
+  },
+  {
     name: 'Solscan',
     chain: 'solana',
     domains: ['solscan.io'],
@@ -568,6 +575,11 @@ export const PHALCON_SUPPORT_LIST = [
     pathname: 'mantle',
     chain: 'mantle',
     supportSimulator: true
+  },
+  {
+    pathname: 'sonic',
+    chain: 'sonic',
+    supportSimulator: false
   }
 ]
 
@@ -687,6 +699,10 @@ export const TENDERLY_SUPPORT_LIST = [
   {
     pathname: 'mantle',
     chain: 'mantle'
+  },
+  {
+    pathname: 'sonic',
+    chain: 'sonic'
   }
 ]
 
@@ -724,11 +740,6 @@ export const DEDAUB_SUPPORT_DIRECT_LIST = [
     chain: 'base',
     pathname: 'base'
   }
-  // not fully supported
-  // {
-  //   chain: 'mantle',
-  //   pathname: 'mantle'
-  // }
 ]
 
 export const ETHERSCAN_DETH_SUPPORT_LIST = [
@@ -926,7 +937,8 @@ export const DEBANK_SUPPORT_LIST = [
   'wemix',
   'nova.arbitrum',
   'era.zksync',
-  'mantle'
+  'mantle',
+  'sonic'
 ]
 
 export const APPROVAL_DIAGNOSIS_SUPPORT_LIST = [
@@ -948,7 +960,8 @@ export const APPROVAL_DIAGNOSIS_SUPPORT_LIST = [
   'linea',
   'wemix',
   'tron',
-  'mantle'
+  'mantle',
+  'sonic'
 ]
 
 export const ARKHAM_PHALCON_SUPPORTED_LIST = [

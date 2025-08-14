@@ -23,7 +23,8 @@ export class FeatureActiveSupport {
     'wemix',
     'nova.arbitrum',
     'era.zksync',
-    'mantle'
+    'mantle',
+    'sonic'
   ])
   static APPROVAL_DIAGNOSIS = new BaseFeatureSupport('approval-diagnosis', [
     'eth',
@@ -44,7 +45,8 @@ export class FeatureActiveSupport {
     'linea',
     'wemix',
     'tron',
-    'mantle'
+    'mantle',
+    'sonic'
   ])
   static PROXY_CONTRACT_LOG = new BaseFeatureSupport('proxy-contract-log', [
     'eth',
@@ -241,7 +243,8 @@ export class FeatureActiveSupport {
       'gor.base',
       'gor.arbitrum',
       'nova.arbitrum',
-      'mantle'
+      'mantle',
+      'sonic'
     ],
     [
       {
@@ -328,6 +331,10 @@ export class FeatureActiveSupport {
       {
         pathname: 'mantle',
         chain: 'mantle'
+      },
+      {
+        pathname: 'sonic',
+        chain: 'sonic'
       }
     ]
   )
@@ -381,7 +388,8 @@ export class FeatureActiveSupport {
       'base',
       'era.zksync',
       'solana',
-      'mantle'
+      'mantle',
+      'sonic'
     ],
     [
       {
@@ -453,6 +461,11 @@ export class FeatureActiveSupport {
         pathname: 'mantle',
         chain: 'mantle',
         supportSimulator: true
+      },
+      {
+        pathname: 'sonic',
+        chain: 'sonic',
+        supportSimulator: false
       }
     ]
   )

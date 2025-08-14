@@ -40,15 +40,6 @@ const DANGEROUS_PROTOCOLS = [
 ]
 
 /**
- * Escape HTML entities to prevent XSS
- */
-const escapeHTML = (text: string): string => {
-  const div = document.createElement('div')
-  div.textContent = text
-  return div.innerHTML
-}
-
-/**
  * Check if an attribute value is safe
  */
 const isSafeAttributeValue = (value: string): boolean => {
