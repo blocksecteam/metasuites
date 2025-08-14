@@ -2,6 +2,7 @@ import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { crx } from '@crxjs/vite-plugin'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 import manifest from './manifest.config'
 
@@ -19,7 +20,12 @@ export default defineConfig(({ mode }) => {
       /**
        * doc: https://crxjs.dev/vite-plugin/
        */
-      crx({ manifest })
+      crx({ manifest }),
+      visualizer({
+        open: true,
+        filename: 'dist/stats.html',
+        gzipSize: true
+      })
     ],
     resolve: {
       alias: {
@@ -47,6 +53,22 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         input: {
           policy: 'src/pages/PrivacyPolicy/index.html'
+        },
+        onwarn(warning, warn) {
+          if (warning.code === 'MODULE_LEVEL_DIRECTIVE') {
+            return
+          }
+          warn(warning)
+        },
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules/rc-')) {
+              return 'rc-vendor'
+            }
+            if (id.includes('node_modules/d3-graphviz')) {
+              return 'd3-graphviz'
+            }
+          }
         }
       }
     },
