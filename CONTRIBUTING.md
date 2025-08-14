@@ -68,9 +68,6 @@ Whenever you change dependencies (adding, removing, or updating, either in `pack
 yarn build:prod
 # firefox
 yarn build-firefox:prod
-# safari
-yarn build-safari:prod
-xcrun safari-web-extension-converter --macos-only /path/to/metasuites/dist/safari-extension
 ```
 
 ### Safari
