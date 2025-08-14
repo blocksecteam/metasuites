@@ -1,3 +1,7 @@
+### v5.8.5
+
+- [feat] Adapt to Sonic Explorer
+
 ### v5.8.4
 
 - [fix] Add text sanitization to prevent XSS attacks in address labels
@@ -303,9 +307,9 @@
 
 ### v2.3.4
 
-- [fix] fix some bugs related to button display
-- [fix] adapt to tokentnxs, nft-transfers and txsInternal pages
-- [perf] optimize nametag display
+- [fix] Fix some bugs related to button display
+- [fix] Adapt to tokentnxs, nft-transfers and txsInternal pages
+- [perf] Optimize nametag display
 
 ### v2.3.1
 
