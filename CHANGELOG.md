@@ -1,3 +1,7 @@
+### v5.8.6
+
+- [update] Remove support for OKX Explorer
+
 ### v5.8.5
 
 - [feat] Adapt to Sonic Explorer

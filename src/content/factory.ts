@@ -12,7 +12,6 @@ import { SolanaExplorerInitializer } from '@src/content/solanaexpl'
 import { DebankInitializer } from '@src/content/debank'
 import { ArkhamInitializer } from '@src/content/arkham'
 import { JitoInitializer } from '@src/content/jito'
-import { OKLinkInitializer } from '@src/content/oklink'
 
 export type Initializer<T> = {
   matches: string[]
@@ -45,8 +44,7 @@ export const createInitializer = (url: string, all_frames = false) => {
         SolanaExplorerInitializer,
         DebankInitializer,
         ArkhamInitializer,
-        JitoInitializer,
-        OKLinkInitializer
+        JitoInitializer
       ]
   return createInitializerFromMap(url, initializers)
 }

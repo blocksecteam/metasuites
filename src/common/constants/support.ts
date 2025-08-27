@@ -471,18 +471,6 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['dexscreener.com'],
     siteName: 'DEX',
     logo: 'https://assets.blocksec.com/image/1716165286476-4.svg'
-  },
-  {
-    name: 'OKLink Explorer',
-    domains: ['www.oklink.com'],
-    siteName: 'OKLINK',
-    logo: 'https://assets.blocksec.com/image/1729766376596-2.jpeg'
-  },
-  {
-    name: 'OKX Explorer',
-    domains: ['www.okx.com'],
-    siteName: 'OKX',
-    logo: 'https://assets.blocksec.com/image/1746754415992-2.png'
   }
 ]
 

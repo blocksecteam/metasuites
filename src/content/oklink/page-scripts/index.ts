@@ -1,5 +1,0 @@
-export { default as initAddressPageScript } from './address'
-export { default as initAddressTxnsPageScript } from './addressTxns'
-export { default as initTxPageScript } from './tx'
-export { default as initCommonPageScript } from './common'
-export { default as initTokenPageScript } from './token'
