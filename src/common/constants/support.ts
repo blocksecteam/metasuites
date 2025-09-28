@@ -462,7 +462,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
   },
   {
     name: 'Arkham',
-    domains: ['platform.arkhamintelligence.com'],
+    domains: ['intel.arkm.com'],
     siteName: 'ARKHAM',
     logo: 'https://assets.blocksec.com/image/1716165286476-2.svg'
   },
