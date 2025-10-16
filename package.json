@@ -1,6 +1,6 @@
 {
   "name": "metasuites",
-  "version": "5.8.6",
+  "version": "5.8.7",
   "repository": {
     "type": "git",
     "url": "https://github.com/blocksecteam/metasuites.git"
@@ -38,6 +38,7 @@
     "d3": "^5.0.0",
     "d3-graphviz": "2.6.1",
     "dayjs": "^1.11.6",
+    "dompurify": "^3.3.0",
     "echarts": "^5.4.3",
     "echarts-for-react": "^3.0.2",
     "ethers": "^6.0.8",

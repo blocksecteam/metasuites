@@ -1,3 +1,8 @@
+### v5.8.7
+
+- [fix] Use DOMPurify to sanitize address labels
+- [perf] Optimize address label display functionality
+
 ### v5.8.6
 
 - [update] Remove support for OKX Explorer

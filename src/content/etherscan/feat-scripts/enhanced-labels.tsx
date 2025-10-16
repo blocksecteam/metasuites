@@ -40,25 +40,20 @@ const handleReplace = async (
     )
     resultLabels.forEach(item => {
       elements.forEach(el => {
-        el = widthScanV2Tooltip(el)
-        const address =
-          el.nextElementSibling?.getAttribute('data-clipboard-text') ?? ''
+        const address = el.getAttribute('data-highlight-target') ?? ''
         if (
           (el.innerText.startsWith('0x') || item.isLocal) &&
           item.address.toLowerCase() === address.toLowerCase()
         ) {
-          el.innerHTML = `<a target="_parent" href="/address/${
-            item.address
-          }">${getSubStr(sanitizeText(item.label), [8, 6])}</a>`
-          el.parentNode?.childNodes.forEach(item => {
-            if (item.nodeName === 'I') {
-              item.remove()
-            }
-          })
           el.setAttribute(
             'data-bs-title',
             `${sanitizeText(item.label)}\n(${item.address})`
           )
+
+          // Apply tooltip enhancement
+          widthScanV2Tooltip(el)
+
+          el.innerText = getSubStr(sanitizeText(item.label), [8, 6])
           const symbolRootEl = document.createElement('span')
           symbolRootEl.style.display = 'contents'
           el.prepend(symbolRootEl)
@@ -87,8 +82,7 @@ const genEnhancedLabels = async (chain: string) => {
 
     for (let i = 0; i < nodeList.length; ++i) {
       const el = nodeList[i]
-      const address =
-        el.nextElementSibling?.getAttribute('data-clipboard-text') ?? ''
+      const address = el.getAttribute('data-highlight-target') ?? ''
       if (isAddress(address)) {
         if (!addressList.includes(address)) {
           addressList.push(address)
@@ -107,9 +101,7 @@ const genEnhancedLabels = async (chain: string) => {
         const _document = iframe?.contentWindow?.document
         if (_document) {
           const iframeAddressTags = $(_document)
-            .find(
-              "*:has(+ a[class*='js-clipboard'][aria-label='Copy Address'])"
-            )
+            .find(TABLE_LIST_ADDRESS_SELECTORS_V2)
             .toArray()
 
           const [tagsList, addressList] =

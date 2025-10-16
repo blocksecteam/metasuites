@@ -8,7 +8,8 @@ export const TABLE_LIST_METHOD_SELECTORS =
 
 /** etherscan address */
 export const TABLE_LIST_ADDRESS_SELECTORS_V2 =
-  ".card tbody *:has(+ a.js-clipboard[aria-label='Copy Address'])"
+  // old version:   ".card tbody *:has(+ a.js-clipboard[aria-label='Copy Address'])"
+  '.card tbody span[data-highlight-target][data-uid]'
 
 /** etherscan methods */
 export const TABLE_LIST_METHOD_SELECTORS_V2 =
