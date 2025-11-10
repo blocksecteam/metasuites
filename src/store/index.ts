@@ -103,7 +103,6 @@ export const defaultValue: StorageInfo = {
     hideZeroValueTransfers: true
   },
   alternativeParsers: {
-    [TransactionParsers.OPENCHAIN.name()]: true,
     [TransactionParsers.TENDERLY.name()]: true,
     [TransactionParsers.DEDAUB.name()]: false
   },

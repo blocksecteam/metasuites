@@ -1,3 +1,7 @@
+### v5.8.8
+
+- [update] Remove support for Openchain transaction parsing functionality
+
 ### v5.8.7
 
 - [fix] Use DOMPurify to sanitize address labels

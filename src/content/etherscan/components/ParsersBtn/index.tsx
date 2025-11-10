@@ -5,7 +5,6 @@ import {
   DEDAUB_SUPPORT_DIRECT_LIST,
   PHALCON_SUPPORT_LIST,
   TENDERLY_SUPPORT_LIST,
-  OPENCHAIN_SUPPORT_LIST,
   TransactionParsers
 } from '@common/constants'
 import { useStore } from '@common/hooks'
@@ -30,9 +29,6 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
   const phalconPathname = PHALCON_SUPPORT_LIST.find(
     item => item.chain === chain
   )?.pathname
-  const openchainPathname = OPENCHAIN_SUPPORT_LIST.find(
-    item => item.chain === chain
-  )?.pathname
   const tenderlyPathname = TENDERLY_SUPPORT_LIST.find(
     item => item.chain === chain
   )?.pathname
@@ -48,15 +44,6 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
             Phalcon
           </a>
         )}
-        {openchainPathname &&
-          alternativeParsers[TransactionParsers.OPENCHAIN.value()] && (
-            <a
-              href={`https://openchain.xyz/trace/${openchainPathname}/${txHash}`}
-              target="_blank"
-            >
-              OpenChain
-            </a>
-          )}
         {tenderlyPathname &&
           alternativeParsers[TransactionParsers.TENDERLY.value()] && (
             <a

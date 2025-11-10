@@ -338,40 +338,6 @@ export class FeatureActiveSupport {
       }
     ]
   )
-  static OPENCHAIN = new BaseFeatureSupport(
-    'openchain',
-    ['eth', 'polygon', 'optimism', 'bsc', 'avalanche', 'arbitrum', 'fantom'],
-    [
-      {
-        pathname: 'ethereum',
-        chain: 'eth'
-      },
-      {
-        pathname: 'polygon',
-        chain: 'polygon'
-      },
-      {
-        pathname: 'optimism',
-        chain: 'optimism'
-      },
-      {
-        pathname: 'binance',
-        chain: 'bsc'
-      },
-      {
-        pathname: 'avalanche',
-        chain: 'avalanche'
-      },
-      {
-        pathname: 'arbitrum',
-        chain: 'arbitrum'
-      },
-      {
-        pathname: 'fantom',
-        chain: 'fantom'
-      }
-    ]
-  )
   static PHALCON = new BaseFeatureSupport(
     'phalcon',
     [
@@ -570,11 +536,6 @@ export class TransactionParsers extends BaseConstant {
     'tenderly',
     'tenderly',
     'https://dashboard.tenderly.co'
-  )
-  static OPENCHAIN = new BaseConstant(
-    'openchain',
-    'openchain',
-    'https://openchain.xyz/trace'
   )
   static DEDAUB = new BaseConstant('dedaub', 'dedaub', 'https://app.dedaub.com')
 }

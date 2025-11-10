@@ -134,21 +134,7 @@ const ConfigExploresDrawer: FC<Props> = ({
               style={{ paddingTop: 0 }}
               action={null}
               title={
-                <div className="justify-between md-flex">
-                  <Space>
-                    <span style={{ fontSize: 'inherit' }}>Openchain</span>
-                    <Checkbox
-                      checked={
-                        alternativeParsers[TransactionParsers.OPENCHAIN.value()]
-                      }
-                      onChange={e =>
-                        onAlternativeParsersChange(
-                          TransactionParsers.OPENCHAIN.value(),
-                          e.target.checked
-                        )
-                      }
-                    />
-                  </Space>
+                <Space size={24}>
                   <Space>
                     <span style={{ fontSize: 'inherit' }}>Tenderly</span>
                     <Checkbox
@@ -177,7 +163,7 @@ const ConfigExploresDrawer: FC<Props> = ({
                       }
                     />
                   </Space>
-                </div>
+                </Space>
               }
             />
             <Cell

@@ -6,7 +6,6 @@ import {
   DEDAUB_SUPPORT_DIRECT_LIST,
   PHALCON_SUPPORT_LIST,
   TENDERLY_SUPPORT_LIST,
-  OPENCHAIN_SUPPORT_LIST,
   ETHERVM_SUPPORT_DIRECT_LIST
 } from '@common/constants'
 
@@ -40,10 +39,6 @@ export const isSupportTenderly = (chain: string): boolean => {
   return TENDERLY_SUPPORT_LIST.findIndex(item => item.chain === chain) !== -1
 }
 
-export const isSupportOpenchain = (chain: string): boolean => {
-  return OPENCHAIN_SUPPORT_LIST.findIndex(item => item.chain === chain) !== -1
-}
-
 export const isSupportDedaub = (chain: string): boolean => {
   return (
     DEDAUB_SUPPORT_DIRECT_LIST.findIndex(item => item.chain === chain) !== -1
@@ -54,8 +49,7 @@ export const isSupportParsers = (chain: string): boolean => {
   return (
     isSupportDedaub(chain) ||
     isSupportTenderly(chain) ||
-    isSupportPhalcon(chain) ||
-    isSupportOpenchain(chain)
+    isSupportPhalcon(chain)
   )
 }
 

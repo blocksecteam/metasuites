@@ -571,37 +571,6 @@ export const PHALCON_SUPPORT_LIST = [
   }
 ]
 
-export const OPENCHAIN_SUPPORT_LIST = [
-  {
-    pathname: 'ethereum',
-    chain: 'eth'
-  },
-  {
-    pathname: 'polygon',
-    chain: 'polygon'
-  },
-  {
-    pathname: 'optimism',
-    chain: 'optimism'
-  },
-  {
-    pathname: 'binance',
-    chain: 'bsc'
-  },
-  {
-    pathname: 'avalanche',
-    chain: 'avalanche'
-  },
-  {
-    pathname: 'arbitrum',
-    chain: 'arbitrum'
-  },
-  {
-    pathname: 'fantom',
-    chain: 'fantom'
-  }
-]
-
 export const TENDERLY_SUPPORT_LIST = [
   {
     pathname: 'polygon',
@@ -875,11 +844,6 @@ export class TransactionParsers extends BaseConstant {
     'tenderly',
     'tenderly',
     'https://dashboard.tenderly.co'
-  )
-  static OPENCHAIN = new BaseConstant(
-    'openchain',
-    'openchain',
-    'https://openchain.xyz/trace'
   )
   static DEDAUB = new BaseConstant('dedaub', 'dedaub', 'https://app.dedaub.com')
 }
