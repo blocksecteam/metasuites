@@ -42,7 +42,7 @@ export default {
   SOLANA_EXPLORER_MATCHES: ['*://explorer.solana.com/*'],
   MS_MATCHES: ['*://*.metasleuth.io/*'],
   DEBANK_MATCHES: ['*://debank.com/*'],
-  ARKHAM_MATCHES: ['*://platform.arkhamintelligence.com/*'],
+  ARKHAM_MATCHES: ['*://intel.arkm.com/*'],
   DEX_MATCHES: ['*://dexscreener.com/*'],
   JITO_MATCHES: ['*://explorer.jito.wtf/bundle/*']
 }
