@@ -46,10 +46,10 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         logo: 'https://assets.blocksec.com/image/1671685360787-7.png'
       },
       {
-        name: 'Goerli',
-        domains: ['goerli.etherscan.io'],
-        chainID: 5,
-        chain: 'gor.eth',
+        name: 'Hoodi',
+        domains: ['hoodi.etherscan.io'],
+        chainID: 560048,
+        chain: 'hoodi.eth',
         siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1671685360787-7.png'
       }
@@ -72,10 +72,10 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/ethereum.png'
       },
       {
-        name: 'Goerli (Blockscout)',
-        domains: ['eth-goerli.blockscout.com'],
-        chainID: 5,
-        chain: 'gor.eth',
+        name: 'Hoodi (Blockscout)',
+        domains: ['eth-hoodi.blockscout.com'],
+        chainID: 560048,
+        chain: 'hoodi.eth',
         siteName: 'BLOCKSCOUT',
         logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/ethereum.png'
       }
@@ -505,8 +505,8 @@ export const PHALCON_SUPPORT_LIST = [
     supportSimulator: false
   },
   {
-    pathname: 'goerli',
-    chain: 'gor.eth',
+    pathname: 'hoodi',
+    chain: 'hoodi.eth',
     supportSimulator: false
   },
   {
@@ -622,8 +622,8 @@ export const TENDERLY_SUPPORT_LIST = [
     chain: 'gnosis'
   },
   {
-    pathname: 'goerli',
-    chain: 'gor.eth'
+    pathname: 'hoodi',
+    chain: 'hoodi.eth'
   },
   {
     pathname: 'fantom-testnet',
@@ -749,8 +749,8 @@ export const ETHERVM_SUPPORT_DIRECT_LIST = [
     url: 'https://ethervm.io/decompile/binance'
   },
   {
-    chain: 'gor.eth',
-    url: 'https://ethervm.io/decompile/goerli'
+    chain: 'hoodi.eth',
+    url: 'https://ethervm.io/decompile/hoodi'
   },
   {
     chain: 'sepolia.eth',
