@@ -7,7 +7,7 @@ const initAddressPageScript = async () => {
   const { enablePrivateLabels } = await store.get('options')
   lazyLoad(() => {
     if (enablePrivateLabels) renderMainAddressLabel()
-  }, 'div[class^="Header_displayNameAddress"]:first')
+  }, 'div[class*="__displayNameAddress"]:first')
 }
 
 export default initAddressPageScript

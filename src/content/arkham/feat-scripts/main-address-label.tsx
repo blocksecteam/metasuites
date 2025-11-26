@@ -7,7 +7,7 @@ import { pickAddress } from '@common/utils'
 import { MainPrivateLabel } from '../components'
 
 const renderMainAddressLabel = async () => {
-  const container = $('div[class^="Header_displayNameAddress"]:first')
+  const container = $('div[class*="__displayNameAddress"]:first')
 
   const mainAddress = pickAddress(window.location.pathname)
 

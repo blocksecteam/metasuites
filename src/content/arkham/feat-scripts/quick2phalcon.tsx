@@ -6,9 +6,9 @@ import { ARKHAM_PHALCON_SUPPORTED_LIST } from '@common/constants'
 import { PhalconExplorerButton } from '../components'
 
 const renderPhalconExplorerButton = () => {
-  const txHashEl = $('a[class^="transaction_externalLink"]')
+  const txHashEl = $('a[class*="__externalLink"]')
   const name = $(
-    'div[class^="transaction_pageContainer"] div[class^="transaction_txInfoBox"] > div[class^="transaction_grid"] > div:nth-child(2)'
+    'div[class*="__pageContainer"] div[class*="__txInfoBox"] > div[class*="__grid"] > div:nth-child(2)'
   )
     .text()
     .trim()
