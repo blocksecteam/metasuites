@@ -8,7 +8,7 @@ const initTxPageScript = async () => {
 
   lazyLoad(() => {
     if (quick2Parsers) renderPhalconExplorerButton()
-  }, 'a[class^="transaction_externalLink"]')
+  }, 'a[class*="__externalLink"]')
 }
 
 export default initTxPageScript
