@@ -7,7 +7,6 @@ export class FeatureActiveSupport {
     'eth',
     'bsc',
     'polygon',
-    'fantom',
     'arbitrum',
     'cronos',
     'moonbeam',
@@ -30,7 +29,6 @@ export class FeatureActiveSupport {
     'eth',
     'bsc',
     'polygon',
-    'fantom',
     'arbitrum',
     'cronos',
     'moonbeam',
@@ -52,7 +50,6 @@ export class FeatureActiveSupport {
     'eth',
     'bsc',
     'polygon',
-    'fantom',
     'arbitrum',
     'cronos',
     'moonbeam',
@@ -68,7 +65,6 @@ export class FeatureActiveSupport {
       'eth',
       'bsc',
       'polygon',
-      'fantom',
       'arbitrum',
       'avalanche',
       'optimism',
@@ -96,16 +92,6 @@ export class FeatureActiveSupport {
         chain: 'polygon',
         logo: 'https://assets.blocksec.com/image/1671685360787-12.png',
         nativeCurrency: { name: 'MATIC', symbol: 'MATIC', decimals: 18 }
-      },
-      {
-        name: 'Fantom',
-        chain: 'fantom',
-        logo: 'https://assets.blocksec.com/image/1671685360787-8.png',
-        nativeCurrency: {
-          decimals: 18,
-          name: 'Fantom',
-          symbol: 'FTM'
-        }
       },
       {
         name: 'Arbitrum',
@@ -173,7 +159,6 @@ export class FeatureActiveSupport {
       'eth',
       'bsc',
       'polygon',
-      'fantom',
       'optimism',
       'arbitrum',
       'avalanche',
@@ -192,10 +177,6 @@ export class FeatureActiveSupport {
       {
         chain: 'polygon',
         url: 'https://polygonscan.deth.net/address'
-      },
-      {
-        chain: 'fantom',
-        url: 'https://ftmscan.deth.net/address'
       },
       {
         chain: 'optimism',
@@ -226,7 +207,6 @@ export class FeatureActiveSupport {
       'polygon',
       'bsc',
       'arbitrum',
-      'fantom',
       'avalanche',
       'eth',
       'optimism',
@@ -236,7 +216,6 @@ export class FeatureActiveSupport {
       'moonriver',
       'gnosis',
       'gor.eth',
-      'test.fantom',
       'gor.optimism',
       'mumbai.polygon',
       'sepolia.eth',
@@ -259,11 +238,6 @@ export class FeatureActiveSupport {
         pathname: 'arbitrum',
         chain: 'arbitrum'
       },
-      {
-        pathname: 'fantom',
-        chain: 'fantom'
-      },
-
       {
         pathname: 'ava',
         chain: 'avalanche'
@@ -299,10 +273,6 @@ export class FeatureActiveSupport {
       {
         pathname: 'goerli',
         chain: 'gor.eth'
-      },
-      {
-        pathname: 'fantom-testnet',
-        chain: 'test.fantom'
       },
       {
         pathname: 'optimistic-goerli',
@@ -349,7 +319,6 @@ export class FeatureActiveSupport {
       'avalanche',
       'arbitrum',
       'optimism',
-      'fantom',
       'linea',
       'base',
       'era.zksync',
@@ -399,11 +368,6 @@ export class FeatureActiveSupport {
         supportSimulator: true
       },
       {
-        pathname: 'fantom',
-        chain: 'fantom',
-        supportSimulator: false
-      },
-      {
         pathname: 'linea',
         chain: 'linea',
         supportSimulator: false
@@ -443,7 +407,6 @@ export class FeatureActiveSupport {
     'eth',
     'bsc',
     'polygon',
-    'fantom',
     'arbitrum',
     'cronos',
     'moonbeam',
@@ -461,15 +424,11 @@ export class FeatureActiveSupport {
   )
   static DEDAUB = new BaseFeatureSupport(
     'dedaub',
-    ['eth', 'fantom', 'arbitrum', 'optimism', 'polygon', 'avalanche', 'base'],
+    ['eth', 'arbitrum', 'optimism', 'polygon', 'avalanche', 'base'],
     [
       {
         chain: 'eth',
         pathname: 'ethereum'
-      },
-      {
-        chain: 'fantom',
-        pathname: 'fantom'
       },
       {
         chain: 'arbitrum',

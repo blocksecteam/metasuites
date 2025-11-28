@@ -29,7 +29,6 @@ export default defineManifest((env: ConfigEnv) => {
               '*://*.polygonscan.com/*',
               '*://optimistic.etherscan.io/*',
               '*://*.arbiscan.io/*',
-              '*://*.ftmscan.com/*',
               '*://cronoscan.com/*',
               '*://*.moonscan.io/*',
               '*://*.basescan.org/*',

@@ -134,24 +134,6 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/polygon.png'
   },
   {
-    name: 'Fantom',
-    domains: ['ftmscan.com'],
-    chain: 'fantom',
-    chainID: 250,
-    siteName: 'ETHERSCAN',
-    logo: 'https://assets.blocksec.com/image/1671685360787-8.png',
-    testNets: [
-      {
-        name: 'Fantom Testnet',
-        domains: ['testnet.ftmscan.com'],
-        chain: 'test.fantom',
-        chainID: 4_002,
-        siteName: 'ETHERSCAN',
-        logo: 'https://assets.blocksec.com/image/1671685360787-8.png'
-      }
-    ]
-  },
-  {
     name: 'Arbitrum',
     domains: ['arbiscan.io'],
     chain: 'arbitrum',
@@ -478,7 +460,6 @@ export const SLEUTH_SUPPORT_LIST = [
   'eth',
   'bsc',
   'polygon',
-  'fantom',
   'arbitrum',
   'cronos',
   'moonbeam',
@@ -535,11 +516,6 @@ export const PHALCON_SUPPORT_LIST = [
     supportSimulator: true
   },
   {
-    pathname: 'fantom',
-    chain: 'fantom',
-    supportSimulator: false
-  },
-  {
     pathname: 'linea',
     chain: 'linea',
     supportSimulator: false
@@ -585,11 +561,6 @@ export const TENDERLY_SUPPORT_LIST = [
     chain: 'arbitrum'
   },
   {
-    pathname: 'fantom',
-    chain: 'fantom'
-  },
-
-  {
     pathname: 'ava',
     chain: 'avalanche'
   },
@@ -624,10 +595,6 @@ export const TENDERLY_SUPPORT_LIST = [
   {
     pathname: 'goerli',
     chain: 'gor.eth'
-  },
-  {
-    pathname: 'fantom-testnet',
-    chain: 'test.fantom'
   },
   {
     pathname: 'optimistic-goerli',
@@ -674,10 +641,6 @@ export const DEDAUB_SUPPORT_DIRECT_LIST = [
     pathname: 'binance'
   },
   {
-    chain: 'fantom',
-    pathname: 'fantom'
-  },
-  {
     chain: 'arbitrum',
     pathname: 'arbitrum'
   },
@@ -711,10 +674,6 @@ export const ETHERSCAN_DETH_SUPPORT_LIST = [
   {
     chain: 'polygon',
     url: 'https://polygonscan.deth.net/address'
-  },
-  {
-    chain: 'fantom',
-    url: 'https://ftmscan.deth.net/address'
   },
   {
     chain: 'optimism',
@@ -787,16 +746,6 @@ export const SIMULATE_SUPPORT_LIST = [
     nativeCurrency: { name: 'MATIC', symbol: 'MATIC', decimals: 18 }
   },
   {
-    name: 'Fantom',
-    chain: 'fantom',
-    logo: 'https://assets.blocksec.com/image/1671685360787-8.png',
-    nativeCurrency: {
-      decimals: 18,
-      name: 'Fantom',
-      symbol: 'FTM'
-    }
-  },
-  {
     name: 'Arbitrum',
     chain: 'arbitrum',
     logo: 'https://assets.blocksec.com/image/1671685360787-2.png',
@@ -852,7 +801,6 @@ export const PROXY_LOG_SUPPORT_LIST = [
   'eth',
   'bsc',
   'polygon',
-  'fantom',
   'arbitrum',
   'cronos',
   'moonbeam',
@@ -873,7 +821,6 @@ export const DEBANK_SUPPORT_LIST = [
   'eth',
   'bsc',
   'polygon',
-  'fantom',
   'arbitrum',
   'cronos',
   'moonbeam',
@@ -897,7 +844,6 @@ export const APPROVAL_DIAGNOSIS_SUPPORT_LIST = [
   'eth',
   'bsc',
   'polygon',
-  'fantom',
   'arbitrum',
   'cronos',
   'moonbeam',
