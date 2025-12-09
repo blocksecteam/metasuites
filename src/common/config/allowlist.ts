@@ -29,7 +29,9 @@ export default {
     '*://gnosisscan.io/*',
     '*://*.arbiscan.io/*',
     '*://mantlescan.xyz/*',
-    '*://sonicscan.org/*'
+    '*://sonicscan.org/*',
+    '*://monadscan.com/*',
+    '*://testnet.monadscan.com/*'
   ],
   BTC_EXPLORER_MATCHES: ['*://explorer.cloverpool.com/*'],
   BLOCKSEC_MATCHES: ['*://*.blocksec.com/*'],

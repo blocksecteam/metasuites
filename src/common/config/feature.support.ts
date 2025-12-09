@@ -244,7 +244,9 @@ export class FeatureActiveSupport {
       'gor.arbitrum',
       'nova.arbitrum',
       'mantle',
-      'sonic'
+      'sonic',
+      'monad',
+      'test.monad'
     ],
     [
       {
@@ -335,6 +337,14 @@ export class FeatureActiveSupport {
       {
         pathname: 'sonic',
         chain: 'sonic'
+      },
+      {
+        pathname: 'monad',
+        chain: 'monad'
+      },
+      {
+        pathname: 'monad-testnet',
+        chain: 'test.monad'
       }
     ]
   )
@@ -355,7 +365,9 @@ export class FeatureActiveSupport {
       'era.zksync',
       'solana',
       'mantle',
-      'sonic'
+      'sonic',
+      'monad',
+      'test.monad'
     ],
     [
       {
@@ -431,6 +443,16 @@ export class FeatureActiveSupport {
       {
         pathname: 'sonic',
         chain: 'sonic',
+        supportSimulator: false
+      },
+      {
+        pathname: 'monad',
+        chain: 'monad',
+        supportSimulator: false
+      },
+      {
+        pathname: 'monad-testnet',
+        chain: 'test.monad',
         supportSimulator: false
       }
     ]

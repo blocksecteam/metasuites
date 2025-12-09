@@ -41,7 +41,9 @@ export default defineManifest((env: ConfigEnv) => {
               '*://era.zksync.network/*',
               '*://snowscan.xyz/*',
               '*://mantlescan.xyz/*',
-              '*://opbnb-testnet.bscscan.com/*'
+              '*://opbnb-testnet.bscscan.com/*',
+              '*://monadscan.com/*',
+              '*://testnet.monadscan.com/*'
             ]
           : ['<all_urls>'],
         js: ['src/content/index.all_frames.ts'],
