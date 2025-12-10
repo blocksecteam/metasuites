@@ -52,7 +52,7 @@ test('should match URL with query parameters', () => {
     '*://cn.etherscan.com/*',
     '*://goto.etherscan.com/*',
     '*://sepolia.etherscan.io/*',
-    '*://goerli.etherscan.io/*',
+    '*://hoodi.etherscan.io/*',
     '*://cn.etherscan.com/*',
     '*://etherscan.io/*',
     '*://bscscan.com/*',

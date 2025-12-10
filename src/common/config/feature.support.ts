@@ -154,8 +154,8 @@ export class FeatureActiveSupport {
         url: 'https://ethervm.io/decompile/binance'
       },
       {
-        chain: 'gor.eth',
-        url: 'https://ethervm.io/decompile/goerli'
+        chain: 'hoodi.eth',
+        url: 'https://ethervm.io/decompile/hoodi'
       },
       {
         chain: 'sepolia.eth',
@@ -297,8 +297,8 @@ export class FeatureActiveSupport {
         chain: 'gnosis'
       },
       {
-        pathname: 'goerli',
-        chain: 'gor.eth'
+        pathname: 'hoodi',
+        chain: 'hoodi.eth'
       },
       {
         pathname: 'fantom-testnet',
@@ -369,8 +369,8 @@ export class FeatureActiveSupport {
         supportSimulator: false
       },
       {
-        pathname: 'goerli',
-        chain: 'gor.eth',
+        pathname: 'hoodi',
+        chain: 'hoodi.eth',
         supportSimulator: false
       },
       {
