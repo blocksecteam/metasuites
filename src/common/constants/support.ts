@@ -434,6 +434,24 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     logo: 'https://assets.blocksec.com/image/1741083037784-2.svg'
   },
   {
+    name: 'Monad',
+    chainID: 143,
+    chain: 'monad',
+    domains: ['monadscan.com', 'www.monadscan.com'],
+    siteName: 'ETHERSCAN',
+    logo: 'https://assets.blocksec.com/image/1749459120000-monad.svg',
+    testNets: [
+      {
+        name: 'Monad Testnet',
+        chainID: 10143,
+        chain: 'test.monad',
+        domains: ['testnet.monadscan.com'],
+        siteName: 'ETHERSCAN',
+        logo: 'https://assets.blocksec.com/image/1749459120000-monad.svg'
+      }
+    ]
+  },
+  {
     name: 'Solscan',
     chain: 'solana',
     domains: ['solscan.io'],
@@ -568,6 +586,16 @@ export const PHALCON_SUPPORT_LIST = [
     pathname: 'sonic',
     chain: 'sonic',
     supportSimulator: false
+  },
+  {
+    pathname: 'monad',
+    chain: 'monad',
+    supportSimulator: false
+  },
+  {
+    pathname: 'monad-testnet',
+    chain: 'test.monad',
+    supportSimulator: false
   }
 ]
 
@@ -660,6 +688,14 @@ export const TENDERLY_SUPPORT_LIST = [
   {
     pathname: 'sonic',
     chain: 'sonic'
+  },
+  {
+    pathname: 'monad',
+    chain: 'monad'
+  },
+  {
+    pathname: 'monad-testnet',
+    chain: 'test.monad'
   }
 ]
 
