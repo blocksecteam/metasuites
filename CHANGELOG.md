@@ -1,3 +1,12 @@
+### v5.9.0
+
+- [feat] Adapt to Monad Explorer
+
+### v5.8.9
+
+- [fix] Update Arkham CSS class patterns
+- [fix] Update Arkham Intel domain
+
 ### v5.8.8
 
 - [update] Remove support for Openchain transaction parsing functionality

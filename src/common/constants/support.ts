@@ -439,7 +439,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chain: 'monad',
     domains: ['monadscan.com', 'www.monadscan.com'],
     siteName: 'ETHERSCAN',
-    logo: 'https://assets.blocksec.com/image/1749459120000-monad.svg',
+    logo: 'https://assets.blocksec.com/image/1765762604324/monad.svg',
     testNets: [
       {
         name: 'Monad Testnet',
@@ -447,7 +447,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chain: 'test.monad',
         domains: ['testnet.monadscan.com'],
         siteName: 'ETHERSCAN',
-        logo: 'https://assets.blocksec.com/image/1749459120000-monad.svg'
+        logo: 'https://assets.blocksec.com/image/1756956187260/monad-testnet.svg'
       }
     ]
   },
