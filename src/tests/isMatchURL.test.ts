@@ -48,7 +48,6 @@ test('should match URL with query parameters', () => {
   const url =
     'https://solscan.io/account/BNLtpXLqsjDGxzB1Mmcv3NmEiQhSSWFq8JViKrrrQ8Do#splTransfers'
   const patternList = [
-    '*://ftmscan.com/*',
     '*://cn.etherscan.com/*',
     '*://goto.etherscan.com/*',
     '*://sepolia.etherscan.io/*',
@@ -70,7 +69,6 @@ test('should match URL with query parameters', () => {
     '*://zkevm.polygonscan.com/*',
     '*://*.lineascan.build/*',
     '*://*.wemixscan.com/*',
-    '*://testnet.ftmscan.com/*',
     '*://*.basescan.org/*',
     '*://cronoscan.com/*',
     '*://gnosisscan.io/*',

@@ -1,7 +1,6 @@
 export default {
   ETHERSCAN_V2_MATCHES: [
     '*://opbnb-testnet.bscscan.com/*',
-    '*://ftmscan.com/*',
     '*://cn.etherscan.com/*',
     '*://goto.etherscan.com/*',
     '*://sepolia.etherscan.io/*',
@@ -23,7 +22,6 @@ export default {
     '*://zkevm.polygonscan.com/*',
     '*://*.lineascan.build/*',
     '*://*.wemixscan.com/*',
-    '*://testnet.ftmscan.com/*',
     '*://*.basescan.org/*',
     '*://cronoscan.com/*',
     '*://gnosisscan.io/*',
