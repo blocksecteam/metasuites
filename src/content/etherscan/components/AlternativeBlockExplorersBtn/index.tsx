@@ -17,12 +17,12 @@ const AlternativeBlockExplorersBtn: FC<Props> = ({ block }) => {
       {/*  Eden Network*/}
       {/*</a>*/}
       {/*<span className={styles.divider}>|</span>*/}
-      <a
+      {/* <a
         href={`https://flashbots-explorer.marto.lol/?block=${block}`}
         target="_blank"
       >
         Flashbots Explorer
-      </a>
+      </a> */}
     </div>
   )
 }
