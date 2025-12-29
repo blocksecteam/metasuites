@@ -659,6 +659,10 @@ export const DEDAUB_SUPPORT_DIRECT_LIST = [
   {
     chain: 'base',
     pathname: 'base'
+  },
+  {
+    chain: 'gnosis',
+    pathname: 'gnosis'
   }
 ]
 
