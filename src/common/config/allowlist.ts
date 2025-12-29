@@ -5,7 +5,6 @@ export default {
     '*://cn.etherscan.com/*',
     '*://goto.etherscan.com/*',
     '*://sepolia.etherscan.io/*',
-    '*://goerli.etherscan.io/*',
     '*://cn.etherscan.com/*',
     '*://etherscan.io/*',
     '*://bscscan.com/*',

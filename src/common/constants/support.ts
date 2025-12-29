@@ -44,14 +44,6 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         chain: 'sepolia.eth',
         siteName: 'ETHERSCAN',
         logo: 'https://assets.blocksec.com/image/1671685360787-7.png'
-      },
-      {
-        name: 'Goerli',
-        domains: ['goerli.etherscan.io'],
-        chainID: 5,
-        chain: 'gor.eth',
-        siteName: 'ETHERSCAN',
-        logo: 'https://assets.blocksec.com/image/1671685360787-7.png'
       }
     ]
   },
@@ -68,14 +60,6 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
         domains: ['eth-sepolia.blockscout.com'],
         chainID: 11_155_111,
         chain: 'sepolia.eth',
-        siteName: 'BLOCKSCOUT',
-        logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/ethereum.png'
-      },
-      {
-        name: 'Goerli (Blockscout)',
-        domains: ['eth-goerli.blockscout.com'],
-        chainID: 5,
-        chain: 'gor.eth',
         siteName: 'BLOCKSCOUT',
         logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/ethereum.png'
       }
@@ -157,17 +141,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chain: 'arbitrum',
     chainID: 42_161,
     siteName: 'ETHERSCAN',
-    logo: 'https://assets.blocksec.com/image/1671685360787-2.png',
-    testNets: [
-      {
-        name: 'Arbitrum Goerli',
-        domains: ['testnet.arbiscan.io'],
-        chain: 'gor.arbitrum',
-        chainID: 421_613,
-        siteName: 'ETHERSCAN',
-        logo: 'https://assets.blocksec.com/image/1671685360787-2.png'
-      }
-    ]
+    logo: 'https://assets.blocksec.com/image/1671685360787-2.png'
   },
   {
     name: 'Cronos',
@@ -217,17 +191,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chain: 'optimism',
     domains: ['optimism.blockscout.com'],
     siteName: 'BLOCKSCOUT',
-    logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/optimism.png',
-    testNets: [
-      {
-        name: 'Optimism Goerli (Blockscout)',
-        chainID: 420,
-        chain: 'gor.optimism',
-        domains: ['optimism-goerli.blockscout.com'],
-        siteName: 'BLOCKSCOUT',
-        logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/optimism.png'
-      }
-    ]
+    logo: 'https://raw.githubusercontent.com/blockscout/frontend-configs/main/configs/meta-suites-logos/optimism.png'
   },
   {
     name: 'Arbitrum Nova',
@@ -303,17 +267,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chain: 'base',
     domains: ['basescan.org'],
     siteName: 'ETHERSCAN',
-    logo: 'https://assets.blocksec.com/image/1695197286815-2.png',
-    testNets: [
-      {
-        name: 'Base Goerli',
-        chainID: 84531,
-        chain: 'gor.base',
-        domains: ['goerli.basescan.org'],
-        siteName: 'ETHERSCAN',
-        logo: 'https://assets.blocksec.com/image/1695197286815-2.png'
-      }
-    ]
+    logo: 'https://assets.blocksec.com/image/1695197286815-2.png'
   },
   {
     name: 'Base (Blockscout)',
@@ -355,17 +309,7 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     chain: 'linea',
     domains: ['lineascan.build'],
     siteName: 'ETHERSCAN',
-    logo: 'https://assets.blocksec.com/image/1695197286815-4.png',
-    testNets: [
-      {
-        name: 'Linea Goerli Testnet',
-        chainID: 59_140,
-        chain: 'test.linea',
-        domains: ['goerli.lineascan.build'],
-        siteName: 'ETHERSCAN',
-        logo: 'https://assets.blocksec.com/image/1695197286815-4.png'
-      }
-    ]
+    logo: 'https://assets.blocksec.com/image/1695197286815-4.png'
   },
   {
     name: 'WEMIX',
@@ -523,11 +467,6 @@ export const PHALCON_SUPPORT_LIST = [
     supportSimulator: false
   },
   {
-    pathname: 'goerli',
-    chain: 'gor.eth',
-    supportSimulator: false
-  },
-  {
     pathname: 'polygon',
     chain: 'polygon',
     supportSimulator: false
@@ -612,13 +551,9 @@ export const TENDERLY_SUPPORT_LIST = [
   'moonbeam',
   'moonriver',
   'gnosis',
-  'gor.eth',
   'test.fantom',
-  'gor.optimism',
   'mumbai.polygon',
   'sepolia.eth',
-  'gor.base',
-  'gor.arbitrum',
   'nova.arbitrum',
   'mantle',
   'sonic',
@@ -714,10 +649,6 @@ export const ETHERVM_SUPPORT_DIRECT_LIST = [
   {
     chain: 'bsc',
     url: 'https://ethervm.io/decompile/binance'
-  },
-  {
-    chain: 'gor.eth',
-    url: 'https://ethervm.io/decompile/goerli'
   },
   {
     chain: 'sepolia.eth',

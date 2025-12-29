@@ -143,7 +143,7 @@ export class FeatureActiveSupport {
   )
   static ETHERVM = new BaseFeatureSupport(
     'decompile-in-ethervm',
-    ['eth', 'bsc', 'gor.eth', 'sepolia.eth', 'tron'],
+    ['eth', 'bsc', 'sepolia.eth', 'tron'],
     [
       {
         chain: 'eth',
@@ -152,10 +152,6 @@ export class FeatureActiveSupport {
       {
         chain: 'bsc',
         url: 'https://ethervm.io/decompile/binance'
-      },
-      {
-        chain: 'gor.eth',
-        url: 'https://ethervm.io/decompile/goerli'
       },
       {
         chain: 'sepolia.eth',
@@ -235,13 +231,9 @@ export class FeatureActiveSupport {
       'moonbeam',
       'moonriver',
       'gnosis',
-      'gor.eth',
       'test.fantom',
-      'gor.optimism',
       'mumbai.polygon',
       'sepolia.eth',
-      'gor.base',
-      'gor.arbitrum',
       'nova.arbitrum',
       'mantle',
       'sonic',
@@ -299,16 +291,8 @@ export class FeatureActiveSupport {
         chain: 'gnosis'
       },
       {
-        pathname: 'goerli',
-        chain: 'gor.eth'
-      },
-      {
         pathname: 'fantom-testnet',
         chain: 'test.fantom'
-      },
-      {
-        pathname: 'optimistic-goerli',
-        chain: 'gor.optimism'
       },
       {
         pathname: 'polygon-mumbai',
@@ -317,14 +301,6 @@ export class FeatureActiveSupport {
       {
         pathname: 'sepolia',
         chain: 'sepolia.eth'
-      },
-      {
-        pathname: 'base-goerli',
-        chain: 'gor.base'
-      },
-      {
-        pathname: 'arbitrum-goerli',
-        chain: 'gor.arbitrum'
       },
       {
         pathname: 'arbitrum-nova',
@@ -353,7 +329,6 @@ export class FeatureActiveSupport {
     [
       'eth',
       'sepolia.eth',
-      'gor.eth',
       'polygon',
       'bsc',
       'avalanche',
@@ -378,11 +353,6 @@ export class FeatureActiveSupport {
       {
         pathname: 'sepolia',
         chain: 'sepolia.eth',
-        supportSimulator: false
-      },
-      {
-        pathname: 'goerli',
-        chain: 'gor.eth',
         supportSimulator: false
       },
       {
