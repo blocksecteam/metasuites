@@ -29,9 +29,6 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
   const phalconPathname = PHALCON_SUPPORT_LIST.find(
     item => item.chain === chain
   )?.pathname
-  const tenderlyPathname = TENDERLY_SUPPORT_LIST.find(
-    item => item.chain === chain
-  )?.pathname
 
   return (
     <div className={styles.quick2ParsersBtn}>
@@ -44,10 +41,10 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
             Phalcon
           </a>
         )}
-        {tenderlyPathname &&
+        {TENDERLY_SUPPORT_LIST.includes(chain) &&
           alternativeParsers[TransactionParsers.TENDERLY.value()] && (
             <a
-              href={`https://dashboard.tenderly.co/tx/${tenderlyPathname}/${txHash}`}
+              href={`https://dashboard.tenderly.co/tx/${txHash}`}
               target="_blank"
             >
               Tenderly

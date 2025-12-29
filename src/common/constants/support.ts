@@ -600,103 +600,30 @@ export const PHALCON_SUPPORT_LIST = [
 ]
 
 export const TENDERLY_SUPPORT_LIST = [
-  {
-    pathname: 'polygon',
-    chain: 'polygon'
-  },
-  {
-    pathname: 'binance',
-    chain: 'bsc'
-  },
-  {
-    pathname: 'arbitrum',
-    chain: 'arbitrum'
-  },
-  {
-    pathname: 'fantom',
-    chain: 'fantom'
-  },
-
-  {
-    pathname: 'ava',
-    chain: 'avalanche'
-  },
-  {
-    pathname: 'mainnet',
-    chain: 'eth'
-  },
-  {
-    pathname: 'optimistic',
-    chain: 'optimism'
-  },
-  {
-    pathname: 'base',
-    chain: 'base'
-  },
-  {
-    pathname: 'cronos',
-    chain: 'cronos'
-  },
-  {
-    pathname: 'moonbeam',
-    chain: 'moonbeam'
-  },
-  {
-    pathname: 'moonriver',
-    chain: 'moonriver'
-  },
-  {
-    pathname: 'gnosis-chain',
-    chain: 'gnosis'
-  },
-  {
-    pathname: 'goerli',
-    chain: 'gor.eth'
-  },
-  {
-    pathname: 'fantom-testnet',
-    chain: 'test.fantom'
-  },
-  {
-    pathname: 'optimistic-goerli',
-    chain: 'gor.optimism'
-  },
-  {
-    pathname: 'polygon-mumbai',
-    chain: 'mumbai.polygon'
-  },
-  {
-    pathname: 'sepolia',
-    chain: 'sepolia.eth'
-  },
-  {
-    pathname: 'base-goerli',
-    chain: 'gor.base'
-  },
-  {
-    pathname: 'arbitrum-goerli',
-    chain: 'gor.arbitrum'
-  },
-  {
-    pathname: 'arbitrum-nova',
-    chain: 'nova.arbitrum'
-  },
-  {
-    pathname: 'mantle',
-    chain: 'mantle'
-  },
-  {
-    pathname: 'sonic',
-    chain: 'sonic'
-  },
-  {
-    pathname: 'monad',
-    chain: 'monad'
-  },
-  {
-    pathname: 'monad-testnet',
-    chain: 'test.monad'
-  }
+  'polygon',
+  'bsc',
+  'arbitrum',
+  'fantom',
+  'avalanche',
+  'eth',
+  'optimism',
+  'base',
+  'cronos',
+  'moonbeam',
+  'moonriver',
+  'gnosis',
+  'gor.eth',
+  'test.fantom',
+  'gor.optimism',
+  'mumbai.polygon',
+  'sepolia.eth',
+  'gor.base',
+  'gor.arbitrum',
+  'nova.arbitrum',
+  'mantle',
+  'sonic',
+  'monad',
+  'test.monad'
 ]
 
 /** https://app.dedaub.com/ */
