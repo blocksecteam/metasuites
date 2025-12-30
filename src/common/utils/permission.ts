@@ -36,7 +36,7 @@ export const isSupportPhalcon = (chain: string): boolean => {
 }
 
 export const isSupportTenderly = (chain: string): boolean => {
-  return TENDERLY_SUPPORT_LIST.findIndex(item => item.chain === chain) !== -1
+  return TENDERLY_SUPPORT_LIST.includes(chain)
 }
 
 export const isSupportDedaub = (chain: string): boolean => {
