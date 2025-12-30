@@ -1,3 +1,10 @@
+### v5.9.1
+
+- [update] Remove deprecated "tenderlyPathname" URL param
+- [feat] Add Gnosis chain support in Dedaub
+- [update] Remove deprecated Flashbots block explorer
+- [update] Remove deprecated Goerli testnet
+
 ### v5.9.0
 
 - [feat] Adapt to Monad Explorer

@@ -453,8 +453,6 @@ export const SLEUTH_SUPPORT_LIST = [
   'mantle'
 ]
 
-export const ALTERNATIVE_BLOCK_EXPLORES_SUPPORT_LIST = ['eth']
-
 export const PHALCON_SUPPORT_LIST = [
   {
     pathname: 'eth',

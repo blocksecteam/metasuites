@@ -217,18 +217,6 @@ const ConfigExploresDrawer: FC<Props> = ({
               }
             />
             <Cell
-              title="Show alternative block explorers"
-              action={
-                <Switch
-                  size="small"
-                  checked={options.alternativeBlockExplorers}
-                  onChange={val =>
-                    onSwitchChange('alternativeBlockExplorers', val)
-                  }
-                />
-              }
-            />
-            <Cell
               title="Show approval diagnosis"
               action={
                 <Switch

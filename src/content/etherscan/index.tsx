@@ -48,7 +48,7 @@ export class EtherscanV2Initializer {
         initTxsPageScript(chain)
         break
       case ETHERSCAN_PAGES.BLOCK.name:
-        initBlockPageScript(chain)
+        initBlockPageScript()
         break
       case ETHERSCAN_PAGES.TOKEN.name:
         initTokenPageScript(chain)

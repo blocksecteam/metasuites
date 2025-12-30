@@ -27,7 +27,6 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 - [x] Show comprehensive risk graph of the collection
 - [x] Show owner's address label
 - [x] Show export data for a part of transactions
-- [x] Show alternative block explorers
 - [x] Show approval diagnosis
 - [x] Show enhanced address labels by Forta
 - [x] Alert suspicious transactions by Forta
