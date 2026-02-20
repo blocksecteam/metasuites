@@ -178,6 +178,104 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     logo: 'https://assets.blocksec.com/image/1671777583236-3.png'
   },
   {
+    name: 'Avalanche (Routescan)',
+    chainID: 43114,
+    chain: 'avalanche',
+    domains: ['snowtrace.io'],
+    siteName: 'ETHERSCAN',
+    logo: 'https://assets.blocksec.com/image/1671777583236-3.png',
+    testNets: [
+      {
+        name: 'Avalanche Fuji (Routescan)',
+        chainID: 43113,
+        chain: 'test.avalanche',
+        domains: ['testnet.snowtrace.io'],
+        siteName: 'ETHERSCAN',
+        logo: 'https://assets.blocksec.com/image/1671777583236-3.png'
+      }
+    ]
+  },
+  {
+    name: 'Flare',
+    chainID: 14,
+    chain: 'flare',
+    domains: ['flarescan.com'],
+    siteName: 'ETHERSCAN',
+    logo: 'https://assets.routescan.io/chains/flare/logo.png',
+    testNets: [
+      {
+        name: 'Flare Testnet Coston',
+        chainID: 16,
+        chain: 'test.flare',
+        domains: ['testnet.flarescan.com'],
+        siteName: 'ETHERSCAN',
+        logo: 'https://assets.routescan.io/chains/flare/logo.png'
+      }
+    ]
+  },
+  {
+    name: 'Songbird',
+    chainID: 19,
+    chain: 'songbird',
+    domains: ['songbird.flarescan.com'],
+    siteName: 'ETHERSCAN',
+    logo: 'https://assets.routescan.io/chains/songbird/logo.png'
+  },
+  {
+    name: 'Chiliz',
+    chainID: 88888,
+    chain: 'chiliz',
+    domains: ['chiliscan.com'],
+    siteName: 'ETHERSCAN',
+    logo: 'https://assets.routescan.io/chains/chiliz/logo.png',
+    testNets: [
+      {
+        name: 'Chiliz Spicy Testnet',
+        chainID: 88882,
+        chain: 'test.chiliz',
+        domains: ['testnet.chiliscan.com'],
+        siteName: 'ETHERSCAN',
+        logo: 'https://assets.routescan.io/chains/chiliz/logo.png'
+      }
+    ]
+  },
+  {
+    name: 'Metis',
+    chainID: 1088,
+    chain: 'metis',
+    domains: ['explorer.metis.com'],
+    siteName: 'ETHERSCAN',
+    logo: 'https://assets.routescan.io/chains/metis/logo.png',
+    testNets: [
+      {
+        name: 'Metis Sepolia',
+        chainID: 59902,
+        chain: 'test.metis',
+        domains: ['testnet.explorer.metis.com'],
+        siteName: 'ETHERSCAN',
+        logo: 'https://assets.routescan.io/chains/metis/logo.png'
+      }
+    ]
+  },
+  {
+    name: 'Boba',
+    chainID: 288,
+    chain: 'boba',
+    domains: ['bobascan.com'],
+    siteName: 'ETHERSCAN',
+    logo: 'https://assets.routescan.io/chains/boba/logo.png',
+    testNets: [
+      {
+        name: 'Boba Testnet',
+        chainID: 2888,
+        chain: 'test.boba',
+        domains: ['testnet.bobascan.com'],
+        siteName: 'ETHERSCAN',
+        logo: 'https://assets.routescan.io/chains/boba/logo.png'
+      }
+    ]
+  },
+  {
     name: 'Optimism',
     chainID: 10,
     chain: 'optimism',

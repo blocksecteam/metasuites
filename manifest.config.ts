@@ -43,7 +43,17 @@ export default defineManifest((env: ConfigEnv) => {
               '*://mantlescan.xyz/*',
               '*://opbnb-testnet.bscscan.com/*',
               '*://monadscan.com/*',
-              '*://testnet.monadscan.com/*'
+              '*://testnet.monadscan.com/*',
+              '*://snowtrace.io/*',
+              '*://testnet.snowtrace.io/*',
+              '*://flarescan.com/*',
+              '*://*.flarescan.com/*',
+              '*://chiliscan.com/*',
+              '*://testnet.chiliscan.com/*',
+              '*://explorer.metis.com/*',
+              '*://testnet.explorer.metis.com/*',
+              '*://bobascan.com/*',
+              '*://testnet.bobascan.com/*'
             ]
           : ['<all_urls>'],
         js: ['src/content/index.all_frames.ts'],
