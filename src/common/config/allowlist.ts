@@ -30,7 +30,17 @@ export default {
     '*://mantlescan.xyz/*',
     '*://sonicscan.org/*',
     '*://monadscan.com/*',
-    '*://testnet.monadscan.com/*'
+    '*://testnet.monadscan.com/*',
+    '*://snowtrace.io/*',
+    '*://testnet.snowtrace.io/*',
+    '*://flarescan.com/*',
+    '*://*.flarescan.com/*',
+    '*://chiliscan.com/*',
+    '*://testnet.chiliscan.com/*',
+    '*://explorer.metis.com/*',
+    '*://testnet.explorer.metis.com/*',
+    '*://bobascan.com/*',
+    '*://testnet.bobascan.com/*'
   ],
   BTC_EXPLORER_MATCHES: ['*://explorer.cloverpool.com/*'],
   BLOCKSEC_MATCHES: ['*://*.blocksec.com/*'],
