@@ -342,7 +342,8 @@ export class FeatureActiveSupport {
       'mantle',
       'sonic',
       'monad',
-      'test.monad'
+      'test.monad',
+      'megaeth'
     ],
     [
       {
@@ -424,6 +425,11 @@ export class FeatureActiveSupport {
         pathname: 'monad-testnet',
         chain: 'test.monad',
         supportSimulator: false
+      },
+      {
+        pathname: 'megaeth',
+        chain: 'megaeth',
+        supportSimulator: true
       }
     ]
   )

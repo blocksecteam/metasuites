@@ -433,6 +433,14 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['dexscreener.com'],
     siteName: 'DEX',
     logo: 'https://assets.blocksec.com/image/1716165286476-4.svg'
+  },
+  {
+    name: 'MegaETH',
+    chainID: 4326,
+    chain: 'megaeth',
+    domains: ['mega.etherscan.io'],
+    siteName: 'ETHERSCAN',
+    logo: 'https://assets.blocksec.com/image/1769410070519-5.svg'
   }
 ]
 
@@ -533,6 +541,11 @@ export const PHALCON_SUPPORT_LIST = [
     pathname: 'monad-testnet',
     chain: 'test.monad',
     supportSimulator: false
+  },
+  {
+    pathname: 'megaeth',
+    chain: 'megaeth',
+    supportSimulator: true
   }
 ]
 

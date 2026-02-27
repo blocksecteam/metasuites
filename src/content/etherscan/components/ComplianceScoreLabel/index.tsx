@@ -21,10 +21,12 @@ const ComplianceScoreLabel: FC<Props> = ({ risk }) => {
       overlayInnerStyle={{ width: 288 }}
       title={
         <div>
+          For any questions regarding compliance risk assessment by algorithm,
+          please contact{' '}
           <a href="mailto:metadockteam@blocksec.com" target="_blank">
-            Contact us{' '}
+            metadockteam@blocksec.com
           </a>
-          for any questions regarding compliance risk assessment by algorithm.
+          .
         </div>
       }
     >

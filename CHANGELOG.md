@@ -1,3 +1,7 @@
+### v5.10.0
+
+- [feat] Adapt to MegaETH Explorer
+
 ### v5.9.1
 
 - [update] Remove deprecated "tenderlyPathname" URL param
