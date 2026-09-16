@@ -518,6 +518,11 @@ export const PHALCON_SUPPORT_LIST = [
     pathname: 'megaeth',
     chain: 'megaeth',
     supportSimulator: true
+  },
+  {
+    pathname: 'robinhood',
+    chain: 'robinhood',
+    supportSimulator: true
   }
 ]
 

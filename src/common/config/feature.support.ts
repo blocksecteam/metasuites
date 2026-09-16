@@ -343,7 +343,8 @@ export class FeatureActiveSupport {
       'sonic',
       'monad',
       'test.monad',
-      'megaeth'
+      'megaeth',
+      'robinhood'
     ],
     [
       {
@@ -429,6 +430,11 @@ export class FeatureActiveSupport {
       {
         pathname: 'megaeth',
         chain: 'megaeth',
+        supportSimulator: true
+      },
+      {
+        pathname: 'robinhood',
+        chain: 'robinhood',
         supportSimulator: true
       }
     ]
