@@ -238,7 +238,8 @@ export class FeatureActiveSupport {
       'mantle',
       'sonic',
       'monad',
-      'test.monad'
+      'test.monad',
+      'robinhood'
     ],
     [
       {
@@ -321,6 +322,10 @@ export class FeatureActiveSupport {
       {
         pathname: 'monad-testnet',
         chain: 'test.monad'
+      },
+      {
+        pathname: 'robinhood-chain',
+        chain: 'robinhood'
       }
     ]
   )

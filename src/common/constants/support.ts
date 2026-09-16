@@ -546,7 +546,8 @@ export const TENDERLY_SUPPORT_LIST = [
   'mantle',
   'sonic',
   'monad',
-  'test.monad'
+  'test.monad',
+  'robinhood'
 ]
 
 /** https://app.dedaub.com/ */
