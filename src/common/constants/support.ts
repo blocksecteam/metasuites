@@ -428,6 +428,14 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['mega.etherscan.io'],
     siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1769410070519-5.svg'
+  },
+  {
+    name: 'Robinhood Chain',
+    chainID: 4663,
+    chain: 'robinhood',
+    domains: ['robin.etherscan.io'],
+    siteName: 'ETHERSCAN',
+    logo: 'https://assets.blocksec.com/image/1784537302748/robinhood.png'
   }
 ]
 
