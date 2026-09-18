@@ -44,7 +44,8 @@ export default defineManifest((env: ConfigEnv) => {
               '*://opbnb-testnet.bscscan.com/*',
               '*://monadscan.com/*',
               '*://testnet.monadscan.com/*',
-              '*://mega.etherscan.io/*'
+              '*://mega.etherscan.io/*',
+              '*://robin.etherscan.io/*'
             ]
           : ['<all_urls>'],
         js: ['src/content/index.all_frames.ts'],

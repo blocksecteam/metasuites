@@ -428,6 +428,14 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['mega.etherscan.io'],
     siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1769410070519-5.svg'
+  },
+  {
+    name: 'Robinhood Chain',
+    chainID: 4663,
+    chain: 'robinhood',
+    domains: ['robin.etherscan.io'],
+    siteName: 'ETHERSCAN',
+    logo: 'https://assets.blocksec.com/image/1784537302748/robinhood.png'
   }
 ]
 
@@ -510,6 +518,11 @@ export const PHALCON_SUPPORT_LIST = [
     pathname: 'megaeth',
     chain: 'megaeth',
     supportSimulator: true
+  },
+  {
+    pathname: 'robinhood',
+    chain: 'robinhood',
+    supportSimulator: true
   }
 ]
 
@@ -533,7 +546,8 @@ export const TENDERLY_SUPPORT_LIST = [
   'mantle',
   'sonic',
   'monad',
-  'test.monad'
+  'test.monad',
+  'robinhood'
 ]
 
 /** https://app.dedaub.com/ */

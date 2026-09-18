@@ -64,6 +64,7 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 - intel.arkm.com
 - scan.merlinchain.io
 - monadscan.com
+- robin.etherscan.io
 - solscan.io
 - explorer.solana.com
 

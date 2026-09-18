@@ -238,7 +238,8 @@ export class FeatureActiveSupport {
       'mantle',
       'sonic',
       'monad',
-      'test.monad'
+      'test.monad',
+      'robinhood'
     ],
     [
       {
@@ -321,6 +322,10 @@ export class FeatureActiveSupport {
       {
         pathname: 'monad-testnet',
         chain: 'test.monad'
+      },
+      {
+        pathname: 'robinhood-chain',
+        chain: 'robinhood'
       }
     ]
   )
@@ -343,7 +348,8 @@ export class FeatureActiveSupport {
       'sonic',
       'monad',
       'test.monad',
-      'megaeth'
+      'megaeth',
+      'robinhood'
     ],
     [
       {
@@ -429,6 +435,11 @@ export class FeatureActiveSupport {
       {
         pathname: 'megaeth',
         chain: 'megaeth',
+        supportSimulator: true
+      },
+      {
+        pathname: 'robinhood',
+        chain: 'robinhood',
         supportSimulator: true
       }
     ]

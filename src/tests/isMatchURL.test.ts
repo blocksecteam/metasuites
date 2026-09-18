@@ -1,5 +1,6 @@
 import { expect, test } from 'vitest'
 import { isMatchURL } from '@common/utils/permission'
+import allowlist from '@common/config/allowlist'
 
 test('should match exact URL', () => {
   const url = 'https://example.com/'
@@ -94,4 +95,10 @@ test('should match URL with query parameters', () => {
     'https://basescan.org/address/0x6afce80b5c75149289839f80f24ad2dffdd46cb5'
   const patternList = ['*://*.basescan.org/*']
   expect(isMatchURL(url, patternList)).toBe(true)
+})
+
+test('should match Robinhood Chain explorer on Etherscan', () => {
+  const url =
+    'https://robin.etherscan.io/address/0x0000000000000000000000000000000000000000'
+  expect(isMatchURL(url, allowlist.ETHERSCAN_V2_MATCHES)).toBe(true)
 })
