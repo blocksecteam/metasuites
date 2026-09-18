@@ -1,3 +1,9 @@
+### v5.12.0
+
+- [feat] Adapt to Robinhood Chain Explorer
+- [update] Hide the fund flow entry on chains whose fund flow is not supported
+- [fix] Remove the blank gap left behind when the compliance score is unavailable
+
 ### v5.11.3
 
 - [update] Update supported chains for Phalcon and MetaSleuth

@@ -34,8 +34,14 @@ const genComplianceScoresBtn = async (chain: string) => {
       ''
   )
 
+  /**
+   * Keep the placeholder hidden until the risk score arrives, so that it takes
+   * up no space while loading and leaves no blank gap when the request fails.
+   * It is still appended synchronously to keep a stable position among the
+   * other buttons appended to this section.
+   */
   const rootEl = document.createElement('div')
-  rootEl.style.display = 'inline-block'
+  rootEl.style.display = 'none'
   rootEl.classList.add('mt-2')
   mainAddressSectionEl?.appendChild(rootEl)
 
@@ -53,6 +59,7 @@ const genComplianceScoresBtn = async (chain: string) => {
   )
   if (res?.success && res.data) {
     const data = res.data
+    rootEl.style.display = 'inline-block'
     createRoot(rootEl).render(<ComplianceScoreLabel risk={data.risk} />)
   }
 }

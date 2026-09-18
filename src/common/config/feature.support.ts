@@ -440,7 +440,7 @@ export class FeatureActiveSupport {
       {
         pathname: 'robinhood',
         chain: 'robinhood',
-        supportSimulator: true
+        supportSimulator: false
       }
     ]
   )

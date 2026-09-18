@@ -439,6 +439,13 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
   }
 ]
 
+/**
+ * Chains whose fund flow is NOT supported by the backend.
+ * Only gates the Fund Flow button on Etherscan-compatible sites;
+ * BTC / Tron / Solana have their own entry points and are not affected.
+ */
+export const FUND_FLOW_UNSUPPORTED_LIST = ['robinhood']
+
 export const SLEUTH_SUPPORT_LIST = [
   'eth',
   'bsc',
@@ -522,7 +529,7 @@ export const PHALCON_SUPPORT_LIST = [
   {
     pathname: 'robinhood',
     chain: 'robinhood',
-    supportSimulator: true
+    supportSimulator: false
   }
 ]
 
