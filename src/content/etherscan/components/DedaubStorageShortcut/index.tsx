@@ -2,7 +2,7 @@ import { type FC } from 'react'
 
 import { TokenSymbol } from '@common/components'
 
-import { DEDAUB_SUPPORT_DIRECT_LIST } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 import { getImageUrl } from '@common/utils'
 
 interface Props {
@@ -11,9 +11,7 @@ interface Props {
 }
 
 const DedaubStorageShortcut: FC<Props> = ({ chain, address }) => {
-  const pathname = DEDAUB_SUPPORT_DIRECT_LIST.find(
-    item => item.chain === chain
-  )?.pathname
+  const pathname = ChainFeature.metaOf('dedaub', chain)?.pathname
 
   return (
     <>

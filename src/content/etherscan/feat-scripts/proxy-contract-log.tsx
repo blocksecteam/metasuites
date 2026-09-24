@@ -3,11 +3,11 @@ import $ from 'jquery'
 
 import { pickAddress } from '@common/utils'
 import { ProxyLogReference } from '@src/content/etherscan/components'
-import { PROXY_LOG_SUPPORT_LIST } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 
 /** Show proxy log */
 const genProxyContractLog = async (chain: string) => {
-  if (!PROXY_LOG_SUPPORT_LIST.includes(chain)) return
+  if (!ChainFeature.supports('proxyLog', chain)) return
   const mainAddress = pickAddress(window.location.pathname)
   if (!mainAddress) return
 

@@ -18,10 +18,10 @@ import { QuestionCircleOutlined } from '@ant-design/icons'
 import BigIntJSON from 'json-bigint'
 
 import { getImageUrl, getPhalconSimulationURL } from '@common/utils'
+import { ChainFeature } from '@common/config/chain-feature'
 import {
   PATTERN_EVM_ADDRESS_EXAC,
   PATTERN_INPUT_DATA,
-  SIMULATE_SUPPORT_LIST,
   GET_CONTRACT_BY_ADDRESS,
   GET_CONTRACT_BY_ABI,
   GET_LATEST_BLOCK,
@@ -81,7 +81,7 @@ const DrawerSimulation: FC<Props> = ({
   })
   const [loading, setLoading] = useState(false)
   const [nativeSymbol, setNativeSymbol] = useState<string | undefined>(
-    SIMULATE_SUPPORT_LIST.find(i => i.chain === chain)?.nativeCurrency.name
+    ChainFeature.metaOf('simulationNetwork', chain)?.nativeCurrency.name
   )
   const [latestBlockNum, setLatestBlockNum] = useState(123455)
   const [baseFee, setBaseFee] = useState('')
@@ -122,7 +122,7 @@ const DrawerSimulation: FC<Props> = ({
 
   const onValuesChange = debounce((changedValues: any, values: FormData) => {
     if (Object.keys(changedValues).includes('chain')) {
-      const symbol = SIMULATE_SUPPORT_LIST.find(i => i.chain === values.chain)
+      const symbol = ChainFeature.metaOf('simulationNetwork', values.chain)
         ?.nativeCurrency.name
       setNativeSymbol(symbol)
       getContractByAddress()
@@ -411,17 +411,19 @@ const DrawerSimulation: FC<Props> = ({
                 document.querySelector(`.${styles.container}`)!
               }
             >
-              {SIMULATE_SUPPORT_LIST.map(item => (
-                <Select.Option key={item.chain} value={item.chain}>
-                  <div
-                    className="items-center md-flex"
-                    style={{ fontSize: 12 }}
-                  >
-                    <TokenSymbol logo={item.logo} mr={4} size={14} />
-                    {item.name}
-                  </div>
-                </Select.Option>
-              ))}
+              {ChainFeature.entriesOf('simulationNetwork').map(
+                ({ chain: optionChain, meta }) => (
+                  <Select.Option key={optionChain} value={optionChain}>
+                    <div
+                      className="items-center md-flex"
+                      style={{ fontSize: 12 }}
+                    >
+                      <TokenSymbol logo={meta.logo} mr={4} size={14} />
+                      {meta.name}
+                    </div>
+                  </Select.Option>
+                )
+              )}
             </Select>
           </Form.Item>
           <Form.Item

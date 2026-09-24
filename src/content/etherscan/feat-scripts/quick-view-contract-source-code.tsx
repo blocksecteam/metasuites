@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client'
 
-import { ETHERSCAN_DETH_SUPPORT_LIST } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 import { pickAddress } from '@common/utils'
 
 import { QuickViewSourceCodeBtn } from '../components'
@@ -18,9 +18,7 @@ const genQuickViewSourceCodeBtn = async (chain: string) => {
   /** only contract and Verified can be downloaded */
   if (!contractCodeEl) return
 
-  const dethItem = ETHERSCAN_DETH_SUPPORT_LIST.find(
-    item => item.chain === chain
-  )
+  const dethItem = ChainFeature.metaOf('dethCode', chain)
 
   if (dethItem) {
     const href = `${dethItem.url}/${mainAddress}`

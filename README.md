@@ -61,7 +61,7 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 - era.zksync.network
 - blockscout.com
 - debank.com
-- intel.arkm.com
+- arkm.com
 - scan.merlinchain.io
 - monadscan.com
 - robin.etherscan.io

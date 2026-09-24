@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import { TX_EXPLAIN_SUPPORT_LIST } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 import type { Root } from 'react-dom/client'
 import { createRoot } from 'react-dom/client'
 import { TransactionExplanation } from '@src/content/blockscout/components'
@@ -7,7 +7,7 @@ import { isHexString } from 'ethers'
 import { page } from '../utils'
 
 const startUI = async (chain: string, valueRoot: Root, txHash: string) => {
-  if (!TX_EXPLAIN_SUPPORT_LIST.includes(chain)) return
+  if (!ChainFeature.supports('txExplain', chain)) return
   const txInfoLabelEl = $('#meta-suites__tx-info-label')
   const txInfoValueEl = $('#meta-suites__tx-info-value')
   const txInfoDividerEl = $('#meta-suites__details-info-item-divider')
@@ -26,7 +26,7 @@ const startUI = async (chain: string, valueRoot: Root, txHash: string) => {
 }
 
 const genTransactionExplanationBtn = async (chain: string, txHash: string) => {
-  if (!TX_EXPLAIN_SUPPORT_LIST.includes(chain)) return
+  if (!ChainFeature.supports('txExplain', chain)) return
 
   const isDataLoaded = await page.waitUntilDataLoaded([
     '#meta-suites__tx-info-label'

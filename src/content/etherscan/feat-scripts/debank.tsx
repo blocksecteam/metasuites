@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client'
 
-import { DEBANK_SUPPORT_LIST } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 
 import { DeBankBtn } from '../components'
 
@@ -15,7 +15,7 @@ const setBtn = (txHashEl: HTMLElement, mainAddress: string) => {
 
 /** open in debank.com */
 const genDeBankBtn = async (chain: string) => {
-  if (!DEBANK_SUPPORT_LIST.includes(chain)) return
+  if (!ChainFeature.supports('debank', chain)) return
   const mainAddress =
     document.querySelector<HTMLElement>('#mainaddress')?.innerText
   if (!mainAddress) return

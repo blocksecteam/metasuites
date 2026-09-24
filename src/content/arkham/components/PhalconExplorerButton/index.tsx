@@ -16,7 +16,8 @@ const PhalconExplorerButton: FC<Props> = ({ chain }) => {
     window.open(`${PHALCON_EXPLORER_DOMAIN}/tx/${chain}/${txHash}`, '_blank')
   }
 
-  return <IconPhalcon mode="dark" onClick={handleClick} />
+  /** Sized to match the icons Arkham renders next to it */
+  return <IconPhalcon mode="dark" size={14} ml={4} onClick={handleClick} />
 }
 
 export default PhalconExplorerButton

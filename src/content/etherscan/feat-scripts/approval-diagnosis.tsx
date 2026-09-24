@@ -6,9 +6,9 @@ import {
   GET_APPROVAL_RISK,
   ApprovalRiskLevel,
   APPROVAL_RISK_OPTIONS,
-  GET_TOKEN_APPROVAL_ERC20_FILTER,
-  APPROVAL_DIAGNOSIS_SUPPORT_LIST
+  GET_TOKEN_APPROVAL_ERC20_FILTER
 } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 import { chromeEvent } from '@common/event'
 import type { ApprovalsRiskReq, ApprovalRisk } from '@common/api/types'
 import { widthScanV2Tooltip } from '@common/hoc'
@@ -26,7 +26,7 @@ const setBtn = (txHashEl: HTMLElement, mainAddress: string) => {
 }
 
 export const genApprovalDiagnosisBtn = async (chain: string) => {
-  if (!APPROVAL_DIAGNOSIS_SUPPORT_LIST.includes(chain)) return
+  if (!ChainFeature.supports('approvalDiagnosis', chain)) return
   const isContract = !!document.querySelector(
     '#ContentPlaceHolder1_li_contracts'
   )

@@ -6,10 +6,10 @@ import {
   TransactionExplanation,
   ExplainBtn
 } from '@src/content/etherscan/components'
-import { TX_EXPLAIN_SUPPORT_LIST } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 
 const startUI = async (chain: string) => {
-  if (!TX_EXPLAIN_SUPPORT_LIST.includes(chain)) return
+  if (!ChainFeature.supports('txExplain', chain)) return
   const txHash = $('#spanTxHash').text()
 
   if (!isHexString(txHash, 32)) return
@@ -30,7 +30,7 @@ const startUI = async (chain: string) => {
 }
 
 const genTransactionExplanationBtn = (chain: string) => {
-  if (!TX_EXPLAIN_SUPPORT_LIST.includes(chain)) return
+  if (!ChainFeature.supports('txExplain', chain)) return
 
   const container = $('#ContentPlaceHolder1_myTab > li[class*="ms-auto"]')
 

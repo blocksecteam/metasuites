@@ -1,7 +1,8 @@
 import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 
-import { pickAddress, isSupportSimulator } from '@common/utils'
+import { pickAddress } from '@common/utils'
+import { ChainFeature } from '@common/config/chain-feature'
 import { DrawerSimulation } from '@common/components'
 import type { ReadableInputData } from '@common/components/DrawerSimulation/types'
 
@@ -247,7 +248,7 @@ const renderVerifiedSimulateButton = async (chain: string, address: string) => {
 }
 
 export const genSimulateBtn = async (chain: string) => {
-  if (!isSupportSimulator(chain)) return
+  if (!ChainFeature.supports('txSimulator', chain)) return
   const address = pickAddress(window.location.pathname)
   if (!address) return
 

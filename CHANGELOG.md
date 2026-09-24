@@ -1,3 +1,9 @@
+### v5.12.1
+
+- [fix] Fix Arkham integration after the site moved to arkm.com and updated its markup
+- [fix] Show the network name and native currency in the simulation drawer on MegaETH
+- [update] Consolidate the per-feature chain support tables into a single per-chain configuration
+
 ### v5.12.0
 
 - [feat] Adapt to Robinhood Chain Explorer

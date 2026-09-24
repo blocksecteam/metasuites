@@ -4,7 +4,6 @@ import { uniqBy } from 'lodash-es'
 
 import {
   EXT_SUPPORT_WEB_LIST,
-  PHALCON_SUPPORT_LIST,
   ETHERSCAN_PAGES,
   BLOCKSCOUT_PAGES,
   TRONSCAN_PAGES,
@@ -17,6 +16,7 @@ import {
   type ChainType
 } from '@common/constants'
 import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
+import { ChainFeature } from '@common/config/chain-feature'
 import { ChainUtils, classifyByChain } from '@common/utils/chain'
 import type { AddressLabel } from '@common/api/types'
 import { store } from '@src/store'
@@ -84,7 +84,7 @@ export const getPhalconSimulationURL = (
   hash: string,
   isPrerun: boolean
 ) => {
-  const path = PHALCON_SUPPORT_LIST.find(item => item.chain === chain)?.pathname
+  const path = ChainFeature.metaOf('phalcon', chain)?.pathname
   if (!path) return ''
   return `${PHALCON_EXPLORER_DOMAIN}/tx/${path}/${hash}?event=${
     isPrerun ? 'prerun' : 'simulation'

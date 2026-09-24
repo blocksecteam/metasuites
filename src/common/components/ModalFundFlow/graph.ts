@@ -12,11 +12,8 @@ import {
   decodeUnicode
 } from '@common/utils'
 import { SLEUTH_DOMAIN } from '@common/config/uri'
-import {
-  EXT_SUPPORT_WEB_LIST,
-  DEFAULT_CHAIN_ICON,
-  SLEUTH_SUPPORT_LIST
-} from '@common/constants'
+import { EXT_SUPPORT_WEB_LIST, DEFAULT_CHAIN_ICON } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 
 const analyzeButtonImage = getImageUrl('analyze')
 const editButtonImage = getImageUrl('edit-private-label-button')
@@ -36,8 +33,7 @@ export const nodeHover = (
   onEditPrivateLabel: (node: FundFlowNode) => void,
   formatNodeUrl?: (node: FundFlowNode) => string
 ) => {
-  const isSupportChain =
-    SLEUTH_SUPPORT_LIST.findIndex(chain => chain === key.split('-')[0]) !== -1
+  const isSupportChain = ChainFeature.supports('metasleuth', key.split('-')[0])
 
   clearGraphTemp()
 

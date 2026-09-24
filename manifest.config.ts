@@ -62,6 +62,7 @@ export default defineManifest((env: ConfigEnv) => {
               '*://*.metasleuth.io/*',
               '*://explorer.solana.com/*',
               '*://debank.com/*',
+              '*://arkm.com/*',
               '*://intel.arkm.com/*',
               '*://explorer.jito.wtf/*',
               '*://*.blocksec.com/*'

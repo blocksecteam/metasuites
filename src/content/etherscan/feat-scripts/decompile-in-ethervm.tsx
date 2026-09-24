@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client'
 
-import { isSupportEthervm } from '@common/utils'
+import { ChainFeature } from '@common/config/chain-feature'
 
 import { DecompileInEthervmBtn, CopyByteCodeBtn } from '../components'
 
@@ -33,7 +33,7 @@ const setBtns = (
 
 /** Show quick open in ethervm.io for unverified contracts */
 const genDecompileInEthervmBtn = (chain: string) => {
-  if (!isSupportEthervm(chain)) return
+  if (!ChainFeature.supports('ethervm', chain)) return
   const contractCodeEl = document.querySelector<HTMLElement>(
     '#ContentPlaceHolder1_contractCodeDiv'
   )

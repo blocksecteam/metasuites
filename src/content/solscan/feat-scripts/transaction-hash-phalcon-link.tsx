@@ -2,7 +2,7 @@ import React, { type FC, type ReactNode } from 'react'
 import isMobile from 'is-mobile'
 import { createRoot } from 'react-dom/client'
 
-import { PHALCON_SUPPORT_LIST } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 import { getChainSimpleName } from '@common/utils'
 import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
 import { IconPhalcon } from '@common/components'
@@ -10,9 +10,7 @@ import { IconPhalcon } from '@common/components'
 const Icon: FC<{ hash: string }> = ({ hash }) => {
   const chain = getChainSimpleName()
 
-  const pathname = PHALCON_SUPPORT_LIST.find(
-    item => item.chain === chain
-  )?.pathname
+  const pathname = ChainFeature.metaOf('phalcon', chain)?.pathname
 
   const handleClick = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     e.preventDefault()

@@ -14,7 +14,8 @@ import { Select, Input, Checkbox, ConfigProvider, Button, Tooltip } from 'antd'
 import type { CheckboxChangeEvent } from 'antd/es/checkbox'
 import { debounce, isNil } from 'lodash-es'
 
-import { GET_ADDRESS_FUND_FLOW, SLEUTH_SUPPORT_LIST } from '@common/constants'
+import { GET_ADDRESS_FUND_FLOW } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 import { chromeEvent } from '@common/event'
 import type { FundFlowRes, FundFlowEdge, FundFlowNode } from '@common/api/types'
 import {
@@ -429,7 +430,7 @@ const ModalFundFlowGraph: FC<Props> = ({
                     &ldquo;Try Enhanced Version&rdquo;, or go to MetaSleuth.
                   </div>
                 </div>
-                {SLEUTH_SUPPORT_LIST.includes(chain) && (
+                {ChainFeature.supports('metasleuth', chain) && (
                   <ConfigProvider
                     theme={{
                       token: {

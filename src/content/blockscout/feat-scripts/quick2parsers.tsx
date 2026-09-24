@@ -2,15 +2,13 @@ import { createRoot } from 'react-dom/client'
 import $ from 'jquery'
 
 import { ExplorerLink } from '@src/content/blockscout/components'
-import { PHALCON_SUPPORT_LIST } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
 
 import { page } from '../utils'
 
 const genQuick2parsers = async (chain: string, txHash: string) => {
-  const phalconPathname = PHALCON_SUPPORT_LIST.find(
-    item => item.chain === chain
-  )?.pathname
+  const phalconPathname = ChainFeature.metaOf('phalcon', chain)?.pathname
 
   if (!phalconPathname) return
 

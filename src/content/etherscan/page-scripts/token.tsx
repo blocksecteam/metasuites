@@ -1,6 +1,6 @@
 import { ETHERSCAN_PAGES } from '@common/constants'
 import { store } from '@src/store'
-import { isSupportSimulator } from '@common/utils'
+import { ChainFeature } from '@common/config/chain-feature'
 
 import {
   genEnhancedLabels,
@@ -49,7 +49,8 @@ const initTokenPageScript = async (chain: string) => {
     genTokenMarketplacesBtn(chain, ETHERSCAN_PAGES.TOKEN.name)
   if (proxyLogs) genProxyContractLog(chain)
   if (dedaubStorage) genDedaubStorageShortcut(chain)
-  if (txSimulator && isSupportSimulator(chain)) genSimulateBtn(chain)
+  if (txSimulator && ChainFeature.supports('txSimulator', chain))
+    genSimulateBtn(chain)
   if (variableLogs) genContractVariableLogsBtn(chain)
   if (quick2Parsers) genTransactionHashPhalconLink(ETHERSCAN_PAGES.TOKEN.name)
 }

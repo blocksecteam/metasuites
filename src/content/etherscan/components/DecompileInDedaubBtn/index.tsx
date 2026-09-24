@@ -1,7 +1,7 @@
 import { type FC, useState } from 'react'
 import $ from 'jquery'
 
-import { DEDAUB_SUPPORT_DIRECT_LIST } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 import { getImageUrl } from '@common/utils'
 import { LoadingOutlined } from '@common/components'
 
@@ -16,7 +16,7 @@ const DecompileInDedaubBtn: FC<Props> = ({ mainAddress, chain }) => {
   const [loading, setLoading] = useState(false)
 
   const toDedaub = () => {
-    const item = DEDAUB_SUPPORT_DIRECT_LIST.find(item => item.chain === chain)
+    const item = ChainFeature.metaOf('dedaub', chain)
 
     if (item) {
       window.open(

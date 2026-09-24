@@ -97,6 +97,24 @@ test('should match URL with query parameters', () => {
   expect(isMatchURL(url, patternList)).toBe(true)
 })
 
+test('should match Arkham on both its current and legacy domain', () => {
+  expect(
+    isMatchURL(
+      'https://arkm.com/explorer/address/0x0000000000000000000000000000000000000000',
+      allowlist.ARKHAM_MATCHES
+    )
+  ).toBe(true)
+  expect(
+    isMatchURL(
+      'https://intel.arkm.com/explorer/tx/0x0',
+      allowlist.ARKHAM_MATCHES
+    )
+  ).toBe(true)
+  expect(
+    isMatchURL('https://notarkm.com/explorer', allowlist.ARKHAM_MATCHES)
+  ).toBe(false)
+})
+
 test('should match Robinhood Chain explorer on Etherscan', () => {
   const url =
     'https://robin.etherscan.io/address/0x0000000000000000000000000000000000000000'

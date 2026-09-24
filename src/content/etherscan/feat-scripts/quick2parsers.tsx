@@ -1,11 +1,12 @@
 import { createRoot } from 'react-dom/client'
 
-import { isSupportParsers } from '@common/utils'
+import { ChainFeature } from '@common/config/chain-feature'
 
 import ParsersBtn from '../components/ParsersBtn'
 
 const genQuick2parsersBtn = async (chain: string) => {
-  if (!isSupportParsers(chain)) return
+  if (!ChainFeature.supportsAny(['phalcon', 'tenderly', 'dedaub'], chain))
+    return
   const txHashEl =
     document.querySelector<HTMLElement>('#referralLink-1')?.parentElement
 

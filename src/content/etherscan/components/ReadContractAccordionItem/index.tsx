@@ -7,9 +7,9 @@ import { isAddress } from 'ethers'
 import { chromeEvent } from '@common/event'
 import {
   QUERY_PRIVATE_VARIABLE,
-  ContractVariableMutability,
-  VARIABLE_LOG_SUPPORT_LIST
+  ContractVariableMutability
 } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 import type {
   PrivateVariableArgument,
   PrivateVariable
@@ -40,7 +40,7 @@ const ReadContractAccordionItem: FC<Props> = ({
   const [queryResult, setQueryResult] = useState<PrivateVariableArgument>()
   const [options] = useStore('options')
 
-  const supportVariableLogs = VARIABLE_LOG_SUPPORT_LIST.includes(chain)
+  const supportVariableLogs = ChainFeature.supports('variableLog', chain)
 
   const onQuery = async () => {
     const res = await chromeEvent.emit<

@@ -1,6 +1,6 @@
 import { type FC } from 'react'
 
-import { ETHERVM_SUPPORT_DIRECT_LIST } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 import { getImageUrl } from '@common/utils'
 
 import Button from '../Button'
@@ -12,7 +12,7 @@ interface Props {
 
 const DecompileInEthervmBtn: FC<Props> = ({ mainAddress, chain }) => {
   const toEthervm = () => {
-    const item = ETHERVM_SUPPORT_DIRECT_LIST.find(i => i.chain === chain)
+    const item = ChainFeature.metaOf('ethervm', chain)
     if (item) {
       window.open(`${item.url}/${mainAddress}`)
     } else {

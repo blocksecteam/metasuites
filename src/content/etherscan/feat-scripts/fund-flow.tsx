@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client'
 
-import { FUND_FLOW_UNSUPPORTED_LIST } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 
 import { FundFlowBtn } from '../components'
 
@@ -17,7 +17,7 @@ const setBtn = (txHashEl: HTMLElement, chain: string, mainAddress: string) => {
 
 /** fund flow */
 const genFundFlow = async (chain: string) => {
-  if (FUND_FLOW_UNSUPPORTED_LIST.includes(chain)) return
+  if (!ChainFeature.supports('fundFlow', chain)) return
 
   const mainAddress =
     document.querySelector<HTMLElement>('#mainaddress')?.innerText

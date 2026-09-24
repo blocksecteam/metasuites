@@ -4,7 +4,7 @@ import cls from 'classnames'
 
 import type { ContractVariableLog } from '@common/api/types'
 import { getSubStr, convertUTCDateToLocalDate } from '@common/utils'
-import { PHALCON_SUPPORT_LIST } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
 
 import styles from './index.module.less'
@@ -29,9 +29,9 @@ const columns = (
       }
 
   const getExplorerURL = (txHash: string) => {
-    const support = PHALCON_SUPPORT_LIST.find(i => i.chain === chain)
-    if (support) {
-      return `${PHALCON_EXPLORER_DOMAIN}/tx/${support.pathname}/${txHash}`
+    const phalcon = ChainFeature.metaOf('phalcon', chain)
+    if (phalcon) {
+      return `${PHALCON_EXPLORER_DOMAIN}/tx/${phalcon.pathname}/${txHash}`
     }
     return getRealUrl(`/tx/${txHash}`)
   }

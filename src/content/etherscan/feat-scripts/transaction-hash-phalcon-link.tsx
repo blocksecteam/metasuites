@@ -2,11 +2,8 @@ import React, { type FC, type ReactNode } from 'react'
 import isMobile from 'is-mobile'
 import { createRoot } from 'react-dom/client'
 
-import {
-  ETHERSCAN_PAGES,
-  PATTERN_EVM_TX_HASH,
-  PHALCON_SUPPORT_LIST
-} from '@common/constants'
+import { ETHERSCAN_PAGES, PATTERN_EVM_TX_HASH } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 import {
   validOrigin,
   getChainSimpleName,
@@ -18,9 +15,7 @@ import { IconPhalcon } from '@common/components'
 const PhalconExplorerButton: FC<{ hash: string }> = ({ hash }) => {
   const chain = getChainSimpleName()
 
-  const pathname = PHALCON_SUPPORT_LIST.find(
-    item => item.chain === chain
-  )?.pathname
+  const pathname = ChainFeature.metaOf('phalcon', chain)?.pathname
 
   const handleClick = (e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {
     e.preventDefault()

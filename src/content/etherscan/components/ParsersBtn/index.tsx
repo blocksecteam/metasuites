@@ -1,12 +1,8 @@
 import { type FC } from 'react'
 import { Space } from 'antd'
 
-import {
-  DEDAUB_SUPPORT_DIRECT_LIST,
-  PHALCON_SUPPORT_LIST,
-  TENDERLY_SUPPORT_LIST,
-  TransactionParsers
-} from '@common/constants'
+import { TransactionParsers } from '@common/constants'
+import { ChainFeature } from '@common/config/chain-feature'
 import { useStore } from '@common/hooks'
 import { getNodeValue } from '@common/utils'
 import { PHALCON_EXPLORER_DOMAIN } from '@common/config/uri'
@@ -23,12 +19,8 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
 
   if (!txHash) return null
 
-  const dedaubPathname = DEDAUB_SUPPORT_DIRECT_LIST.find(
-    item => item.chain === chain
-  )?.pathname
-  const phalconPathname = PHALCON_SUPPORT_LIST.find(
-    item => item.chain === chain
-  )?.pathname
+  const dedaubPathname = ChainFeature.metaOf('dedaub', chain)?.pathname
+  const phalconPathname = ChainFeature.metaOf('phalcon', chain)?.pathname
 
   return (
     <div className={styles.quick2ParsersBtn}>
@@ -41,7 +33,7 @@ const ParsersBtn: FC<Props> = ({ chain }) => {
             Phalcon
           </a>
         )}
-        {TENDERLY_SUPPORT_LIST.includes(chain) &&
+        {ChainFeature.supports('tenderly', chain) &&
           alternativeParsers[TransactionParsers.TENDERLY.value()] && (
             <a
               href={`https://dashboard.tenderly.co/tx/${txHash}`}
