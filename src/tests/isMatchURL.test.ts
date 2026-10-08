@@ -120,3 +120,18 @@ test('should match Robinhood Chain explorer on Etherscan', () => {
     'https://robin.etherscan.io/address/0x0000000000000000000000000000000000000000'
   expect(isMatchURL(url, allowlist.ETHERSCAN_V2_MATCHES)).toBe(true)
 })
+
+test('should match Plasma Scan', () => {
+  expect(
+    isMatchURL(
+      'https://plasmascan.to/address/0x0000000000000000000000000000000000000000',
+      allowlist.ETHERSCAN_V2_MATCHES
+    )
+  ).toBe(true)
+  expect(
+    isMatchURL(
+      'https://notplasmascan.to/address/0x0',
+      allowlist.ETHERSCAN_V2_MATCHES
+    )
+  ).toBe(false)
+})
