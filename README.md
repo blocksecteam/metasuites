@@ -65,6 +65,7 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 - scan.merlinchain.io
 - monadscan.com
 - robin.etherscan.io
+- plasmascan.to
 - solscan.io
 - explorer.solana.com
 

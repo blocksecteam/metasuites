@@ -144,6 +144,7 @@ const SUPPORTED_CHAINS: Record<FeatureKey, string[]> = {
     'megaeth',
     'monad',
     'optimism',
+    'plasma',
     'polygon',
     'robinhood',
     'sepolia.eth',
@@ -187,6 +188,7 @@ const SUPPORTED_CHAINS: Record<FeatureKey, string[]> = {
     'mumbai.polygon',
     'nova.arbitrum',
     'optimism',
+    'plasma',
     'polygon',
     'robinhood',
     'sepolia.eth',
@@ -257,7 +259,8 @@ const META: Partial<Record<FeatureKey, Record<string, unknown>>> = {
     mantle: { pathname: 'mantle' },
     monad: { pathname: 'monad' },
     megaeth: { pathname: 'megaeth' },
-    robinhood: { pathname: 'robinhood' }
+    robinhood: { pathname: 'robinhood' },
+    plasma: { pathname: 'plasma' }
   },
   simulationNetwork: {
     eth: {
@@ -347,7 +350,8 @@ const KNOWN_CHAINS = [
   'test.monad',
   'solana',
   'megaeth',
-  'robinhood'
+  'robinhood',
+  'plasma'
 ]
 
 const FEATURES = Object.keys(SUPPORTED_CHAINS) as FeatureKey[]

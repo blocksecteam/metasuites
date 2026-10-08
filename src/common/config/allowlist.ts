@@ -30,7 +30,9 @@ export default {
     '*://monadscan.com/*',
     '*://testnet.monadscan.com/*',
     '*://mega.etherscan.io/*',
-    '*://robin.etherscan.io/*'
+    '*://robin.etherscan.io/*',
+    '*://plasmascan.to/*',
+    '*://www.plasmascan.to/*'
   ],
   BTC_EXPLORER_MATCHES: ['*://explorer.cloverpool.com/*'],
   BLOCKSEC_MATCHES: ['*://*.blocksec.com/*'],

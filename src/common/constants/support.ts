@@ -432,6 +432,14 @@ export const EXT_SUPPORT_WEB_LIST: ExtSupportWebsite[] = [
     domains: ['robin.etherscan.io'],
     siteName: 'ETHERSCAN',
     logo: 'https://assets.blocksec.com/image/1784537302748/robinhood.png'
+  },
+  {
+    name: 'Plasma',
+    chainID: 9745,
+    chain: 'plasma',
+    domains: ['plasmascan.to', 'www.plasmascan.to'],
+    siteName: 'ETHERSCAN',
+    logo: 'https://assets.blocksec.com/image/1763363338424-2.svg'
   }
 ]
 

@@ -316,5 +316,9 @@ export const CHAIN_FEATURE_MAP = defineChainFeatures({
   robinhood: {
     phalcon: { pathname: 'robinhood' },
     tenderly: true
+  },
+  plasma: {
+    phalcon: { pathname: 'plasma' },
+    tenderly: true
   }
 })

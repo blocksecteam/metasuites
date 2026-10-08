@@ -45,7 +45,9 @@ export default defineManifest((env: ConfigEnv) => {
               '*://monadscan.com/*',
               '*://testnet.monadscan.com/*',
               '*://mega.etherscan.io/*',
-              '*://robin.etherscan.io/*'
+              '*://robin.etherscan.io/*',
+              '*://plasmascan.to/*',
+              '*://www.plasmascan.to/*'
             ]
           : ['<all_urls>'],
         js: ['src/content/index.all_frames.ts'],
