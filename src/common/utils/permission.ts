@@ -4,8 +4,15 @@ import URLMatchPattern from '@remusao/url-match-patterns'
 import type { OptWebsite } from '@src/store'
 
 export const isMatchURL = (url: string, patternList: string[]) => {
+  let normalizedUrl: string
+  try {
+    normalizedUrl = new URL(url).href
+  } catch {
+    return false
+  }
+
   return patternList.some(pattern => {
-    return URLMatchPattern(pattern, url)
+    return URLMatchPattern(pattern, normalizedUrl)
   })
 }
 

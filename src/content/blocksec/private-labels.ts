@@ -11,7 +11,13 @@ const CUSTOM_EVENT_NAME = 'metasuites:syncLabels'
 const MD_PRIVATE_LABELS_KEY = 'MD_PRIVATE_LABELS'
 
 export const initPrivateLabelsSync = async () => {
-  if (!location.pathname.startsWith('/explorer')) {
+  // Only sync over HTTPS: an http://*.blocksec.com page can be MITM-injected
+  // on the network and would otherwise be able to read the synced private labels.
+  if (location.protocol !== 'https:') {
+    return
+  }
+
+  if (!location.pathname.startsWith('/phalcon/explorer')) {
     return
   }
 
@@ -63,7 +69,7 @@ async function checkIndexDBAvailability(): Promise<boolean> {
 }
 
 async function syncFromPe(): Promise<boolean> {
-  if (!location.pathname.startsWith('/explorer')) {
+  if (!location.pathname.startsWith('/phalcon/explorer')) {
     return false
   }
 
@@ -195,7 +201,7 @@ async function syncFromPe(): Promise<boolean> {
 }
 
 async function syncToPe(): Promise<boolean> {
-  if (!location.pathname.startsWith('/explorer')) {
+  if (!location.pathname.startsWith('/phalcon/explorer')) {
     return false
   }
 
@@ -290,7 +296,7 @@ async function syncToPe(): Promise<boolean> {
 }
 
 async function removePrivateLabelsFromDb(): Promise<boolean> {
-  if (!location.pathname.startsWith('/explorer')) {
+  if (!location.pathname.startsWith('/phalcon/explorer')) {
     return false
   }
 

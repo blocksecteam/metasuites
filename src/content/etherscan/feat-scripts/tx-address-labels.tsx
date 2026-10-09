@@ -134,15 +134,15 @@ const genImplAddressLabels = async (chain: string) => {
           labelContainerEl
             .append('(')
             .append(proxySymbolRootEl)
-            .append(`<span>${sanitizeText(label)}</span>`)
+            .append($('<span></span>').text(label))
           if (implementAddress && implementLabel) {
             labelContainerEl
               .append(`<span style="padding: 0 4px;">(-></span>`)
               .append(implSymbolRootEl)
               .append(
-                `<a href="/address/${implementAddress}" target="_blank">${sanitizeText(
-                  implementLabel
-                )}</a>`
+                $('<a target="_blank"></a>')
+                  .attr('href', `/address/${implementAddress}`)
+                  .text(implementLabel)
               )
               .append(')')
             createRoot(implSymbolRootEl[0]).render(

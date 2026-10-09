@@ -26,7 +26,10 @@ const handleReplace = async (elements: HTMLElement[], queryList: string[]) => {
       elements.forEach(el => {
         const innerText = el.innerText
         if (item.address === innerText) {
-          el.innerHTML = `<span title="${item.label}">${item.label}</span>`
+          const labelEl = document.createElement('span')
+          labelEl.title = item.label
+          labelEl.textContent = item.label
+          el.replaceChildren(labelEl)
           const symbolRootEl = $('<span style="display: contents"></span>')
           el.prepend(symbolRootEl[0])
           createRoot(symbolRootEl[0]).render(

@@ -1,3 +1,14 @@
+### v5.13.0
+
+- [feat] Add Plasma Scan (plasmascan.to) support, including Phalcon and Tenderly shortcuts
+- [fix] Render Solana and Etherscan address labels as text to prevent HTML and attribute injection
+- [fix] Validate MetaSleuth message sources and return URLs, and verify token storage before redirecting
+- [fix] Escape CSV cells and neutralize formula prefixes in exported data
+- [fix] Require HTTPS for Phalcon private label synchronization and correct the explorer path
+- [fix] Normalize URLs before matching site allowlists
+- [fix] Adapt Solscan transaction and account-table address links to the updated markup while preserving native controls
+- [update] Upgrade DOMPurify, json-2-csv, qs, lodash-es, and ethers; remove unused ECharts dependencies
+
 ### v5.12.1
 
 - [fix] Fix Arkham integration after the site moved to arkm.com and updated its markup

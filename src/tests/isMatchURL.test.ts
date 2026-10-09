@@ -121,6 +121,81 @@ test('should match Robinhood Chain explorer on Etherscan', () => {
   expect(isMatchURL(url, allowlist.ETHERSCAN_V2_MATCHES)).toBe(true)
 })
 
+test.each([
+  'https://evil.com?.basescan.org/',
+  'https://evil.com#.basescan.org/',
+  'https://evil.com/?url=https://basescan.org/',
+  'https://evil.com/#https://basescan.org/',
+  'https://basescan.org.evil.com/',
+  'https://evilbasescan.org/',
+  'https://basescan.org@evil.com/',
+  'https://evil.com@basescan.org/',
+  'https://user:pass@basescan.org/',
+  'https://basescan.org:8443/',
+  'javascript:alert(1)',
+  'data:text/plain,https://basescan.org/',
+  'blob:https://basescan.org/test'
+])('rejects misleading URLs for a domain whitelist: %s', url => {
+  expect(isMatchURL(url, ['*://*.basescan.org/*'])).toBe(false)
+})
+
+test.each([
+  '',
+  'not a url',
+  '/account/test',
+  '//basescan.org/account/test',
+  'https://',
+  'https://[invalid]/',
+  'https://basescan.org:invalid/'
+])('returns false without throwing for invalid or relative URL: %s', url => {
+  expect(isMatchURL(url, ['*://*.basescan.org/*'])).toBe(false)
+})
+
+test.each([
+  'https://basescan.org',
+  'https://BASESCAN.ORG/address/test',
+  'HTTPS://BASESCAN.ORG/address/test',
+  'https://basescan.org:443/address/test',
+  'https://sepolia.basescan.org/address/test?value=%26#tab',
+  'http://basescan.org:80/address/test'
+])('matches supported URL after browser-style normalization: %s', url => {
+  expect(isMatchURL(url, ['*://*.basescan.org/*'])).toBe(true)
+})
+
+test('preserves scheme restrictions and wildcard path/query matching', () => {
+  const patterns = ['https://explorer.jito.wtf/bundle/*']
+  expect(
+    isMatchURL('https://EXPLORER.JITO.WTF:443/bundle/test?x=%2F#tab', patterns)
+  ).toBe(true)
+  expect(isMatchURL('https://explorer.jito.wtf/other/test', patterns)).toBe(
+    false
+  )
+  expect(isMatchURL('http://explorer.jito.wtf/bundle/test', patterns)).toBe(
+    false
+  )
+  expect(
+    isMatchURL('https://example.com/path?a=1#tab', [
+      'https://example.com/path?*'
+    ])
+  ).toBe(true)
+})
+
+test('normalization keeps canonical URLs matching every configured whitelist', () => {
+  Object.values(allowlist).forEach(patterns => {
+    patterns.forEach(pattern => {
+      const canonicalUrl = pattern
+        .replace('*://', 'https://')
+        .replace('://*.', '://test.')
+        .replace(/\*$/, 'audit')
+      expect(isMatchURL(canonicalUrl, patterns)).toBe(true)
+    })
+  })
+})
+
+test('returns false when the whitelist is empty', () => {
+  expect(isMatchURL('https://basescan.org/', [])).toBe(false)
+})
+
 test('should match Plasma Scan', () => {
   expect(
     isMatchURL(
