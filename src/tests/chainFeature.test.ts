@@ -63,10 +63,9 @@ const SUPPORTED_CHAINS: Record<FeatureKey, string[]> = {
     'base',
     'bsc',
     'eth',
-    'fantom',
-    'gnosis',
     'optimism',
-    'polygon'
+    'polygon',
+    'robinhood'
   ],
   dethCode: [
     'arbitrum',
@@ -220,13 +219,12 @@ const META: Partial<Record<FeatureKey, Record<string, unknown>>> = {
   dedaub: {
     eth: { pathname: 'ethereum' },
     bsc: { pathname: 'binance' },
-    fantom: { pathname: 'fantom' },
     arbitrum: { pathname: 'arbitrum' },
     optimism: { pathname: 'optimism' },
     polygon: { pathname: 'polygon' },
     avalanche: { pathname: 'avalanche' },
     base: { pathname: 'base' },
-    gnosis: { pathname: 'gnosis' }
+    robinhood: { pathname: 'robinhood' }
   },
   dethCode: {
     eth: { url: 'https://etherscan.deth.net/address' },

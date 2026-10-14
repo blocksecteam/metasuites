@@ -102,7 +102,7 @@ export const defaultValue: StorageInfo = {
   },
   alternativeParsers: {
     [TransactionParsers.TENDERLY.name()]: true,
-    [TransactionParsers.DEDAUB.name()]: false
+    [TransactionParsers.DEDAUB.name()]: true
   },
   privateLabels: {},
   token: ''

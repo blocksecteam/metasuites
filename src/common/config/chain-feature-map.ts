@@ -99,7 +99,6 @@ export const CHAIN_FEATURE_MAP = defineChainFeatures({
   fantom: {
     approvalDiagnosis: true,
     debank: true,
-    dedaub: { pathname: 'fantom' },
     dethCode: { url: 'https://ftmscan.deth.net/address' },
     fundFlow: true,
     proxyLog: true,
@@ -218,7 +217,6 @@ export const CHAIN_FEATURE_MAP = defineChainFeatures({
   gnosis: {
     approvalDiagnosis: true,
     debank: true,
-    dedaub: { pathname: 'gnosis' },
     fundFlow: true,
     tenderly: true
   },
@@ -314,6 +312,7 @@ export const CHAIN_FEATURE_MAP = defineChainFeatures({
     txSimulator: true
   },
   robinhood: {
+    dedaub: { pathname: 'robinhood' },
     phalcon: { pathname: 'robinhood' },
     tenderly: true
   },
