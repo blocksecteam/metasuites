@@ -1,3 +1,9 @@
+### v5.13.1
+
+- [feat] Add Dedaub support for Robinhood Chain
+- [update] Remove Fantom and Gnosis from Dedaub's supported networks
+- [update] Enable Dedaub transaction links by default while preserving saved preferences
+
 ### v5.13.0
 
 - [feat] Add Plasma Scan (plasmascan.to) support, including Phalcon and Tenderly shortcuts
