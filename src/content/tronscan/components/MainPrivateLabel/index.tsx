@@ -13,12 +13,14 @@ interface Props {
 }
 
 const MainPrivateLabel: FC<Props> = ({ address, chainType }) => {
-  const { getPrivateLabel } = usePrivateLabels()
+  const { getPrivateLabel, enablePrivateLabels } = usePrivateLabels()
 
   const { isDarkMode } = useTheme()
 
   const [visible, setVisible] = useState(false)
   const { privateLabel, color } = getPrivateLabel(chainType, address)
+
+  if (!enablePrivateLabels) return null
 
   return (
     <>

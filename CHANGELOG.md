@@ -1,3 +1,9 @@
+### v5.13.2
+
+- [fix] Escape fund flow descriptions and serial values to prevent DOT injection
+- [fix] Honor the private label display setting on address pages and fund flow maps while preserving label management and CSV export
+- [fix] Wait for explorer settings to be saved before refreshing the current page
+
 ### v5.13.1
 
 - [feat] Add Dedaub support for Robinhood Chain

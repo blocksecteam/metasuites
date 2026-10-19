@@ -35,8 +35,12 @@ const Settings: FC = () => {
     onRefresh()
   }
 
-  const onSwitchChange = (key: OptKeys, value: boolean, refresh = true) => {
-    setOptions({
+  const onSwitchChange = async (
+    key: OptKeys,
+    value: boolean,
+    refresh = true
+  ) => {
+    await setOptions({
       ...options,
       [key]: value
     })

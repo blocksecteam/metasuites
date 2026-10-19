@@ -89,7 +89,11 @@ const genEdge = (
           labeltooltip="${fromNode.address} -> ${toNode.address}"
           edgetooltip="${fromNode.address} -> ${toNode.address}"
           label=<<table border="0">
-          <tr><td align="center" width="20" bgcolor="white" cellpadding="0"><font color="${themeColor}" FACE="Poppins-Regular"><br/>[${serial}] </font></td><td align="center" cellpadding="0"><font color="#000"><br/>${description}</font></td></tr>
+          <tr><td align="center" width="20" bgcolor="white" cellpadding="0"><font color="${themeColor}" FACE="Poppins-Regular"><br/>[${codeHTMLEntities(
+    String(serial)
+  )}] </font></td><td align="center" cellpadding="0"><font color="#000"><br/>${codeHTMLEntities(
+    description
+  )}</font></td></tr>
           </table>>
         ]
       `

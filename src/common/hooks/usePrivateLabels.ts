@@ -13,6 +13,7 @@ type PrivateLabelResult = {
 }
 
 type UsePrivateLabelsReturn = {
+  enablePrivateLabels: boolean
   privateLabels: Record<string, PrivateLabel>
   setPrivateLabels: (newLabels: Record<string, PrivateLabel>) => void
   deletePrivateLabel: (chainType: string, address: string) => boolean
@@ -171,6 +172,7 @@ const usePrivateLabels = (includeDeleted = false): UsePrivateLabelsReturn => {
   }, [filteredLabels])
 
   return {
+    enablePrivateLabels: options.enablePrivateLabels,
     privateLabels: processedLabels,
     setPrivateLabels,
     deletePrivateLabel,

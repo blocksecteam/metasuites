@@ -86,7 +86,7 @@ const ModalFundFlowGraph: FC<Props> = ({
     useState(false)
   const [editingNode, setEditingNode] = useState<FundFlowNode>()
 
-  const { getPrivateLabel } = usePrivateLabels()
+  const { getPrivateLabel, enablePrivateLabels } = usePrivateLabels()
 
   /** when the params.addrOpts is not empty, it is filtering */
   const getFundFlow = async () => {
@@ -116,8 +116,8 @@ const ModalFundFlowGraph: FC<Props> = ({
             ...node,
             index,
             selected: selected,
-            label: local?.label || node.label,
-            color
+            label: (enablePrivateLabels && local?.label) || node.label,
+            color: enablePrivateLabels ? color : '#f8f8f8'
           }
         }) ?? []
       setFundFlow({
@@ -691,6 +691,7 @@ const ModalFundFlowGraph: FC<Props> = ({
           visible={modeAddPrivateLabelVisible}
           onClose={() => setModeAddPrivateLabelVisible(false)}
           onSuccess={(label, color) => {
+            if (!enablePrivateLabels) return
             if (label) {
               const node = fundFlow?.nodes.find(
                 v =>
