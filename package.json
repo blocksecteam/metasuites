@@ -38,7 +38,7 @@
     "d3": "^5.0.0",
     "d3-graphviz": "2.6.1",
     "dayjs": "^1.11.6",
-    "dompurify": "3.4.16",
+    "dompurify": "3.4.17",
     "ethers": "6.17.0",
     "is-mobile": "^4.0.0",
     "jquery": "^3.6.3",
