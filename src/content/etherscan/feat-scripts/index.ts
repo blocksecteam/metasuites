@@ -17,7 +17,6 @@ export { default as genContractPrivateVariables } from './contract-private-varia
 export { default as formatWriteContractParams } from './contract-params-format'
 export { default as genTokenMarketplacesBtn } from './token-marketplaces'
 export { default as genTxPageAddressLabels } from './tx-address-labels'
-export { default as genTransactionExplanationBtn } from './transaction-explanation'
 export { default as genProxyContractLog } from './proxy-contract-log'
 export { default as genDedaubStorageShortcut } from './dedaub-storage'
 export * from './transaction-simulator'

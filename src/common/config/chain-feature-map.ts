@@ -39,7 +39,6 @@ export const CHAIN_FEATURE_MAP = defineChainFeatures({
       nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 }
     },
     tenderly: true,
-    txExplain: true,
     txSimulator: true,
     variableLog: true
   },

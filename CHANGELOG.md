@@ -1,3 +1,8 @@
+### v5.13.3
+
+- [update] Retire transaction explanations
+- [docs] Remove outdated descriptions of previously retired NFT features
+
 ### v5.13.2
 
 - [fix] Escape fund flow descriptions and serial values to prevent DOT injection

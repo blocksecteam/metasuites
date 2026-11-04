@@ -30,16 +30,6 @@ const ConfigExploresDrawer: FC<Props> = ({
         <div className={styles.content}>
           <Cell.Group>
             <Cell
-              title="Show transaction summary"
-              action={
-                <Switch
-                  size="small"
-                  checked={options.txSummary}
-                  onChange={val => onSwitchChange('txSummary', val)}
-                />
-              }
-            />
-            <Cell
               title="Show the fund flow chart"
               action={
                 <Switch

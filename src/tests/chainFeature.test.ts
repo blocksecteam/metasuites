@@ -195,7 +195,6 @@ const SUPPORTED_CHAINS: Record<FeatureKey, string[]> = {
     'test.fantom',
     'test.monad'
   ],
-  txExplain: ['eth'],
   txSimulator: [
     'arbitrum',
     'avalanche',
@@ -388,7 +387,7 @@ describe('ChainFeature', () => {
 
   test('supportsAny reflects any of the given features', () => {
     expect(ChainFeature.supportsAny(['phalcon', 'tenderly'], 'eth')).toBe(true)
-    expect(ChainFeature.supportsAny(['txExplain'], 'bsc')).toBe(false)
+    expect(ChainFeature.supportsAny(['variableLog'], 'base')).toBe(false)
   })
 
   test('chainByArkhamName resolves Arkham chain names', () => {

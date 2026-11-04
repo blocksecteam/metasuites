@@ -29,7 +29,6 @@ export interface FeatureMetaMap {
     nativeCurrency: NativeCurrency
   }
   tenderly: true
-  txExplain: true
   txSimulator: true
   variableLog: true
 }

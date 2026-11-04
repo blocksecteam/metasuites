@@ -10,8 +10,6 @@ import type {
   ApprovalsRiskReq,
   QueryPrivateVariableReq,
   PostPrivateVariablesParams,
-  MarkGptTxExplainReq,
-  GptTxExplainReq,
   GetContractByAddressReq,
   GetContractByABIReq,
   SimulateTxParams,
@@ -33,8 +31,6 @@ import type {
   GET_PRIVATE_VARIABLES,
   QUERY_PRIVATE_VARIABLE,
   GET_TOKEN_MARKETPLACES,
-  GET_GPT_TX_EXPLAIN,
-  MARK_GPT_TX_EXPLAIN,
   GET_PROXY_CONTRACT_LOG,
   GET_IMPL_LABELS,
   GET_CONSERVATIVE_BLOCK,
@@ -62,8 +58,6 @@ export type EventInfo = {
   [GET_PRIVATE_VARIABLES]: PostPrivateVariablesParams
   [QUERY_PRIVATE_VARIABLE]: QueryPrivateVariableReq
   [GET_TOKEN_MARKETPLACES]: PostAddressParams
-  [GET_GPT_TX_EXPLAIN]: GptTxExplainReq
-  [MARK_GPT_TX_EXPLAIN]: MarkGptTxExplainReq
   [GET_PROXY_CONTRACT_LOG]: PostAddressParams
   [GET_IMPL_LABELS]: PostAddressesParams
   [GET_CONSERVATIVE_BLOCK]: string

@@ -1,7 +1,6 @@
 import type {
   AddressRiskLevel,
   TokenType,
-  TransactionSummaryType,
   ContractVariableVisibility,
   ContractVariableMutability
 } from '@common/constants'
@@ -178,22 +177,6 @@ export interface TokenMarket {
 export interface TokenMarketplacesRes {
   tokenType: TokenType
   markets: TokenMarket[]
-}
-
-export interface GptTxExplainReq {
-  tx: string
-  chain: string
-}
-
-export interface GptTxExplainRes {
-  content: string
-  template: number
-  type: TransactionSummaryType
-}
-
-export interface MarkGptTxExplainReq extends GptTxExplainReq {
-  template: number
-  score: 1 | -1
 }
 
 export interface ProxyContractLog {

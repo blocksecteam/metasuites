@@ -24,8 +24,6 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 - [x] Show copy icon for addresses
 - [x] Show quick open in ethervm.io for unverified contracts
 - [x] Show the source of funding for contract deployers
-- [x] Show comprehensive risk graph of the collection
-- [x] Show owner's address label
 - [x] Show export data for a part of transactions
 - [x] Show approval diagnosis
 - [x] Show enhanced address labels by Forta
@@ -33,11 +31,12 @@ For up to the minute news, follow our [Twitter](https://twitter.com/MetaDockTeam
 - [x] Show private variables
 - [x] Quick format parameters
 - [x] Show proxy upgrade log
-- [x] Show transaction summary
 - [x] Show transaction simulator
 - [x] Show Variable Logs
 - [x] Manage Local Private Labels
 - [x] Sync local labels with Phalcon Explorer
+
+Transaction explanations are no longer available as of v5.13.3. The legacy NFT detail, floor-price, rarity, risk, and owner-label features were removed in earlier releases. NFT collection search remains available in the extension popup.
 
 ## Supported Websites List
 

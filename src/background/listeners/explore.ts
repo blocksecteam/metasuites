@@ -9,8 +9,6 @@ import {
   GET_PRIVATE_VARIABLES,
   QUERY_PRIVATE_VARIABLE,
   GET_TOKEN_MARKETPLACES,
-  GET_GPT_TX_EXPLAIN,
-  MARK_GPT_TX_EXPLAIN,
   GET_PROXY_CONTRACT_LOG,
   GET_IMPL_LABELS,
   GET_CONSERVATIVE_BLOCK,
@@ -57,12 +55,6 @@ export default function initExploreRequest() {
   })
   chromeEvent.on(GET_TOKEN_MARKETPLACES, async params => {
     return await commonApi.getTokenMarketplaces(params)
-  })
-  chromeEvent.on(GET_GPT_TX_EXPLAIN, async params => {
-    return await commonApi.getGptTxExplain(params)
-  })
-  chromeEvent.on(MARK_GPT_TX_EXPLAIN, async params => {
-    return await commonApi.markGptTxExplain(params)
   })
   chromeEvent.on(GET_PROXY_CONTRACT_LOG, async params => {
     return await commonApi.getProxyContractLog(params)
