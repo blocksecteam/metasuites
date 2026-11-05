@@ -1,3 +1,7 @@
+### v5.13.4
+
+- [update] Upgrade DOMPurify from 3.4.16 to 3.4.17
+
 ### v5.13.3
 
 - [update] Retire transaction explanations
